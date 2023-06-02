@@ -1,0 +1,165 @@
+%!TEX root = ../thesis.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+% Object reconstruction %
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\message{^^J ^^J OBJECTS ^^J ^^J} % print to log
+\newchap{Object \& Event Reconstruction} \label{sec:objects}
+% https://twiki.cern.ch/twiki/bin/viewauth/CMS/Internal/PubDetector detector lines
+
+This chapter explains object and event reconstruction in the CMS experiment.
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%   PID PRINCIPLES   %
+%%%%%%%%%%%%%%%%%%%%%%
+\section{Principles of particle identification} \label{sec:PID}
+
+% FIGURE: Particle lifetimes
+\input{tex/objects-fig-lifetime.tex}
+
+% FIGURE: Particle identification
+\input{tex/objects-fig-PID.tex}
+
+Figure~\ref{fig:lifetime} compares the lifetime, dividing them in different regions of stability in the context of the CMS experiment.
+
+Each of these particles has a unique set of properties that leave a characteristic signal in one or more of the subdetector, as illustrated in \Fig{fig:PID}.
+
+
+%%%%%%%%%%%%%%%%%%%%%
+%   PARTICLE-FLOW   %
+%%%%%%%%%%%%%%%%%%%%%
+\section{Particle-flow algorithm} \label{sec:PF}
+The particle-flow (PF) algorithm~\cite{PF1,PF2017} fully reconstructs the event of a pp collision with an optimized combination of all measurements of the CMS subsystems.
+
+Tracks in the inner tracker or muon system are iteratively built from hits, using the \emph{Kalman-filter} (KF) \emph{technique}~\cite{CMS_track_reco_2006,Kalman_filtering}.
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%   PRIMARY VERTEX   %
+%%%%%%%%%%%%%%%%%%%%%%
+\section{Primary vertex} \label{sec:PV}
+The algorithm locates primary vertices (PVs) of $\Pp\Pp$ collisions.
+The tracks are clustered using the \emph{deterministic annealing algorithm}~\cite{deterministic_annealing}.
+Finally, candidate vertices are fitted using an \emph{adaptive vertex fitter}~\cite{vertex_fitting}.
+The PV with the largest sum of momenta is assumed to be the vertex of the hard scattering process~\cite{CMS_vertex,PF2017,CMS_vertex_phase2}.
+
+
+%%%%%%%%%%%%%%%%%
+%   ELECTRONS   %
+%%%%%%%%%%%%%%%%%
+\section{Electrons} \label{sec:electron}
+
+Electrons are reconstructed by associating a track in the inner tracker to clusters of energy deposits in the ECAL.
+% tracks
+Candidate tracks are refitted with the \emph{Gaussian sum filter} (GSF)~\cite{GSF}.
+% shower
+The ECAL clusters are recombined into a so-called \emph{supercluster}.
+The resolution is documented in Ref.~\cite{CMS_electron_2021,CMS_electron_calibration_2016}.
+
+% ID
+The reconstruction and identification of electrons, as well as high-energy photons, are discussed in more detail in Refs.~\cite{CMS_electron} and~\cite{CMS_electron_2021}.
+
+The \emph{relative isolation} for electrons is computed with the so-called \emph{rho-effective-area method}~\cite{PU_substraction}:
+\begin{equation} \label{eq:iso_ele}
+  \Irel^{\Pe} \defeq
+    \frac{\sum_\text{charged} \PT + \max\left( 0, \sum_\text{neutral} \ET
+                                  - \rho A_\text{eff} \right )}{\pt^{\Pe}}. 
+\end{equation}
+
+
+%%%%%%%%%%%%%
+%   MUONS   %
+%%%%%%%%%%%%%
+\section{Muons} \label{sec:muon}
+Muon candidates in CMS are reconstructed as \emph{standalone muons}, \emph{tracker muons}, and/or \emph{global muons}~\cite{CMS_muon_2018}.
+
+% RELATIVE ISOLATION
+The relative isolation of a muon is defined with the so-called \emph{$\Delta\beta$-corrections}:
+\begin{equation}\label{eq:iso_mu}
+  \Irel^{\PGm} \defeq
+    \frac{\sum_\text{charged} \pt + \max\left( 0, \sum_\text{neutral} \ET
+                                  - \Delta\beta \sum_\text{charged, PU} \pt \right )}{\pt^{\PGm}}.
+\end{equation}
+
+
+%%%%%%%%%%%%
+%   TAUS   %
+%%%%%%%%%%%%
+\section{Hadronically Decayed \texorpdfstring{$\PGt$}{tau} Leptons} \label{sec:tauh}
+Hadronic decays of $\PGt$ leptons ($\tauh$) are reconstructed with the \emph{hadron-plus-strips} (HPS) \emph{algorithm} ~\cite{HPS1,HPS2,HPS3,DeepTau}.
+About $65\%$ of hadronic $\PGt$ decays involve neutral pions, which decay promptly ($\tau=8.4\times10^{-17}\unit{s}$) to two photons $98.8\%$ of the time~\cite[p.~33]{PDG_2022}.
+
+The $\tauh$ identification algorithm \DeepTau~\cite{DeepTau} was used to discriminate against jets that are initiated by quarks and gluons, as well as electrons and muons, see \Fig{fig:tau_jets}.
+
+% FIGURES: tau decay
+\input{tex/objects-fig-tauh_decay.tex}
+
+% FIGURES: tau decay
+\input{tex/objects-fig-tauh_signature.tex}
+
+% FIGURES: tau backgrounds
+\input{tex/objects-fig-tauh_jets.tex}
+
+
+%%%%%%%%%%%%
+%   JETS   %
+%%%%%%%%%%%%
+\section{Jets}\label{sec:jets}
+
+% https://arxiv.org/abs/1706.04965
+Jets are reconstructed with a clustering algorithm.
+The jet properties must be \emph{infrared safe} and \emph{collinear safe}.
+% anti-kT
+The \emph{anti-$\kt$} (AK) \emph{algorithm} utilizes the metric
+\begin{equation} \label{eq:antikT}
+  d_{ij} = \min\left(p_\text{T,i}^{-2},p_\text{T,j}^{-2}\right)\frac{\Delta R^2_{ij}}{\Delta R_y^2},
+\end{equation}
+where $\Delta R_y=\sqrt{\Delta y^2+\Delta\phi^2}$ is the distance in $(y,\phi)$-space with the \emph{rapidity}
+\begin{equation} \label{eq:rapidity}
+  y \defeq \frac{1}{2}\ln\left(\frac{E+p_z}{E-p_z}\right).
+\end{equation}
+If a cluster $i$ of combined objects satisfies
+\begin{equation} \label{eq:antikT_cut}
+  d_{ij} > d_{i\text{B}} = p_\text{T,i}^{-2},
+\end{equation}
+More info is given in Ref.~\cite{PF2017,antikT}.
+The AK algorithm is implemented in the \FASTJET library~\cite{fastjet1,fastjet2}, and \emph{charged-hadron subtraction} (CHS) is used.
+
+% JEC
+The CMS Collaboration determines \emph{jet energy corrections} (JECs) in several steps, which are explained in detail in Ref.~\cite{CMS-JME-10-011}.
+Additionally, the jet energy and \emph{jet energy resolution} (JER) of jets in simulation are corrected to obtain better agreement between simulation and data.
+
+% JET ID
+Genuine jets are distinguished from pileup jets with the identification algorithm~\cite{jetPUID}.
+Identification~\cite{jetID_2016} removes spurious jet-like features that originate from isolated noise patterns in certain HCAL regions.
+
+
+%%%%%%%%%%%%%
+%   B TAG   %
+%%%%%%%%%%%%%
+\section{Bottom quark identification} \label{sec:btagging}
+
+% FIGURE: B TAGGING ILLUSTRATION
+\input{tex/objects-fig-btagging.tex}
+
+The \DeepCSV algorithm~\cite{btag_deepCSV,btag_2018} for b tagging jets. \DeepCSV is a deep neural network (DNN) with four hidden layers that is an extension of the combined secondary vertex (CSV) algorithm~\cite{btag_deepCSV,btag_2018}.
+
+
+%%%%%%%%%%%
+%   MET   %
+%%%%%%%%%%%
+% https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookMetAnalysis#7_7_6_MET_Corrections
+\section{Missing transverse energy}\label{sec:met}
+
+% FIGURE: MET
+\input{tex/objects-fig-MET.tex}
+
+The vectorially sum of all particles gives the missing momentum
+\begin{equation} \label{eq:MET}
+  \ptvecmiss = - \sum_{\text{i}}\myvec{p}_\text{T}^{\,i}.
+\end{equation}
+This vector, or its length, is often referred to as the \emph{missing transverse momentum}, or \emph{missing transverse energy} (MET).
+Several corrections are applied~\cite{PF2017}.
+More details can be found in Refs.~\cite{CMS-PAS-JME-16-004} and~\cite{CMS-PAS-JME-17-001}. 
+

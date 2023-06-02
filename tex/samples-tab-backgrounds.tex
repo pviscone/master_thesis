@@ -1,0 +1,62 @@
+%!TEX root = ../thesis.tex
+
+\begin{table}[pt]
+\vspace{-10mm}
+\caption{Summary of simulated SM backgrounds}
+\label{tab:samples_background}
+\centerline{
+\begin{tabular}{lll}
+  \hline
+  Process & Generators & Cross section $\sigma$ [pb] \\
+  \hline
+  \tabsubtitle{Drell-Yan, $\Zg\to\LL$, LO} \\
+  \;$+\,\text{jets}$, $10<\mll<50\GeV$ & \MADGRAPH, \PYTHIA  & 15810.0 (LO), 18610.0 (NLO) \\
+  %\;$(\Zg\to\LL)+\text{jets}$, $\mll\in[10,50[\GeV$ & \MADGRAPH, \PYTHIA  & 15810.0 (LO), 18610.0 (NLO) \\
+  \;$+\,\text{jets}$, $\mll>50\GeV$    & \MADGRAPH, \PYTHIA  & 5343.0 (LO), 6077.2 (NNLO) \\ % 3*2025.74
+  \;$+\,\text{1 jets}$, $\mll>50\GeV$    & \MADGRAPH, \PYTHIA  & 877.8 (LO) \\
+  \;$+\,\text{2 jets}$, $\mll>50\GeV$    & \MADGRAPH, \PYTHIA  & 304.4 (LO) \\
+  \;$+\,\text{3 jets}$, $\mll>50\GeV$    & \MADGRAPH, \PYTHIA  & 111.5 (LO) \\
+  \;$+\,\text{4 jets}$, $\mll>50\GeV$    & \MADGRAPH, \PYTHIA  & 44.05 (LO) \\
+  
+  \tabsubtitle{Drell-Yan, $\Zg\to\LL$, NLO} \\
+  \;$+\,\text{jets}$, $\mll\in[100,200[\GeV$     & \aMCATNLO, \PYTHIA   & 247.8 (NLO)    \\
+  \;$+\,\text{jets}$, $\mll\in[200,400[\GeV$     & \aMCATNLO, \PYTHIA   & 8.502 (NLO)    \\
+  \;$+\,\text{jets}$, $\mll\in[400,500[\GeV$     & \aMCATNLO, \PYTHIA   & 0.4514 (NLO)   \\
+  \;$+\,\text{jets}$, $\mll\in[500,700[\GeV$     & \aMCATNLO, \PYTHIA   & 0.2558 (NLO)   \\
+  \;$+\,\text{jets}$, $\mll\in[700,800[\GeV$     & \aMCATNLO, \PYTHIA   & 0.04023 (NLO)  \\
+  \;$+\,\text{jets}$, $\mll\in[800,1000[\GeV$    & \aMCATNLO, \PYTHIA   & 0.03406 (NLO)  \\
+  \;$+\,\text{jets}$, $\mll\in[1000,1500[\GeV$   & \aMCATNLO, \PYTHIA   & 0.01828 (NLO)  \\
+  \;$+\,\text{jets}$, $\mll\in[1500,2000[\GeV$   & \aMCATNLO, \PYTHIA   & 0.002367 (NLO) \\
+  \;$+\,\text{jets}$, $\mll\in[2000,3000[\GeV$   & \aMCATNLO, \PYTHIA   & $5.409\times10^{-4}$ (NLO) \\
+  \;$+\,\text{jets}$, $\mll\in[3000,\infty[\GeV$ & \aMCATNLO, \PYTHIA   & $3.048\times10^{-5}$ (NLO) \\
+  
+  \tabsubtitle{\Wjets, $\PW\to\ell\nu$} \\
+  \;$+\,\text{jets}$    & \MADGRAPH, \PYTHIA  & 52940.0 (LO), 61526.7 (NLO) \\
+  \;$+\,\text{1 jets}$  & \MADGRAPH, \PYTHIA  & 8104.0 (LO) \\
+  \;$+\,\text{2 jets}$  & \MADGRAPH, \PYTHIA  & 2793.0 (LO) \\
+  \;$+\,\text{3 jets}$  & \MADGRAPH, \PYTHIA  & 992.5 (LO) \\
+  \;$+\,\text{4 jets}$  & \MADGRAPH, \PYTHIA  & 544.3 (LO) \\
+  
+  \tabsubtitle{$\ttbar+\text{jets}$} &       & 833.9 (NNLO) \\
+  % https://twiki.cern.ch/twiki/bin/view/LHCPhysics/TtbarNNLO
+  \;Fully leptonic      & \POWHEG, \PYTHIA   & 88.29 (NNLO), $\BF=10.6\%$ \\
+  \;Semi-leptonic       & \POWHEG, \PYTHIA   & 365.35 (NNLO), $\BF=43.9\%$ \\
+  \;Fully Hadronic      & \POWHEG, \PYTHIA   & 377.96 (NNLO), $\BF=45.4\%$ \\
+  
+  \tabsubtitle{Single top} \\
+  % https://twiki.cern.ch/twiki/bin/view/LHCPhysics/SingleTopRefXsec
+  \;$\PQt+\PW^-$                & \POWHEG, \PYTHIA  &  35.85 (NNLO) \\
+  \;$\PAQt+\PW^+$               & \POWHEG, \PYTHIA  &  35.85 (NNLO) \\
+  \;Single $\PQt$, $t$ channel  & \POWHEG, \PYTHIA  & 136.02 (NNLO) \\
+  \;Single $\PAQt$, $t$ channel & \POWHEG, \PYTHIA  &  80.95 (NNLO) \\
+  
+  % https://cms-gen-dev.cern.ch/xsdb/?columns=67108863&currentPage=0&ordDirection=1&ordFieldName=process_name&pageSize=50&searchQuery=process_name%3D%5E%5BWZ%5D%5BWZ%5D_Tune%2A
+  \tabsubtitle{Diboson} \\
+  \;WW & \PYTHIA  & 75.88 (LO) \\ % TODO: REALLY LO !?!?!?!?!?!?!?
+  \;WZ & \PYTHIA  & 27.60 (LO) \\
+  \;ZZ & \PYTHIA  & 12.14 (LO) \\
+  
+  \hline
+\end{tabular}}
+\vspace{-1mm}
+\end{table}

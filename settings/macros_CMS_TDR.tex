@@ -1,0 +1,165 @@
+%!TEX root = ../thesis.tex
+% Author: Izaak Neutelings (February 2023)
+% Description: Mimicking common CMS TDR macros & particle pennames
+% Sources:
+%   https://gitlab.cern.ch/tdr/utils/-/blob/master/general/hepparticles.sty
+%   https://gitlab.cern.ch/tdr/utils/-/blob/master/general/heppennames2.sty
+%   https://gitlab.cern.ch/tdr/utils/-/blob/master/general/ptdr-definitions.sty
+
+% CMS TDR: text
+\newcommand{\etal}   {\mbox{et al.}\xspace} %et al. - no preceding comma
+\newcommand{\ie}     {\mbox{i.e.}\xspace}
+\newcommand{\eg}     {\mbox{e.g.}\xspace}
+\newcommand{\etc}    {\mbox{etc.}\xspace}
+
+% CMS TDR: common macros
+\newcommand{\PNfix}   {\hspace{-.04em}}
+\newcommand*{\DOI}[1]{\href{http://dx.doi.org/#1}{\texttt{doi:#1}}} % CHECK REFERENCE 10.1103 !!!
+\providecommand{\NA}{\ensuremath{\text{---}}}
+\providecommand{\cmsTable}[1]{\resizebox{\textwidth}{!}{#1}}
+
+% CMS TDR: units
+\newcommand{\unit}[1]{{\ensuremath{\text{\,#1}}}\xspace}
+\newcommand{\mus}    {{\ensuremath{\,\text{\textmu s}}}\xspace} %\upmu
+\newcommand{\mum}    {{\ensuremath{\,\text{\textmu m}}}\xspace}
+\newcommand{\cm}     {{\ensuremath{\,\text{cm}}}\xspace}
+\newcommand{\MeV}    {{\ensuremath{\,\text{Me\hspace{-.08em}V}}}\xspace}
+\newcommand{\GeV}    {{\ensuremath{\,\text{Ge\hspace{-.08em}V}}}\xspace}
+\newcommand{\TeV}    {{\ensuremath{\,\text{Te\hspace{-.08em}V}}}\xspace}
+\newcommand{\fbinv}  {{\mbox{\ensuremath{\,\text{fb}^\text{$-$1}}}}\xspace}
+
+% CMS TDR: SOFTWARE PROGRAMS
+\newcommand{\GEANTfour} {{\textsc{Geant4}}\xspace}
+\newcommand{\GEANTthree} {{\textsc{geant3}}\xspace}
+\newcommand{\GEANT} {{\textsc{geant}}\xspace}
+\newcommand{\FASTJET} {{\textsc{FastJet}}\xspace}
+\newcommand{\FEWZ} {{\textsc{fewz}}\xspace}
+\newcommand{\Toppp} {\textsc{Top$++$}\xspace}
+\newcommand{\HERWIG} {{\textsc{herwig}}\xspace}
+\newcommand{\PYTHIA} {{\textsc{pythia}}\xspace}
+\newcommand{\MADGRAPH} {\textsc{MadGraph}\xspace}
+\newcommand{\aMCATNLO}{a\textsc{mc@nlo}\xspace}
+\newcommand{\MCATNLO} {\textsc{mc@nlo}\xspace}
+\newcommand{\MGvATNLO}{\MADGRAPH{}5\_a\MCATNLO}
+\newcommand{\POWHEG} {{\textsc{powheg}}\xspace}
+%\newcommand{\TAUOLA} {\textsc{tauola}\xspace}
+\newcommand{\DeepTau} {{\textsc{DeepTau}}\xspace}
+\newcommand{\DeepCSV} {{\textsc{DeepCSV}}\xspace}
+%\newcommand{\Djet}{\ensuremath{D_\text{jet}}\xspace} % DeepJet
+%\newcommand{\DeepTauVSe}{\texttt{DeepTau2017v2p1VSe}\xspace}
+%\newcommand{\DeepTauVSmu}{\texttt{DeepTau2017v2p1VSmu}\xspace}
+%\newcommand{\DeepTauVSjet}{\texttt{DeepTau2017v2p1VSjet}\xspace}
+
+% CMS TDR PARTICLE PENNAMES
+% https://gitlab.cern.ch/tdr/utils/-/blob/master/general/heppennames2.sty
+% grep '\\PZ' */*.tex *.tex
+% sed -e 's/\\PZ/\\PZ/g' -i '' *.tex */*.tex # macOS
+% https://mirror.foobar.to/CTAN/macros/latex/contrib/was/upgreek.pdf
+% https://ctan.org/pkg/fntguide
+
+% UNSLANT small greek letters to make them look straight for particle names
+% https://tex.stackexchange.com/questions/145926/upright-greek-font-fitting-to-computer-modern
+% https://tex.stackexchange.com/questions/236915/adjust-custom-made-upright-greek-letters-when-used-in-subscripts
+\usepackage{scalerel}
+\newsavebox{\foobox}
+\newcommand{\slantbox}[2][0]{\mbox{%
+        \sbox{\foobox}{#2}%
+        \hskip\wd\foobox
+        \pdfsave
+        \pdfsetmatrix{1 0 #1 1}%
+        \llap{\usebox{\foobox}}%
+        \pdfrestore
+}}
+\newcommand\unslant[2][-.25]{%
+  \mkern1.2mu%
+  \ThisStyle{\slantbox[#1]{$\SavedStyle#2$}}%
+  \mkern-1.2mu%
+}
+\newcommand\unslantlong[2][-.25]{% % for long letter like mus
+  \mkern-0.2mu%
+  \ThisStyle{\slantbox[#1]{$\SavedStyle#2$}}%
+  \mkern-0.8mu%
+}
+%\newcommand{\upalpha}{\unslant\alpha}
+%\newcommand{\upgamma}{\unslant\gamma}
+%\newcommand{\upeta}{\unslant\eta}
+\newcommand{\upmu}{\unslantlong\mu}
+\newcommand{\upnu}{\unslant\nu}
+\newcommand{\uppi}{\unslant\pi}
+\newcommand{\uprho}{\unslant\rho}
+\newcommand{\uptau}{\unslant\tau}
+%\newcommand{\upphi}{\unslantlong\phi}
+%\newcommand{\upchi}{\unslantlong\chi}
+\newcommand{\uppsi}{\unslant\psi}
+%\newcommand{\upomega}{\unslant\omega}
+
+% CMS TDR: PENNAMES
+% https://gitlab.cern.ch/tdr/utils/-/blob/master/general/heppennames2.sty
+\newcommand{\Pe}{{\ensuremath{\text{e}}}\xspace} % electron
+\newcommand{\PGm}{{\ensuremath{\upmu}}\xspace} % muon
+\newcommand{\PGt}{{\ensuremath{\uptau}}\xspace}
+\newcommand{\PGn}{{\ensuremath{\upnu}}\xspace}
+\newcommand{\PGnl}{{\ensuremath{\upnu_{\ell}}}\xspace}
+\newcommand{\PGne}{{\ensuremath{\upnu_{\Pe}}}\xspace}
+\newcommand{\PGnGm}{{\ensuremath{\upnu_{\PGm\mkern-0.9mu}}}\xspace}
+\newcommand{\PGnGt}{{\ensuremath{\upnu_{\PGt\mkern-0.9mu}}}\xspace}
+\newcommand{\PAGnl}{{\ensuremath{\overline\upnu_{\ell}}}\xspace} % anti-neutrino
+\newcommand{\PAGne}{{\ensuremath{\overline\upnu_{\Pe}}}\xspace}
+\newcommand{\PAGnGm}{{\ensuremath{\overline\upnu_{\PGm\mkern-.9mu}}}\xspace}
+\newcommand{\PAGnGt}{{\ensuremath{\overline\upnu_{\PGt\mkern-.9mu}}}\xspace}
+\newcommand{\PQu}{{\ensuremath{\text{u}}}\xspace} % for u quark
+\newcommand{\PQd}{{\ensuremath{\text{d}}}\xspace} % for d quark
+\newcommand{\PQc}{{\ensuremath{\text{c}}}\xspace} % for c quark
+\newcommand{\PQs}{{\ensuremath{\text{s}}}\xspace} % for s quark
+\newcommand{\PQt}{{\ensuremath{\text{t}}}\xspace} % for t quark
+\newcommand{\PQb}{{\ensuremath{\text{b}}}\xspace} % for b quark
+\newcommand{\PAQu}{{\ensuremath{\bar{\text{u}}}}\xspace} % for u antiquark
+\newcommand{\PAQd}{{\ensuremath{\bar{\text{d}}}}\xspace} % for d antiquark
+\newcommand{\PAQc}{{\ensuremath{\bar{\text{c}}}}\xspace} % for c antiquark
+\newcommand{\PAQs}{{\ensuremath{\bar{\text{s}}}}\xspace} % for s antiquark
+\newcommand{\PAQt}{{\ensuremath{\bar{\text{t}}}}\xspace} % for t antiquark
+\newcommand{\PAQb}{{\ensuremath{\bar{\text{b}}}}\xspace} % for b antiquark
+\newcommand{\PQq}{{\ensuremath{q}}\xspace} % generic quark
+\newcommand{\PGg}{{\ensuremath{\gamma}}\xspace} % photon (gamma)
+\newcommand{\Pg}{{\ensuremath{g}}\xspace} % generic gluon
+\newcommand{\PW}{{\ensuremath{\text{W}}}\xspace} % W boson
+\newcommand{\PZ}{{\ensuremath{\text{Z}}}\xspace} % Z boson
+\newcommand{\PH}{{\ensuremath{\text{H}}}\xspace} % Higgs boson
+\newcommand{\Zg}{{\ensuremath{\PZ\kern-0.5pt/\kern-0.5pt\gamma^*}}\xspace} % photon / Z
+\newcommand{\PGp}{\ensuremath{\uppi}\xspace} % pion
+\newcommand{\PGr}{\ensuremath{\uprho}\xspace} % rho
+\newcommand{\Pa}{\ensuremath{\text{a}}\xspace} % a_1
+\newcommand{\PK}{\ensuremath{\mathrm{K}}\xspace} % kaon
+\newcommand{\PAK}{\ensuremath{\overline{\mathrm{K}}}\xspace} % kaon
+\newcommand{\Pp}{\ensuremath{\mathrm{p}}\xspace} % proton
+\newcommand{\Pn}{\ensuremath{\mathrm{n}}\xspace} % neutron
+\newcommand{\PD}{\ensuremath{\mathrm{D}}\xspace} % D meson
+\newcommand{\PB}{\ensuremath{\mathrm{B}}\xspace} % B meson
+\newcommand{\PAB}{\ensuremath{\overline{\mathrm{B}}}\xspace} % B meson
+\newcommand{\PJGy}{\ensuremath{\mathrm{J}\mspace{-2mu}/\mspace{-2mu}\uppsi}\xspace} %  J/psi meson
+\newcommand{\PGU}{\ensuremath{\Upsilon}\xspace} % Upsilon
+
+% CMS TDR: common particle combinations
+\newcommand{\bsln} {\ensuremath{\PQb\to\PQc\ell\PAGnl}\xspace} % b -> c ell nu
+\newcommand{\bstn} {\ensuremath{\PQb\to\PQc\PGt\PGnGt}\xspace} % b -> s tau nu
+\newcommand{\ttbar}{{\ensuremath{\PQt\PAQt}}\xspace}
+\newcommand{\bbbar}{{\ensuremath{\PQb\PAQb}}\xspace}
+\newcommand{\EE}   {{\ensuremath{\Pe^+\Pe^-}}\xspace}
+\newcommand{\MM}   {{\ensuremath{\PGm^+\PGm^-}}\xspace}
+\newcommand{\TT}   {{\ensuremath{\PGt^+\PGt^-}}\xspace}
+\newcommand{\LL}   {{\ensuremath{\ell^+\ell^-}}\xspace}
+
+% CMS TDR: common particle physics symbols
+\newcommand{\lumi}   {{\ensuremath{\mathcal{L}}}\xspace}
+\newcommand{\DR}     {{\ensuremath{\Delta R}}\xspace}
+\newcommand{\ET}     {\ensuremath{E_\text{T}}\xspace}
+\newcommand{\kt}     {\ensuremath{k_\text{T}}\xspace}
+\newcommand{\pt}     {\ensuremath{p_\text{T}}\xspace}
+\newcommand{\ptvec}  {{\ensuremath{\myvec{p}_\text{T}}}\xspace}
+\newcommand{\ptmiss} {\ensuremath{\pt^\text{miss}}\xspace}
+\newcommand{\ptvecmiss}{\ensuremath{{\myvec{p}}_{\mathrm{T}}^{\kern1pt\text{miss}}}\xspace}
+\newcommand{\ptvecvis}[1][]{\ensuremath{{\myvec{p}}_{\mathrm{T}\ifthenelse{\isempty{#1}}{}{,#1}}^{\kern1pt\text{vis}}}\xspace}
+\newcommand{\MET}    {{\ensuremath{\text{MET}}}\xspace}
+\newcommand{\ETmiss} {{\ensuremath{E_{\mathrm{T}}^{\text{miss}}}}\xspace}
+\newcommand{\PT}     {\pt}
+\newcommand{\mT}     {{\ensuremath{m_\text{T}}}\xspace}

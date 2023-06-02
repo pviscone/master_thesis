@@ -1,0 +1,155 @@
+--- COMMENTS may be placed outside the @ENTRYTYPE{ ... } stuctures
+--- CMS guidelines
+---- Every journal article citation should include the DOI, assuming one exists.
+---- All URLs for CMS notes, ANs, etc, should refer to the CDS server, not the CMS server. Use our standard format for them, as show in the old svn documentation.
+----  CMS Notes not available on CDS are regarded as private and may not be cited.
+----  CMS physics papers (i.e., those intended for publication in journals) may reference only POG PASs, not PAG PASs.
+---- For papers by collaborations, list the collaboration in the COLLABOROATION field and put the first author and "and others" in the AUTHOR field.
+----  If only the collaboration is listed as the author, put "{XXX Collaboration}" under AUTHOR.
+----  Note that we automatically replace the AUTHOR field with the collaboration name for ATLAS, CMS, LHCb, and ATLAS at submission time. Please don't remove the
+----  "First Author and others" in the AUTHOR field.
+---- Other items:
+----   PAGES: Please only list the first page, not the range.
+----   ISSUE: Please do not include in most cases.
+----   URL: Do not include this field if a DOI is available.
+---- Number of authors to list:
+----   PRL requests that we include all authors up to fifteen except for large collaborations, and we take this as our internal guide as well. If there
+----   are more than fifteen, just list the first author + "and others", as above.
+----   The individual journal bib style file (theirs, ours, PLB, etc.) will truncate at the appropriate point. We have ours set to _1_ for more than four.
+---- Use only the URL field instead of embedding an href.
+---- A reference only published on the arXiv should be listed as UNPUBLISHED (with a note "Submitted to XXX" for large collaboration papers).
+----   Experimental papers only on the arXiv and not submitted for publication may not be cited.
+---- Some journals (and us) will lowercase the title: use {} to protect words which must be capitalized, e.g., {LHC}, {TeV}, {CERN}, {CMS}.
+----  Do not escape the entire title as it will then clash with the journal style.
+---- Journal names: the journals generally include the series in the journal name, "Physical Review D", vol 5, rather than PR D5
+---- >>> Please use the --preview option with the tdr script to perform a simple-minded reference check before uploading. This requires python.
+% Many commonly cited references are available in
+%   https://gitlab.cern.ch/tdr/utils/-/blob/master/general/gen.bib
+%   https://gitlab.cern.ch/tdr/utils/-/blob/master/general/higgs.bib
+%   https://twiki.cern.ch/twiki/bin/viewauth/CMS/CitationsForGenerators
+%   https://twiki.cern.ch/twiki/bin/viewauth/CMS/Internal/PubDetector
+%   https://twiki.cern.ch/twiki/bin/viewauth/CMS/StatisticsReferences
+%   https://cms-analysis.github.io/HiggsAnalysis-CombinedLimit/part4/usefullinks/?#citations
+% Cleaned with https://github.com/IzaakWN/CodeSnippets/blob/master/LaTeX/cleanBibTeX.py
+%   curl https://raw.githubusercontent.com/IzaakWN/CodeSnippets/master/LaTeX/cleanBibTeX.py > cleanBibTeX.py
+%   python cleanBibTeX.py refs.bib -o refs_clean.bib --backup --check
+
+
+%%%%%%%%%%%%%%%%%%%%
+%:   Systematics   %
+%%%%%%%%%%%%%%%%%%%%
+
+@article{CL,
+  author        = "Junk, Thomas",
+  title         = "{Confidence level computation for combining searches with small statistics}",
+  journal       = "Nucl. Instrum. Meth. A",
+  volume        = "434",
+  year          = "1999",
+  pages         = "435",
+  doi           = "10.1016/S0168-9002(99)00498-2",
+  reportNumber  = "CARLETON-OPAL-PHYS-99-01, CERN-EP-99-041",
+  eprint        = "hep-ex/9902006",
+  archivePrefix = "arXiv",
+  primaryClass  = "hep-ex"
+}
+
+@article{CLs1,
+  author       = "Read, Alexander L.",
+  title        = "{Presentation of search results: The CL$_\text{s}$ technique}",
+  booktitle    = "{Advanced Statistical Techniques in Particle Physics.
+                   Proceedings, Conference, Durham, UK, March 18-22, 2002}",
+  journal      = "J. Phys. G",
+  volume       = "28",
+  year         = "2002",
+  pages        = "2693",
+  doi          = "10.1088/0954-3899/28/10/313",
+  SLACcitation = "%%CITATION = JPAGA,G28,2693;%%"
+}
+
+@article{CLs2,
+  author        = {Cowan, Glen and Cranmer, Kyle and Gross, Eilam and Vitells, Ofer},
+  title         = {Asymptotic formulae for likelihood-based tests of new physics},
+  issn          = {1434-6052},
+  journal       = {Eur. Phys. J. C},
+  volume        = {71},
+  year          = {2011},
+  doi           = {10.1140/epjc/s10052-011-1554-0},
+  note          = {[Erratum: \DOI{10.1140/epjc/s10052-013-2501-z}]},
+  eprint        = {1007.1727},
+  archivePrefix = {arXiv},
+  primaryClass  = {physics.data-an},
+  SLACcitation  = {%%CITATION = ARXIV:HEP-PH/1007.1727;%%}
+}
+
+@techreport{CLs3,
+  author       = {{ATLAS and CMS Collaborations}},
+  title        = {Procedure for the {LHC} {Higgs} boson search combination in Summer 2011},
+  institution  = {CERN},
+  number       = {CMS-NOTE-2011-005, ATL-PHYS-PUB-2011-011},
+  year         = {2011},
+  reportNumber = {CMS-NOTE-2011-005, ATL-PHYS-PUB-2011-011},
+  url          = {https://cds.cern.ch/record/1379837}
+}
+
+@article{Barlow-Beeston,
+  author       = "Barlow, Roger J. and Beeston, Christine",
+  title        = "{Fitting using finite Monte Carlo samples}",
+  journal      = "Comput. Phys. Commun.",
+  volume       = "77",
+  year         = "1993",
+  pages        = "219",
+  doi          = "10.1016/0010-4655(93)90005-W",
+  reportNumber = "MAN-HEP-93-1"
+}
+
+@inproceedings{Barlow-Beeston-Conway,
+  author        = "Conway, J. S.",
+  title         = "{Incorporating Nuisance Parameters in Likelihoods for Multisource Spectra}",
+  booktitle     = "{PHYSTAT 2011}",
+  year          = "2011",
+  pages         = "115",
+  doi           = "10.5170/CERN-2011-006.115",
+  eprint        = "1103.0354",
+  archivePrefix = "arXiv",
+  primaryClass  = "physics.data-an"
+}
+
+@article{maximum_likelihood_fit,
+  author        = {Raja, Rajendran},
+  title         = {{A General theory of goodness of fit in likelihood fits}},
+  year          = {2005},
+  eprint        = {physics/0509008},
+  archivePrefix = {arXiv},
+  primaryClass  = {physics},
+  SLACcitation  = {%%CITATION = PHYSICS/0509008;%%}
+}
+
+@misc{comb_group,
+  title         = {Combination of Higgs Measurements},
+  collaboration = {CMS},
+  url           = {https://twiki.cern.ch/twiki/bin/view/CMS/HiggsWG/HiggsCombination}
+}
+
+@misc{comb_tool,
+  author       = {Andrew Gilbert},
+  title        = {Documentation of the RooStats-based statistics tools for Higgs PAG},
+  year         = {2016},
+  howpublished = {\url{https://twiki.cern.ch/twiki/bin/viewauth/CMS/SWGuideHiggsAnalysisCombinedLimit}}
+}
+
+@misc{harvester_binmerger,
+  title = {CombineHarvester: ch::BinByBinFactory Class Reference},
+  year  = {2020},
+  url   = {https://cms-analysis.github.io/CombineHarvester/classch_1_1_bin_by_bin_factory.html}
+}
+
+@techreport{bias_error,
+  author       = {Bendavid, J.},
+  title        = {Implications of Bias Threshold in Pull Definition},
+  institution  = {CERN},
+  type         = {{Presentation in the Higgs Working Meeting}},
+  year         = {2013},
+  howpublished = {\url{https://indico.cern.ch/event/255493/contributions/1584346/attachments/447909/621085/bias-Jun26.pdf}},
+  url          = {https://indico.cern.ch/event/255493/contributions/1584346/attachments/447909/621085/bias-Jun26.pdf},
+  note         = {\url{https://indico.cern.ch/event/255493/contributions/1584346/attachments/447909/621085/bias-Jun26.pdf}}
+}

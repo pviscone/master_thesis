@@ -1,0 +1,451 @@
+--- COMMENTS may be placed outside the @ENTRYTYPE{ ... } stuctures
+--- CMS guidelines
+---- Every journal article citation should include the DOI, assuming one exists.
+---- All URLs for CMS notes, ANs, etc, should refer to the CDS server, not the CMS server. Use our standard format for them, as show in the old svn documentation.
+----  CMS Notes not available on CDS are regarded as private and may not be cited.
+----  CMS physics papers (i.e., those intended for publication in journals) may reference only POG PASs, not PAG PASs.
+---- For papers by collaborations, list the collaboration in the COLLABOROATION field and put the first author and "and others" in the AUTHOR field.
+----  If only the collaboration is listed as the author, put "{XXX Collaboration}" under AUTHOR.
+----  Note that we automatically replace the AUTHOR field with the collaboration name for ATLAS, CMS, LHCb, and ATLAS at submission time. Please don't remove the
+----  "First Author and others" in the AUTHOR field.
+---- Other items:
+----   PAGES: Please only list the first page, not the range.
+----   ISSUE: Please do not include in most cases.
+----   URL: Do not include this field if a DOI is available.
+---- Number of authors to list:
+----   PRL requests that we include all authors up to fifteen except for large collaborations, and we take this as our internal guide as well. If there
+----   are more than fifteen, just list the first author + "and others", as above.
+----   The individual journal bib style file (theirs, ours, PLB, etc.) will truncate at the appropriate point. We have ours set to _1_ for more than four.
+---- Use only the URL field instead of embedding an href.
+---- A reference only published on the arXiv should be listed as UNPUBLISHED (with a note "Submitted to XXX" for large collaboration papers).
+----   Experimental papers only on the arXiv and not submitted for publication may not be cited.
+---- Some journals (and us) will lowercase the title: use {} to protect words which must be capitalized, e.g., {LHC}, {TeV}, {CERN}, {CMS}.
+----  Do not escape the entire title as it will then clash with the journal style.
+---- Journal names: the journals generally include the series in the journal name, "Physical Review D", vol 5, rather than PR D5
+---- >>> Please use the --preview option with the tdr script to perform a simple-minded reference check before uploading. This requires python.
+% Many commonly cited references are available in
+%   https://gitlab.cern.ch/tdr/utils/-/blob/master/general/gen.bib
+%   https://gitlab.cern.ch/tdr/utils/-/blob/master/general/higgs.bib
+%   https://twiki.cern.ch/twiki/bin/viewauth/CMS/CitationsForGenerators
+%   https://twiki.cern.ch/twiki/bin/viewauth/CMS/Internal/PubDetector
+%   https://twiki.cern.ch/twiki/bin/viewauth/CMS/StatisticsReferences
+%   https://cms-analysis.github.io/HiggsAnalysis-CombinedLimit/part4/usefullinks/?#citations
+% Cleaned with https://github.com/IzaakWN/CodeSnippets/blob/master/LaTeX/cleanBibTeX.py
+%   curl https://raw.githubusercontent.com/IzaakWN/CodeSnippets/master/LaTeX/cleanBibTeX.py > cleanBibTeX.py
+%   python cleanBibTeX.py refs.bib -o refs_clean.bib --backup --check
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%:    ACCELERATOR      %
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+@book{LEP,
+  author       = {Myers, S.},
+  title        = {{The LEP Collider, from design to approval and commissioning}},
+  address      = {Geneva},
+  year         = {1991},
+  doi          = {10.5170/CERN-1991-008},
+  reportNumber = {CERN-91-08},
+  series       = {John Adams' Lecture},
+  publisher    = {CERN},
+  url          = {http://cds.cern.ch/record/226776}
+}
+
+@article{Tevatron,
+  author        = "Holmes, Stephen and Moore, Ronald S. and Shiltsev, Vladimir",
+  title         = "{Overview of the Tevatron Collider Complex: Goals, Operations and Performance}",
+  journal       = "JINST",
+  volume        = "6",
+  year          = "2011",
+  pages         = "T08001",
+  doi           = "10.1088/1748-0221/6/08/T08001",
+  reportNumber  = "FERMILAB-PUB-11-245-AD-APC",
+  eprint        = "1106.0909",
+  archivePrefix = "arXiv",
+  primaryClass  = "physics.acc-ph"
+}
+
+@misc{CERN_accelerators,
+  author = {Laurent {Forthomme (Wikimedia Commons)}},
+  title  = {File:Cern-accelerator-complex.svg --- Wikimedia Commons{,} the free media repository},
+  year   = {2016},
+  url    = {https://commons.wikimedia.org/wiki/File:Cern-accelerator-complex.svg},
+  note   = {(Retrieved Jul 24, 2017)}
+}
+
+@article{LHC,
+  author  = {Lyndon Evans and Philip Bryant},
+  title   = {LHC Machine},
+  journal = {JINST},
+  volume  = {3},
+  number  = {08},
+  year    = {2008},
+  pages   = {S08001},
+  doi     = {10.1088/1748-0221/3/08/S08001}
+}
+
+@misc{Livingstone_plot,
+  title = {Current and Future Developments in Accelerator Facilities},
+  url   = {http://www.hep.ucl.ac.uk/iop2010/talks/14.pdf},
+  note  = {2010 IOP Meeting. (Retrieved Feb 2, 2020)}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%:   PP COLLISIONS   %
+%%%%%%%%%%%%%%%%%%%%%%
+
+@article{DIS_SLAC1,
+  author    = {Bloom, E. D. and Coward, D. H. and DeStaebler, H. and Drees, J. and Miller, G. and Mo, L. W. and
+               Taylor, R. E. and Breidenbach, M. and Friedman, J. I. and Hartmann, G. C. and Kendall, H. W.},
+  title     = {High-Energy Inelastic $e^-$p Scattering at $6^\circ$ and $10^\circ$},
+  issue     = {16},
+  journal   = {Phys. Rev. Lett.},
+  volume    = {23},
+  year      = {1969},
+  pages     = {930},
+  doi       = {10.1103/PhysRevLett.23.930},
+  publisher = {American Physical Society},
+  url       = {https://link.aps.org/doi/10.1103/PhysRevLett.23.930}
+}
+
+@article{DIS_SLAC2,
+  author    = {Breidenbach, M. and Friedman, J. I. and Kendall, H. W. and Bloom, E. D. and
+               Coward, D. H. and DeStaebler, H. and Drees, J. and Mo, L. W. and Taylor, R. E.},
+  title     = {Observed Behavior of Highly Inelastic Electron-Proton Scattering},
+  issue     = {16},
+  journal   = {Phys. Rev. Lett.},
+  volume    = {23},
+  year      = {1969},
+  pages     = {935},
+  doi       = {10.1103/PhysRevLett.23.935},
+  publisher = {American Physical Society},
+  url       = {https://link.aps.org/doi/10.1103/PhysRevLett.23.935}
+}
+
+@article{DIS_HERA,
+  author        = {Abramowicz, H. and others},
+  title         = {{Combination of measurements of inclusive deep inelastic $e^\pm$p
+                    scattering cross sections and QCD analysis of HERA data}},
+  collaboration = {ZEUS and H1},
+  journal       = {Eur. Phys. J. C},
+  volume        = {75},
+  number        = {12},
+  year          = {2015},
+  pages         = {580},
+  doi           = {10.1140/epjc/s10052-015-3710-4},
+  reportNumber  = {DESY-15-039},
+  eprint        = {1506.06042},
+  archivePrefix = {arXiv},
+  primaryClass  = {hep-ex},
+  SLACcitation  = {%%CITATION = ARXIV:1506.06042;%%"}
+}
+
+@inproceedings{LHC_cross_sections_13TeV,
+  author    = {Stark, S. H.},
+  title     = {Measurements of the elastic, inelastic and total pp
+               cross sections with the ATLAS, CMS and TOTEM detectors},
+  booktitle = {EPJ Web Conf.},
+  volume    = {141},
+  year      = {2017},
+  pages     = {03007},
+  doi       = {10.1051/epjconf/201714103007}
+}
+
+@article{ALICE_cross_sections_7TeV,
+  author        = {Abelev, Betty and others},
+  title         = {Measurement of inelastic, single- and double-diffraction cross
+                   sections in proton--proton collisions at the LHC with ALICE},
+  collaboration = {ALICE},
+  journal       = {Eur. Phys. J. C},
+  volume        = {73},
+  number        = {6},
+  year          = {2013},
+  pages         = {2456},
+  doi           = {10.1140/epjc/s10052-013-2456-0},
+  reportNumber  = {CERN-PH-EP-2012-138 [SIC!], CERN-PH-EP-2012-238, CERN-PH-EP-2012-138},
+  eprint        = {1208.4968},
+  archivePrefix = {arXiv},
+  primaryClass  = {hep-ex},
+  SLACcitation  = {%%CITATION = ARXIV:1208.4968;%%}
+}
+
+@article{CMS_cross_sections_13TeV,
+  author        = {Sirunyan, Albert M and others},
+  title         = {{Measurement of the inelastic proton-proton cross section at $ \sqrt{s}=13 $ TeV}},
+  collaboration = {CMS},
+  journal       = {JHEP},
+  volume        = {07},
+  year          = {2018},
+  pages         = {161},
+  doi           = {10.1007/JHEP07(2018)161},
+  reportNumber  = {CMS-FSQ-15-005, CERN-EP-2018-004},
+  eprint        = {1802.02613},
+  archivePrefix = {arXiv},
+  primaryClass  = {hep-ex},
+  SLACcitation  = {%%CITATION = ARXIV:1802.02613;%%}
+}
+
+@article{ATLAS_cross_sections_13TeV,
+  author        = {Aaboud, M. and others},
+  title         = {Measurement of the Inelastic Proton-Proton Cross Section at
+                   $\sqrt{s}=13\,\text{TeV}$ with the ATLAS Detector at the LHC},
+  collaboration = {ATLAS},
+  journal       = {Phys. Rev. Lett.},
+  volume        = {117},
+  year          = {2016},
+  pages         = {182002},
+  doi           = {10.1103/PhysRevLett.117.182002},
+  reportNumber  = {CERN-EP-2016-140},
+  eprint        = {1606.02625},
+  archivePrefix = {arXiv},
+  primaryClass  = {physics.ins-det},
+  SLACcitation  = {%%CITATION = ARXIV:1606.02625;%%}
+}
+
+@article{hard_process,
+  author        = {Butterworth, Jonathan M. and Dissertori, Guenther and Salam, Gavin P.},
+  title         = {Hard Processes in Proton-Proton Collisions at the Large Hadron Collider},
+  journal       = {Ann. Rev. Nucl. Part. Sci.},
+  volume        = {62},
+  year          = {2012},
+  pages         = {387},
+  doi           = {10.1146/annurev-nucl-102711-094913},
+  eprint        = {1202.0583},
+  archivePrefix = {arXiv},
+  primaryClass  = {hep-ex},
+  SLACcitation  = {%%CITATION = ARXIV:1202.0583;%%}
+}
+
+@article{Regge1,
+  author  = {Regge, Tullio},
+  title   = {Introduction to complex orbital momenta},
+  journal = {Il Nuovo Cimento Series 10},
+  volume  = {14},
+  year    = {1959},
+  pages   = {951}
+}
+
+@book{Regge2,
+  author    = {Collins, P.D.B.},
+  title     = {An introduction to Regge theory and high energy physics},
+  year      = {1977},
+  publisher = {Cambridge University Press, Cambridge}
+}
+
+@inproceedings{Pomeron,
+  author        = {Nachtmann, Otto},
+  title         = {Pomeron physics and QCD},
+  address       = {Ringberg Castle, Tegernsee, Germany},
+  booktitle     = {Proceedings, Ringberg Workshop on New Trends in HERA Physics 2003},
+  year          = {2004},
+  pages         = {253},
+  doi           = {10.1142/9789812702722_0023},
+  eprint        = {0312279},
+  archivePrefix = {arXiv},
+  primaryClass  = {hep-ex},
+  SLACcitation  = {%%CITATION = HEP-PH:0312279;%%}
+}
+
+@misc{pp_cross_sections,
+  author = {James Stirling},
+  title  = {Parton Luminosity and Cross Section Plots},
+  url    = {http://www.hep.ph.ic.ac.uk/~wstirlin/plots/plots.html},
+  note   = {(Retrieved Jul 22, 2017)}
+}
+
+@misc{pp_cross_sections_CMS,
+  title         = {Summaries of CMS cross section measurements},
+  collaboration = {CMS},
+  url           = {https://twiki.cern.ch/twiki/bin/view/CMSPublic/PhysicsResultsCombined},
+  note          = {(Retrieved Dec 30, 2022)}
+}
+
+@misc{pp_pdfs,
+  author = {IPPP Durham},
+  title  = {MSTW PDFs : key plots},
+  url    = {http://mstwpdf.hepforge.org/plots/plots.html},
+  note   = {(Retrieved Jul 22, 2017)}
+}
+
+@inproceedings{parton_model1,
+  author    = {Feynman, R. P.},
+  title     = {The Behavior of Hadron Collisions at Extreme Energies},
+  address   = {Stony Brook, N.Y., U.S.A.},
+  booktitle = {High Energy Collisions: Third International Conference},
+  year      = {1969},
+  pages     = {237}
+}
+
+@article{parton_model2,
+  author    = {Bjorken, J. D. and Paschos, E. A.},
+  title     = {Inelastic Electron-Proton and $\gamma$-Proton Scattering and the Structure of the Nucleon},
+  journal   = {Phys. Rev.},
+  volume    = {185},
+  year      = {1969},
+  pages     = {1975},
+  doi       = {10.1103/PhysRev.185.1975},
+  publisher = {American Physical Society}
+}
+
+@article{parton_model_pp,
+  author        = {Campbell, John M. and Huston, J. W. and Stirling, W. J.},
+  title         = {Hard Interactions of Quarks and Gluons: A Primer for {LHC} Physics},
+  journal       = {Rept. Prog. Phys.},
+  volume        = {70},
+  year          = {2007},
+  pages         = {89},
+  doi           = {10.1088/0034-4885/70/1/R02},
+  eprint        = {hep-ph/0611148},
+  archivePrefix = {arXiv},
+  primaryClass  = {hep-ph},
+  SLACcitation  = {%%CITATION = HEP-PH:0611148;%%}
+}
+
+@article{LHC_pdfs,
+  author        = {Martin, A. D. and Stirling, W. J. and Thorne, R. S. and Watt, G.},
+  title         = {Parton distributions for the LHC},
+  collaboration = {ALICE},
+  journal       = {Eur. Phys. J. C},
+  volume        = {63},
+  year          = {2009},
+  pages         = {189},
+  doi           = {10.1140/epjc/s10052-009-1072-5},
+  eprint        = {0901.0002},
+  archivePrefix = {arXiv},
+  primaryClass  = {hep-ex},
+  SLACcitation  = {%%CITATION = ARXIV:0901.0002;%%}
+}
+
+@inproceedings{pdfs,
+  author        = {Placakyte, Ringaile},
+  title         = {Parton Distribution Functions},
+  address       = {Vancouver, Canada},
+  booktitle     = {Proceedings, 31st International Conference on Physics in collisions (PIC 2011)},
+  year          = {2011},
+  eprint        = {1111.5452},
+  archivePrefix = {arXiv},
+  primaryClass  = {hep-ex},
+  SLACcitation  = {%%CITATION = ARXIV:1111.5452;%%}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%:    LUMINOSITY     %
+%%%%%%%%%%%%%%%%%%%%%%
+
+@techreport{CMS_lumi,
+  title         = {{CMS} Luminosity Based on Pixel Cluster Counting - Summer 2013 Update},
+  collaboration = {CMS},
+  institution   = {CERN},
+  address       = {Geneva},
+  number        = {CMS-PAS-LUM-13-001},
+  year          = {2013},
+  reportNumber  = {CMS-PAS-LUM-13-001},
+  url           = {https://cds.cern.ch/record/1598864}
+}
+
+@inproceedings{LHC_lumi,
+  author       = {Herr, W. and Muratori, B.},
+  title        = {Concept of luminosity},
+  address      = {Zeuthen, Germany},
+  booktitle    = {CAS - CERN Accelerator School: Intermediate Course on Accelerator Physics},
+  organization = {CERN},
+  year         = {2003},
+  doi          = {10.5170/CERN-2006-002.361},
+  publisher    = {CERN},
+  url          = {http://cds.cern.ch/record/941318}
+}
+
+@article{LHC_lumi_bunches_Run2,
+  author  = "Efthymiopoulos, Ilias and Fartoukh, Stephane D and Iadarola, Giovanni and
+             Karastathis, Nikolaos and Papadopoulou, Stefania and Papaphilippou, Yannis",
+  title   = "{Bunch Luminosity Variations in LHC Run 2. BUNCH LUMINOSITY VARIATIONS IN LHC RUN 2}",
+  journal = "JACoW IPAC",
+  volume  = "2021",
+  year    = "2021",
+  pages   = "4094",
+  doi     = "10.18429/JACoW-IPAC2021-THPAB172",
+  url     = "https://cds.cern.ch/record/2810840"
+}
+
+@techreport{CMS-PAS-LUM-17-001,
+  author        = "{CMS Collaboration}",
+  title         = {{CMS} Luminosity Measurements for the 2016 Data Taking Period},
+  collaboration = "{CMS}",
+  institution   = {CERN},
+  type          = "CMS Physics Analysis Summary",
+  number        = "CMS-PAS-LUM-17-001",
+  year          = "2017",
+  reportNumber  = "CMS-PAS-LUM-17-001",
+  url           = "https://cds.cern.ch/record/2257069",
+  SLACcitation  = "%%CITATION = CMS-PAS-LUM-17-001;%%"
+}
+
+@article{CMS-LUM-17-003,
+  author        = "Sirunyan, Albert M and others",
+  title         = "Precision luminosity measurement in proton-proton collisions
+                   at $\sqrt{s} =$ 13 {TeV} in 2015 and 2016 at {CMS}",
+  collaboration = "CMS",
+  institution   = {CERN},
+  journal       = "Eur. Phys. J. C",
+  volume        = "81",
+  year          = "2021",
+  pages         = "800",
+  doi           = "10.1140/epjc/s10052-021-09538-2",
+  reportNumber  = "CMS-LUM-17-003, CERN-EP-2021-033",
+  eprint        = "2104.01927",
+  archivePrefix = "arXiv",
+  primaryClass  = "hep-ex"
+}
+
+@techreport{CMS-PAS-LUM-17-004,
+  author        = "{CMS Collaboration}",
+  title         = "{CMS} luminosity measurement for the 2017 data-taking period at $\sqrt{s}$ = 13 {TeV}",
+  collaboration = "{CMS}",
+  institution   = {CERN},
+  type          = "CMS Physics Analysis Summary",
+  number        = "CMS-PAS-LUM-17-004",
+  year          = "2018",
+  url           = "https://cds.cern.ch/record/2621960/"
+}
+
+@techreport{CMS-PAS-LUM-18-002,
+  author        = "{CMS Collaboration}",
+  title         = "{CMS} luminosity measurement for the 2018 data-taking period at $\sqrt{s}$ = 13 {TeV}",
+  collaboration = "{CMS}",
+  institution   = {CERN},
+  type          = "CMS Physics Analysis Summary",
+  number        = "CMS-PAS-LUM-18-002",
+  year          = "2019",
+  url           = "https://cds.cern.ch/record/2676164/"
+}
+
+@misc{CMS_lumi_TWiki,
+  title         = {Public CMS Luminosity Information},
+  collaboration = {CMS},
+  url           = {https://twiki.cern.ch/twiki/bin/view/CMSPublic/LumiPublicResults},
+  note          = {(Retrieved Dec 6, 2022)}
+}
+
+@misc{LUMPOG_TWiki,
+  title         = {{Luminosity Physics Object Group (Lumi POG)}},
+  collaboration = {CMS},
+  year          = {2021},
+  url           = {https://twiki.cern.ch/twiki/bin/view/CMS/TWikiLUM},
+  note          = {(Retrieved November 1, 2021)}
+}
+
+@misc{LUMPOG_TWiki_JSON,
+  title         = {Luminosity Physics Object Group (Lumi POG) --
+                   Current recommendations for luminosity estimations},
+  collaboration = {CMS},
+  url           = {https://twiki.cern.ch/twiki/bin/view/CMS/TWikiLUM#CurRec},
+  note          = {(Retrieved Apr 12, 2019)}
+}
+
+@misc{brilcalc,
+  title = {BRIL Work Suite - Documentation},
+  url   = {https://cms-service-lumi.web.cern.ch/cms-service-lumi/brilwsdoc.html},
+  note  = {(Retrieved Apr 12, 2019)}
+}

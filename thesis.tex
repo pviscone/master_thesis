@@ -1,0 +1,47 @@
+% Author: Izaak Neutelings (February 2023)
+% Description: PhD template for CMS UZH group
+
+% SETTINGS
+\input{settings/preamble}
+\input{settings/macros_CMS_TDR.tex} % CMS TDR macros & particle pennames
+\input{settings/macros_user.tex} % user commands
+
+\begin{document}
+
+% TITLE PAGE
+\pagenumbering{roman}
+\input{titlepage/titlepage}
+%\includepdf{titlepage/titlepage_UZH_PhD.pdf} % load PDF from MS Word template
+
+% ABSTRACT & ACKNOWLEDGEMENTS
+\linenumbers % for review (remove in final version!)
+\include{sections/abstract} % abstract
+\include{sections/acknow} % acknowledgements
+
+% TABLE OF CONTENT
+%\addtocontents{lot}{ \protect\renewcommand*{\protect\addvspace}[1]{} }
+%\addtocontents{lof}{ \protect\renewcommand*{\protect\addvspace}[1]{} }
+\tableofcontents
+
+% MAIN CONTENT
+\newpage % force arabic number in first chapter after table of contents
+\pagenumbering{arabic}
+\include{sections/chap01-introduction}
+\include{sections/chap02-theory-SM}
+\include{sections/chap03-theory-BSM}
+\include{sections/chap04-detector}
+\include{sections/chap05-objects}
+\include{sections/chap06-samples}
+\include{sections/chap07-selections}
+
+% REFERENCES
+\include{sections/references}
+
+% APPENDIX
+%\include{sections/index} % index
+%\include{sections/acronyms} % abbreviations & acronyms
+%\appendix
+%\include{appendix/tables}
+%\include{appendix/scripts}
+
+\end{document}

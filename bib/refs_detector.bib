@@ -1,0 +1,335 @@
+--- COMMENTS may be placed outside the @ENTRYTYPE{ ... } stuctures
+--- CMS guidelines
+---- Every journal article citation should include the DOI, assuming one exists.
+---- All URLs for CMS notes, ANs, etc, should refer to the CDS server, not the CMS server. Use our standard format for them, as show in the old svn documentation.
+----  CMS Notes not available on CDS are regarded as private and may not be cited.
+----  CMS physics papers (i.e., those intended for publication in journals) may reference only POG PASs, not PAG PASs.
+---- For papers by collaborations, list the collaboration in the COLLABOROATION field and put the first author and "and others" in the AUTHOR field.
+----  If only the collaboration is listed as the author, put "{XXX Collaboration}" under AUTHOR.
+----  Note that we automatically replace the AUTHOR field with the collaboration name for ATLAS, CMS, LHCb, and ATLAS at submission time. Please don't remove the
+----  "First Author and others" in the AUTHOR field.
+---- Other items:
+----   PAGES: Please only list the first page, not the range.
+----   ISSUE: Please do not include in most cases.
+----   URL: Do not include this field if a DOI is available.
+---- Number of authors to list:
+----   PRL requests that we include all authors up to fifteen except for large collaborations, and we take this as our internal guide as well. If there
+----   are more than fifteen, just list the first author + "and others", as above.
+----   The individual journal bib style file (theirs, ours, PLB, etc.) will truncate at the appropriate point. We have ours set to _1_ for more than four.
+---- Use only the URL field instead of embedding an href.
+---- A reference only published on the arXiv should be listed as UNPUBLISHED (with a note "Submitted to XXX" for large collaboration papers).
+----   Experimental papers only on the arXiv and not submitted for publication may not be cited.
+---- Some journals (and us) will lowercase the title: use {} to protect words which must be capitalized, e.g., {LHC}, {TeV}, {CERN}, {CMS}.
+----  Do not escape the entire title as it will then clash with the journal style.
+---- Journal names: the journals generally include the series in the journal name, "Physical Review D", vol 5, rather than PR D5
+---- >>> Please use the --preview option with the tdr script to perform a simple-minded reference check before uploading. This requires python.
+% Many commonly cited references are available in
+%   https://gitlab.cern.ch/tdr/utils/-/blob/master/general/gen.bib
+%   https://gitlab.cern.ch/tdr/utils/-/blob/master/general/higgs.bib
+%   https://twiki.cern.ch/twiki/bin/viewauth/CMS/CitationsForGenerators
+%   https://twiki.cern.ch/twiki/bin/viewauth/CMS/Internal/PubDetector
+%   https://twiki.cern.ch/twiki/bin/viewauth/CMS/StatisticsReferences
+%   https://cms-analysis.github.io/HiggsAnalysis-CombinedLimit/part4/usefullinks/?#citations
+% Cleaned with https://github.com/IzaakWN/CodeSnippets/blob/master/LaTeX/cleanBibTeX.py
+%   curl https://raw.githubusercontent.com/IzaakWN/CodeSnippets/master/LaTeX/cleanBibTeX.py > cleanBibTeX.py
+%   python cleanBibTeX.py refs.bib -o refs_clean.bib --backup --check
+
+
+%%%%%%%%%%%%%%%%%%%%%
+%:    Detector      %
+%%%%%%%%%%%%%%%%%%%%%
+
+@article{CMS,
+  author        = {Chatrchyan, S. and others},
+  title         = {{The CMS experiment at the CERN LHC}},
+  collaboration = {CMS},
+  journal       = {JINST},
+  volume        = {3},
+  year          = {2008},
+  pages         = {S08004},
+  doi           = {10.1088/1748-0221/3/08/S08004}
+}
+
+% book
+@inproceedings{CMS_tdr2006,
+  author        = {Bayatian, G. L. and others},
+  title         = {CMS Physics: Technical Design Report Volume 1: Detector Performance and Software},
+  collaboration = {CMS},
+  address       = {Geneva},
+  year          = {2006},
+  series        = {Technical Design Report CMS},
+  publisher     = {CERN},
+  url           = {https://cds.cern.ch/record/922757}
+}%note          = {There is an error on cover due to a technical problem for some items},
+
+@misc{CMS_coordinate_system,
+  author = "{Neutelings, Izaak}",
+  title  = {{CMS coordinate system -- TikZ.net}},
+  year   = {2022},
+  url    = {https://tikz.net/axis3d_cms/},
+  note   = {(Retrieved Dec 2, 2022)}
+}
+
+@misc{pseudorapidity,
+  author = "{Neutelings, Izaak}",
+  title  = {{Pseudorapidity -- TikZ.net}},
+  year   = {2022},
+  url    = {https://tikz.net/axis2d_pseudorapidity/},
+  note   = {(Retrieved Dec 2, 2022)}
+}
+
+@article{CMS_eta,
+  author        = {Chatrchyan, S. and others},
+  title         = {Performance of the CMS Drift Tube Chambers with Cosmic Rays},
+  collaboration = {CMS},
+  journal       = {JINST},
+  volume        = {5},
+  year          = {2010},
+  pages         = {T03015},
+  doi           = {10.1088/1748-0221/5/03/T03015},
+  reportNumber  = {CMS-CFT-09-012},
+  eprint        = {0911.4855},
+  archivePrefix = {arXiv},
+  primaryClass  = {physics.ins-det},
+  SLACcitation  = {%%CITATION = ARXIV:0911.4855;%%}
+}
+
+% book
+@inproceedings{CMS_ECAL,
+  author        = {Bayatian, G. L. and others},
+  title         = {The CMS electromagnetic calorimeter project: Technical Design Report},
+  collaboration = {CMS},
+  address       = {Geneva},
+  year          = {1997},
+  reportNumber  = "CERN-LHCC-97-033, CMS-TDR-4",
+  series        = {Technical Design Report CMS},
+  publisher     = {CERN},
+  url           = {https://cds.cern.ch/record/349375}
+}
+
+@article{CMS_HCAL,
+  author        = {Chatrchyan, Serguei and others},
+  title         = {Performance of the CMS Hadron Calorimeter with Cosmic Ray Muons and LHC Beam Data},
+  collaboration = {CMS},
+  journal       = {JINST},
+  volume        = {5},
+  year          = {2010},
+  pages         = {T03012},
+  doi           = {10.1088/1748-0221/5/03/T03012},
+  reportNumber  = {CMS-CFT-09-009},
+  eprint        = {0911.4991},
+  archivePrefix = {arXiv},
+  primaryClass  = {physics.ins-det},
+  SLACcitation  = {%%CITATION = ARXIV:0911.4991;%%}
+}
+
+@article{CMS_yoke,
+  author        = {Chatrchyan, S and others},
+  title         = {Precise Mapping of the Magnetic Field in the CMS Barrel Yoke using Cosmic Rays},
+  collaboration = {CMS},
+  journal       = {JINST},
+  volume        = {5},
+  year          = {2015},
+  pages         = {T03021},
+  doi           = {10.1088/1748-0221/5/03/T03021},
+  reportNumber  = {CMS-CFT-09-015},
+  eprint        = {0910.5530},
+  archivePrefix = {arXiv},
+  primaryClass  = {physics.ins-det},
+  SLACcitation  = {%%CITATION = ARXIV:0910.5530;%%}
+}
+
+@inproceedings{CMS_muon,
+  title         = {The CMS muon project : Technical Design Report},
+  collaboration = {CMS},
+  address       = {Geneva},
+  year          = {1997},
+  reportNumber  = {CERN-LHCC-97-032, CMS-TDR-3},
+  series        = {Technical Design Report CMS},
+  publisher     = {CERN},
+  url           = {https://cds.cern.ch/record/343814}
+}
+
+@article{CMS_muon_2018,
+  author        = "Sirunyan, Albert M and others",
+  title         = "{Performance of the CMS muon detector and muon reconstruction
+                    with proton-proton collisions at $\sqrt{s}=$ 13 TeV}",
+  collaboration = "CMS",
+  journal       = "JINST",
+  volume        = "13",
+  year          = "2018",
+  pages         = "P06015",
+  doi           = "10.1088/1748-0221/13/06/P06015",
+  reportNumber  = "CMS-MUO-16-001, CERN-EP-2018-058, CMS-MUO-16-001, CERN-EP-2018-058",
+  eprint        = "1804.04528",
+  archivePrefix = "arXiv",
+  primaryClass  = "physics.ins-det",
+  SLACcitation  = "%%CITATION = ARXIV:1804.04528;%%"
+}
+
+@techreport{CMS_phase2_tdr_2017,
+  title         = "{The Phase-2 Upgrade of the CMS Tracker}",
+  collaboration = "{CMS}",
+  institution   = "CERN",
+  address       = "Geneva",
+  month         = "jun",
+  number        = "CERN-LHCC-2017-009. CMS-TDR-014",
+  year          = "2017",
+  reportNumber  = "CERN-LHCC-2017-009",
+  url           = "https://cds.cern.ch/record/2272264"
+}
+
+@techreport{CMS_pixel_Phase1_2012,
+  author       = "Dominguez, A. and Abbaneo, D. and Arndt, K. and Bacchetta, N. and Ball, A. and Bartz,
+                  E. and Bertl, W. and Bilei, G.~M. and Bolla, G. and Cheung, H.~W.~K. and Chertok, M. and
+                  Costa, S. and Demaria, N. and Daniel Dominguez Vazquez and Ecklund, K. and Erdmann, W.
+                  and Gill, K. and Hall, G. and Harder, K. and Hartmann, F. and Horisberger, R. and Johns,
+                  W. and Kaestli, H. C. and Klein, K. and Kotlinski, D. and Kwan, S. and Pesaresi, M. and
+                  Postema, H. and Rohe, T. and Sch{\"a}fer, C. and Starodumov, A. and Streuli, S. and
+                  Tricomi, A. and Tropea, P. and Troska, J. and Vasey, F. and Zeuner, W.",
+  title        = "{CMS Technical Design Report for the Pixel Detector Upgrade}",
+  editor       = "Dominguez, A.",
+  year         = "2012",
+  reportNumber = "CERN-LHCC-2012-016, CMS-TDR-11",
+  url          = "https://cds.cern.ch/record/1481838",
+  note         = "Additional contacts: Jeffrey Spalding, Fermilab, Jeffrey.Spalding@cern.ch Didier
+                  Contardo, Universite Claude Bernard-Lyon I, didier.claude.contardo@cern.ch"
+}
+
+@article{CMS_pixel_Phase1_2017,
+  author        = "Lipinski, M.",
+  title         = "{The Phase-1 upgrade of the CMS pixel detector}",
+  editor        = "Shekhtman, Lev",
+  collaboration = "CMS",
+  journal       = "JINST",
+  volume        = "12",
+  number        = "07",
+  year          = "2017",
+  pages         = "C07009",
+  doi           = "10.1088/1748-0221/12/07/C07009",
+  reportNumber  = "CMS-CR-2017-135"
+}
+
+@article{CMS_pixel_Phase1_2021,
+  author        = "Adam, W. and others",
+  title         = "{The CMS Phase-1 Pixel Detector Upgrade}",
+  collaboration = "CMS Tracker Group",
+  journal       = "JINST",
+  volume        = "16",
+  number        = "02",
+  year          = "2021",
+  pages         = "P02027",
+  doi           = "10.1088/1748-0221/16/02/P02027",
+  eprint        = "2012.14304",
+  archivePrefix = "arXiv",
+  primaryClass  = "physics.ins-det"
+}
+
+@misc{CMS_vertex_plots_2017,
+  title         = "{CMS Tracking POG Performance Plots For 2017 with PhaseI pixel detector}",
+  collaboration = {CMS},
+  year          = {2022},
+  url           = {https://twiki.cern.ch/twiki/bin/view/CMSPublic/TrackingPOGPerformance2017MC#Vertex_Resolutions},
+  note          = {(Retrieved Dec 8, 2022)}
+}
+
+@article{CMS_tracker_2021,
+  author        = "Tumasyan, Armen and others",
+  title         = "{Strategies and performance of the CMS silicon tracker alignment during LHC Run~2}",
+  collaboration = "CMS",
+  journal       = "Nucl. Instrum. Meth. A",
+  volume        = "1037",
+  year          = "2022",
+  pages         = "166795",
+  doi           = "10.1016/j.nima.2022.166795",
+  reportNumber  = "CMS-TRK-20-001, CERN-EP-2021-203",
+  eprint        = "2111.08757",
+  archivePrefix = "arXiv",
+  primaryClass  = "physics.ins-det"
+}
+
+@misc{CMS_tracker_sketch,
+  title         = "{CMS Tracker Detector Performance Results}",
+  collaboration = {CMS},
+  year          = {2022},
+  url           = {https://twiki.cern.ch/twiki/bin/view/CMSPublic/DPGResultsTRK},
+  note          = {(Retrieved Dec 2, 2022)}
+}
+
+@misc{CMS_PID,
+  author       = {Barney, David},
+  title        = "{CMS Slice}",
+  year         = {2015},
+  reportNumber = {CMS-OUTREACH-2018-017},
+  url          = {https://cds.cern.ch/record/2628641/},
+  note         = {(Retrieved Dec 8, 2022)}
+}
+
+@misc{CMS_PID2,
+  author       = {David Barney},
+  title        = {CMS slice},
+  howpublished = {Different versions can be found here:
+                  \url{https://cms-docdb.cern.ch/cgi-bin/PublicDocDB/ListBy?authorid=226}}
+}
+
+@article{lifetime_plot,
+  author        = "Lee, Lawrence and Ohm, Christian and Soffer, Abner and Yu, Tien-Tien",
+  title         = "{Collider Searches for Long-Lived Particles Beyond the Standard Model}",
+  journal       = "Prog. Part. Nucl. Phys.",
+  volume        = "106",
+  year          = "2019",
+  pages         = "210",
+  doi           = "10.1016/j.ppnp.2019.02.006",
+  note          = "[Erratum: Prog.Part.Nucl.Phys. 122, 103912 (2022)]",
+  eprint        = "1810.12602",
+  archivePrefix = "arXiv",
+  primaryClass  = "hep-ph"
+}
+
+@mastersthesis{Thea,
+  author = {{\AA}rrestad, Thea},
+  title  = {A neural network based dedicated boosted Higgs b-tagging algorithm in CMS},
+  school = {Universit{\"a}t Z{\"u}rich},
+  year   = {2014}
+}
+
+@article{CMS_trigger,
+  author        = {Khachatryan, Vardan and others},
+  title         = {{The CMS trigger system}},
+  collaboration = {CMS},
+  journal       = {JINST},
+  volume        = {12},
+  year          = {2017},
+  pages         = {P01020},
+  doi           = {10.1088/1748-0221/12/01/P01020},
+  reportNumber  = {CMS-TRG-12-001, CERN-EP-2016-160},
+  eprint        = {1609.02366},
+  archivePrefix = {arXiv},
+  primaryClass  = {physics.ins-det},
+  SLACcitation  = {%%CITATION = ARXIV:1609.02366;%%}
+}
+
+@article{CMS_trigger_L1_2020,
+  author        = "Sirunyan, Albert M and others",
+  title         = "{Performance of the CMS Level-1 trigger in proton-proton collisions at $\sqrt{s} =$ 13 TeV}",
+  collaboration = "CMS",
+  journal       = "JINST",
+  volume        = "15",
+  number        = "10",
+  year          = "2020",
+  pages         = "P10017",
+  doi           = "10.1088/1748-0221/15/10/P10017",
+  reportNumber  = "CMS-TRG-17-001, CERN-EP-2020-065",
+  eprint        = "2006.10165",
+  archivePrefix = "arXiv",
+  primaryClass  = "hep-ex"
+}
+
+@PhDthesis{CMS_muon_resolution_thesis,
+  author       = "Manca, Elisabetta",
+  title        = "{Validation of the muon momentum resolution in view
+                   of the W mass measurement with the CMS experiment}",
+  school       = "INFN, Pisa",
+  year         = "2016",
+  reportNumber = "CMS-TS-2016-024, CERN-THESIS-2016-173"
+}

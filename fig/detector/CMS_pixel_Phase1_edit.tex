@@ -1,0 +1,51 @@
+% Author: Izaak Neutelings (December 2022)
+% https://cds.cern.ch/record/2748381?ln=en
+\documentclass[border=3pt,tikz]{standalone}
+\usepackage{siunitx}
+\usepackage{graphicx}
+\usetikzlibrary{angles,quotes} % for pic (angle labels)
+\tikzset{>=latex}
+
+\newcommand{\pho}{\phantom{1}}
+
+\begin{document}
+
+% ADD LABELS
+\begin{tikzpicture}[
+    x=1cm,y=1cm
+  ]
+  
+  % MAIN FIGURE
+  \def\w{16.8cm} % width fine-tuned to match grid
+  \def\w{8.4cm} % width fine-tuned to match grid
+  \node[inner sep=0,outer sep=0,above right] at (-0.002*\w,-0.269*\w) {
+    \includegraphics[width=\w,clip,trim={0mm 0mm 0mm 15mm}]{CMS_pixel_Phase1.pdf}
+  };
+  
+  %% HELP GRID
+  %\draw[red,very thin,dashed] (0,-2) grid[step=1cm] (10,2);
+  %\draw[red,very thin] (0,-2) grid[step=2cm] (10,2);
+  %\draw[blue,thick] (0,0) -- (10,0);
+  %\fill[red!80!black] (0,0) circle(0.5mm);
+  
+  % LABELS
+  \begin{scope}[every node/.style={scale=0.9,align=left}]
+    \node[left] at (-0.16*\w, 1.00) {Phase-1\\upgrade};
+    \node[left] at (-0.16*\w,-0.75) {Original};
+    \node[above] at (0.20*\w,2.05) {BPIX};
+    \node[above] at (0.63*\w,2.05) {FPIX};
+  \end{scope}
+  \begin{scope}[every node/.style={right=1mm,scale=0.65}]
+    \def\x{-0.17*\w}
+    \node at (\x, 1.61) {$r=\SI{160}{mm}$};
+    \node at (\x, 1.11) {$r=\SI{109}{mm}$};
+    \node at (\x, 0.70) {$r=\pho\SI{68}{mm}$};
+    \node at (\x, 0.31) {$r=\pho\SI{29}{mm}$};
+    \node at (\x,-0.41) {$r=\pho\SI{44}{mm}$};
+    \node at (\x,-0.69) {$r=\pho\SI{73}{mm}$};
+    \node at (\x,-0.98) {$r=\SI{102}{mm}$};
+  \end{scope}
+  
+\end{tikzpicture}
+
+\end{document}

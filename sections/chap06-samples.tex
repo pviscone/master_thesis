@@ -1,0 +1,73 @@
+%!TEX root = ../thesis.tex
+
+%%%%%%%%%%%%%%%%%%%%%
+%      Samples      %
+%%%%%%%%%%%%%%%%%%%%%
+\message{^^J ^^J SAMPLES ^^J ^^J} % print to log
+\newchap{Data sets \& Simulated Samples} \label{sec:samples}
+
+This chapter will discuss in more detail the data sets of $\Pp\Pp$ collision events used, as well as the samples of simulated background events.
+
+
+%%%%%%%%%%%%
+%   DATA   %
+%%%%%%%%%%%%
+\section{Data sets} \label{sec:data}
+
+The total data set recorded between 2016 and 2018 corresponds to an integrated luminosity of approximately 138\fbinv at $\sqrt{s}=13\TeV$. The run ranges and integrated luminosity per year are listed in Table~\ref{tab:data_runnumbers}.
+
+% TABLE: data
+\input{tex/samples-tab-data.tex}
+
+
+% FIGURE: Simulation
+\input{tex/samples-fig-simulation.tex}
+
+%%%%%%%%%%%%%%%%%%
+%   SIMULATION   %
+%%%%%%%%%%%%%%%%%%
+\section{Event simulation} \label{sec:simulation}
+
+The \PYTHIA parameters affecting the description of the underlying event are set to the {CUETP8M1} ({CP5}) tune for all 2016 (2017 and 2018) samples~\cite{TuneCUETP8M1,TuneCP}, except for the 2016 $\ttbar$ sample, for which {CUETP8M2T4}~\cite{TuneCUETP8M2T4} is used.
+The interaction with the CMS detector is simulated by \GEANTfour~\cite{GEANT4}.
+Pileup is generated with \PYTHIA.
+Event generation is described in more detail in Refs.~\cite[p.~717]{PDG_2022}, \cite{event_generation} and~\cite{Pythia6_manual}.
+
+
+%%%%%%%%%%%%%%%%%%
+%   BACKGROUND   %
+%%%%%%%%%%%%%%%%%%
+\section{Backgrounds} \label{sec:background}
+
+% TABLE: backgrounds
+\input{tex/samples-tab-backgrounds.tex}
+
+% SAMPLES
+\subsection{Simulated backgrounds} \label{sec:background_simulation}
+
+All the simulated background samples used in this thesis are listed in Table~\ref{tab:samples_background}.
+The $\Wjets$ and $\Zjets$ processes are generated with \MADGRAPH~\cite{MadGraph} at LO precision.
+The MLM jet matching and merging scheme~\cite{MLM} is used to match partons between \MADGRAPH and \PYTHIA and prevent overcounting.
+The $\Zjets$ samples generated at NLO by \MGvATNLO~\cite{aMCatNLO}. 
+The production of $\ttbar$ and singly produced top quarks is simulated with the \POWHEG~\cite{POWHEG0,POWHEG1,POWHEG2} 2.0 and 1.0 generators, respectively, at NLO precision~\cite{POWHEG_TT,POWHEG_TT2,POWHEG_ST_st,POWHEG_ST_tW}.
+Diboson production is generated at LO with \PYTHIA 8~\cite{Pythia8,Pythia8_2015}.
+The NNPDF3.0 PDF sets~\cite{NNPDF30} are used for 2016. The NNPDF3.1 PDF~\cite{NNPDF31} sets are used for 2017 and 2018 samples.
+
+% CROSS SECTIONS
+\subsection{Cross sections} \label{sec:background_xsecs}
+% https://twiki.cern.ch/twiki/bin/view/LHCPhysics/TtbarNNLO
+% https://twiki.cern.ch/twiki/bin/view/LHCPhysics/SingleTopRefXsec?rev=33#Single_top_Wt_channel_cross_sect
+% https://twiki.cern.ch/twiki/bin/view/CMS/SummaryTable1G25ns#TTbar
+Table~\ref{tab:samples_background} also lists the theoretical cross sections $\sigma$ for each sample.
+The events are weighted by
+\begin{equation} \label{eq:LsigmaN}
+  Z = \frac{L\sigma}{N_\text{tot}},
+\end{equation}
+or with generator weight $w_\text{gen}$,
+\begin{equation}
+  Z = \frac{L\sigma}{\sum w_\text{gen}} w_\text{gen}.
+\end{equation}
+The LO cross sections of the $\Zjets$ and $\Wjets$ samples in Table~\ref{tab:samples_background} are computed with \MADGRAPH.
+The $\Zjets$ cross section is computed with \FEWZ~\cite{FEWZ} program at NNLO in perturbative QCD, and with NLO electroweak corrections.
+The $\ttbar+\text{jets}$ cross section was computed with the {\Toppp}v2.0 program~\cite{sigma_TT,sigma_TT_TWiki} at NNLO and at next-to-next-to-leading logarithmic (NNLL) accuracy.
+The $\Wjets$ production is normalized with cross sections computed at NLO accuracy.

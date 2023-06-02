@@ -1,0 +1,545 @@
+--- COMMENTS may be placed outside the @ENTRYTYPE{ ... } stuctures
+--- CMS guidelines
+---- Every journal article citation should include the DOI, assuming one exists.
+---- All URLs for CMS notes, ANs, etc, should refer to the CDS server, not the CMS server. Use our standard format for them, as show in the old svn documentation.
+----  CMS Notes not available on CDS are regarded as private and may not be cited.
+----  CMS physics papers (i.e., those intended for publication in journals) may reference only POG PASs, not PAG PASs.
+---- For papers by collaborations, list the collaboration in the COLLABOROATION field and put the first author and "and others" in the AUTHOR field.
+----  If only the collaboration is listed as the author, put "{XXX Collaboration}" under AUTHOR.
+----  Note that we automatically replace the AUTHOR field with the collaboration name for ATLAS, CMS, LHCb, and ATLAS at submission time. Please don't remove the
+----  "First Author and others" in the AUTHOR field.
+---- Other items:
+----   PAGES: Please only list the first page, not the range.
+----   ISSUE: Please do not include in most cases.
+----   URL: Do not include this field if a DOI is available.
+---- Number of authors to list:
+----   PRL requests that we include all authors up to fifteen except for large collaborations, and we take this as our internal guide as well. If there
+----   are more than fifteen, just list the first author + "and others", as above.
+----   The individual journal bib style file (theirs, ours, PLB, etc.) will truncate at the appropriate point. We have ours set to _1_ for more than four.
+---- Use only the URL field instead of embedding an href.
+---- A reference only published on the arXiv should be listed as UNPUBLISHED (with a note "Submitted to XXX" for large collaboration papers).
+----   Experimental papers only on the arXiv and not submitted for publication may not be cited.
+---- Some journals (and us) will lowercase the title: use {} to protect words which must be capitalized, e.g., {LHC}, {TeV}, {CERN}, {CMS}.
+----  Do not escape the entire title as it will then clash with the journal style.
+---- Journal names: the journals generally include the series in the journal name, "Physical Review D", vol 5, rather than PR D5
+---- >>> Please use the --preview option with the tdr script to perform a simple-minded reference check before uploading. This requires python.
+% Many commonly cited references are available in
+%   https://gitlab.cern.ch/tdr/utils/-/blob/master/general/gen.bib
+%   https://gitlab.cern.ch/tdr/utils/-/blob/master/general/higgs.bib
+%   https://twiki.cern.ch/twiki/bin/viewauth/CMS/CitationsForGenerators
+%   https://twiki.cern.ch/twiki/bin/viewauth/CMS/Internal/PubDetector
+%   https://twiki.cern.ch/twiki/bin/viewauth/CMS/StatisticsReferences
+%   https://cms-analysis.github.io/HiggsAnalysis-CombinedLimit/part4/usefullinks/?#citations
+% Cleaned with https://github.com/IzaakWN/CodeSnippets/blob/master/LaTeX/cleanBibTeX.py
+%   curl https://raw.githubusercontent.com/IzaakWN/CodeSnippets/master/LaTeX/cleanBibTeX.py > cleanBibTeX.py
+%   python cleanBibTeX.py refs.bib -o refs_clean.bib --backup --check
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%:  Introduction - Higgs theory   %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+@article{SM1,
+  author       = {Weinberg, Steven},
+  title        = {A Model of Leptons},
+  journal      = {Phys. Rev. Lett.},
+  volume       = {19},
+  year         = {1967},
+  pages        = {1264},
+  doi          = {10.1103/PhysRevLett.19.1264},
+  SLACcitation = {%%CITATION = PRLTA,19,1264;%%}
+}
+
+@article{Higgs_theory1,
+  author       = {Englert, F. and Brout, R.},
+  title        = {Broken Symmetry and the Mass of Gauge Vector Mesons},
+  journal      = {Phys. Rev. Lett.},
+  volume       = {13},
+  year         = {1964},
+  pages        = {321},
+  doi          = {10.1103/PhysRevLett.13.321},
+  publisher    = {American Physical Society},
+  SLACcitation = "%%CITATION = PRLTA,13,321;%%"
+}
+
+@article{Higgs_theory2,
+  author    = {Higgs, P. W.},
+  title     = {Broken Symmetries and the Masses of Gauge Bosons},
+  journal   = {Phys. Rev. Lett.},
+  volume    = {13},
+  year      = {1964},
+  pages     = {508},
+  doi       = {10.1103/PhysRevLett.13.508},
+  publisher = {American Physical Society}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%:  Introduction - Higgs experiment   %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+@misc{Higgs_results_CMS_TWiki,
+  title         = "{CMS Higgs Physics Results}",
+  collaboration = {CMS},
+  year          = {2022},
+  url           = {https://twiki.cern.ch/twiki/bin/view/CMSPublic/PhysicsResultsHIG},
+  note          = {(Retrieved Jan 16, 2023)}
+}
+
+@article{Higgs_discovery_2012_CMS,
+  author        = {Chatrchyan, Serguei and others},
+  title         = {{Observation of a new boson at a mass of 125 GeV with the CMS experiment at the LHC}},
+  collaboration = {CMS},
+  journal       = {Phys. Lett. B},
+  volume        = {716},
+  year          = {2012},
+  pages         = {30},
+  doi           = {10.1016/j.physletb.2012.08.021},
+  reportNumber  = {CMS-HIG-12-028, CERN-PH-EP-2012-220},
+  eprint        = {1207.7235},
+  archivePrefix = {arXiv},
+  primaryClass  = {hep-ex},
+  SLACcitation  = {%%CITATION = ARXIV:1207.7235;%%}
+}
+
+@article{Higgs_discovery_2012_ATLAS,
+  author        = {Aad, Georges and others},
+  title         = {{Observation of a new particle in the search for the Standard
+                    Model Higgs boson with the ATLAS detector at the LHC}},
+  collaboration = {ATLAS},
+  journal       = {Phys. Lett. B},
+  volume        = {716},
+  year          = {2012},
+  pages         = {1},
+  doi           = {10.1016/j.physletb.2012.08.020},
+  reportNumber  = {CERN-PH-EP-2012-218},
+  eprint        = {1207.7214},
+  archivePrefix = {arXiv},
+  primaryClass  = {hep-ex},
+  SLACcitation  = {%%CITATION = ARXIV:1207.7214;%%}
+}
+
+@article{Higgs_discovery_2013_CMS,
+  author        = "Chatrchyan, Serguei and others",
+  title         = "{Observation of a new boson with mass near 125 {GeV}
+                    in pp collisions at $\sqrt{s}$ = 7 and 8 {TeV}}",
+  collaboration = "CMS",
+  journal       = "JHEP",
+  volume        = "06",
+  year          = "2013",
+  pages         = "081",
+  doi           = "10.1007/JHEP06(2013)081",
+  reportNumber  = "CMS-HIG-12-036, CERN-PH-EP-2013-035",
+  eprint        = "1303.4571",
+  archivePrefix = "arXiv",
+  primaryClass  = "hep-ex",
+  SLACcitation  = "%%CITATION = ARXIV:1303.4571;%%"
+}
+
+@article{Higgs_physics,
+  author        = {Djouadi, Abdelhak},
+  title         = {{The Anatomy of electro-weak symmetry breaking. I: The Higgs boson in the standard model}},
+  journal       = {Phys. Rept.},
+  volume        = {457},
+  year          = {2008},
+  pages         = {1},
+  doi           = {10.1016/j.physrep.2007.10.004},
+  reportNumber  = {LPT-ORSAY-05-17},
+  eprint        = {hep-ph/0503172},
+  archivePrefix = {arXiv},
+  primaryClass  = {hep-ph},
+  SLACcitation  = {%%CITATION = HEP-PH/0503172;%%}
+}
+
+@article{Higgs_mass_ATLAS,
+  author        = "Aad, Georges and others",
+  title         = "{Measurement of the Higgs boson mass from the $H\rightarrow
+                    \gamma\gamma$ and $H \rightarrow ZZ^{*} \rightarrow 4\ell$ channels
+                    with the ATLAS detector using 25 fb$^{-1}$ of $pp$ collision data}",
+  collaboration = "ATLAS",
+  journal       = "Phys. Rev. D",
+  volume        = "90",
+  number        = "5",
+  year          = "2014",
+  pages         = "052004",
+  doi           = "10.1103/PhysRevD.90.052004",
+  reportNumber  = "CERN-PH-EP-2014-122",
+  eprint        = "1406.3827",
+  archivePrefix = "arXiv",
+  primaryClass  = "hep-ex",
+  SLACcitation  = "%%CITATION = ARXIV:1406.3827;%%"
+}
+
+@article{Higgs_mass_2015_combined,
+  author        = {Aad, Georges and others},
+  title         = {Combined Measurement of the Higgs Boson Mass in $pp$ Collisions at
+                   $\sqrt{s}=7$ and $8\,\text{TeV}$ with the ATLAS and CMS Experiments},
+  collaboration = {ATLAS and CMS},
+  booktitle     = {Proceedings, Meeting of the APS Division of Particles and
+                   Fields (DPF 2015): Ann Arbor, Michigan, USA, 4-8 Aug 2015},
+  journal       = {Phys. Rev. Lett.},
+  volume        = {114},
+  year          = {2015},
+  pages         = {114},
+  doi           = {10.1103/PhysRevLett.114.191803},
+  reportNumber  = {ATLAS-HIGG-2014-14, CMS-HIG-14-042, CERN-PH-EP-2015-075},
+  eprint        = {1503.07589},
+  archivePrefix = {arXiv},
+  primaryClass  = {hep-ex},
+  SLACcitation  = {%%CITATION = ARXIV:1503.07589;%%}
+}
+
+@article{Higgs_measurement_2016_combined,
+  author        = {Aad, Georges and others},
+  title         = {Measurements of the Higgs boson production and decay rates and
+                   constraints on its couplings from a combined ATLAS and CMS analysis
+                   of the LHC pp collision data at $\sqrt{s}=7$ and $8\,\text{TeV}$},
+  collaboration = {ATLAS, CMS},
+  journal       = {JHEP},
+  volume        = {08},
+  year          = {2016},
+  pages         = {045},
+  doi           = {10.1007/JHEP08(2016)045},
+  reportNumber  = {CERN-EP-2016-100, ATLAS-HIGG-2015-07, CMS-HIG-15-002},
+  eprint        = {1606.02266},
+  archivePrefix = {arXiv},
+  primaryClass  = {hep-ex},
+  SLACcitation  = {%%CITATION = ARXIV:1606.02266;%%}
+}
+
+@article{Higgs_extensions_LHC_2021,
+  author  = "Ferrari, Arnaud and Rompotis, Nikolaos",
+  title   = "{Exploration of Extended Higgs Sectors with Run-2
+              Proton\textendash{}Proton Collision Data at the LHC}",
+  journal = "Symmetry",
+  volume  = "13",
+  number  = "11",
+  year    = "2021",
+  pages   = "2144",
+  doi     = "10.3390/sym14081546",
+  note    = "[Erratum: Symmetry 14, 1546 (2022)]"
+}
+
+@article{Higgs_combined_CMS_2020,
+  title         = "{Combined Higgs boson production and decay measurements with up to 137
+                    fb$^{-1}$ of proton-proton collision data at $\sqrt s$ = 13 TeV}",
+  collaboration = "CMS",
+  year          = "2020",
+  reportNumber  = "CMS-PAS-HIG-19-005"
+}
+
+@article{Higgs_10years_CMS,
+  title         = "{A portrait of the Higgs boson by the CMS experiment ten years after the discovery}",
+  collaboration = "CMS",
+  journal       = "Nature",
+  volume        = "607",
+  number        = "7917",
+  year          = "2022",
+  pages         = "60",
+  doi           = "10.1038/s41586-022-04892-x",
+  reportNumber  = "CMS-HIG-22-001, CERN-EP-2022-039",
+  eprint        = "2207.00043",
+  archivePrefix = "arXiv",
+  primaryClass  = "hep-ex"
+}
+
+@article{Higgs_10years_ATLAS,
+  title         = "{A detailed map of Higgs boson interactions by the
+                    ATLAS experiment ten years after the discovery}",
+  collaboration = "ATLAS",
+  journal       = "Nature",
+  volume        = "607",
+  number        = "7917",
+  year          = "2022",
+  pages         = "52",
+  doi           = "10.1038/s41586-022-04893-w",
+  reportNumber  = "CERN-EP-2022-057",
+  note          = "[Erratum: Nature 612, E24 (2022)]",
+  eprint        = "2207.00092",
+  archivePrefix = "arXiv",
+  primaryClass  = "hep-ex"
+}
+
+@techreport{Higgs_handbook,
+  author        = "D. de Florian and others",
+  title         = "{Handbook of LHC Higgs cross sections: 4. Deciphering the nature of the Higgs sector}",
+  editor        = "de Florian, D. and C. Grojean and F. Maltoni and C. Mariotti and A.
+                   Nikitenko and M. Pieri and P. Savard and M. Schumacher and R. Tanaka",
+  type          = "CERN Report",
+  number        = "CERN-2017-002-M",
+  year          = "2016",
+  doi           = "10.23731/CYRM-2017-002",
+  reportNumber  = "CERN-2017-002-M",
+  eprint        = "1610.07922",
+  archivePrefix = "arXiv",
+  primaryClass  = "hep-ph",
+  SLACcitation  = "%%CITATION = ARXIV:1610.07922;%%"
+} %  note           = {See, in particular, Fig.~263.}
+
+@article{HIG-14-009,
+  author        = "Khachatryan, Vardan and others",
+  title         = "{Precise determination of the mass of the Higgs boson and tests of compatibility of its couplings
+                    with the standard model predictions using proton collisions at 7 and 8 $\,\text {TeV}$}",
+  collaboration = "CMS",
+  journal       = "Eur. Phys. J. C",
+  volume        = "75",
+  number        = "5",
+  year          = "2015",
+  pages         = "212",
+  doi           = "10.1140/epjc/s10052-015-3351-7",
+  reportNumber  = "CMS-HIG-14-009, CERN-PH-EP-2014-288",
+  eprint        = "1412.8662",
+  archivePrefix = "arXiv",
+  primaryClass  = "hep-ex",
+  SLACcitation  = "%%CITATION = ARXIV:1412.8662;%%"
+}
+
+@techreport{HTT_PAS,
+  title         = {{Observation of the SM scalar boson decaying to a pair
+                    of $\tau$ leptons with the CMS experiment at the LHC}},
+  collaboration = {CMS Collaboration},
+  institution   = {CERN},
+  address       = {Geneva},
+  year          = {2017},
+  reportNumber  = {CMS-PAS-HIG-16-043},
+  url           = {https://cds.cern.ch/record/2264522}
+}
+
+@article{HTT_2012,
+  author        = {Chatrchyan, Serguei and others},
+  title         = {{Search for neutral Higgs bosons decaying to tau
+                    pairs in pp collisions at $\sqrt{s}=7\,\text{TeV}$}},
+  collaboration = {CMS},
+  journal       = {Phys. Lett. B},
+  volume        = {713},
+  year          = {2012},
+  pages         = {68},
+  doi           = {10.1016/j.physletb.2012.05.028},
+  reportNumber  = {CMS-HIG-11-029, CERN-PH-EP-2012-034},
+  eprint        = {1202.4083},
+  archivePrefix = {arXiv},
+  primaryClass  = {hep-ex},
+  SLACcitation  = {%%CITATION = ARXIV:1202.4083;%%}
+}
+
+@article{HTT_2016_paper,
+  author        = "Sirunyan, Albert M and others",
+  title         = "{Observation of the Higgs boson decay to a pair of $\tau$ leptons with the CMS detector}",
+  collaboration = "CMS",
+  journal       = "Phys. Lett. B",
+  volume        = "779",
+  year          = "2018",
+  pages         = "283",
+  doi           = "10.1016/j.physletb.2018.02.004",
+  reportNumber  = "CMS-HIG-16-043, CERN-EP-2017-181",
+  eprint        = "1708.00373",
+  archivePrefix = "arXiv",
+  primaryClass  = "hep-ex",
+  SLACcitation  = "%%CITATION = ARXIV:1708.00373;%%"
+}
+
+@article{tau_polarization,
+  author        = {Berge, Stefan and Bernreuther, Werner and Kirchner, Sebastian},
+  title         = {{Determination of the Higgs CP-mixing angle in the tau decay
+                    channels at the LHC including the Drell?Yan background}},
+  journal       = {Eur. Phys. J. C},
+  volume        = {74},
+  number        = {11},
+  year          = {2014},
+  pages         = {3164},
+  doi           = {10.1140/epjc/s10052-014-3164-0},
+  reportNumber  = {TTK-14-14},
+  eprint        = {1408.0798},
+  archivePrefix = {arXiv},
+  primaryClass  = {hep-ph},
+  SLACcitation  = {%%CITATION = ARXIV:1408.0798;%%}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%:  Introduction - SUSY   %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+@article{2HDM1,
+  author       = {Lee, T. D.},
+  title        = {A Theory of Spontaneous {$T$} Violation},
+  journal      = {Phys. Rev. D},
+  volume       = {8},
+  year         = {1973},
+  pages        = {1226},
+  doi          = {10.1103/PhysRevD.8.1226},
+  SLACcitation = {%%CITATION = PHRVA,D8,1226;%%}
+}
+
+@article{2HDM2,
+  author       = {Deshpande, N. G. and Ma, E.},
+  title        = {Pattern of Symmetry Breaking with Two {Higgs} Doublets},
+  journal      = {Phys. Rev. D},
+  volume       = {18},
+  year         = {1978},
+  pages        = {2574},
+  doi          = {10.1103/PhysRevD.18.2574},
+  reportNumber = {OITS-81},
+  SLACcitation = {%%CITATION = PHRVA,D18,2574;%%}
+}
+
+@article{2HDM3,
+  author  = {Haber, H. E. and Kane, G. L. and Sterling, T.},
+  title   = {The fermion mass scale and possible effects of {Higgs} bosons on experimental observables},
+  journal = {Nucl. Phys. B},
+  volume  = {161},
+  year    = {1979},
+  pages   = {493},
+  doi     = {10.1016/0550-3213(79)90225-6}
+}
+
+@article{2HDM4,
+  author        = {Branco, G. C. and Ferreira, P. M. and Lavoura, L. and
+                   Rebelo, M. N. and Sher, Marc and Silva, Joao P.},
+  title         = {{Theory and phenomenology of two-Higgs-doublet models}},
+  journal       = {Phys. Rept.},
+  volume        = {516},
+  year          = {2012},
+  pages         = {1},
+  doi           = {10.1016/j.physrep.2012.02.002},
+  eprint        = {1106.0034},
+  archivePrefix = {arXiv},
+  primaryClass  = {hep-ph},
+  SLACcitation  = {%%CITATION = ARXIV:1106.0034;%%}
+}
+
+@book{2HDM5,
+  author    = {Gunion, John F. and Haber, Howard E. and Kane, Gordon L. and Dawson, Sally},
+  title     = {The Higgs hunter's guide},
+  volume    = {80},
+  year      = {2000},
+  series    = {Frontiers in Physics},
+  publisher = {Perseus Books}
+}
+
+@article{2HDM_8TeV,
+  author        = {Bernon, Jeremy and Gunion, John F. and Jiang, Yun and Kraml, Sabine},
+  title         = {{Light Higgs bosons in Two-Higgs-Doublet Models}},
+  journal       = {Phys. Rev. D},
+  volume        = {19},
+  year          = {2015},
+  pages         = {075019},
+  doi           = {10.1103/PhysRevD.91.075019},
+  eprint        = {1412.3385},
+  archivePrefix = {arXiv},
+  primaryClass  = {hep-ph},
+  SLACcitation  = {%%CITATION = ARXIV:1412.3385;%%}
+}
+
+@article{SUSY1,
+  author       = {Wess, J. and Zumino, B.},
+  title        = {{Supergauge transformations in four dimensions}},
+  bdsk-url-1   = {http://dx.doi.org/10.1016/0550-3213(74)90355-1},
+  journal      = {Nucl. Phys. B},
+  volume       = {70},
+  year         = {1974},
+  pages        = {39},
+  doi          = {10.1016/0550-3213(74)90355-1},
+  SLACcitation = {%%CITATION = NUPHA,B70,39;%%}
+}
+
+@article{MSSM1,
+  author       = {Fayet, Pierre},
+  title        = {{Supergauge Invariant Extension of the Higgs Mechanism
+                   and a Model for the electron and Its Neutrino}},
+  journal      = {Nucl. Phys. B},
+  volume       = {90},
+  year         = {1975},
+  pages        = {104},
+  doi          = {10.1016/0550-3213(75)90636-7},
+  reportNumber = {PTENS-74-7},
+  SLACcitation = {%%CITATION = NUPHA,B90,104;%%}
+}
+
+@article{MSSM3,
+  author       = {Fayet, Pierre},
+  title        = {{Supersymmetry and Weak, Electromagnetic and Strong Interactions}},
+  journal      = {Phys. Lett. B},
+  volume       = {64},
+  year         = {1976},
+  pages        = {159},
+  doi          = {10.1016/0370-2693(76)90319-1},
+  reportNumber = {PTENS 76/14},
+  SLACcitation = {%%CITATION = PHLTA,64B,159;%%}
+}
+
+@article{MSSM4,
+  author       = {Fayet, Pierre},
+  title        = {{Spontaneously Broken Supersymmetric Theories of
+                   Weak, Electromagnetic and Strong Interactions}},
+  journal      = {Phys. Lett. B},
+  volume       = {69},
+  year         = {1977},
+  pages        = {489},
+  doi          = {10.1016/0370-2693(77)90852-8},
+  reportNumber = {LPTENS 77/11},
+  SLACcitation = {%%CITATION = PHLTA,69B,489;%%}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%:    Selections     %
+%%%%%%%%%%%%%%%%%%%%%%
+
+@techreport{HTT_AN,
+  author        = {Valeria Botta and Cecile Caillol and Francesco Costanza and Sridhara Dasu
+                   and Laura Dodd and Andrew Gilbert and Ketino Kaadze and Teresa Lenz and
+                   Yurii Maravinand Abdollah Mohammadi and Isobel Ojalvo and Alexei Raspiereza
+                   and Tyler Ruggles and Alexander Savin and Yuta Takahashi and Yiwen Wen},
+  title         = {Search for the standard model Higgs boson decaying to a pair of tau leptons in 2016 data},
+  collaboration = {CMS},
+  institution   = {CERN},
+  type          = {{CMS Analysis Note}},
+  number        = {CMS-AN-16-355},
+  year          = {2016},
+  reportNumber  = {CMS-AN-16-355},
+  url           = {http://cms.cern.ch/iCMS/jsp/db_notes/noteInfo.jsp?cmsnoteid=CMS%20AN-2016/355}
+}
+
+@misc{HTT_TWiki,
+  title         = {Higgs to Tau Tau Working TWiki for Run-2 Legacy},
+  collaboration = {CMS},
+  year          = {2019},
+  url           = {https://twiki.cern.ch/twiki/bin/view/CMS/HiggsToTauTauWorkingLegacyRun2},
+  note          = {(Retrieved Dec 22, 2019)}
+}
+
+@misc{HTT_TWiki_lepton_vetoes,
+  title         = {Higgs to Tau Tau Working TWiki for Run-2 Legacy - Common lepton vetoes},
+  collaboration = {CMS},
+  year          = {2019},
+  url           = {https://twiki.cern.ch/twiki/bin/view/CMS/HiggsToTauTauWorkingLegacyRun2#Common_lepton_vetoes},
+  note          = {(Retrieved February 15, 2019)}
+}
+
+@PhDthesis{pzeta,
+  author       = {Jang, D.},
+  title        = {Search for MSSM Higgs decaying to tau pairs in $p\bar{p}$
+                  collision at $\sqrt{s} = 1.96\,\text{TeV}$ at CDF},
+  school       = {Rutgers University},
+  year         = {2006},
+  reportNumber = {FERMILAB-THESIS-2006-11, UMI-32-40224},
+  url          = {https://inspirehep.net/literature/720080}
+}
+
+@article{pzeta_CDF,
+  author        = {Abulencia, A. and others},
+  title         = {{Search for neutral MSSM Higgs bosons decaying to tau
+                    pairs in $p\bar{p}$ collisions at $\sqrt{s} = 1.96$ TeV}},
+  collaboration = {CDF},
+  journal       = {Phys. Rev. Lett.},
+  volume        = {96},
+  year          = {2006},
+  pages         = {011802},
+  doi           = {10.1103/PhysRevLett.96.011802},
+  reportNumber  = {FERMILAB-PUB-05-374-E},
+  eprint        = {hep-ex/0508051},
+  archivePrefix = {arXiv},
+  primaryClass  = {hep-ex},
+  SLACcitation  = {%%CITATION = HEP-EX/0508051;%%}
+}

@@ -1,0 +1,79 @@
+%!TEX root = ../thesis.tex
+% Author: Izaak Neutelings (February 2023)
+% Description: My common macros
+
+% IWN: text
+\newcommand\TODO[1]  {\textsf{({\color{blue!60!black!40}\textbf{TODO}: #1})}\xspace}
+\newcommand\ADDREF   {\textsf{\color{blue!60!black!40}\textbf{\small[add Ref.]}}\xspace}
+\newcommand\FIXME[1] {\textsf{(\textbf{FIXME}: #1)}}
+\newcommand{\Left}   {\textbf{Left}}
+\newcommand{\Middle} {\textbf{Middle}}
+\newcommand{\Right}  {\textbf{Right}}
+\newcommand{\Top}    {\textbf{Top}}
+\newcommand{\Bottom} {\textbf{Bottom}}
+\newcommand{\Fig}[1] {Fig.~\ref{#1}\xspace}
+\newcommand{\Eq}[1]  {Eq.~\eqref{#1}\xspace}
+\newcommand{\tabsubtitle}[1]{\rule{0pt}{13pt}\textbf{#1}} % subtitle in table
+\newcommand{\phmin}  {\phantom{-}} % for aligning pos/neg. values in centered columns
+\newcommand*{\myvec}[1]{\vec{\mkern0mu#1}} % correct misalignment in \vec
+\newcommand*{\defeq}{\mathrel{\vcenter{\baselineskip0.5ex \lineskiplimit0pt
+                     \hbox{\scriptsize.}\hbox{\scriptsize.}}}=} % definition :=
+
+% IWN: Standard Model
+\newcommand{\Lg}[1]  {\mathcal{L}_\text{#1}} % Lagrangian
+\newcommand{\ff}[2]{#1_\text{#2}} % fermion field
+\newcommand{\aff}[2]{\overline{#1}\vphantom{#1}_\text{#2}} % anti-fermion field
+\newcommand{\U}[2][]{\text{U}(#2)\ifthenelse{\isempty{#1}}{}{_\text{#1}}} % U(N)
+\newcommand{\SU}[2][]{\text{SU}(#2)\ifthenelse{\isempty{#1}}{}{_\text{#1}}} % SU(N)
+\newcommand{\GSM}    {{\ensuremath{\SU[C]{3}\times\SU[L]{2}\times\U[Y]{1}}}\xspace} % SM group
+\newcommand{\Ggauge} {{\ensuremath{G_\mathrm{gauge}^\mathrm{global}}}\xspace}
+\newcommand{\YW}     {{\ensuremath{Y}}\xspace} % weak hypercharge %_\text{W}
+\newcommand{\JW}     {\ensuremath{J_\mathrm{W}}\xspace} % charged weak current
+\newcommand{\thetaW} {{\ensuremath{\theta_\mathrm{W}}}\xspace} % Weinberg mixing angle
+\newcommand{\thetaC} {{\ensuremath{\theta_\mathrm{C}}}\xspace} % Cabibbo mixing angle
+\newcommand{\VCKM}   {\ensuremath{V_\mathrm{CKM}}\xspace} % CKM matrix
+\newcommand{\GF}     {\ensuremath{G_\mathrm{F}}\xspace} % Fermi constant
+\newcommand{\MW}     {\ensuremath{M_{\PW}}\xspace} % W boson mass
+\newcommand{\MZ}     {\ensuremath{M_{\PZ}}\xspace} % Z boson mass
+\newcommand{\db}[2]  {{\ensuremath{\def\arraystretch{1}\begin{pmatrix}#1\\#2\end{pmatrix}}}\xspace} % doublet
+\newcommand{\C}      {\ensuremath{{C}}} % charge conjugate
+\newcommand{\hc}     {{\ensuremath{\text{h.c.}}}\xspace} % hermitian conjugate
+
+% IWN: common particles / final states
+\newcommand{\tauh}   {{\ensuremath{\PGt\kern-0.5pt_\text{h}}}\xspace} % hadronic tau
+\providecommand{\tt} {} % create dummy to prevent "undefined" error in OverLeaf
+\renewcommand{\tt}   {{\ensuremath{\PGt\PGt}\xspace}}
+\renewcommand{\ll}   {{\ensuremath{\ell\ell'}}\xspace}
+\newcommand{\ee}     {{\ensuremath{\Pe\Pe}}\xspace}
+\newcommand{\mumu}   {{\ensuremath{\PGm\PGm}}\xspace}
+\newcommand{\emu}    {{\ensuremath{\Pe\PGm}}\xspace}
+\newcommand{\ltau}   {{\ensuremath{\ell\tauh}}\xspace}
+\newcommand{\etau}   {{\ensuremath{\Pe\tauh}}\xspace}
+\newcommand{\mutau}  {{\ensuremath{\PGm\tauh}}\xspace}
+\newcommand{\tautau} {{\ensuremath{\PGt\kern-0.2pt\PGt}}\xspace}
+\newcommand{\ditau}  {{\ensuremath{\tauh\kern-0.5pt\tauh}}\xspace}
+\newcommand{\btau}   {{\ensuremath{\PQb\PGt}}\xspace}
+\newcommand{\LQ}     {{\ensuremath{\mathrm{LQ}}}\xspace}
+\newcommand{\ALQ}    {{\ensuremath{\overline{\mathrm{LQ}}}}\xspace}
+\newcommand{\Zjets}  {{\ensuremath{\PZ\PNfix+\text{jets}}\xspace}}
+\newcommand{\Wjets}  {{\ensuremath{\PW\PNfix+\text{jets}}\xspace}}
+\newcommand{\jtf}    {{\ensuremath{j\to\tauh}\xspace}}
+\newcommand{\ltf}    {{\ensuremath{\ell\to\tauh}\xspace}}
+
+% IWN: common variables
+\newcommand{\BF}     {{\mathcal{B}}} % branching fraction
+\newcommand{\ST}     {{\ensuremath{S_\mathrm{T}}}\xspace} % scalar-sum pt
+\newcommand{\muR}    {{\ensuremath{\mu_\text{R}}\xspace}} % renormalization scale
+\newcommand{\muF}    {{\ensuremath{\mu_\text{F}}\xspace}} % factorization scale
+\newcommand{\mvis}   {{\ensuremath{m_\text{vis}}}\xspace} % visible mass
+\newcommand{\mll}    {{\ensuremath{m_{\ell\ell}}}\xspace}
+\newcommand{\mtauh}  {\ensuremath{m_{\tauh}}\xspace} % tau_h mass
+\newcommand{\mLQ}    {{\ensuremath{m_{\LQ}}}\xspace}
+\newcommand{\Irel}   {\ensuremath{I_\text{rel}}} % relative isolation
+\newcommand{\Njets}  {\ensuremath{N_\text{jets}}\xspace}
+
+% IWN: Statistics
+%\newcommand{\DNLL}{{\ensuremath{-2\Delta\kern-1.3pt\ln\kern-1.2pt\mathcal{L}}}\xspace}
+\newcommand{\CL}{\ensuremath{\text{CL}}\xspace} % needs to be overridden to C.L. for APS. Look out for \CL.
+%\newcommand{\CLs}{\ensuremath{\text{CL}_\text{s}}\xspace}
+%\newcommand{\CLsb}{\ensuremath{\text{CL}_\text{s+b}}\xspace}

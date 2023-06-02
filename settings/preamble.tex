@@ -1,0 +1,197 @@
+%!TEX root = ../thesis.tex
+\RequirePackage{fix-cm} % against warnings for \fontsize
+\documentclass[a4paper,11pt,numbers=noenddot,listof=entryprefix,usegeometry]{scrreprt}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{physics} % for \abs, \dd, ...
+%\usepackage{siunitx} % for \micro, \SI
+\usepackage{slashed}
+\usepackage[T1]{fontenc} % load before inputenc
+\usepackage[utf8]{inputenc}
+\usepackage[scaled]{helvet}
+\usepackage[english]{babel}
+\usepackage{xifthen} % for \ifthenelse, \isempty
+\usepackage{xspace} % for \xspace in macros
+
+%%%% MATRIX
+%%%\usepackage{kbordermatrix}
+%%%\renewcommand{\kbldelim}{(}
+%%%\renewcommand{\kbrdelim}{)}
+
+% FIGURES
+\usepackage{graphicx} %[pdftex],graphics
+\usepackage{subfig} % conflicts with tocloft
+%\let\subfigure\subfloat% compatibility between subfigure and subfig packages
+\usepackage[format=plain,labelfont=bf,skip=6pt]{caption}
+%\usepackage{capt-of}
+%\usepackage{qtree}
+%\usepackage{wrapfig} % to wrap text around figure
+\usepackage[bottom]{footmisc} % force footnotes below floats
+
+%%% FIGURES numbering
+%%%\newcounter{myfigure}
+%%%\renewcommand{\thefigure}{\arabic{myfigure}}
+%%%\newcounter{mytable}
+%%%\renewcommand{\thetable}{\arabic{mytable}}
+%%%\usepackage{makeidx} \makeindex
+%%%\makeglossary
+
+% TABLE
+\usepackage[table]{xcolor}
+\usepackage{multirow}
+%\usepackage{booktabs} % more options for table shapes
+%\usepackage{topcapt} % for \topcaption
+\newcommand{\topcaption}[1]{\caption{#1}} % dummy
+%\usepackage{floatrow} % to put table and figure side-by-side
+%%%\newfloatcommand{capbtabbox}{table}[][\FBwidth]
+%%%\DeclareFloatVCode{beforefloat}{\vspace{2pt}}
+%%%\DeclareFloatVCode{afterfloat}{\vspace{-10pt}}
+%%%\floatsetup[table]{capposition=top,captionskip=0pt} %,precode=beforefloat,postcode=afterfloat
+%%%\usepackage{cellspace} % for \cellspacetoplimit, \cellspacebottomlimit
+%%%\setlength\cellspacetoplimit{100pt}
+%%%\setlength\cellspacebottomlimit{100pt}
+
+% FLOAT SPACING
+% https://tex.stackexchange.com/questions/23313/how-can-i-reduce-padding-after-figure
+\setlength{\floatsep}{8pt plus 3pt minus 3pt} % space left between floats 
+\setlength{\textfloatsep}{9pt plus 3pt minus 3pt} % space between last top float or first bottom float and the text
+\setlength{\abovecaptionskip}{2pt plus 2pt minus 2pt} % vertical space between caption & fig
+\setlength{\belowcaptionskip}{2pt plus 2pt minus 2pt} % vertical space between caption & fig
+
+%%% PDF
+%%%\usepackage{pdfpages} % for \includepdf for title page (load after table package)
+%%%\usepackage{tikz} % for drawing, load after multirow to avoid conflict
+
+% REFERENCES
+\usepackage[square,numbers,sort&compress]{natbib} % more options for citations, e.g. square brackets
+\renewcommand{\bibsection}{}
+%\setlength{\bibitemsep}{10pt} % bibtex
+\setlength{\bibsep}{0.5\baselineskip} % natbib
+
+% METADATA
+\usepackage[hyperfootnotes=false]{hyperref} % for url hyperlinks; load last to prevent problems %,pagebackref=true
+\hypersetup{%
+  pdfauthor={Izaak W. Neutelings},
+  pdftitle={Search for leptoquarks at the CMS detector},
+  pdfsubject={Izaak Neutelings PhD thesis - Search for leptoquarks at the CMS detector},
+  pdfkeywords={particle physics,CERN,Run 2,CMS,13 TeV,ditau,di-tau,bottom quark,b quark,b jet,b tag,single,pair,resonance,nonresonant,leptoquark},
+  %pdfborder={111}, % for hyperlinks in pdf
+  %linkcolor={red!50!black},
+  %citecolor={red!50!black},
+  %urlcolor={blue!80!black}
+}
+
+%%%% FEYNMAN FIGURES
+%%%\usepackage{feynmp}
+%%%\DeclareGraphicsRule{*}{mps}{*}{}
+%%%\makeatletter
+%%%\def\endfmffile{
+%%%  \fmfcmd{\p@rcent\space the end.^^J end.^^J endinput;}
+%%%  \if@fmfio
+%%%    \immediate\closeout\@outfmf
+%%%  \fi
+%%%  %\ifnum\pdfshellescape=\@ne
+%%%  \ifnum\pdfshellescape>\z@
+%%%    \immediate\write18{mpost \thefmffile}
+%%%  \fi}
+%%%\makeatother
+
+%%% TOC % does not work well with the KOMA class (scrreprt)
+%%\usepackage[subfigure,titles]{tocloft}
+%%\setlength{\cftbeforechapskip}{0.8em}
+%%%\setlength{\cftbeforechapskip}{0.8em}
+%%\setlength{\cftsecindent}{1.6em}
+%%\setlength{\cftsecnumwidth}{2.6em}
+%%\setlength{\cftsubsecindent}{4.2em}
+%%\setlength{\cftsubsecnumwidth}{3.0em}
+%%\setlength{\cftsubsubsecindent}{4.5em}
+%%\setlength{\cftsubsubsecnumwidth}{4em}
+
+% PAGE LAYOUT & MARGINS
+\usepackage{geometry} % WARNING: add 'usegeometry' option to \documentclass for scrreprt class
+\setlength{\topmargin}{-1.2cm}
+%\setlength{\bottommargin}{-1.2cm}
+\setlength{\oddsidemargin}{0.2cm}
+\setlength{\evensidemargin}{0.2cm}
+\setlength{\textheight}{25cm}
+\setlength{\textwidth}{16cm}
+\setlength{\footskip}{1.2cm} 
+\setlength{\footnotesep}{0.4cm}
+
+%%%% HEADER & FOOTER
+%%%\usepackage{fancyhdr}
+%%%\pagestyle{fancy} 
+%%%\fancyhf{}
+%%%
+%%%% Lines after a header or before a footer
+%%%%\renewcommand{\footrulewidth}{0.4pt}
+%%%\renewcommand{\headrulewidth}{0.4pt}
+%%%
+%%%\fancyhead[L]{\footnotesize{\leftmark}}
+%%%\fancyhead[R]{}
+%%%\fancyfoot[C]{\footnotesize{\thepage}}
+%%%
+%%%% Plain pagestyle for first chapter page
+%%%\fancypagestyle{plain}{%
+%%%  \fancyhf{} 
+%%%  \renewcommand{\headrulewidth}{0pt}
+%%%  \fancyfoot[C]{\footnotesize{\thepage}}
+%%%}
+
+% PARAGRAPH SPACING
+\parskip=0cm
+\parindent=0.5cm
+
+% LINE SPACING
+\usepackage{lineno} % line numbers
+\usepackage[nodisplayskipstretch]{setspace}
+%\onehalfspacing %\doublespace or \singlespace
+\setstretch{1.15}
+%\setdisplayskipstretch{1} % override \setstretch for equations
+%\linespread{1.15} % without setspace package
+
+% EQUATIONS SPACING
+\AtBeginDocument{%
+ \setlength{\belowdisplayskip}{9pt}%
+ \setlength{\belowdisplayshortskip}{9pt}%
+ \setlength{\abovedisplayskip}{9pt}%
+ \setlength{\abovedisplayshortskip}{9pt}%
+}
+
+% BOLD MATH in section titles
+% https://tex.stackexchange.com/questions/41379/automatically-typeset-math-in-section-headings-in-bold-face
+\makeatletter
+\g@addto@macro\bfseries{\boldmath}
+\makeatother
+
+% CHAPTER NUMBERING macro
+\newcommand{\newchap}[1]{
+  \chapter{#1}
+  \markboth {Chapter \thechapter.  {#1}}{Chapter \thechapter.  {#1}}
+}
+
+% NUMBERING LEVEL
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{2}
+%\setcounter{lofdepth}{1} 
+
+% FOOTNOTES
+%\newcounter{myfootnote}[chapter]
+%\renewcommand{\thefootnote}{\themyfootnote}
+%\newcommand{\myfootnote}[1]{\stepcounter{myfootnote}\footnote{#1}}
+
+% LISTS (itemize, enumerate) spacing
+\usepackage{enumitem}
+\setlist[enumerate]{itemsep=0pt,topsep=6pt}
+\setitemize{itemsep=0pt,topsep=6pt}
+%%%\renewenvironment{itemize}%
+%%%  {\begin{list}{$\bullet$}{%
+%%%    \setlength{\topsep}{5pt}%
+%%%    %\setlength{\botsep}{5pt}%
+%%%    \setlength{\partopsep}{2pt}%
+%%%    \setlength{\parsep}{0.5\parskip}%
+%%%    \setlength{\itemsep}{2pt}%
+%%%    \setlength{\leftmargin}{7ex}%
+%%%    \setlength{\rightmargin}{3ex}%
+%%%  }}{\end{list}}%
