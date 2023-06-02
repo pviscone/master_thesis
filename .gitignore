@@ -1,1 +1,9 @@
-main.pdf
+thesis.pdf
+*.aux
+*.log
+*.out
+*.toc
+*.gz
+.DS_Store
+thesis.b*
+thesis_*
