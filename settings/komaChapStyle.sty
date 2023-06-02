@@ -1,0 +1,568 @@
+
+%%              %%
+% IDENTIFICATION %
+% ============== %
+
+
+
+% Version of LaTeX required
+% -------------------------
+\NeedsTeXFormat{LaTeX2e}
+
+% Package declaration
+% ------------------- 
+\ProvidesPackage{komaChapStyle}[2019/09/25 Chapter styles for the KOMA-Script bundle. Assumes that scrbook or scrreprt is loaded.]
+
+
+
+%%                        %%
+% PRELIMINARY DECLARATIONS %
+% ======================== %
+
+
+
+% Loading 'kvoptions' package to manage key=value options
+% -------------------------------------------------------
+\RequirePackage{kvoptions}
+
+% Loading 'etoolbox' for programming facilities
+% ---------------------------------------------
+\RequirePackage{etoolbox}
+
+
+
+%%       %%
+% OPTIONS %
+% ======= %
+
+
+
+% Setup key=value options
+% -----------------------
+\SetupKeyvalOptions{
+	family=kps,
+	prefix=kps@
+}
+
+
+% New options
+% -----------
+\DeclareStringOption{chapterstyle}[default]
+\DeclareStringOption{headings}
+
+\DeclareBoolOption[false]{framedChapterHead}
+\DeclareBoolOption[false]{framedChapterTitle}
+\DeclareBoolOption[false]{overlinedChapterTitle}
+\DeclareBoolOption[false]{underlinedChapterTitle}
+
+
+% Management of not explicitly declared options (default: error)
+% ---------------------------------------------
+%\DeclareDefaultOption{code}
+
+
+% Processing the options
+% ----------------------
+\ProcessKeyvalOptions{kps}\relax
+
+
+
+%%                 %%
+% CORE DECLARATIONS %
+% ================= %
+
+
+
+% Call to specific packages
+% -------------------------
+
+\RequirePackage{fmtcount}
+\RequirePackage{xcolor}
+
+\definecolor{ChapGrey}{rgb}{0.6,0.6,0.6}
+
+
+% Define size relative to the KOMA-Script 'headings' option
+% ---------------------------------------------------------
+
+% (default: headings=big)
+\newcommand*{\tinierSizeHeadings}{\Large}
+\newcommand*{\lowerSizeHeadings}{\LARGE}
+\newcommand*{\normalSizeHeadings}{\huge}
+\newcommand*{\biggerSizeHeadings}{\Huge}
+\newcommand*{\hugerSizeHeadings}{\fontsize{30}{36}\selectfont}
+\newcommand*{\giganticSizeHeadings}{\fontsize{40}{48}\selectfont}
+\newcommand*{\gargantuaSizeHeadings}{\fontsize{60}{72}\selectfont}
+\newcommand*{\titanicSizeHeadings}{\fontsize{80}{96}\selectfont}
+
+\ifdefstring{\kps@headings}{big}{% if true
+	\relax
+}{}
+
+% Small size font
+\ifdefstring{\kps@headings}{normal}{% if true
+	\renewcommand*{\tinierSizeHeadings}{\large}
+	\renewcommand*{\lowerSizeHeadings}{\Large}
+	\renewcommand*{\normalSizeHeadings}{\LARGE}
+	\renewcommand*{\biggerSizeHeadings}{\huge}
+	\renewcommand*{\hugerSizeHeadings}{\Huge}
+}{}
+
+% Even smaller
+\ifdefstring{\kps@headings}{small}{% if true
+	\renewcommand*{\tinierSizeHeadings}{\normalsize}
+	\renewcommand*{\lowerSizeHeadings}{\large}
+	\renewcommand*{\normalSizeHeadings}{\Large}
+	\renewcommand*{\biggerSizeHeadings}{\LARGE}
+	\renewcommand*{\hugerSizeHeadings}{\huge}
+}{}
+
+
+% Defining the styles
+% -------------------
+
+% 'default'
+\ifdefstring{\kps@chapterstyle}{default}{% if true
+	\relax
+}{% else
+	\relax
+}
+
+% 'standard' (standard class like style)
+\ifdefstring{\kps@chapterstyle}{standard}{% if true
+	% Write chapter prefix
+	\KOMAoption{chapterprefix}{true}
+	% Chapter: normal font, bold
+	\addtokomafont{chapter}{\normalfont\bfseries}
+	% Increase space between chapter prefix and chapter title
+	\RedeclareSectionCommand[innerskip=1.0\baselineskip]{chapter}
+	% Remove the dot after chapter prefix
+	\renewcommand*{\chapterformat}{%
+		\mbox{\chapappifchapterprefix{\nobreakspace}\thechapter
+			\IfUsePrefixLine{}{\enskip}}%
+	}
+}{}
+
+
+%%%%%
+% B %
+%%%%%
+
+% 'bianchi'
+\ifdefstring{\kps@chapterstyle}{bianchi}{% if true
+	% Write chapter prefix
+	\KOMAoption{chapterprefix}{true}
+	% Chapter prefix: italic, medium weight, lower size
+	\addtokomafont{chapterprefix}{\lowerSizeHeadings\mdseries\itshape}
+	% Chapter number: bigger than prefix, normal font, italic
+	\newcommand*{\thehackedchapter}{\normalSizeHeadings\normalfont\itshape\thechapter}
+	% Ragged: centered
+	\renewcommand{\raggedchapter}{\centering}
+	% Remove the dot after chapter prefix
+	\renewcommand*{\chapterformat}{%
+		\mbox{\chapappifchapterprefix{\nobreakspace}\thehackedchapter
+			\IfUsePrefixLine{}{\enskip}}%
+	}
+	% Chapter title: frame
+	\kps@framedChapterTitletrue
+}{}
+
+\ifdefstring{\kps@chapterstyle}{BigNum}{% if true
+	% Write chapter prefix
+	\KOMAoption{chapterprefix}{true}
+	% Increase space between chapter prefix and chapter title
+	\RedeclareSectionCommand[innerskip=1.5\baselineskip]{chapter}
+	% Chapter: italic
+	\addtokomafont{chapter}{\itshape}
+	% Chapter prefix: lower font
+	\addtokomafont{chapterprefix}{\tinierSizeHeadings}
+	% Chapter number: bigger than prefix, upright
+	\newcommand*{\thehackedchapter}{\gargantuaSizeHeadings\upshape\thechapter}
+	% Remove the dot after chapter prefix, chapter number on new line
+	\renewcommand*{\chapterformat}{%
+		\mbox{\chapappifchapterprefix{}}\par\nobreak\vskip 2ex
+		\mbox{\enskip\thehackedchapter
+			\IfUsePrefixLine{}{\enskip}}%
+	}
+}{}
+
+% 'brotherton' (note: relies on the fmtcount package)
+\ifdefstring{\kps@chapterstyle}{brotherton}{% if true
+	% Write chapter prefix
+	\KOMAoption{chapterprefix}{true}
+	% Chapter: normal font, bold
+	\addtokomafont{chapter}{\normalfont\bfseries}
+	% Increase space between chapter prefix and chapter title
+	\RedeclareSectionCommand[innerskip=1.0\baselineskip]{chapter}
+	% Remove the dot after chapter prefix, chapter number in text
+	\renewcommand*{\chapterformat}{%
+		\mbox{\chapappifchapterprefix{\nobreakspace}\Numberstring{chapter}
+			\IfUsePrefixLine{}{\enskip}}%
+	}
+	% Restore the default numbering (letters) for appendix
+	\newcommand*{\appendixmore}{%
+		\renewcommand*{\chapterformat}{%
+			\mbox{\chapappifchapterprefix{\nobreakspace}\thechapter
+				\IfUsePrefixLine{}{\enskip}}%
+		}
+	}
+}{}
+
+
+%%%%%
+% C %
+%%%%%
+
+% 'chappell'
+\ifdefstring{\kps@chapterstyle}{chappell}{% if true
+	% Write chapter prefix
+	\KOMAoption{chapterprefix}{true}
+	% Chapter: normal font, medium weight, smaller size, italic
+	\addtokomafont{chapter}{\lowerSizeHeadings\normalfont\mdseries\itshape}
+	% Chapter prefix: same as chapter but upright shape
+	\setkomafont{chapterprefix}{\usekomafont{chapter}\upshape}
+	% Ragged: centered
+	\renewcommand{\raggedchapter}{\centering}
+	% Remove the dot after chapter prefix
+	\renewcommand*{\chapterformat}{%
+		\mbox{\chapappifchapterprefix{\nobreakspace}\thechapter
+			\IfUsePrefixLine{}{\enskip}}%
+	}
+	% Chapter title: overlined
+	\kps@overlinedChapterTitletrue
+}{}
+
+% 'culver'
+\ifdefstring{\kps@chapterstyle}{culver}{% if true
+	% Chapter: normal font, bold, lower size
+	\addtokomafont{chapter}{\lowerSizeHeadings\normalfont\bfseries}
+	% Ragged: centered
+	\renewcommand{\raggedchapter}{\centering}
+	% Chapter numbering: Roman
+	\renewcommand*{\thechapter}{\Roman{chapter}}
+	% Remove the dot after chapter prefix
+	\renewcommand*{\chapterformat}{\mbox{\thechapter\enskip}}
+}{}
+
+
+%%%%%
+% D %
+%%%%%
+
+% 'dash'
+\ifdefstring{\kps@chapterstyle}{dash}{% if true
+	% Write chapter prefix
+	\KOMAoption{chapterprefix}{true}
+	% Chapter: normal font, medium weight, lower size
+	\addtokomafont{chapter}{\lowerSizeHeadings\normalfont\mdseries}
+	% Ragged: centered
+	\renewcommand{\raggedchapter}{\centering}
+	% Remove Chapter/Appendix and the dot, surround the number with dash
+	\renewcommand*{\chapterformat}{%
+		\mbox{---\nobreakspace\thechapter\nobreakspace---
+			\IfUsePrefixLine{}{\enskip}}%
+	}
+}{}
+
+% 'demo'
+\ifdefstring{\kps@chapterstyle}{demo}{% if true
+	% Write chapter prefix
+	\KOMAoption{chapterprefix}{true}
+	% Chapter prefix: normal font, bold, centered
+	\addtokomafont{chapterprefix}{\normalfont\bfseries\centering}
+	% Chapter: medium weight
+	\addtokomafont{chapter}{\mdseries}
+	% Ragged: aligned to the right margin
+	\renewcommand{\raggedchapter}{\raggedleft}
+	% Remove Chapter/Appendix and the dot, number in text, 
+	\renewcommand*{\chapterformat}{%
+		\mbox{\Numberstring{chapter}
+			\IfUsePrefixLine{}{\enskip}}%
+	}
+	% Restore the default numbering (letters) for appendix
+	\newcommand*{\appendixmore}{%
+		\renewcommand*{\chapterformat}{%
+			\mbox{\thechapter
+				\IfUsePrefixLine{}{\enskip}}%
+		}
+	}
+	% Chapter title: frame
+	\kps@framedChapterTitletrue
+}{}
+
+% 'dowding'
+\ifdefstring{\kps@chapterstyle}{dowding}{% if true
+	% Write chapter prefix
+	\KOMAoption{chapterprefix}{true}
+	% Chapter: normal font, medium weight, italic
+	\addtokomafont{chapter}{\normalfont\mdseries\itshape}
+	% Chapter prefix: medium weight, lower size
+	\addtokomafont{chapterprefix}{\tinierSizeHeadings\mdseries\upshape}
+	% Increase space between chapter prefix and chapter title
+	\RedeclareSectionCommand[innerskip=1.5\baselineskip]{chapter}
+	% Ragged: centered
+	\renewcommand{\raggedchapter}{\centering}
+	% Remove the dot after chapter prefix, chapter number in text
+	\renewcommand*{\chapterformat}{%
+		\mbox{\chapappifchapterprefix{\nobreakspace}\Numberstring{chapter}
+			\IfUsePrefixLine{}{\enskip}}%
+	}
+	% Restore the default numbering (letters) for appendix
+	\newcommand*{\appendixmore}{%
+		\renewcommand*{\chapterformat}{%
+			\mbox{\chapappifchapterprefix{\nobreakspace}\thechapter
+				\IfUsePrefixLine{}{\enskip}}%
+		}
+	}
+}{}
+
+
+%%%%%
+% G %
+%%%%%
+
+\ifdefstring{\kps@chapterstyle}{ger}{% if true
+	% Write chapter prefix
+	\KOMAoption{chapterprefix}{true}
+	% Chapter: normal font, bold
+	\addtokomafont{chapter}{\normalfont\bfseries}
+	% Increase space between chapter prefix and chapter title
+	\RedeclareSectionCommand[innerskip=1.0\baselineskip]{chapter}
+	% Remove the dot after chapter prefix
+	\renewcommand*{\chapterformat}{%
+		\mbox{\chapappifchapterprefix{\nobreakspace}\thechapter
+			\IfUsePrefixLine{}{\enskip}}%
+	}
+	% Chapter title: frame
+	\kps@framedChapterHeadtrue
+}{}
+
+\ifdefstring{\kps@chapterstyle}{GreyNum}{% if true
+	% Write chapter prefix
+	\KOMAoption{chapterprefix}{true}
+	% Increase space between chapter prefix and chapter title
+	\RedeclareSectionCommand[innerskip=1.5\baselineskip]{chapter}
+	% Chapter: italic
+	\addtokomafont{chapter}{\itshape}
+	% Chapter prefix: lower font
+	\addtokomafont{chapterprefix}{\tinierSizeHeadings}
+	% Chapter number: bigger than prefix, grey color, upright
+	\newcommand*{\thehackedchapter}{\gargantuaSizeHeadings\upshape\color{ChapGrey}\thechapter}
+	% Remove the dot after chapter prefix, chapter number on new line
+	\renewcommand*{\chapterformat}{%
+		\mbox{\chapappifchapterprefix{}}\par\nobreak\vskip 2ex
+		\mbox{\enskip\thehackedchapter
+			\IfUsePrefixLine{}{\enskip}}%
+	}
+}{}
+
+
+%%%%%
+% H %
+%%%%%
+
+% 'hangnum'
+\ifdefstring{\kps@chapterstyle}{hangnum}{% if true
+	% Chapter: normal font, bold
+	\addtokomafont{chapter}{\normalfont\bfseries}
+	% Chapter number: in left margin
+	\renewcommand*{\chapterformat}{%
+		\makebox[0pt][r]{\thechapter\enskip\enskip}%
+	}
+}{}
+
+
+%%%%%
+% J %
+%%%%%
+
+% 'jenor'
+%
+
+
+%%%%%
+% L %
+%%%%%
+
+\ifdefstring{\kps@chapterstyle}{lyhne}{% if true
+	% Write chapter prefix
+	\KOMAoption{chapterprefix}{true}
+	% Chapter prefix: normal font, small caps
+	\addtokomafont{chapterprefix}{\tinierSizeHeadings\normalfont\scshape}
+	% Chapter number: bigger than prefix, normal font, italic
+	\newcommand*{\thehackedchapter}{\lowerSizeHeadings\normalfont\bfseries\thechapter}
+	% Chapter: lower font
+	\addtokomafont{chapter}{\tinierSizeHeadings}
+	% Ragged: aligned to the right margin
+	\renewcommand{\raggedchapter}{\raggedleft}
+	% Remove the dot after chapter prefix, chapter number in the right margin
+	\renewcommand*{\chapterformat}{%
+		\mbox{\chapapp}%
+		\makebox[0pt][l]{\nobreakspace\thehackedchapter}%
+	}
+	% Chapter title: frame
+	\kps@framedChapterTitletrue
+}{}
+
+
+%%%%%
+% M %
+%%%%%
+
+% 'madsen'
+\ifdefstring{\kps@chapterstyle}{madsen}{% if true
+	% Write chapter prefix
+	\KOMAoption{chapterprefix}{true}
+	% Chapter prefix: normal font, small caps
+	\addtokomafont{chapterprefix}{\lowerSizeHeadings\normalfont\scshape}
+	% Chapter number: bigger than prefix, normal font, italic
+	\newcommand*{\thehackedchapter}{\giganticSizeHeadings\normalfont\bfseries\thechapter}
+	% Ragged: aligned to the right margin
+	\renewcommand{\raggedchapter}{\raggedleft}
+	% Remove the dot after chapter prefix, chapter number in the right margin
+	\renewcommand*{\chapterformat}{%
+		\mbox{\chapapp}%
+		\makebox[0pt][l]{\nobreakspace\thehackedchapter}%
+	}
+	% Chapter title: overlined
+	\kps@overlinedChapterTitletrue
+}{}
+
+
+%%%%%
+% P %
+%%%%%
+
+\ifdefstring{\kps@chapterstyle}{pedersen}{% if true
+	% Write chapter prefix
+	\KOMAoption{chapterprefix}{true}
+	% Chapter: normal font, lower font, italic
+	\addtokomafont{chapter}{\normalfont\lowerSizeHeadings\itshape}
+	% Chapter prefix: right-aligned
+	\addtokomafont{chapterprefix}{\raggedleft}
+	% Chapter number: bigger than prefix
+	\newcommand*{\thehackedchapter}{\gargantuaSizeHeadings\thechapter}
+	% Remove the dot and the chapter prefix, chapter number in the right margin
+	\renewcommand*{\chapterformat}{%
+		\makebox[0pt][l]{\nobreakspace\thehackedchapter}%
+	}
+}{}
+
+
+%%%%%
+% V %
+%%%%%
+
+\ifdefstring{\kps@chapterstyle}{VZ23}{% if true
+	% Write chapter prefix
+	\KOMAoption{chapterprefix}{true}
+	% Chapter: normal font, bold
+	\addtokomafont{chapter}{\normalfont\bfseries}
+	% Ragged: centered
+	\renewcommand{\raggedchapter}{\centering}
+	% Remove the dot and the chapter prefix, keep the chapter number
+	\renewcommand*{\chapterformat}{%
+		\mbox{\thechapter\IfUsePrefixLine{}{\enskip}}%
+	}
+	% Chapter title: overlined
+	\kps@overlinedChapterTitletrue
+}{}
+
+
+%%%%%
+% W %
+%%%%%
+
+\ifdefstring{\kps@chapterstyle}{wilsondob}{% if true
+	% Chapter: normal font, italic
+	\addtokomafont{chapter}{\normalfont\normalSizeHeadings\itshape}
+	% Ragged: right-aligned
+	\renewcommand{\raggedchapter}{\raggedleft}
+	% Remove the dot after chapter prefix
+	\renewcommand*{\chapterformat}{%
+		\mbox{\chapappifchapterprefix{\nobreakspace}\thechapter
+			\IfUsePrefixLine{}{\enskip\enskip}}%
+	}
+}{}
+
+
+
+% Generic styles
+% --------------
+
+
+% Framed chapter heading
+\ifbool{kps@framedChapterHead}{% if true
+	% Draw lines before and after the chapter text
+	\renewcommand{\chapterlinesformat}[3]{%
+		\rule{\textwidth}{1pt}\nopagebreak\\%
+		\raggedchapter
+		\@hangfrom{#2}#3\nopagebreak%
+		\rule{\textwidth}{1pt}
+	}
+	\renewcommand{\chapterlineswithprefixformat}[3]{%
+		\rule{\textwidth}{1pt}\nopagebreak\\%
+		\raggedchapter
+		#2%
+		#3\nopagebreak%
+		\rule{\textwidth}{1pt}
+	}
+}{}
+
+% Framed chapter title
+\ifbool{kps@framedChapterTitle}{% if true
+	% Draw lines before and after the chapter text
+	\renewcommand{\chapterlinesformat}[3]{%
+		\raggedchapter
+		\rule{\textwidth}{1pt}\nopagebreak\\%
+		\@hangfrom{#2}#3\nopagebreak%
+		\rule{\textwidth}{1pt}
+	}
+	\renewcommand{\chapterlineswithprefixformat}[3]{%
+		\raggedchapter
+		#2%
+		\rule{\textwidth}{1pt}\nopagebreak\\%
+		#3\nopagebreak%
+		\rule{\textwidth}{1pt}
+	}
+}{}
+
+% Overlined chapter title
+\ifbool{kps@overlinedChapterTitle}{% if true
+	% Draw line before the chapter text
+	\renewcommand{\chapterlinesformat}[3]{%
+		\raggedchapter
+		\rule{\textwidth}{1pt}\nopagebreak\\%
+		\@hangfrom{#2}#3%
+	}
+	\renewcommand{\chapterlineswithprefixformat}[3]{%
+		\raggedchapter
+		#2%
+		\rule{\textwidth}{1pt}\nopagebreak\\%
+		#3%
+	}
+}{}
+
+% Underlined chapter title
+\ifbool{kps@underlinedChapterTitle}{% if true
+	% Draw line after the chapter text
+	\renewcommand{\chapterlinesformat}[3]{%
+		\raggedchapter
+		\@hangfrom{#2}#3\nopagebreak%
+		\rule{\textwidth}{1pt}
+	}
+	\renewcommand{\chapterlineswithprefixformat}[3]{%
+		\raggedchapter
+		#2#3\nopagebreak%
+		\rule{\textwidth}{1pt}
+	}
+}{}
+
+
+
+% TEMPLATE
+% --------
+
+%\ifdefstring{\kps@chapterstyle}{style}{% if true
+%	%TODO
+%}{}
