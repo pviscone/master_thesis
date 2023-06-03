@@ -1,4 +1,3 @@
-% Author: Izaak Neutelings (February 2023)
 % Description: PhD template for CMS UZH group
 % !TEX root = ./thesis.tex
 % SETTINGS
@@ -11,8 +10,10 @@
 \lhead{\rightmark}
 \rhead{\textbf{\thepage}}
 \fancyfoot{}
-
 \usepackage[chapterstyle=bianchi,headings=big]{settings/komaChapStyle}
+\usepackage{lipsum}
+
+
 
 
 \begin{document}
@@ -26,6 +27,10 @@
 % ABSTRACT & ACKNOWLEDGEMENTS
 \linenumbers % for review (remove in final version!)
 \include{sections/abstract} % abstract
+\include{sections/acronyms} 
+
+% abbreviations & acronyms
+
 %\include{sections/acknow} % acknowledgements
 
 % TABLE OF CONTENT
@@ -37,7 +42,12 @@
 \newpage % force arabic number in first chapter after table of contents
 \pagenumbering{arabic}
 \include{sections/chap01-introduction}
-
+\include{sections/theory}
+\include{sections/cms}
+\include{sections/reconstruction}
+\include{sections/stats}
+\include{sections/analysis}
+\include{sections/conclusions}
 
 % REFERENCES
 \include{sections/references}
