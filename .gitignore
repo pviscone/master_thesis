@@ -1,5 +1,11 @@
 thesis.pdf
 *.aux
+*.acn
+*.glo
+*.glsdefs
+*.ist
+*.suc
+*.syc
 *.log
 *.out
 *.toc
