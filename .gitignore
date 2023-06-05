@@ -1,4 +1,4 @@
-thesis.pdf
+#thesis.pdf
 *.aux
 *.acn
 *.glo
@@ -11,6 +11,9 @@ thesis.pdf
 *.toc
 *.gz
 *.fls
+*.maf
+*.mtc
+*.mtc0
 *.fdb_latexmk
 .DS_Store
 thesis.b*
