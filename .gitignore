@@ -9,11 +9,11 @@
 *.log
 *.out
 *.toc
+*.ptc
 *.gz
 *.fls
 *.maf
-*.mtc
-*.mtc0
+*.mtc*
 *.fdb_latexmk
 .DS_Store
 thesis.b*

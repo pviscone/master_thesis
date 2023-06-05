@@ -10,7 +10,7 @@
 \NeedsTeXFormat{LaTeX2e}
 
 % Package declaration
-% ------------------- 
+% -------------------
 \ProvidesPackage{komaChapStyle}[2019/09/25 Chapter styles for the KOMA-Script bundle. Assumes that scrbook or scrreprt is loaded.]
 
 
@@ -274,7 +274,7 @@
 	\addtokomafont{chapter}{\mdseries}
 	% Ragged: aligned to the right margin
 	\renewcommand{\raggedchapter}{\raggedleft}
-	% Remove Chapter/Appendix and the dot, number in text, 
+	% Remove Chapter/Appendix and the dot, number in text,
 	\renewcommand*{\chapterformat}{%
 		\mbox{\Numberstring{chapter}
 			\IfUsePrefixLine{}{\enskip}}%
@@ -409,14 +409,18 @@
 % M %
 %%%%%
 
+
 % 'madsen'
 \ifdefstring{\kps@chapterstyle}{madsen}{% if true
 	% Write chapter prefix
 	\KOMAoption{chapterprefix}{true}
 	% Chapter prefix: normal font, small caps
-	\addtokomafont{chapterprefix}{\lowerSizeHeadings\normalfont\scshape}
+	\addtokomafont{chapterprefix}{\color{myblue}}{\lowerSizeHeadings\normalfont\scshape}
 	% Chapter number: bigger than prefix, normal font, italic
 	\newcommand*{\thehackedchapter}{\giganticSizeHeadings\normalfont\bfseries\thechapter}
+	%color chapter
+
+
 	% Ragged: aligned to the right margin
 	\renewcommand{\raggedchapter}{\raggedleft}
 	% Remove the dot after chapter prefix, chapter number in the right margin

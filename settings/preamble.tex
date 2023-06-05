@@ -13,6 +13,9 @@
 \usepackage[english]{babel}
 \usepackage{xifthen} % for \ifthenelse, \isempty
 \usepackage{xspace} % for \xspace in macros
+\usepackage{lipsum}
+
+
 
 %%%% MATRIX
 %%%\usepackage{kbordermatrix}
@@ -70,15 +73,18 @@
 \setlength{\bibsep}{0.5\baselineskip} % natbib
 
 % METADATA
-\usepackage[hyperfootnotes=false]{hyperref} % for url hyperlinks; load last to prevent problems %,pagebackref=true
+\definecolor{myblue}{RGB}{0,82,155}
+
+\usepackage[hyperfootnotes=true,linktoc=all]{hyperref} % for url hyperlinks; load last to prevent problems %,pagebackref=true
 \hypersetup{%
-  pdfauthor={Izaak W. Neutelings},
-  pdftitle={Search for leptoquarks at the CMS detector},
-  pdfsubject={Izaak Neutelings PhD thesis - Search for leptoquarks at the CMS detector},
-  pdfkeywords={particle physics,CERN,Run 2,CMS,13 TeV,ditau,di-tau,bottom quark,b quark,b jet,b tag,single,pair,resonance,nonresonant,leptoquark},
+  pdfauthor={Piero Viscone},
+  pdftitle={Measurement of the $V_{cb}$ CKM element from $t\bar{t}$ semileptonic decays at CMS},
+  pdfsubject={Piero Viscone master thesis - Measurement of the $V_{cb}$ CKM element from $t\bar{t}$ semileptonic decays at CMS},
+  pdfkeywords={},
   %pdfborder={111}, % for hyperlinks in pdf
-  %linkcolor={red!50!black},
-  %citecolor={red!50!black},
+  colorlinks=true,
+  linkcolor={myblue},
+  citecolor={red!80!black},
   %urlcolor={blue!80!black}
 }
 
@@ -120,6 +126,13 @@
 \setlength{\footnotesep}{0.4cm}
 
 %%%% HEADER & FOOTER
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{\rightmark}}
+\rhead{\textbf{\thepage}}
+\fancyfoot{}
+\usepackage[chapterstyle=bianchi,headings=big]{settings/komaChapStyle}
 %%%\usepackage{fancyhdr}
 %%%\pagestyle{fancy} 
 %%%\fancyhf{}
@@ -147,7 +160,7 @@
 \usepackage{lineno} % line numbers
 \usepackage[nodisplayskipstretch]{setspace}
 %\onehalfspacing %\doublespace or \singlespace
-\setstretch{1.15}
+\setstretch{1.09}
 %\setdisplayskipstretch{1} % override \setstretch for equations
 %\linespread{1.15} % without setspace package
 
@@ -195,3 +208,24 @@
 %%%    \setlength{\leftmargin}{7ex}%
 %%%    \setlength{\rightmargin}{3ex}%
 %%%  }}{\end{list}}%
+
+%Change the bullet in itemize
+\usepackage{pifont}
+\renewcommand\labelitemi{\ding{228}}
+
+
+% Minitoc
+\usepackage{minitoc}
+
+
+\mtcsettitle{minitoc}{}
+
+
+% Colors
+\definecolor{myblue}{RGB}{0,82,155}
+\renewcommand{\familydefault}{\rmdefault}
+\addtokomafont{chapter}{\color{myblue}\normalfont\huge\bfseries}
+\addtokomafont{section}{\color{myblue}}
+\addtokomafont{subsection}{\color{myblue}}
+\addtokomafont{subsubsection}{\color{myblue}}
+\addtokomafont{chapterentry}{\color{myblue}\normalfont\bfseries}

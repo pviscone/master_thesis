@@ -1,23 +1,19 @@
-% Description: PhD template for CMS UZH group
 % !TEX root = ./thesis.tex
 % SETTINGS
 \input{settings/preamble}
 \input{settings/macros_CMS_TDR.tex} % CMS TDR macros & particle pennames
 \input{settings/macros_user.tex} % user commands
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-\fancyhf{}
-\lhead{\rightmark}
-\rhead{\textbf{\thepage}}
-\fancyfoot{}
-\usepackage[chapterstyle=bianchi,headings=big]{settings/komaChapStyle}
-\usepackage{lipsum}
+%\usepackage{sectsty}
+%\sectionfont{\color{cyan}}
+%\chapterfont{\color{cyan}}
 
 
+
+%\setkomafont{chapter}{\normalfont\huge\bfseries}
 
 
 \begin{document}
-
+\dominitoc
 % TITLE PAGE
 \pagenumbering{roman}
 \input{sections/Frontespizio.tex}
@@ -42,12 +38,12 @@
 \newpage % force arabic number in first chapter after table of contents
 \pagenumbering{arabic}
 \include{sections/chap01-introduction}
-\include{sections/theory}
-\include{sections/cms}
-\include{sections/reconstruction}
-\include{sections/stats}
-\include{sections/analysis}
-\include{sections/conclusions}
+\include{sections/chap02-theory}
+\include{sections/chap03-cms}
+\include{sections/chap04-reconstruction}
+\include{sections/chap05-stats}
+\include{sections/chap06-analysis}
+\include{sections/chap07-conclusions}
 
 % REFERENCES
 \include{sections/references}
