@@ -1,33 +1,25 @@
 % !TEX root = ./thesis.tex
 % SETTINGS
+
 \input{settings/preamble}
 \input{settings/macros_CMS_TDR.tex} % CMS TDR macros & particle pennames
 \input{settings/macros_user.tex} % user commands
-%\usepackage{sectsty}
-%\sectionfont{\color{cyan}}
-%\chapterfont{\color{cyan}}
-
-
-
-%\setkomafont{chapter}{\normalfont\huge\bfseries}
-
 
 \begin{document}
 \dominitoc
 % TITLE PAGE
 \pagenumbering{roman}
 \input{sections/Frontespizio.tex}
-%\input{sections/Frontespizio.tex}
-%\includepdf{titlepage/titlepage_UZH_PhD.pdf} % load PDF from MS Word template
+
+
+%\linenumbers %! for review (remove in final version!)
 
 % ABSTRACT & ACKNOWLEDGEMENTS
-\linenumbers % for review (remove in final version!)
 \include{sections/abstract} % abstract
-\include{sections/acronyms} 
+
 
 % abbreviations & acronyms
-
-%\include{sections/acknow} % acknowledgements
+\include{sections/acronyms} 
 
 % TABLE OF CONTENT
 %\addtocontents{lot}{ \protect\renewcommand*{\protect\addvspace}[1]{} }

@@ -1,6 +1,6 @@
 %!TEX root = ../thesis.tex
 \RequirePackage{fix-cm} % against warnings for \fontsize
-\documentclass[a4paper,11pt,numbers=noenddot,listof=entryprefix,usegeometry,open=right,headings=big,pairskip=half]{scrreprt}
+\documentclass[a4paper,12pt,numbers=noenddot,listof=entryprefix,usegeometry,open=right,headings=big,pairskip=half]{scrreprt}
 
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -126,16 +126,21 @@
 \setlength{\footnotesep}{0.4cm}
 
 %%%% HEADER & FOOTER
+
+\usepackage[chapterstyle=bianchi,headings=big]{settings/komaChapStyle}
+
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{}
-\lhead{\textbf{\rightmark}}
+
+\lhead{\nouppercase{\textbf{\rightmark}}}
 \rhead{\textbf{\thepage}}
 \fancyfoot{}
-\usepackage[chapterstyle=bianchi,headings=big]{settings/komaChapStyle}
-%%%\usepackage{fancyhdr}
-%%%\pagestyle{fancy} 
-%%%\fancyhf{}
+
+
+%\usepackage{fancyhdr}
+%\pagestyle{fancy} 
+%\fancyhf{}
 %%%
 %%%% Lines after a header or before a footer
 %%%%\renewcommand{\footrulewidth}{0.4pt}
@@ -190,9 +195,10 @@
 %\setcounter{lofdepth}{1} 
 
 % FOOTNOTES
-%\newcounter{myfootnote}[chapter]
-%\renewcommand{\thefootnote}{\themyfootnote}
-%\newcommand{\myfootnote}[1]{\stepcounter{myfootnote}\footnote{#1}}
+\newcounter{myfootnote}[chapter]
+\renewcommand{\thefootnote}{\themyfootnote}
+\newcommand{\myfootnote}[1]{\stepcounter{myfootnote}\footnote{#1}}
+
 
 % LISTS (itemize, enumerate) spacing
 \usepackage{enumitem}
@@ -219,6 +225,8 @@
 
 
 \mtcsettitle{minitoc}{}
+%spacing minitoc
+\renewcommand{\kernafterminitoc}{\kern0.5\baselineskip\kern0ex}
 
 
 % Colors
