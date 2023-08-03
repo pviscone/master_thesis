@@ -74,7 +74,7 @@ The standard procedure to introduce a global symmetry in the Lagrangian and a Ga
     \item The final Lagrangian now has a global invariance for the Gauge group and for the Noether Theorem there is a conserved charge. Furthermore, in this procedure, another vector massless field arises.
 \end{enumerate}
 \paragraph*{Quantum electrodynamics}
-The simplest case of a Gauge theory is the quantum electrodynamics (QED) in which the Gauge group is \U{1}, a commutative group for which holds $g(x)g(y)=g(y)g(x)$\\
+The simplest case of a Gauge theory is the quantum electrodynamics (QED) \cite{FeynmanQED:Matter} in which the Gauge group is \U{1}, a commutative group for which holds $g(x)g(y)=g(y)g(x)$\\
 The fundamental representation of the \U{1} group is $g(x)=e^{i \alpha(x)}$, \ie a local phase.\\
 Imposing the \U{1} invariance on the Dirac Lagrangian (\Eq{eq:Dirac}), we obtain the QED Lagrangian (\Eq{eq:QED}).\\
 In the SM, all the fermions, except the neutrinos, have an electric charge and are involved in the electromagnetic interaction.
@@ -122,10 +122,57 @@ Trying to build the weak Lagrangian only using the gauging technique described i
 \end{itemize}
 
 \paragraph*{Electroweak unification}\label{sub:EW}
-The electromagnetic and weak interactions were unified in the Glashow-Weinberg-Salam theory \ADDREF based on the $\SU{2} \bigotimes \U(1)$ symmetry group.
+The electromagnetic and weak interactions were unified in the Glashow-Weinberg-Salam theory \ADDREF based on the $\SU{2} \otimes \U(1)$ symmetry group.\\
+We start defining left-handed doublets and right-handed singlets
+\begin{align}
+    Q_{L,i}=\left({u_{L,i}}\atop{d_{L,i}}\right), \quad u_{R,i},\quad d_{R,i} \\
+    \mathcal{L}_{L,i}=\left(\begin{array}{l}{{\nu_{L,i}}}\\ {{\ell_{L,i}}}\end{array}\right),\quad\ell_{R,i}
+\end{align}
+so left-handed particles organize in $\SU{2}$ doubles while right-handed particles in $\SU{2}$ singlets.
+The gauge invariant Lagrangian for the group $\SU{2}\otimes\U{1}$ is:
+\begin{equation}
+{\mathcal{L}}_{E W K}=i\overline{{{L}}}\gamma^{\mu}D_{\mu}L+\overline{{{R}}}i\gamma^{\mu}D_{\mu}R-\frac{1}{4}B^{\mu\nu}B_{\mu\nu}-\frac{1}{4}W_{a}^{\mu\nu}W_{\mu\nu}^{a}
+\end{equation}
+where
+\begin{itemize}
+    \item L and R are the left doublets and the right singlets
+    \item $D_{\mu}=\partial_{\mu}-i{\frac{g^{\prime}}{2}}\hat{Y}B_{\mu}-i g\hat{T}_{i}W_{\mu}^{i}$ is the covariant derivative
+    \item $\hat{Y}$ is the \U{1} generator (the hypercharge operator)
+    \item $\hat{T}_i$ are the three \SU{2} generators (weak isospin operators)
+    \item $B^{\mu\nu}=\partial_{\mu}B_{\nu}-\partial_{\nu}B_{\mu}$, where $B_\mu$ is the \U{1} gauge field
+    \item $W_{\mu\nu}^{i}=\partial_{\mu}W_{\nu}^{i}-\partial_{\nu}W_{\mu}^{i}-g\epsilon^{i j k}W_{\mu}^{j}W_{\nu}^{k}$ where $W^i_\mu$ are the 3 \SU{2} gauge fields and $\epsilon^{ijk}$ the \SU{2} structure constants. 
+\end{itemize}
+The observed W, Z and $\gamma$ bosons can be expressed as a linear combination of the defined gauge fields.
+\begin{gather}
+    W_\mu^{\pm}=(W^1_\mu\pm W^2_\mu)/\sqrt{2}\\
+    \db{A_\mu}{Z_\mu}=\left(\begin{array}{l l}{{\cos\theta_{W}}}&{{\sin\theta_{W}}}\\ {{-\sin\theta_{W}}}&{{\cos\theta_{W}}}\end{array}\right)\db{B_\mu}{W^3_\mu}
+\end{gather}
+where the mixing angle $\theta_W$ is the Weinberg angle, and it can be proven that $\cos(\theta_W)=m_W/m_Z$.\\
+After the mixing, we can break the electroweak Lagrangian in different pieces:
+\begin{equation}
+    \Lg{EWK}=\Lg{kin}+\Lg{QED}+\Lg{wcc}+\Lg{wnc}+\Lg{self}
+\end{equation}
+
+\begin{itemize}
+    \item  $\Lg{kin}$ is the kinetic term (the analog of the Dirac Lagrangian \Eq{eq:Dirac})
+    \item $\Lg{QED}$ is the interaction term of the QED Lagrangian described in section \ref{sub:gauge_qed}
+    \item $\Lg{wcc}$ is the interaction term of the weak charged currents
+    \begin{equation}
+        {\mathcal{L}}_{wcc}\,=\,\frac{g}{2{\sqrt{2}}}\,\left\{W_{\mu}^{\dagger}\,\bar{L}\gamma^{\mu}(1-\gamma_{5})L+\,\dots \right\}
+    \end{equation}
+    the charged weak interactions preserve the vector-axial (V-A) structure and this implies that the $W^\pm$ bosons interact only with the left doublets
+    \item $\Lg{wnc}$ is the interaction term of the weak neutral currents
+    \begin{equation}
+        \Lg{wnc}=\frac{e}{2\sin\theta_{W}\cos\theta_{W}}\,Z_{\mu}\sum_{f}\,\bar{f}\gamma^{\mu}(v_{f}-I^3_{f}\gamma_{5})\,f\;
+    \end{equation}
+    where $I^3_f$ is the weak isospin of the fermion and $v_f=I^{3}_{f}\left(1-4|Q_{f}|\sin^{2}\theta_{W}\right)$.
+    Unlike the W boson, the Z boson interacts both with the left and the right part of the spinor with different couplings depending on the isospin and the charge of the fermion 
+    \item $\Lg{self}$ is the term of self interaction between the gauge bosons
+\end{itemize}
 
 
 \subsection{The Standard Model}\label{sub:SM}
+
 \paragraph*{The Higgs mechanism and the spontaneous symmetry breaking}
 
 \section{The CKM matrix}\label{sec:CKM}
