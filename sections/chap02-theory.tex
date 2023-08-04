@@ -115,8 +115,9 @@ Trying to build the weak Lagrangian only using the gauging technique described i
 \begin{itemize}
     \item The W boson and the Z boson would have the same coupling to the fermions, while this is experimentally wrong. To address this problem, the weak interaction was unified to the electromagnetic interaction.
     \item The W/Z bosons are proven to be massive bosons, while gauge bosons are always massless. The massive term can't be added arbitrary to the Lagrangian because such a theory would be non renormalizable \ADDREF \\
-    Masses have to be added through the Higgs mechanism as described in the section \ref{sub:SM}
-    \item The Weak interaction doesn't couple identically with all the quarks, but the flavours are mixed by the Cabibbo-Kobayashi-Maskawa (CKM) matrix \ADDREF as described in section \ref{sec:CKM}. The elements of the CKM matrix are complex, and this leads to the CP violation.
+    Masses have to be added through the Higgs mechanism as described in the section \ref{sub:SM}.
+    The non-zero W/Z mass is also the reason why the weak interactions have a finite range.
+    \item The Weak interaction doesn't couple identically with all the quarks, but the flavours are mixed by the Cabibbo-Kobayashi-Maskawa (CKM) matrix, \ADDREF as described in section \ref{sec:CKM}. The elements of the CKM matrix are complex, and this leads to the CP violation.
     \item To introduce the parity violation in the Lagrangian, the $\gamma^\mu$ in the interaction term of the Lagrangian has to be replaced with $\gamma^\mu \left(1-\gamma^5 \right)/2 $.\\
     The term $(1-\gamma^5)/2$ is the left chirality projector, and this implies that weak interaction couples only with the left part of the spinor. This will turn to be true only for charged weak interactions, while for neutral weak interactions, the mixing between the photon and the Z boson in the electroweak (EW) unification process will reintroduce the coupling with the right spinors.
 \end{itemize}
@@ -130,8 +131,8 @@ We start defining left-handed doublets and right-handed singlets
 \end{align}
 so left-handed particles organize in $\SU{2}$ doubles while right-handed particles in $\SU{2}$ singlets.
 The gauge invariant Lagrangian for the group $\SU{2}\otimes\U{1}$ is:
-\begin{equation}
-{\mathcal{L}}_{E W K}=i\overline{{{L}}}\gamma^{\mu}D_{\mu}L+\overline{{{R}}}i\gamma^{\mu}D_{\mu}R-\frac{1}{4}B^{\mu\nu}B_{\mu\nu}-\frac{1}{4}W_{a}^{\mu\nu}W_{\mu\nu}^{a}
+\begin{equation}\label{eq:EWK_preunification}
+{\mathcal{L}}=i\overline{{{L}}}\gamma^{\mu}D_{\mu}L+\overline{{{R}}}i\gamma^{\mu}D_{\mu}R-\frac{1}{4}B^{\mu\nu}B_{\mu\nu}-\frac{1}{4}W_{a}^{\mu\nu}W_{\mu\nu}^{a}
 \end{equation}
 where
 \begin{itemize}
@@ -149,32 +150,79 @@ The observed W, Z and $\gamma$ bosons can be expressed as a linear combination o
 \end{gather}
 where the mixing angle $\theta_W$ is the Weinberg angle, and it can be proven that $\cos(\theta_W)=m_W/m_Z$.\\
 After the mixing, we can break the electroweak Lagrangian in different pieces:
-\begin{equation}
-    \Lg{EWK}=\Lg{kin}+\Lg{QED}+\Lg{wcc}+\Lg{wnc}+\Lg{self}
+\begin{equation}\label{eq:EWK}
+    \Lg{EWK}=\Lg{kin}+\Lg{QED}+\Lg{wcc}+\Lg{wnc}+\Lg{gauge}
 \end{equation}
 
 \begin{itemize}
-    \item  $\Lg{kin}$ is the kinetic term (the analog of the Dirac Lagrangian \Eq{eq:Dirac})
+    \item  $\Lg{kin}$ is the fermions kinetic term
     \item $\Lg{QED}$ is the interaction term of the QED Lagrangian described in section \ref{sub:gauge_qed}
     \item $\Lg{wcc}$ is the interaction term of the weak charged currents
     \begin{equation}
         {\mathcal{L}}_{wcc}\,=\,\frac{g}{2{\sqrt{2}}}\,\left\{W_{\mu}^{\dagger}\,\bar{L}\gamma^{\mu}(1-\gamma_{5})L+\,\dots \right\}
     \end{equation}
-    the charged weak interactions preserve the vector-axial (V-A) structure and this implies that the $W^\pm$ bosons interact only with the left doublets
-    \item $\Lg{wnc}$ is the interaction term of the weak neutral currents
+    the charged weak interactions preserve the vector-axial (V-A) structure, and this implies that the $W^\pm$ bosons interact only with the left doublets.\\
+    Furthermore, the charged currents mix the quarks flavours so the terms that involve quarks have to include a unitary matrix, the CKM matrix. (see sec.\ref{sec:CKM})
+    \begin{equation}
+        \Lg{wcc}^q=-\frac{g}{\sqrt{2}}(\overline{{{u}}}_{L},\overline{{{c}}}_{L},\overline{{{t}}}_{L})\gamma^{\mu}W_{\mu}^{+}V_{\mathrm{CKM}}\tb{d_{L}}{s_{L}}{b_L}+h.c.
+    \end{equation}
+    \item $\Lg{wnc}$ is the interaction term of the weak neutral currents,
     \begin{equation}
         \Lg{wnc}=\frac{e}{2\sin\theta_{W}\cos\theta_{W}}\,Z_{\mu}\sum_{f}\,\bar{f}\gamma^{\mu}(v_{f}-I^3_{f}\gamma_{5})\,f\;
     \end{equation}
     where $I^3_f$ is the weak isospin of the fermion and $v_f=I^{3}_{f}\left(1-4|Q_{f}|\sin^{2}\theta_{W}\right)$.
     Unlike the W boson, the Z boson interacts both with the left and the right part of the spinor with different couplings depending on the isospin and the charge of the fermion 
-    \item $\Lg{self}$ is the term of self interaction between the gauge bosons
+    \item $\Lg{gauge}$ is the kinematic part of the Lagrangian related to the Gauge bosons
 \end{itemize}
 
 
-\subsection{The Standard Model}\label{sub:SM}
-
-\paragraph*{The Higgs mechanism and the spontaneous symmetry breaking}
-
+\subsection{The spontaneous symmetry breaking}\label{sub:SM}
+The EW Lagrangian in \Eq{eq:EWK} does not include both the fermions and the boson masses.
+In the S, the W/Z masses are generated by the Higgs-Brout-Englert mechanism \ADDREF.
+Starting from the  $\SU[C]{3} \otimes \SU[L]{2} \otimes \U[Y]{1}$ Lagrangian,
+\begin{equation}
+    \Lg{}=\Lg{kin}+\Lg{QCD}+\Lg{EWK}
+\end{equation}
+we add another term introducing a scalar complex doublet field
+\begin{equation}\label{eq:Higgs_preSSB}
+    \Lg{H}=(D^{\mu}\phi)^{\dagger}(D_{\mu}\phi)-\frac{1}{2}\mu^{2}(\phi^{\dagger}\phi)-\frac{1}{4}\lambda(\phi^{\dagger}\phi)^{2}
+\end{equation}
+where $D_\mu$ is the electroweak covariant derivative defined in \Eq{eq:EWK_preunification} and $\mu^2<0$.
+The last 2 terms form the Higgs potential $V(\phi)$, represented in \Fig{fig:HiggsPotential}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=1\linewidth]{fig/chap02-theory/higgs.pdf}
+    \caption{Higgs potential \cite{HiggsTikZ.net}}
+    \label{fig:HiggsPotential}
+\end{figure}
+The minimum of $V(\phi)$ is not unique, and the choice of a specific minimum for $\phi$ leads to the spontaneous symmetry breaking (SSB) of the $\SU{3} \otimes \SU{2} \otimes \U{1}$ group into the $\SU{3} \otimes \U{1}$ group.\\
+A convenient choice is to pick the ground state of $\phi$ as
+\begin{equation}
+    \langle\phi\rangle=\frac{1}{\sqrt{2}}\db{0}{v}=\frac{1}{\sqrt{2}}\db{0}{\sqrt{\frac{-\mu^2}{\lambda}}}
+\end{equation}
+Developing the Lagrangian in \Eq{eq:Higgs_preSSB} around this minimum, we can redefine the scalar doublet as
+\begin{equation}\label{eq:higgs_intro}
+    \phi=\db{0}{v+H(x)}
+\end{equation}
+where $H(x)$ is the scalar field corresponding to the Higgs boson. Replacing \Eq{eq:higgs_intro} into the \Eq{eq:Higgs_preSSB} the W/Z bosons acquire a mass term with
+\begin{gather}
+    M_{W^\pm}=\frac{1}{2}gv\\
+    M_Z=\frac{M_{W^\pm}}{\cos (\theta_W)}
+\end{gather}
+This also generates the Higgs boson mass $m_H=\sqrt{2\lambda}\mu$, the interactions between the Higgs boson and the vector bosons and the Higgs self-interactions.
+\paragraph*{Fermion masses}
+The Lagrangian $\Lg{}=\Lg{kin}+\Lg{QCD}+\Lg{EWK}+\Lg{H}$ does not contain the fermion masses yet.\\
+The mass terms of the Dirac Lagrangian (\Eq{eq:Dirac}) can't be added directly because the term \(-m \bar{\psi} \psi\) is not invariant under $\SU{2}\otimes \U{1}$.
+This problem can be addressed by introducing the Yukawa interaction between fermions and the Higgs field
+\begin{equation}
+    \Lg{Yukawa}=-\left(g_{i j}^{d}\bar{Q}_{L,i}\phi d_{R,j}+g_{i j}^{u}\bar{Q}_{L,i}(i\sigma^{2}\phi^{\dagger})u_{R,j}+g_{i j}^{\ell}\bar{\mathcal{L}}_{L,i}\phi\ell_{R,j}\right)+h.c.
+\end{equation}
+After the SSB, the fermions masses arise from the Yukawa interaction.
+\begin{gather}
+    \Lg{masses}=-M_{i j}^{\ell}\bar{\ell}_{L,i}\ell_{R,j}-M_{i j}^{d}\bar{d}_{L,i}d_{R,j}-M_{i j}^{u}\bar{u}_{L,i}u_{R,j}\\
+    M^{\ell,d,u}=\frac{v}{\sqrt{2}}g^{\ell,d,u}
+\end{gather}
+At this point, the SM is complete. 
 \section{The CKM matrix}\label{sec:CKM}
 \subsection{The $V_{cb}$ element}
 
