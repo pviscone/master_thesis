@@ -212,7 +212,7 @@ Replacing \Eq{eq:higgs_intro} into the \Eq{eq:Higgs_preSSB} the W/Z bosons acqui
 This also generates the Higgs boson mass $m_H=\sqrt{2\lambda}\mu$, the interactions between the Higgs boson and the vector bosons and the Higgs self-interactions.
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.95\linewidth]{fig/chap02-theory/higgs.pdf}
+    \includegraphics[width=0.7\linewidth]{fig/chap02-theory/higgs.pdf}
     \caption{Higgs potential \cite{HiggsTikZ.net}}
     \label{fig:HiggsPotential}
 \end{figure}\\
@@ -245,7 +245,7 @@ The CKM matrix is a $3 \times 3$ complex matrix, so it can be written in terms o
 These parameters can be  both determined through global fits that combine experimental data from different experiments, imposing the constraints of the standard model (\eg the unitarity), or can be measured independently \cite{PDG_2022}.\\
 Measure all the parameters independently allows us to verify the unitarity of the CKM matrix that, if violated, can be a sign of new physics.\\
 The $|V_{ud}|$ is the element measured with the highest precision through  the study of $\beta$ decays. The other $|V_{uq}|$ and $|V_{cq}|$ elements are measured through leptonic and semileptonic meson decays, but these kinds of measures are highly affected by theoretical uncertainties due to the non-perturbative nature of the strong interaction at low energy that bonds the quarks in the meson.
-The $|V_{tq}|$ elements are not affected by theoretical uncertainties, but the QCD background of a hadron collider makes their measure really challenging and, at this time, an electron-positron collider with a sufficient energy in the center of mass to produce a top quark does not exist yet.
+The $|V_{tq}|$ elements are not affected by non-perturbative QCD uncertainties, but the QCD background of a hadron collider makes their measure really challenging and, at this time, an electron-positron collider with a sufficient energy in the center of mass to produce a top quark does not exist yet.
 \\
 \\
 There are two common parametrizations of the CKM matrix: the standard parametrization and the Wolfenstein parametrization \cite{PDG_2022}.
@@ -278,6 +278,11 @@ The CKMfitter group performed a global fit for this parametrization as well.
 \begin{equation}
     \begin{array}{l l}{{\lambda=0.22500\pm0.00067\,,~~~~}}&{{A=0.826_{-0.015}^{+0.018}\,,}}\\ {{\bar{\rho}=0.159\pm0.010\,{,~~~}}}&{{\bar{\eta}=0.348\pm0.010\,.}}\end{array}
 \end{equation}
+and the fit result of the magnitudes of the CKM elements is:
+\begin{equation}
+|V_{\mathrm{CKM}}|=\left(\begin{array}{l l l}{{0.97435\pm0.00016}}&{{0.22500\pm0.00067}} & {{0.00396\pm0.00011}}\\ {{0.22486\pm0.00067}}&{{0.97349\pm0.00016}}&{{0.04182^{+0.00085}_{-0.00074}}}\\ {{0.00857_{-0.00018}^{+0.00020}}}&{{0.04110_{-0.00072}^{+0.00083}}}&{{0.999118^{+0.000031}_{-0.000036}}}\end{array}\right).
+\end{equation}
+\TODO{Should i discuss the running of the A parameter?}
 \paragraph*{Unitarity triangle}
 The six unitarity constraints of the CKM matrix are:
 \begin{gather}
@@ -294,10 +299,33 @@ The area of the unitarity triangle is also a measure of the CP violation of the 
 \end{figure}
 
 \subsection{The $V_{cb}$ element}
+The $V_{cb}$ element plays an important role in the unitarity of the CKM matrix. The radius of the unitarity-clock, the green circle centered on the origin in \Fig{fig:triangle}, is proportional to the ratio $|V_{ub}/V_{cb}|$, so $V_{cb}$ normalize the whole triangle \cite{Ricciardi2019DeterminationV_cb}.\\
+$|V_{cb}|$ is measured from the semileptonic inclusive and exclusive $b \to c\ell\nu$
+decays but the parton level amplitude, that is proportional to $|V_{cb}|^2$, has to be corrected by introducing form factors that take into account the strong interactions in the meson. These corrections inevitably lead to theoretical uncertainties that are of the same order of the experimental systematic uncertainties.
+Furthermore, the inclusive and exclusive measurements of the $V_{cb}$ have always been incompatible and separated by $2 \sigma$ as shown in \Fig{fig:vcbvub} \\
+Recently, a revision of the techniques involved in the calculations of the QCD contributions has narrowed the gap, but the $V_{cb}$ puzzle is still open \cite{Bona2023NewScheme}.\\
+These issues also concern the $|V_{ub}|$ measures.
 
-\subsection{Measurement of $|V_{cb}|$ with B mesons semileptonic decays}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.7\linewidth]{fig//chap02-theory/vubvcb.png}
+    \caption{$|V_{cb}|$ and $|V_{ub}|$ averages of inclusive and exclusive measurements performed by the UTfit collaboration \cite{Bona2023NewScheme}}
+    \label{fig:vcbvub}
+\end{figure}
 
 \paragraph*{Inclusive measurement}
+The inclusive channel $B\to X_c \ell \nu$ is less model dependent than the exclusive one \cite{Smith2005DeterminationSpectra}.
+The QCD contribution can be included by adding two terms in the amplitude: a perturbative term and a non perturbative term.
+\begin{equation}
+    \Gamma(B\rightarrow X_c\ell\nu)=\frac{G_{F}^{2}m_{b}^{5}|V_{c b}|^{2}}{192\pi^{3}}[1+P(\alpha_{s},\mu,m_{b}/m_{c})+N(m_b,m_c,\mu_\pi^2,\mu_G^2,\rho_D^2,\rho_{LS}^3)]
+\end{equation}
+The QCD corrections are computed using the so-called Operator Product Expansion (OPE).\\
+OPE allows us to express the widths and moments of the kinematic distributions as a double expansion in $\alpha_S$ and $\Lambda_{QCD}/m_b$. These corrections are actually known up to the third order in $\Lambda_{QCD}/m_b$ \cite{Alberti2016TheVcb}.\\
+This expansion depends on other parameters defined in the framework of the heavy quark effective field theory (HQET) that can be constrained through the study of other observables like the lepton energy, the transferred momentum or the hadronic mass \cite{Smith2005DeterminationSpectra}.
+The theoretical uncertainties on the inclusive measurement are mainly driven by the uncertainties of the HQET parameters that contribute to an uncertainty of $\approx 2\%$ to the $|V_{cb}|$ measure \cite{Alberti2016TheVcb}.
+\\
+\\
+\TODO{Aggiungi un summary di risultati sperimentali inclusivi... a trovarlo}
 
 \paragraph*{Exclusive measurement}
 
