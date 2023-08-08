@@ -302,17 +302,18 @@ The area of the unitarity triangle is also a measure of the CP violation of the 
 The $V_{cb}$ element plays an important role in the unitarity of the CKM matrix. The radius of the unitarity-clock, the green circle centered on the origin in \Fig{fig:triangle}, is proportional to the ratio $|V_{ub}/V_{cb}|$, so $V_{cb}$ normalize the whole triangle \cite{Ricciardi2019DeterminationV_cb}.\\
 $|V_{cb}|$ is measured from the semileptonic inclusive and exclusive $b \to c\ell\nu$
 decays but the parton level amplitude, that is proportional to $|V_{cb}|^2$, has to be corrected by introducing form factors that take into account the strong interactions in the meson. These corrections inevitably lead to theoretical uncertainties that are of the same order of the experimental systematic uncertainties.
-Furthermore, the inclusive and exclusive measurements of the $V_{cb}$ have always been incompatible and separated by $2 \sigma$ as shown in \Fig{fig:vcbvub} \\
+Furthermore, the inclusive and exclusive measurements of the $V_{cb}$ have always been incompatible and separated by $\approx 2 \sigma$ as shown in \Fig{fig:vcbvub} \\
 Recently, a revision of the techniques involved in the calculations of the QCD contributions has narrowed the gap, but the $V_{cb}$ puzzle is still open \cite{Bona2023NewScheme}.\\
-These issues also concern the $|V_{ub}|$ measures.
-
+These issues also concern the $|V_{ub}|$ measurements.
+\\
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.7\linewidth]{fig//chap02-theory/vubvcb.png}
-    \caption{$|V_{cb}|$ and $|V_{ub}|$ averages of inclusive and exclusive measurements performed by the UTfit collaboration \cite{Bona2023NewScheme}}
+    \caption{$|V_{cb}|$ and $|V_{ub}|$ global fit and averages of inclusive and exclusive measurements performed by the UTfit collaboration \cite{Bona2023NewScheme}}
     \label{fig:vcbvub}
 \end{figure}
-
+\\
+A summary of the measurements of $|V_{cb}|$ element can be find in \cite{PDG_2022}.
 \paragraph*{Inclusive measurement}
 The inclusive channel $B\to X_c \ell \nu$ is less model dependent than the exclusive one \cite{Smith2005DeterminationSpectra}.
 The QCD contribution can be included by adding two terms in the amplitude: a perturbative term and a non perturbative term.
@@ -321,17 +322,38 @@ The QCD contribution can be included by adding two terms in the amplitude: a per
 \end{equation}
 The QCD corrections are computed using the so-called Operator Product Expansion (OPE).\\
 OPE allows us to express the widths and moments of the kinematic distributions as a double expansion in $\alpha_S$ and $\Lambda_{QCD}/m_b$. These corrections are actually known up to the third order in $\Lambda_{QCD}/m_b$ \cite{Alberti2016TheVcb}.\\
-This expansion depends on other parameters defined in the framework of the heavy quark effective field theory (HQET) that can be constrained through the study of other observables like the lepton energy, the transferred momentum or the hadronic mass \cite{Smith2005DeterminationSpectra}.
-The theoretical uncertainties on the inclusive measurement are mainly driven by the uncertainties of the HQET parameters that contribute to an uncertainty of $\approx 2\%$ to the $|V_{cb}|$ measure \cite{Alberti2016TheVcb}.
-\\
-\\
-\TODO{Aggiungi un summary di risultati sperimentali inclusivi... a trovarlo}
+This expansion depends on other parameters defined in the framework of the heavy quark effective field theory (HQET) that can be constrained through the study of other observables like the lepton energy, the transferred momentum or the hadronic mass \cite{Smith2005DeterminationSpectra} so the final fit is performed on an order of $\mathcal{O}(100)$ of observables.
+The theoretical uncertainties on the inclusive measurement are mainly driven by the uncertainties of the HQET parameters that contribute to an uncertainty of $\approx 2\%$ to the $|V_{cb}|$ measurement \cite{Alberti2016TheVcb}.
 
 \paragraph*{Exclusive measurement}
+The two main exclusive channels studied for $|V_{cb}|$ determination are the $\PAB \to D^* \ell \PAGnl$ and the $\PAB \to D \ell \PAGnl$.
+The first channel was measured with an uncertainty of $\approx 2\%$ with comparable contributions from theory and experiment, while the latter with an uncertainty of the $\approx 3\%$ but recently
+some questions about the form factor parametrization were raised.\\
+The exclusive measurement requires to  know six form factors that can be computed using lattice QCD (LQCD) techniques. In the limit of heavy quarks, the six form factors collapse into a single one and corrections to the $m_b \to \infty$ limit can be obtained through the HQET framework \cite{PDG_2022}.
 
 
 \section{The Top quark}
+The top quark is the heaviest particle of the standard model, discovered at Fermilab in the 1995 by the CDF and the D0 collaborations \cite{Abe1995ObservationFermilab,Abe1995ObservationFermilab}.
+Its lifetime, $\approx 10^{25}s$, is less than the hadronization timescale, making it the only quark that can decay freely \cite{Bigi1995TheHadrons}.
+
+\subsection{Top quark decay}
+The top quark decays through weak interactions through the channel $\PQt \to \PW q$ and, due to its mass of $m_{\PQt} \simeq 173 \GeV$, the top quark is also the only particle that can decay into an on-shell $\PW$ boson.\\
+Furthermore, the V-A structure of the weak interaction makes 
+the kinematics of the top decay strongly dependent on the polarization of the top quark.
+\\
+\\
+The final states that can be observed are:
+\begin{itemize}
+    \item $\PQt \to \PW^+ q^d_1 \to q^d_1 q_2 \bar{q}_3 $ with a branching ration of $\simeq 68\%$
+    \item $\PQt \to \PW^+ q^d_1 \to q^d_1 \bar{\ell} \PGnl$ with a branching ratio of $\simeq 32\%$
+\end{itemize}
+The $q_1^d$ is a down-type quark and the branching fractions of the decay to the three different quarks is
+\begin{equation}
+\frac{\Gamma(\PQt \to \PW^+ q_i^d)}{\Gamma(\PQt \to \PW^+ q^d)} = |V_{\PQt i}|^2
+\end{equation}
+so the top quark decays to a \PW boson and a \PQb quark with a branching fraction closer to the 100\%
+
 \subsection{Top pairs production at LHC}
 \paragraph*{Extra jets}
-\subsection{Top quark decay}
+
 \subsection{Measurement of $|V_{cb}|$ with top pairs semileptonic decays}
