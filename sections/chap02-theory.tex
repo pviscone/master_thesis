@@ -55,7 +55,7 @@ where $\aff{\psi}{}=\ff{\psi}{}^\dagger\gamma^0$ is the adjoint Dirac spinor, an
 The corresponding equation of motion has two solutions: the one with the positive energy represents the fermion field, the one with the negative energy represents the anti-fermion field.\\
 Dirac spinors are $\left( \frac{1}{2} \right)$ representations of the Lorentz group $SO^+(1,3)$ that can be decomposed into the $\SU[L]{2} \oplus \SU[R]{2}$ group.\\
 Using this different representation, Dirac spinors can be described in the so-called chiral basis $\psi=\left(\psi_L,\psi_R \right)$ where $\psi_{L/R}$ are called left/right Weyl spinors and are respectively the $\left(\frac{1}{2},0\right)$ and the $\left(0,\frac{1}{2}\right)$ representations of the $\SU{2} \oplus \SU{2}$ group.\\
-The chirality operator $\gamma^5=i\gamma^0\gamma^1\gamma^2\gamma^3$ anti-commutes with all the gamma matrices and commute with the Dirac Hamiltonian only if the mass is zero, so it is a good quantum number only for massless particles.\\
+The chirality operator $\gamma^5=i\gamma^0\gamma^1\gamma^2\gamma^3$ anti-commutes with all the gamma matrices and commute with the Dirac Hamiltonian only if the mass is zero, so the chirality is a good quantum number only for massless particles.\\
 The chirality plays an important role in the weak interaction, as described in sec. \ref{sub:weak}
 \paragraph*{Gauge theories}
 The standard procedure to introduce a global symmetry in the Lagrangian and a Gauge boson field is the following:
@@ -241,15 +241,15 @@ As already introduced, the weak interactions mix the down-type quarks with the C
 \begin{equation}
 V_{C K M}=\left(\begin{array}{l l l}{{V_{u d}}}&{{V_{u s}}}&{{V_{u b}}}\\ {{V_{c d}}}&{{V_{c s}}}&{{V_{c b}}}\\ {{V_{t d}}}&{{V_{t s}}}&{{V_{t b}}}\end{array}\right)\,
 \end{equation}
-The CKM matrix is a $3 \times 3$ complex matrix, so it can be written in terms of 18 real parameters. The unitarity condition $V^\dagger V$ adds 8 constraints, and the 6 quark fields can absorb the phases defining a new common phase, so the number of parameters of the CKM is four.\\
-These parameters can be  both determined through global fits that combine experimental data from different experiments, imposing the constraints of the standard model (\eg the unitarity), or can be measured independently \cite{PDG_2022}.\\
+The CKM matrix is a $3 \times 3$ complex matrix that can be written in terms of 18 real parameters. The unitarity condition $V^\dagger V= 1\kern-0.25em\text{l}$ adds 8 constraints, and the 6 quark fields can absorb the phases defining a new common phase, so the number of parameters of the CKM matrix is four.\\
+These parameters can be determined through global fits that combine experimental data from different experiments, imposing the constraints of the standard model (\eg the unitarity), or can be measured independently \cite{PDG_2022}.\\
 Measure all the parameters independently allows us to verify the unitarity of the CKM matrix that, if violated, can be a sign of new physics.\\
 The $|V_{ud}|$ is the element measured with the highest precision through  the study of $\beta$ decays. The other $|V_{uq}|$ and $|V_{cq}|$ elements are measured through leptonic and semileptonic meson decays, but these kinds of measures are highly affected by theoretical uncertainties due to the non-perturbative nature of the strong interaction at low energy that bonds the quarks in the meson.
 The $|V_{tq}|$ elements are not affected by non-perturbative QCD uncertainties, but the QCD background of a hadron collider makes their measure really challenging and, at this time, an electron-positron collider with a sufficient energy in the center of mass to produce a top quark does not exist yet.
 \\
 \\
 There are two common parametrizations of the CKM matrix: the standard parametrization and the Wolfenstein parametrization \cite{PDG_2022}.
-The values of the parameters listed below are the ones obtained from the CKMfitter group through a global fit \cite{Charles2005CPFactories,Hocker2001AMatrix,PDG_2022}.
+The values of the parameters listed below are the ones obtained by the CKMfitter group through a global fit \cite{Charles2005CPFactories,Hocker2001AMatrix,PDG_2022}.
 \paragraph*{Standard parametrization}
 In the standard parametrization, the CKM matrix is expressed as the product of 3 rotation matrices with the addition of a phase.
 \begin{equation}
@@ -289,7 +289,7 @@ The six unitarity constraints of the CKM matrix are:
     \sum_i V_{ij}V_{ik}^*=\delta_{jk}\\
     \sum_j V_{ij}V_{kj}^*=\delta_{ik}
 \end{gather}
-These constraints can be represented in the complex $(\bar{\rho},\bar{\eta})$ plane in a triangle with vertexes $(0,0), (1,0), (\bar{\rho},\bar{\eta})$ \Fig{fig:triangle}.\\
+These constraints can be represented in the complex $(\bar{\rho},\bar{\eta})$ plane in a triangle with vertexes $(0,0), (1,0), (\bar{\rho},\bar{\eta})$ (\Fig{fig:triangle}).\\
 The area of the unitarity triangle is also a measure of the CP violation of the weak interactions.
 \begin{figure}[h]
     \centering
@@ -299,11 +299,11 @@ The area of the unitarity triangle is also a measure of the CP violation of the 
 \end{figure}
 
 \subsection{The $V_{cb}$ element}
-The $V_{cb}$ element plays an important role in the unitarity of the CKM matrix. The radius of the unitarity-clock, the green circle centered on the origin in \Fig{fig:triangle}, is proportional to the ratio $|V_{ub}/V_{cb}|$, so $V_{cb}$ normalize the whole triangle \cite{Ricciardi2019DeterminationV_cb}.\\
+The $V_{cb}$ element plays an important role in the unitarity of the CKM matrix. The radius of the unitarity-clock, the green circle centered in the origin in \Fig{fig:triangle}, is proportional to the ratio $|V_{ub}/V_{cb}|$, so $V_{cb}$ normalize the whole triangle \cite{Ricciardi2019DeterminationV_cb}.\\
 $|V_{cb}|$ is measured from the semileptonic inclusive and exclusive $b \to c\ell\nu$
-decays but the parton level amplitude, that is proportional to $|V_{cb}|^2$, has to be corrected by introducing form factors that take into account the strong interactions in the meson. These corrections inevitably lead to theoretical uncertainties that are of the same order of the experimental systematic uncertainties.
-Furthermore, the inclusive and exclusive measurements of the $V_{cb}$ have always been incompatible and separated by $\approx 2 \sigma$ as shown in \Fig{fig:vcbvub} \\
-Recently, a revision of the techniques involved in the calculations of the QCD contributions has narrowed the gap, but the $V_{cb}$ puzzle is still open \cite{Bona2023NewScheme}.\\
+decays but the parton level amplitude, that is proportional to $|V_{cb}|^2$, has to be corrected by introducing form factors that take into account the contributions by strong interactions in the meson. These corrections inevitably lead to theoretical uncertainties that are of the same order of the experimental systematic uncertainties.
+Furthermore, the inclusive and exclusive measurements of the $V_{cb}$ element have always been incompatible and separated by $\approx 2 \sigma$ as shown in \Fig{fig:vcbvub}. \\
+Recently, a revision of the techniques involved in the calculations of the QCD contributions has narrowed the gap, but the $V_{cb}$ puzzle is still unresolved \cite{Bona2023NewScheme}.\\
 These issues also concern the $|V_{ub}|$ measurements.
 \\
 \begin{figure}[h]
@@ -322,32 +322,32 @@ The QCD contributions can be included by adding two terms in the amplitude: a pe
 \end{equation}
 The QCD corrections are computed using the so-called Operator Product Expansion (OPE).\\
 OPE allows us to express the widths and moments of the kinematic distributions as a double expansion in $\alpha_S$ and $\Lambda_{QCD}/m_b$. These corrections are actually known up to the third order in $\Lambda_{QCD}/m_b$ \cite{Alberti2016TheVcb}.\\
-This expansion depends on other parameters defined in the framework of the heavy quark effective field theory (HQET) that can be constrained through the study of other observables like the lepton energy, the transferred momentum or the hadronic mass \cite{Smith2005DeterminationSpectra} so the final fit is performed on an order of $\mathcal{O}(100)$ of observables.
-The theoretical uncertainties on the inclusive measurement are mainly driven by the uncertainties of the HQET parameters that contribute to an uncertainty of $\approx 2\%$ to the $|V_{cb}|$ measurement \cite{Alberti2016TheVcb}.
+This expansion depends on other parameters defined in the framework of the heavy quark effective field theory (HQET) that can be constrained through the study of other observables like the lepton energy, the transferred momentum or the hadronic mass \cite{Smith2005DeterminationSpectra} so the final fit has to be performed on an order of $\mathcal{O}(100)$ of observables.\\
+The uncertainties of the inclusive measurements of $|V_{cb}|$ are  $\simeq 2\%$, mainly driven by theoretical uncertainties related to the determination of the HQET parameters \cite{Alberti2016TheVcb}.
 
 \paragraph*{Exclusive measurement}
 The two main exclusive channels studied for $|V_{cb}|$ determination are the $\PAB \to D^* \ell \PAGnl$ and the $\PAB \to D \ell \PAGnl$.
-The first channel was measured with an uncertainty of $\approx 2\%$ with comparable contributions from theory and experiment, while the latter with an uncertainty of the $\approx 3\%$ but recently
+The first channel was measured with an uncertainty of $\simeq 2\%$ with comparable contributions from theory and experiment, while the latter was measured with an uncertainty of the $\simeq 3\%$ but recently
 some questions about the form factor parametrization were raised.\\
 The exclusive measurement requires to  know six form factors that can be computed using lattice QCD (LQCD) techniques. In the limit of heavy quarks, the six form factors collapse into a single one and corrections to the $m_b \to \infty$ limit can be obtained through the HQET framework \cite{PDG_2022}.
 
 
 \section{The Top quark}
 The top quark is the heaviest particle of the standard model, discovered at Fermilab in the 1995 by the CDF and the D0 collaborations \cite{Abe1995ObservationFermilab,Abe1995ObservationFermilab}.
-Its lifetime, $\approx 10^{25}s$, is less than the hadronization timescale, making it the only quark that can decay freely \cite{Bigi1995TheHadrons}.
+Its lifetime, $\sim 10^{25}s$, is less than the hadronization timescale ($\sim 10^{-23}s$), making it the only quark that can decay freely \cite{Bigi1995TheHadrons}.
 
 \subsection{Top quark decay}
 The top quark decays through weak interactions through the channel $\PQt \to \PW q$ and, due to its mass of $m_{\PQt} \simeq 173 \GeV$, the top quark is also the only particle that can decay into an on-shell $\PW$ boson.\\
-Furthermore, the V-A structure of the weak interaction makes 
+Furthermore, the V-A structure of the weak interactions makes 
 the kinematics of the top decay strongly dependent on the polarization of the top quark.
 \\
 \\
 The final states that can be observed are:
 \begin{itemize}
-    \item $\PQt \to \PW^+ q^d_1 \to q^d_1 q_2 \bar{q}_3 $ with a branching ration of $\simeq 68\%$
-    \item $\PQt \to \PW^+ q^d_1 \to q^d_1 \bar{\ell} \PGnl$ with a branching ratio of $\simeq 32\%$
+    \item $\PQt \to \PW^+ q^d_i \to q^d_1 q_2 \bar{q}_3 $ with a branching ration of $\simeq 68\%$
+    \item $\PQt \to \PW^+ q^d_i \to q^d_1 \bar{\ell} \PGnl$ with a branching ratio of $\simeq 32\%$
 \end{itemize}
-The $q_1^d$ is a down-type quark and the branching fractions of the decay to the three different quarks is
+The $q_i^d$ is a down-type quark and the branching fractions of the decay to the three different quarks is
 \begin{equation}
 \frac{\Gamma(\PQt \to \PW^+ q_i^d)}{\Gamma(\PQt \to \PW^+ q^d)} = |V_{\PQt i}|^2
 \end{equation}
@@ -359,7 +359,7 @@ Neglecting the decay of the top quark into down and strange quarks, the branchin
     \item 45\% \textbf{Semi leptonic} $\ttbar \to \bbbar q \bar{q} \ell \PGnl$
     \item 9\% \textbf{Di-leptonic} $\ttbar \to \bbbar \ell \PAGnl  \bar{\ell} \PGnl$
 \end{itemize}
-The branching ratio of the flavours of the $q\bar{q}$ pairs generated by \PW decays are given by the respective CKM elements.
+The branching ratio of the flavours of the $q\bar{q}$ pairs generated by \PW decays are given by the respective CKM elements squared.
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.65\linewidth]{fig//chap02-theory/ttbr.png}
@@ -379,15 +379,16 @@ Each parton is composed by three valence quarks (uud) and a sea of quarks, anti-
 The elements that compose the proton are called “partons” and each parton carries a fraction $x_i$ of the proton momentum.\\
 The so-called Bjorken variable $x_i$ follows a statistical distribution, the parton distribution functions (PDFs) $f(x,Q^2)$, that depends on the type of parton and on the proton momentum.\\
 The equations that describe the evolution of the PDFs at the different energy scales are the Dokshitzer–Gribov–Lipatov–Altarelli–Parisi (DGLAP) equations \cite{Altarelli1977AsymptoticLanguage,Gribov1972DeepTheory,Dokshitzer1977CalculationChromodynamics.} but the PDFs can't be computed a priori, they have to be extracted from experimental data.
-At low energies, the PDFs are dominated by the presence of valence quarks, but the contribution of gluons and non valence quarks increases with the proton energy as shown in \Fig{fig:pdf}.\\
-
+At low energies, the PDFs are dominated by the presence of valence quarks, but the contribution of gluons and non valence quarks increases with the proton energy as shown in \Fig{fig:pdf}.
+\\
 \begin{figure}[h!]
     \centering
     \includegraphics[width=1\linewidth]{fig//chap02-theory/pdf.png}
     \caption{$xf(x,Q^2)$ values for the NNPDF 4.0 NNLO PDFs set at $Q=3.2\GeV$ (left) and $Q=100 \GeV$ (right) presented by the NNPDF collaboration \cite{Ball2022TheAccuracy}. }
     \label{fig:pdf}
 \end{figure}
-To compute the inclusive $\ttbar$ production cross-section at an hadron collider, the parton-level cross-section has to be convolved with the PDFs
+\\
+To compute the inclusive $\ttbar$ production cross-section at a hadron collider, the parton-level cross-section has to be convolved with the PDFs
 \begin{equation}
     \sigma_{\mathrm{t\bar{t}}}=\sum_{i,j=q,\overline{{{q}}},g}\int d x_{i}d x_{j}f_{i}(x_{i},Q^{2})f_{j}(x_{j},Q^{2})\cdot\hat{\sigma}_{i j\rightarrow \ttbar}
 \end{equation}
@@ -398,6 +399,6 @@ The total $\ttbar$ production cross-section computed at the $\mathcal{O} (\alpha
     \sigma_\ttbar = 833.9^{+20.5}_{-30.0}\, ^{+23.2}_{-22.5}\pm 21.0\,  \text{pb}\; \; (\pm \text{Scale} \pm m_t \pm \text{PDF}+\alpha_s)
 \end{equation}
 \paragraph*{Extra jets}
-The emission of radiative gluons or quarks can cause the formation of collimated sprays of hadrons called jets (see sec. \ADDREF).\\
+The emission of radiative gluons or quarks can cause the formation of additional collimated sprays of hadrons called jets (see sec. \ADDREF).\\
 These events are suppressed by a factor $\alpha_s$ for each new additional vertex in the Feynman diagram.
 
