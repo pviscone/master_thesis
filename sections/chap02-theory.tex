@@ -201,9 +201,12 @@ A convenient choice is to pick the ground state of $\phi$ as
 \end{equation}
 Developing the Lagrangian in \Eq{eq:Higgs_preSSB} around this minimum, we can redefine the scalar doublet as
 \begin{equation}\label{eq:higgs_intro}
-    \phi=\db{0}{v+H(x)}
+    \phi=\frac{1}{\sqrt{2}}\db{0}{v+H(x)}
 \end{equation}
-where $H(x)$ is the scalar field corresponding to the Higgs boson. \\
+and the potential $V(\phi)$ expanded in powers of the new real Higgs field $H(x)$ becomes
+\begin{equation}
+    V(H)=-\frac{1}{2}\mu^{2}H^{2}-\frac{\mu^{2}}{2\nu}H^{3}-\frac{\mu^{2}}{8\nu^{2}}H^{4}
+\end{equation}
 Replacing \Eq{eq:higgs_intro} into the \Eq{eq:Higgs_preSSB} the W/Z bosons acquire a mass term with
 \begin{gather}
     M_{W^\pm}=\frac{1}{2}gv\\
@@ -213,7 +216,7 @@ This also generates the Higgs boson mass $m_H=\sqrt{2\lambda}\mu$, the interacti
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.7\linewidth]{fig/chap02-theory/higgs.pdf}
-    \caption{Higgs potential \cite{HiggsTikZ.net}}
+    \caption{Illustration of the Higgs potential $V(\phi)$ \cite{HiggsTikZ.net}}
     \label{fig:HiggsPotential}
 \end{figure}\\
 \paragraph*{Fermion masses}
@@ -228,9 +231,18 @@ After the SSB, the fermions masses arise from the Yukawa interaction.
     \Lg{masses}=-M_{i j}^{\ell}\bar{\ell}_{L,i}\ell_{R,j}-M_{i j}^{d}\bar{d}_{L,i}d_{R,j}-M_{i j}^{u}\bar{u}_{L,i}u_{R,j}\\
     M^{\ell,d,u}=\frac{v}{\sqrt{2}}g^{\ell,d,u}
 \end{gather}
-At this point, the SM is complete.\\ 
-A summary of all the particles of the SM and their quantum numbers is in Tab. \ref{tab:SM}
-
+The non-diagonal quark mass matrix $M$ can be diagonalized through a unitary transformation, which is equivalent to a basis change.
+\begin{equation}
+    M_{\text{diag}}^{u/d}=(V_L^{u/d})^\dagger M^{u/d} V_R^{u/d}
+\end{equation}
+This transformation is the one that induces the mixing of mass eigenstates between the left-handed fermion and the \PW boson field.
+Indeed, the flavor mixing represented by the CKM matrix can be expressed in terms of these unitary transformations.
+\begin{equation}
+    V_{CKM}=(V_L^u)^\dagger V_L^d
+\end{equation}
+At this point, the SM is complete. A summary of all the particles of the SM and their quantum numbers is in Tab. \ref{tab:SM}
+\\
+\\
 \input{example/tex/intro-tab-SM_fields.tex}
 
 \section{The CKM matrix}\label{sec:CKM}
@@ -241,7 +253,7 @@ As already introduced, the weak interactions mix the down-type quarks with the C
 \begin{equation}
 V_{C K M}=\left(\begin{array}{l l l}{{V_{u d}}}&{{V_{u s}}}&{{V_{u b}}}\\ {{V_{c d}}}&{{V_{c s}}}&{{V_{c b}}}\\ {{V_{t d}}}&{{V_{t s}}}&{{V_{t b}}}\end{array}\right)\,
 \end{equation}
-The CKM matrix is a $3 \times 3$ complex matrix that can be written in terms of 18 real parameters. The unitarity condition $V^\dagger V= 1\kern-0.25em\text{l}$ adds 8 constraints, and the 6 quark fields can absorb the phases defining a new common phase, so the number of parameters of the CKM matrix is four.\\
+The CKM matrix is a $3 \times 3$ complex matrix that can be written in terms of 18 real parameters. The unitarity condition $V^\dagger V= 1\kern-0.25em\text{l}$ adds 9 constraints, and the 6 quark fields can absorb the phases defining a new common phase, so the number of parameters of the CKM matrix is four.\\
 These parameters can be determined through global fits that combine experimental data from different experiments, imposing the constraints of the standard model (\eg the unitarity), or can be measured independently \cite{PDG_2022}.\\
 Measure all the parameters independently allows us to verify the unitarity of the CKM matrix that, if violated, can be a sign of new physics.\\
 The $|V_{ud}|$ is the element measured with the highest precision through  the study of $\beta$ decays. The other $|V_{uq}|$ and $|V_{cq}|$ elements are measured through leptonic and semileptonic meson decays, but these kinds of measures are highly affected by theoretical uncertainties due to the non-perturbative nature of the strong interaction at low energy that bonds the quarks in the meson.
@@ -284,7 +296,7 @@ and the fit result of the magnitudes of the CKM elements is:
 \end{equation}
 \TODO{Should i discuss the running of the A parameter?}
 \paragraph*{Unitarity triangle}
-The six unitarity constraints of the CKM matrix are:
+The unitarity constraints of the CKM matrix are:
 \begin{gather}
     \sum_i V_{ij}V_{ik}^*=\delta_{jk}\\
     \sum_j V_{ij}V_{kj}^*=\delta_{ik}
@@ -302,7 +314,7 @@ The area of the unitarity triangle is also a measure of the CP violation of the 
 The $V_{cb}$ element plays an important role in the unitarity of the CKM matrix. The radius of the unitarity-clock, the green circle centered in the origin in \Fig{fig:triangle}, is proportional to the ratio $|V_{ub}/V_{cb}|$, so $V_{cb}$ normalize the whole triangle \cite{Ricciardi2019DeterminationV_cb}.\\
 $|V_{cb}|$ is measured from the semileptonic inclusive and exclusive $b \to c\ell\nu$
 decays but the parton level amplitude, that is proportional to $|V_{cb}|^2$, has to be corrected by introducing form factors that take into account the contributions by strong interactions in the meson. These corrections inevitably lead to theoretical uncertainties that are of the same order of the experimental systematic uncertainties.
-Furthermore, the inclusive and exclusive measurements of the $V_{cb}$ element have always been incompatible and separated by $\approx 2 \sigma$ as shown in \Fig{fig:vcbvub}. \\
+Furthermore, the inclusive and exclusive measurements of the $V_{cb}$ element have always been incompatible and separated by $\sim 2 \sigma$ as shown in \Fig{fig:vcbvub}. \\
 Recently, a revision of the techniques involved in the calculations of the QCD contributions has narrowed the gap, but the $V_{cb}$ puzzle is still unresolved \cite{Bona2023NewScheme}.\\
 These issues also concern the $|V_{ub}|$ measurements.
 \\
@@ -320,8 +332,7 @@ The QCD contributions can be included by adding two terms in the amplitude: a pe
 \begin{equation}
     \Gamma(B\rightarrow X_c\ell\nu)=\frac{G_{F}^{2}m_{b}^{5}|V_{c b}|^{2}}{192\pi^{3}}[1+P(\alpha_{s},\mu,m_{b}/m_{c})+N(m_b,m_c,\mu_\pi^2,\mu_G^2,\rho_D^2,\rho_{LS}^3)]
 \end{equation}
-The QCD corrections are computed using the so-called Operator Product Expansion (OPE).\\
-OPE allows us to express the widths and moments of the kinematic distributions as a double expansion in $\alpha_S$ and $\Lambda_{QCD}/m_b$. These corrections are actually known up to the third order in $\Lambda_{QCD}/m_b$ \cite{Alberti2016TheVcb}.\\
+The QCD corrections are computed using the so-called Operator Product Expansion (OPE). OPE allows us to express the widths and moments of the kinematic distributions as a double expansion in $\alpha_S$ and $\Lambda_{QCD}/m_b$. These corrections are actually known up to the third order in $\Lambda_{QCD}/m_b$ \cite{Alberti2016TheVcb}.\\
 This expansion depends on other parameters defined in the framework of the heavy quark effective field theory (HQET) that can be constrained through the study of other observables like the lepton energy, the transferred momentum or the hadronic mass \cite{Smith2005DeterminationSpectra} so the final fit has to be performed on an order of $\mathcal{O}(100)$ of observables.\\
 The uncertainties of the inclusive measurements of $|V_{cb}|$ are  $\simeq 2\%$, mainly driven by theoretical uncertainties related to the determination of the HQET parameters \cite{Alberti2016TheVcb}.
 
@@ -375,7 +386,7 @@ In a hadron collider, top quarks are mainly produced in $\ttbar$ pairs via gluon
     \label{fig:tt_prod}
 \end{figure}\\
 The protons that are collided in the LHC can be described by the parton model \cite{Feynman1969TheEnergies}.\\
-Each parton is composed by three valence quarks (uud) and a sea of quarks, anti-quarks and gluons generated by the QCD activity in the proton.\\ 
+Each proton is composed by three valence quarks (uud) and a sea of quarks, anti-quarks and gluons generated by the QCD activity in the hadron.\\ 
 The elements that compose the proton are called “partons” and each parton carries a fraction $x_i$ of the proton momentum.\\
 The so-called Bjorken variable $x_i$ follows a statistical distribution, the parton distribution functions (PDFs) $f(x,Q^2)$, that depends on the type of parton and on the proton momentum.\\
 The equations that describe the evolution of the PDFs at the different energy scales are the Dokshitzer–Gribov–Lipatov–Altarelli–Parisi (DGLAP) equations \cite{Altarelli1977AsymptoticLanguage,Gribov1972DeepTheory,Dokshitzer1977CalculationChromodynamics.} but the PDFs can't be computed a priori, they have to be extracted from experimental data.
@@ -394,7 +405,7 @@ To compute the inclusive $\ttbar$ production cross-section at a hadron collider,
 \end{equation}
 where the sums run over the type of partons (quarks, antiquarks, and gluons).
 The energy in the center of mass at LHC is $\sqrt{s}=13 \TeV$ and the predominant $\ttbar$ production channel is the ggF with a branching ratio of $\simeq 90\%$.\\
-The total $\ttbar$ production cross-section computed at the $\mathcal{O} (\alpha_S^4)$ order of accuracy using the program \Toppp \cite{Czakon2014Top++:Colliders} and assuming $m_t=172.5\GeV$ is  \cite{TtbarNNLOTWiki}
+The total $\ttbar$ production cross-section computed at the $\mathcal{O} (\alpha_S^4)$ order of accuracy using the program \Toppp \cite{Czakon2014Top++:Colliders} and assuming $m_t=172.5 \pm 1.0 \GeV$ is  \cite{TtbarNNLOTWiki}
 \begin{equation}
     \sigma_\ttbar = 833.9^{+20.5}_{-30.0}\, ^{+23.2}_{-22.5}\pm 21.0\,  \text{pb}\; \; (\pm \text{Scale} \pm m_t \pm \text{PDF}+\alpha_s)
 \end{equation}
