@@ -51,7 +51,7 @@ The Lagrangian (density) for a free fermion field is the Dirac Lagrangian
 \begin{equation}\label{eq:Dirac}
 \mathcal{L}_{\text{Dirac}}=i\bar{\psi}\gamma^{\mu}\partial_{\mu}\psi-m\bar{\psi}\psi
 \end{equation}
-where $\aff{\psi}{}=\ff{\psi}{}^\dagger\gamma^0$ is the adjoint Dirac spinor, and $\gamma^\mu$ are the 4 Dirac matrices that obey the Clifford algebra $\{\gamma^\mu,\gamma^\nu\}=2\eta^{\mu\nu}$\\
+where $\aff{\psi}{}=\ff{\psi}{}^\dagger\gamma^0$ is the adjoint Dirac spinor, and $\gamma^\mu$ are the 4 Dirac matrices that obey the Clifford algebra $\{\gamma^\mu,\gamma^\nu\}=2\eta^{\mu\nu}$.\\
 The corresponding equation of motion has two solutions: the one with the positive energy represents the fermion field, the one with the negative energy represents the anti-fermion field.\\
 Dirac spinors are $\left( \frac{1}{2} \right)$ representations of the Lorentz group $SO^+(1,3)$ that can be decomposed into the $\SU[L]{2} \oplus \SU[R]{2}$ group.\\
 Using this different representation, Dirac spinors can be described in the so-called chiral basis $\psi=\left(\psi_L,\psi_R \right)$ where $\psi_{L/R}$ are called left/right Weyl spinors and are respectively the $\left(\frac{1}{2},0\right)$ and the $\left(0,\frac{1}{2}\right)$ representations of the $\SU{2} \oplus \SU{2}$ group.\\
@@ -294,18 +294,16 @@ and the fit result of the magnitudes of the CKM elements is:
 \begin{equation}
 |V_{\mathrm{CKM}}|=\left(\begin{array}{l l l}{{0.97435\pm0.00016}}&{{0.22500\pm0.00067}} & {{0.00396\pm0.00011}}\\ {{0.22486\pm0.00067}}&{{0.97349\pm0.00016}}&{{0.04182^{+0.00085}_{-0.00074}}}\\ {{0.00857_{-0.00018}^{+0.00020}}}&{{0.04110_{-0.00072}^{+0.00083}}}&{{0.999118^{+0.000031}_{-0.000036}}}\end{array}\right).
 \end{equation}
-\TODO{Should i discuss the running of the A parameter?}
 \paragraph*{Unitarity triangle}
 The unitarity constraints of the CKM matrix are:
 \begin{gather}
-    \sum_i V_{ij}V_{ik}^*=\delta_{jk}\\
+    \sum_i V_{ij}V_{ik}^*=\delta_{jk} \quad ; \quad 
     \sum_j V_{ij}V_{kj}^*=\delta_{ik}
 \end{gather}
-These constraints can be represented in the complex $(\bar{\rho},\bar{\eta})$ plane in a triangle with vertexes $(0,0), (1,0), (\bar{\rho},\bar{\eta})$ (\Fig{fig:triangle}).\\
-The area of the unitarity triangle is also a measure of the CP violation of the weak interactions.
-\begin{figure}[h]
+These constraints can be represented in the complex $(\bar{\rho},\bar{\eta})$ plane in a triangle with vertexes $(0,0), (1,0), (\bar{\rho},\bar{\eta})$ (\Fig{fig:triangle}). The area of the unitarity triangle is also a measure of the CP violation of the weak interactions.
+\begin{figure}[h!]
     \centering
-    \includegraphics[width=0.85\linewidth]{fig//chap02-theory/triangle.png}
+    \includegraphics[width=0.69\linewidth]{fig//chap02-theory/triangle.png}
     \caption{CKMfitter global constraints on the unitarity triangle \cite{CKMfitter}. Shaded areas correspond to 95\% CL}
     \label{fig:triangle}
 \end{figure}
@@ -319,13 +317,14 @@ Recently, a revision of the techniques involved in the calculations of the QCD c
 These issues also concern the $|V_{ub}|$ measurements.
 \\
 \begin{figure}[h]
+    \vspace{-1cm}
     \centering
     \includegraphics[width=0.7\linewidth]{fig//chap02-theory/vubvcb.png}
     \caption{$|V_{cb}|$ and $|V_{ub}|$ global fit and averages of inclusive and exclusive measurements performed by the UTfit collaboration \cite{Bona2023NewScheme}}
     \label{fig:vcbvub}
 \end{figure}
 \\
-A summary of the measurements of the $|V_{cb}|$ element can be found in \cite{PDG_2022}.
+A summary of the single measurements of the $|V_{cb}|$ element can be found in \cite{PDG_2022}.
 \paragraph*{Inclusive measurement}
 The inclusive channel $B\to X_c \ell \nu$ is less model dependent than the exclusive one \cite{Smith2005DeterminationSpectra}.
 The QCD contributions can be included by adding two terms in the amplitude: a perturbative term and a non perturbative term.
@@ -334,13 +333,21 @@ The QCD contributions can be included by adding two terms in the amplitude: a pe
 \end{equation}
 The QCD corrections are computed using the so-called Operator Product Expansion (OPE). OPE allows us to express the widths and moments of the kinematic distributions as a double expansion in $\alpha_S$ and $\Lambda_{QCD}/m_b$. These corrections are actually known up to the third order in $\Lambda_{QCD}/m_b$ \cite{Alberti2016TheVcb}.\\
 This expansion depends on other parameters defined in the framework of the heavy quark effective field theory (HQET) that can be constrained through the study of other observables like the lepton energy, the transferred momentum or the hadronic mass \cite{Smith2005DeterminationSpectra} so the final fit has to be performed on an order of $\mathcal{O}(100)$ of observables.\\
-The uncertainties of the inclusive measurements of $|V_{cb}|$ are  $\simeq 2\%$, mainly driven by theoretical uncertainties related to the determination of the HQET parameters \cite{Alberti2016TheVcb}.
+The uncertainties of the inclusive measurements of $|V_{cb}|$ are  $\simeq 2\%$, mainly driven by theoretical uncertainties related to the determination of the HQET parameters \cite{Alberti2016TheVcb}.\\
+The average of the inclusive measurements is \cite{Bordone2021ThreeVcb}
+\begin{equation}
+    |V_{cb}|\times10^3\text{ (incl)}=42.16\pm 0.50
+\end{equation}
 
 \paragraph*{Exclusive measurement}
 The two main exclusive channels studied for $|V_{cb}|$ determination are the $\PAB \to D^* \ell \PAGnl$ and the $\PAB \to D \ell \PAGnl$.
 The first channel was measured with an uncertainty of $\simeq 2\%$ with comparable contributions from theory and experiment, while the latter was measured with an uncertainty of the $\simeq 3\%$ but recently
 some questions about the form factor parametrization were raised.\\
-The exclusive measurement requires to  know six form factors that can be computed using lattice QCD (LQCD) techniques. In the limit of heavy quarks, the six form factors collapse into a single one and corrections to the $m_b \to \infty$ limit can be obtained through the HQET framework \cite{PDG_2022}.
+The exclusive measurement requires to  know six form factors that can be computed using lattice QCD (LQCD) techniques. In the limit of heavy quarks, the six form factors collapse into a single one and corrections to the $m_b \to \infty$ limit can be obtained through the HQET framework \cite{PDG_2022}.\\
+The average of the exclusive measurements is \cite{Bona2023NewScheme}
+\begin{equation}
+    |V_{cb}|\times10^3\text{ (excl)}=39.44\pm 0.63
+\end{equation}
 
 
 \section{The Top quark}
@@ -364,19 +371,33 @@ The $q_i^d$ is a down-type quark and the branching fractions of the decay to the
 \end{equation}
 so the top quark decays to a \PW boson and a \PQb quark with a branching fraction closer to the 100\%.
 \paragraph*{Decay of top quark pairs}
-Neglecting the decay of the top quark into down and strange quarks, the branching fractions of the \ttbar decay are:
-\begin{itemize}
-    \item 46\% \textbf{Fully hadronic} $\ttbar \to \bbbar q \bar{q} q \bar{q}$. 
-    \item 45\% \textbf{Semi leptonic} $\ttbar \to \bbbar q \bar{q} \ell \PGnl$
-    \item 9\% \textbf{Di-leptonic} $\ttbar \to \bbbar \ell \PAGnl  \bar{\ell} \PGnl$
-\end{itemize}
-The branching ratio of the flavours of the $q\bar{q}$ pairs generated by \PW decays are given by the respective CKM elements squared.
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.65\linewidth]{fig//chap02-theory/ttbr.png}
-    \caption{Top pair branching fractions}
-    \label{fig:ttbr}
-\end{figure}
+$\quad$
+\\
+\begin{minipage}{\linewidth}
+    \vspace{0.5cm}
+    \begin{minipage}{0.45\linewidth}
+        \raggedright
+            \centering
+            \includegraphics[width=\linewidth]{fig//chap02-theory/ttbr.png}
+            \captionof{figure}{Top pair branching fractions}
+            \label{fig:ttbr}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.5\linewidth}
+        \raggedright
+        Neglecting the decay of the top quark into down and strange quarks, the branching fractions of the \ttbar decay are:
+        \begin{itemize}
+            \item 46\% \textbf{Fully hadronic} $\ttbar \to \bbbar q \bar{q} q \bar{q}$. 
+            \item 45\% \textbf{Semi leptonic} $\ttbar \to \bbbar q \bar{q} \ell \PGnl$
+            \item 9\% \textbf{Di-leptonic} $\ttbar \to \bbbar \ell \PAGnl  \bar{\ell} \PGnl$
+        \end{itemize}
+        The branching ratio of the flavours of the $q_i\bar{q_j}$ pairs generated by \PW decays are given by the respective CKM elements $|V_{ij}|^2/2$.
+    \end{minipage}
+
+\end{minipage}
+
+
+
 \subsection{Top pairs production at LHC}
 In a hadron collider, top quarks are mainly produced in $\ttbar$ pairs via gluon-gluon fusion (ggF) $gg \to \ttbar$ or quarks annihilation ($\PQq\bar{\PQq} \to \ttbar$).
 \begin{figure}[h!]

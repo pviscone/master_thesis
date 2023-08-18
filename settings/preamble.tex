@@ -14,7 +14,7 @@
 \usepackage{xifthen} % for \ifthenelse, \isempty
 \usepackage{xspace} % for \xspace in macros
 \usepackage{lipsum}
-\usepackage{graphicx, caption, subcaption}
+\usepackage{graphicx, caption}
 %\usepackage{tikz}
 %\usetikzlibrary{calc,positioning,shadows.blur,decorations.pathreplacing}
 %\usepackage{etoolbox}
@@ -32,7 +32,14 @@
 %\usepackage{capt-of}
 %\usepackage{qtree}
 %\usepackage{wrapfig} % to wrap text around figure
-\usepackage[bottom]{footmisc} % force footnotes below floats
+\usepackage[hang,flushmargin]{footmisc} % force footnotes below floats %add perpage to reset counter each page
+\usepackage{etoolbox}
+% Make custom counter for the footnotes
+% Patch the footnote command to bend to our needs
+\patchcmd{\footnote}{\@mpfn}{{myfootnote}}\relax\relax
+\patchcmd{\footnote}{\thempfn}{{\themyfootnote}}\relax\relax
+
+
 
 %%% FIGURES numbering
 %%%\newcounter{myfigure}
