@@ -251,18 +251,38 @@ The radiation damage of PbWO4 crystals is constantly monitored by a laser system
 
 \subsection{Hadronic calorimeter}
 Hadrons usually don't deposit all their energy in the ECAL, specially neutral hadrons, therefore the ECAL is surrounded by the hadronic calorimeter HCAL that allows the measurements of the jets' energy and the missing energy.\\
-The CMS HCAL \ADDREF is a sampling calorimeter divided into four subdetectors: the hadron barrel (HB), the hadron endcaps (HE), the hadron outer (HO) and the hadron forward (HF).
-
-
-
-
-
+The CMS HCAL \cite{Green1997TheReport,Anderson2012CMSCalorimeter} is divided into four subdetectors: the hadron barrel (HB), the hadron endcaps (HE), the hadron outer (HO) and the hadron forward (HF).\\
+\\
+The HB is a sampling calorimeter made of brass absorbers and plastic scintillator as the active material. The brass was chosen due to its short interaction length and because it is non-magnetic.\\
+It covers the pseudorapidity  region $|\eta|<1.3$ and it extends in a radius $1.77m<R<2.95m$. The barrel is divided into sections of size $(\Delta \eta, \Delta \phi)=0.087 \times 0.087$ and is composed of eight 50.5 mm thick and six 56.5 mm thick brass plates alternating with the scintillating tiles, that are connected through optical cables to SiPM sensors to collect and amplify the light.\\
+The total thickness of the HB in nuclear interaction length units at $|\eta|=0$ is $5.82 \lambda_I$ that increases up to $10.6\lambda_I$ at $|\eta|=1.3$.\\
+In addition to this, the ECAL barrel adds $\sim 1.1\lambda_I$ thickness of material.\\
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.75\linewidth]{fig//chap03-cms/hcal.png}
-    \caption{Schematic view in the r- z plane of a quarter of the CMS HCAL }
+    \caption{Schematic view in the r-z plane of a quarter of the CMS HCAL and depth segmentation after the Phase I update \cite{Anderson2012CMSCalorimeter}. }
     \label{fig:hcal}
 \end{figure}
+\\
+Also the HE is a sampling calorimeter made of brass absorbers and plastic scintillating tiles. It is divided into 18 sectors in $\phi$ and into 14 sectors in $\eta$ (the size increases with $\eta$) and is placed 4006.5 mm from the interaction point. It covers the $1.3 < |\eta|<3.0$ region and including the ECAL endcaps, its length in interaction lengths units is $\sim10\lambda_I$\\
+\\
+The HO is placed outside the solenoid magnet, and its purpose is to catch the tails of the hadronic showers that are not contained by the HB. The HO is composed by five scintillator rings with a radius of 4.07 m that cover the region $|\eta|<1.26$. The central ring that covers the thinner HCAL region is equipped also with a 19.5 cm tick iron absorber and an additional scintillator, as shown in fig \Fig{fig:ecal_rad_damage}.\\
+\\
+The HF is a sampling calorimeter is located 11150 mm away from the interaction point and covers the region $3<|\eta|<5.2$. It is composed of 1.65 mm steel absorber plates and 0.6 mm thick quartz fibers that emit light by Cherenkov effect.
+\\
+\\
+The combined energy resolution of the ECAL and the HCAL was measured using a pion beam from 2 \GeV to 350 \GeV \cite{Abdullin2008TheGeV/c}
+\begin{equation}
+    \frac{\sigma_E}{E}= \frac{84.7\%}{\sqrt{E}} \oplus 7.4 \%
+\end{equation}
+The energy resolution is mainly affected by the sampling fluctuations and the noise term is negligible.
+
+
+
+
+
+
+
 \subsection{Muon system}
 \subsection{Trigger and data acquisition}
 \subsection{BRIL}
