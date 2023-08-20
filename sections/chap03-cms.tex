@@ -118,7 +118,7 @@ The silicon tracker \cite{CastaldiPatriceSiegristJean-EudesAugustin1997TheReport
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.73\linewidth]{fig//chap03-cms/CMS_tracker_Phase1_edit.pdf}
-    \caption{Schematic view of a quarter of the CMS tracker. Pixel modules are shown in green, single-sided strip modules in red and double-sided strip modules in blue \cite{DPGResultsTRKTWiki}.}
+    \caption{Schematic view of a quarter of the CMS tracker in the $r-a$ plane. Pixel modules are shown in green, single-sided strip modules in red and double-sided strip modules in blue \cite{DPGResultsTRKTWiki}.}
     \label{fig:cms_tracker}
 \end{figure}
 \\
@@ -259,7 +259,7 @@ The total thickness of the HB in nuclear interaction length units at $|\eta|=0$ 
 In addition to this, the ECAL barrel adds $\sim 1.1\lambda_I$ thickness of material.\\
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.75\linewidth]{fig//chap03-cms/hcal.png}
+    \includegraphics[width=0.85\linewidth]{fig//chap03-cms/hcal.png}
     \caption{Schematic view in the r-z plane of a quarter of the CMS HCAL and depth segmentation after the Phase I update \cite{Anderson2012CMSCalorimeter}. }
     \label{fig:hcal}
 \end{figure}
@@ -268,7 +268,7 @@ Also the HE is a sampling calorimeter made of brass absorbers and plastic scinti
 \\
 The HO is placed outside the solenoid magnet, and its purpose is to catch the tails of the hadronic showers that are not contained by the HB. The HO is composed by five scintillator rings with a radius of 4.07 m that cover the region $|\eta|<1.26$. The central ring that covers the thinner HCAL region is equipped also with a 19.5 cm tick iron absorber and an additional scintillator, as shown in fig \Fig{fig:ecal_rad_damage}.\\
 \\
-The HF is a sampling calorimeter is located 11150 mm away from the interaction point and covers the region $3<|\eta|<5.2$. It is composed of 1.65 mm steel absorber plates and 0.6 mm thick quartz fibers that emit light by Cherenkov effect.
+The HF is a sampling calorimeter is located 11150 mm away from the interaction point and covers the region $3<|\eta|<5.2$. It is composed of 1.65 mm steel absorber plates and 0.6 mm thick quartz fibers that emit light by Cherenkov effect. It is also used for the online monitoring of the luminosity.
 \\
 \\
 The combined energy resolution of the ECAL and the HCAL was measured using a pion beam from 2 \GeV to 350 \GeV \cite{Abdullin2008TheGeV/c}
@@ -277,12 +277,72 @@ The combined energy resolution of the ECAL and the HCAL was measured using a pio
 \end{equation}
 The energy resolution is mainly affected by the sampling fluctuations and the noise term is negligible.
 
-
-
-
-
-
-
 \subsection{Muon system}
+The CMS muon system \cite{Layter1997TheReport} is embedded in the iron return yoke and its scope is to collect muon hits that are used, in combination with information from the tracker, to enhance the identification of muons and momentum resolution of high-energy muons.
+It is divided into five separate wheels in the barrel, containing four layers of detectors, and four independent endcaps for each side.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.85\linewidth]{fig//chap03-cms/muon_system.jpg}
+    \caption{Schematic view in the $r-z$ plane of a quarter of the muon system \cite{Piccolo2011CMSPerformance}.}
+    \label{fig:muon_system}
+\end{figure}
+
+
+Three different gaseous detector technologies are employed:
+\begin{itemize}
+    \item \textbf{Drift tubes chambers (DT)}: The 250 DT chambers are divided into five wheels and cover the region $|\eta|<1.2$. Each wheel is divided into 12 sectors covering $\Delta \phi=30º$ around the interaction point, and each sector is organized into four muon barrels (MB).
+    Each chamber consists of 8 or 12 aluminum layers with up to 90 tubes.
+
+    \item \textbf{Cathode strip chambers (CSC)}: CSCs consist of arrays of anode wires crossed with copper cathode strips within a gas volume. The 486 CSCs are organized in 4 layers, placed in the endcap disks and extend the muon system coverage up to $0.8<|\eta|=2.4$
+
+    
+    \item \textbf{Resistive plate chambers (RPC)}: The RPCs are located both in the barrel and in the endcap region, up to $|\eta|<1.6$. RPCs consist of two charged parallel high resistive plastic plates filled with gas. The read-out is performed by aluminum strips separated from the graphite coating. The scope of the RPCs is to provide, in combination with the DTs and the CSCs, a fast signal to exploit for the muon trigger system.
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{.58\linewidth}
+        
+        \includegraphics[width=\linewidth]{fig//chap03-cms/drift_tubes.png}
+        \label{fig:drift_tubes}
+        \caption{}
+    \end{subfigure}
+    \begin{subfigure}[b]{.41\linewidth}
+        
+        \includegraphics[width=1\linewidth]{fig//chap03-cms/rpc.png}
+        \caption{}
+        \label{fig:rpc}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.7\linewidth}
+        \centering
+        \includegraphics[width=1\linewidth]{fig//chap03-cms/csc.jpg}
+        \caption{}
+        \label{fig:csc}
+    \end{subfigure}
+    \caption{Schematics view of the (a) drift tubes chamber \cite{MuonExperiment}, (b) resistive plates \cite{EndcapReshufflingRpcTWiki}, (c) cathode strips chamber \cite{Acosta2008EfficiencyChambers}.}
+    \label{fig:muons_technologies}
+\end{figure}
+    
+
+
 \subsection{Trigger and data acquisition}
-\subsection{BRIL}
+At LHC, bunch crossing occurs each 25ns, \ie $\sim 10^9$ proton-proton collision occurs in each second. Considering the raw event size of 1 MB \cite{Franzoni2016DatasetAnalyses}, this would lead to a data throughput of  $\sim 1TB/s$ that, not only will saturate the bandwidth of the data acquisition system, but also would make it impossible to save on tape all the recorded data.\\
+The scope of the CMS trigger system is to select only the events relevant to the CMS physics program.
+The trigger system is divided into level 1 low-level trigger (L1) and high-level trigger.\\
+\\
+The CMS L1 Trigger \cite{Musenich2000CMSSystems} operates as a hardware-based trigger system exploiting FPGA boards. It relies on custom-designed electronics and algorithms that have to make decisions within $3.2 \mu s$, the maximum time that the raw data can occupy the buffers.\\
+The L1 trigger collects raw data from the front-end electronics of the calorimeters and the muon system that converts the analog signals to digital.\\
+The L1 algorithms roughly estimate the energy deposit and the trajectory of the particles in the subdetectors to select EM, jet, and muon candidates. Thereafter, the information from the muon system and from the calorimeters are combined into the global trigger that chooses if to discard the event or to pass the event to the HLT trigger for further filtering.
+The L1 trigger reduces the output rate from the bunch crossing rate of $40$MHz to $100$kHz.
+\\
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.6\linewidth]{fig/chap03-cms/L1.png}
+    \caption{Architecture of the Level-1 Trigger \cite{Brooke2003HardwareTrigger}.}
+    \label{fig:l1}
+\end{figure}
+\\
+The HLT system \cite{SphicasCMS:Trigger} is a software-based trigger implemented on a computer farm composed of 16000 CPUs that decreases the output rate from the 100 kHz of the L1 trigger to 1 kHz. It employs the same algorithms used by the offline reconstruction but adapted to the timing constraint of the HLT trigger
+The HLT has access to the full detector readout and events are accepted or rejected as soon as there is enough information to decide. The raw data of the events that are accepted by the trigger are saved on tape and the events are reconstructed offline when the computing resources are available.
+
