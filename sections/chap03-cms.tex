@@ -327,13 +327,13 @@ Three different gaseous detector technologies are employed:
 
 
 \subsection{Trigger and data acquisition}
-At LHC, bunch crossing occurs each 25ns, \ie $\sim 10^9$ proton-proton collision occurs in each second. Considering the raw event size of 1 MB \cite{Franzoni2016DatasetAnalyses}, this would lead to a data throughput of  $\sim 1TB/s$ that, not only will saturate the bandwidth of the data acquisition system, but also would make it impossible to save on tape all the recorded data.\\
+At LHC, bunch crossing occurs each 25ns, \ie $\sim 10^9$ proton-proton collision occurs in each second. Considering the raw event size of 1 MB \cite{Franzoni2016DatasetAnalyses}, this would lead to a data throughput of  $\sim 1$ TB/s that, not only will saturate the bandwidth of the data acquisition system, but also would make it impossible to save on tape all the recorded data.\\
 The scope of the CMS trigger system is to select only the events relevant to the CMS physics program.
-The trigger system is divided into level 1 low-level trigger (L1) and high-level trigger.\\
+The trigger system is divided into the level 1 low-level trigger (L1) and the high-level trigger.\\
 \\
-The CMS L1 Trigger \cite{Musenich2000CMSSystems} operates as a hardware-based trigger system exploiting FPGA boards. It relies on custom-designed electronics and algorithms that have to make decisions within $3.2 \mu s$, the maximum time that the raw data can occupy the buffers.\\
+The CMS L1 Trigger \cite{Musenich2000CMSSystems} operates as a hardware-based trigger system exploiting FPGA boards. It relies on custom algorithms that have to make decisions within $3.2 \mu s$, the maximum time that the raw data can occupy the buffers.\\
 The L1 trigger collects raw data from the front-end electronics of the calorimeters and the muon system that converts the analog signals to digital.\\
-The L1 algorithms roughly estimate the energy deposit and the trajectory of the particles in the subdetectors to select EM, jet, and muon candidates. Thereafter, the information from the muon system and from the calorimeters are combined into the global trigger that chooses if to discard the event or to pass the event to the HLT trigger for further filtering.
+The algorithms roughly estimate the energy deposit and the trajectory of the particles in the subdetectors to select EM, jet, and muon candidates. Thereafter, the information from the muon system and from the calorimeters are combined into the global trigger that chooses whether to discard the event or to pass it to the HLT trigger for further filtering.
 The L1 trigger reduces the output rate from the bunch crossing rate of $40$MHz to $100$kHz.
 \\
 \begin{figure}[h!]
@@ -343,6 +343,6 @@ The L1 trigger reduces the output rate from the bunch crossing rate of $40$MHz t
     \label{fig:l1}
 \end{figure}
 \\
-The HLT system \cite{SphicasCMS:Trigger} is a software-based trigger implemented on a computer farm composed of 16000 CPUs that decreases the output rate from the 100 kHz of the L1 trigger to 1 kHz. It employs the same algorithms used by the offline reconstruction but adapted to the timing constraint of the HLT trigger
-The HLT has access to the full detector readout and events are accepted or rejected as soon as there is enough information to decide. The raw data of the events that are accepted by the trigger are saved on tape and the events are reconstructed offline when the computing resources are available.
+The HLT system \cite{Racz2002CMSTrigger} is a software-based trigger implemented on a computer farm composed of 16000 CPUs that decreases the output rate from the 100 kHz of the L1 trigger to 1 kHz. It employs the same algorithms used by the offline reconstruction but adapted to the timing constraint of the HLT trigger.
+It has access to the full detector readout, and events are accepted or rejected as soon as there is enough information to decide. The raw data of the events that are accepted by the trigger are saved on tape and the events are reconstructed offline when the computing resources are available.
 
