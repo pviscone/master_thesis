@@ -2,17 +2,88 @@
 
 \newchap{Event simulation and reconstruction}\label{sec:RECO}
 \minitoc
-\section{Event simulation}
-\subsection{Generators}
-\subsection{Parton showering}
-\subsection{Simulation of the detector response}
 
 \section{Event reconstruction}
+The event reconstruction is the identification of all the particles and their kinematics for each pp collision, starting from the raw data that is just a collection of hits and energy clusters.\\
+
+PF
+\ADDREF 
 \subsection{Tracking}
-\subsection{Muons}
-\subsection{Electrons}
-\subsection{Photons}
+The algorithm used to reconstruct the trajectories of charged particles and their momentum is the Combinatorial Track Finder (CTF) \ADDREF, an adaptation of the Kalman Filtering (KF) \ADDREF algorithm.
+At the beginning, a few hits in consecutive layers of the tracker are used as seed of the KF algorithms and then a final fit is performed to estimate the position of the vertex, the direction and the transverse momentum of each charged particle.\\
+
+\paragraph*{Seeding and iterations}
+This process is iterated in multiple steps, starting to search for tracks that are easier to find (\eg particle with large $p_T$ produced in the IP), removing the associated hits to reduce the combinatorial multiplicity and searching for other kinds of tracks using different seeding criteria.
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|c|c|c|c|}
+    \hline
+    Iteration&Name&Seeding&Targeted Tracks\\
+    \hline
+    1& InitialStep&pixel triplets&prompt, high $p_T$\\
+    2& DetachedTriplet&pixel triplets&from b hadron decays, $R\leq 5$cm\\
+    3& LowPtTriplet&pixel triplets&prompt, low $p_T$\\
+    4& PixelPair&pixel pairs&recover high $p_T$\\
+    5& MixedTriplet&pixel+strip&triplets displaced, $R\leq 7$cm\\
+    6& PixelLess&strip triplets/pairs&very displaced, $R\leq 25$cm\\
+    7& TobTec&strip triplets/pairs&very displaced, $R\leq 60$cm\\
+    8& JetCoreRegional&pixel+strip pairs&inside high $p_T$ jets\\
+    9& MuonSeededInOut&muon-tagged&tracks muons\\
+    10& MuonSeededOutIn&muon detectors&muons \\
+    \hline
+    \end{tabular}
+    \caption{Seeding configuration of ten iteration with different target tracks. $R$ is the target distance of the track origin from the beam axis \ADDREF PF. }
+    \label{tab:track_seeding}
+\end{table}
+
+\paragraph*{Track finding}
+The track finding, based on the method, is divided into four steps:
+\begin{enumerate}
+    \item Using the parameter of the track candidate (given by the seed at the beginning), determine which adjacent layer of the tracker can be intersected by the trajectory, considering is uncertainties.\\ The trajectories are assumed to be perfect Helix, neglecting the multiple scattering, allowing us to use fast analytical methods.
+    \item Look for a compatible silicon module\footnote{Silicon modules usually overlap, so in this step the algorithms look for groups of modules, also to ease the computational effort.} in the layer such that its boundary is less than $3 \sigma$ from the trajectory. The trajectory and its uncertainties are propagated to the sensor surface.
+    \item A $\chi^2$ test is used to check which of the hits are compatible with the track candidate, considering both the hit and the trajectory uncertainties.
+    \item Update the track candidate and iterate
+\end{enumerate}
+\paragraph*{Track fitting}
+To determine the track parameters, after all hits of each track are assigned by the track finder, a new KF fit is initialized at the location of the innermost hit. The fit proceeds through all the hits, from inside outwards.\\
+This filter is followed by a smoothing stage that consists of a second KF initialized with the result of the first one and is run backwards. The track parameters are obtained from a weighted average of the track parameters of these two filters.\\
+During the track fitting stage, the effects of interaction with materials and  inhomogeneous of the magnetic field are considered.
+
+\TODO{AGGIUNGI FIGURA KF}
+
+\subsubsection*{Muon tracks}
+The reconstruction of muon tracks combines the information from the tracker and the muon system. Three types of tracks are defined:
+\begin{itemize}
+    \item \textbf{Standalone muons}: Tracks built using only the hits in the muon system.
+    \item \textbf{Tracker muons}: Tracks built using only the hits in the tracker that match the track segments in the muon system.
+    \item \textbf{Global muons}: Tracks fitted combining the tracker and the muon system hits, improving the $p_T$ resolution of the tracking detector.
+\end{itemize}
+Usually, there is no reason to not use global muons, but low $p_T$ muons can be reconstructed as tracker muons because of the large multiple scattering in the return yoke. 
+
+\subsubsection*{Electron tracks}
+The initial identification of electrons is performed in two ways:
+The first consists in estimating the electron momentum from the $\phi$ spreading of the ECAL cluster and finding a track compatible with the cluster.
+The second method consists in finding ECAL clusters compatible with tracks extrapolated  from the tracker.\\
+\\
+Electrons, traversing the tracker, radiate energy through by Bremsstrahlung. For this reason, the KF doesn't perform well, so, tracks that are identified as electrons are refitted with the Gaussian sum filter (GSF) algorithm that approximates the energy loss of electrons, described by the Bethe-Heitler distribution \ADDREF, as a Gaussian mixture.\\
+At each layer, a set of helical track segments is computed for a different value of the energy loss, and it's weighted with the corresponding probability of occurring. These informations are used to decrease the energy of the particle and update the trajectory uncertainties at each layer.
+
+
+\subsection{Calorimeter clustering}
+\subsection{Particle flow linking}
 \subsection{Jets}
 \subsubsection*{Flavour tagging}
 \subsection{Missing transverse momentum}
-\subsection{Particle flow}
+
+\section{Event simulation}
+To optimize the analysis, estimate the efficiencies, evaluate the systematic uncertainties, and interpret the data, we need Montecarlo simulations (MC): labelled data that reproduces the real data as faithfully as possible.\\
+\\
+The first stage of the simulation is the generation of the matrix elements, usually done with software like \MADGRAPH \ADDREF or \POWHEG \ADDREF : after the user has defined all the Feynman diagrams to compute (including the initial and final state radiation) and the physics model, the four momenta of all the particles are computed at the parton level.
+The next step, performed by \PYTHIA \ADDREF in the CMS collaboration, is the hadronization of colored particles, done exploiting the phenomenological Lund string model \ADDREF .\\
+\\
+The second step, performed by the \GEANTfour framework \ADDREF, is the simulation of the detector response and is the most computational intensive step, to the point that other approaches to the simulation are being considered \ADDREF .\\
+\GEANT emulate the propagation of particles through the CMS detector, simulating the particle-matter interactions and the readout of each subdetectors. In these steps also the electronic noise, the digitization, the Landau fluctuations and all the inefficiencies of the detectors like the non uniformity of the materials are simulated.\\
+The events are reconstructed exactly like the real data, with the same algorithms.\\
+Despite the complexity of the full simulation, the MC can't reproduce exactly the real data so, for each analysis, the user has to apply the so-called scale factors (SF) to the MC, a set of event weight that represent the ratios of efficiencies between MC and data $SF=\epsilon_{data}/\epsilon_{MC}$.
+

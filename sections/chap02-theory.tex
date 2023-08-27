@@ -53,8 +53,8 @@ The Lagrangian (density) for a free fermion field is the Dirac Lagrangian
 \end{equation}
 where $\aff{\psi}{}=\ff{\psi}{}^\dagger\gamma^0$ is the adjoint Dirac spinor, and $\gamma^\mu$ are the 4 Dirac matrices that obey the Clifford algebra $\{\gamma^\mu,\gamma^\nu\}=2\eta^{\mu\nu}$.\\
 The corresponding equation of motion has two solutions: the one with the positive energy represents the fermion field, the one with the negative energy represents the anti-fermion field.\\
-Dirac spinors are $\left( \frac{1}{2} \right)$ representations of the Lorentz group $SO^+(1,3)$ that can be decomposed into the $\SU[L]{2} \oplus \SU[R]{2}$ group.\\
-Using this different representation, Dirac spinors can be described in the so-called chiral basis $\psi=\left(\psi_L,\psi_R \right)$ where $\psi_{L/R}$ are called left/right Weyl spinors and are respectively the $\left(\frac{1}{2},0\right)$ and the $\left(0,\frac{1}{2}\right)$ representations of the $\SU{2} \oplus \SU{2}$ group.\\
+Dirac spinors are representations of the Lorentz group $SO^+(1,3)$ that can be decomposed into the $\SU[L]{2} \otimes \SU[R]{2}$ group.\\
+Using this different representation, Dirac spinors can be described in the so-called chiral basis $\psi=\left(\psi_L,\psi_R \right)$ where $\psi_{L/R}$ are called left/right Weyl spinors and are respectively the $\left(\frac{1}{2},0\right)$ and the $\left(0,\frac{1}{2}\right)$ representations of the $\SU{2} \otimes \SU{2}$ group.\\
 The chirality operator $\gamma^5=i\gamma^0\gamma^1\gamma^2\gamma^3$ anti-commutes with all the gamma matrices and commute with the Dirac Hamiltonian only if the mass is zero, so the chirality is a good quantum number only for massless particles.\\
 The chirality plays an important role in the weak interaction, as described in sec. \ref{sub:weak}
 \paragraph*{Gauge theories}
@@ -240,7 +240,7 @@ Indeed, the flavor mixing represented by the CKM matrix can be expressed in term
 \begin{equation}
     V_{CKM}=(V_L^u)^\dagger V_L^d
 \end{equation}
-At this point, the SM is complete. A summary of all the particles of the SM and their quantum numbers is in Tab. \ref{tab:SM}
+At this point, the SM is complete. A summary of all the particles of the SM and their quantum numbers is shown in Tab. \ref{tab:SM}
 \\
 \\
 \input{example/tex/intro-tab-SM_fields.tex}
@@ -422,7 +422,7 @@ At low energies, the PDFs are dominated by the presence of valence quarks, but t
 \\
 To compute the inclusive $\ttbar$ production cross-section at a hadron collider, the parton-level cross-section has to be convolved with the PDFs
 \begin{equation}
-    \sigma_{\mathrm{t\bar{t}}}=\sum_{i,j=q,\overline{{{q}}},g}\int d x_{i}d x_{j}f_{i}(x_{i},Q^{2})f_{j}(x_{j},Q^{2})\cdot\hat{\sigma}_{i j\rightarrow \ttbar}
+    \sigma_{\mathrm{t\bar{t}}}=\sum_{i,j=q,\overline{{{q}}},g}\int d x_{i}d x_{j}f_{i}(x_{i},Q^{2})f_{j}(x_{j},Q^{2})\cdot\hat{\sigma}_{i j\rightarrow \ttbar}(x_i,x_j)
 \end{equation}
 where the sums run over the type of partons (quarks, antiquarks, and gluons).
 The energy in the center of mass at LHC is $\sqrt{s}=13 \TeV$ and the predominant $\ttbar$ production channel is the ggF with a branching ratio of $\simeq 90\%$.\\
