@@ -5,7 +5,7 @@
 
 \section{Event reconstruction}
 The event reconstruction is the identification of all the particles and their kinematics for each pp collision, starting from the raw data that is just a collection of hits and energy clusters.\\
-
+\TODO{Add particle flow idea}
 PF
 \ADDREF 
 \subsection{Tracking}
@@ -50,7 +50,12 @@ To determine the track parameters, after all hits of each track are assigned by 
 This filter is followed by a smoothing stage that consists of a second KF initialized with the result of the first one and is run backwards. The track parameters are obtained from a weighted average of the track parameters of these two filters.\\
 During the track fitting stage, the effects of interaction with materials and  inhomogeneous of the magnetic field are considered.
 
-\TODO{AGGIUNGI FIGURA KF}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{fig//chap04-reco/KF.png}
+    \caption{Visualization of the forward filter and the backwards smoother filter. The red points indicate the measurements and their uncertainties on each layer, while the green points indicate the predictions \cite{Ai2021AFitting}.}
+    \label{fig:KF}
+\end{figure}
 
 \subsubsection*{Muon tracks}
 The reconstruction of muon tracks combines the information from the tracker and the muon system. Three types of tracks are defined:
@@ -66,11 +71,39 @@ The initial identification of electrons is performed in two ways:
 The first consists in estimating the electron momentum from the $\phi$ spreading of the ECAL cluster and finding a track compatible with the cluster.
 The second method consists in finding ECAL clusters compatible with tracks extrapolated  from the tracker.\\
 \\
-Electrons, traversing the tracker, radiate energy through by Bremsstrahlung. For this reason, the KF doesn't perform well, so, tracks that are identified as electrons are refitted with the Gaussian sum filter (GSF) algorithm that approximates the energy loss of electrons, described by the Bethe-Heitler distribution \ADDREF, as a Gaussian mixture.\\
+Electrons, traversing the tracker, radiate energy by Bremsstrahlung. For this reason, the KF doesn't perform well, so, tracks that are identified as electrons are refitted with the Gaussian sum filter (GSF) algorithm that approximates the energy loss of electrons, described by the Bethe-Heitler distribution \ADDREF, as a Gaussian mixture.\\
 At each layer, a set of helical track segments is computed for a different value of the energy loss, and it's weighted with the corresponding probability of occurring. These informations are used to decrease the energy of the particle and update the trajectory uncertainties at each layer.
-
+\subsubsection*{Vertex reconstruction}
+Once all the tracks are reconstructed, those who comes from the same vertex are clustered together and a fit is performed to determine the vertex position.\\
+The clustering is done using the simulated annealing algorithm \ADDREF that estimates the vertex position by minimizing the free energy function and associates to each track the probability of belonging to the i-th vertex. \\
 
 \subsection{Calorimeter clustering}
+The clustering in calorimeters is necessary to reconstruct photons (in the ECAL) and neutral hadrons (in the HCAL), objects that don't leave any signature in the tracker system.\\
+The HCAL and the ECAL are also used to improve the identification of electrons, matching the tracks with the ECAL energy clusters and looking for bremsstrahlung photons, and the reconstruction of charged hadrons, specially the high energetic ones.\\
+Cluster seeds are built from cells with an energy larger than a given threshold and
+larger than the energy of the neighboring cells.\\
+Starting from the seeds, topological clusters are built by aggregating neighboring cells that have an energy larger than twice the noise level.\\
+Assuming that the energy deposit in the M cells contained in the topological cluster arise from N Gaussian energy deposits, one for each seed in the topological cluster, a Gaussian mixture model is used to reconstruct the cluster. The parameters of the Gaussian are the location parameters in the $(\eta,\phi)$ plane, the amplitude, while the width has a fixed value, different for each subdetector.\\
+The energy and position of the seeds are used as initial values for the parameters of the Gaussian mixture that are estimated through an analytical maximum likelihood fit.\\
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|c|cc|cc|c|}
+    \hline
+    &\multicolumn{2}{c|}{ECAL} & \multicolumn{2}{c|}{HCAL} & Preshower\\
+    &barrel&endcaps&barrel&endcaps& \\
+    \hline
+    Cell E threshold (MeV)&80&300&800&800&0.06\\
+    Seed \# closest cells&8&8&4&4&8\\
+    Seed E threshold (MeV)&230&600&800&1100&0.12\\
+    Seed ET threshold (MeV)&0&150&0&0&0\\
+    Gaussian width (cm)&1.5&1.5&10.0&10.0&0.2\\
+    \hline
+    \end{tabular}
+    \caption{Seeding and clustering parameters for the ECAL, the HCAL, and the preshower \ADDREF PF.}
+    \label{tab:clustering}
+\end{table}
+
 \subsection{Particle flow linking}
 \subsection{Jets}
 \subsubsection*{Flavour tagging}
@@ -80,7 +113,7 @@ At each layer, a set of helical track segments is computed for a different value
 To optimize the analysis, estimate the efficiencies, evaluate the systematic uncertainties, and interpret the data, we need Montecarlo simulations (MC): labelled data that reproduces the real data as faithfully as possible.\\
 \\
 The first stage of the simulation is the generation of the matrix elements, usually done with software like \MADGRAPH \ADDREF or \POWHEG \ADDREF : after the user has defined all the Feynman diagrams to compute (including the initial and final state radiation) and the physics model, the four momenta of all the particles are computed at the parton level.
-The next step, performed by \PYTHIA \ADDREF in the CMS collaboration, is the hadronization of colored particles, done exploiting the phenomenological Lund string model \ADDREF .\\
+The next step, performed by \PYTHIA \ADDREF in the CMS software, is the hadronization of colored particles, done exploiting the phenomenological Lund string model \ADDREF .\\
 \\
 The second step, performed by the \GEANTfour framework \ADDREF, is the simulation of the detector response and is the most computational intensive step, to the point that other approaches to the simulation are being considered \ADDREF .\\
 \GEANT emulate the propagation of particles through the CMS detector, simulating the particle-matter interactions and the readout of each subdetectors. In these steps also the electronic noise, the digitization, the Landau fluctuations and all the inefficiencies of the detectors like the non uniformity of the materials are simulated.\\

@@ -10,6 +10,7 @@
 \newpage
 \phantomsection
 \addcontentsline{toc}{chapter}{References} % add references to TOC, even if no number
+
 \chapter*{References}
 \bibliographystyle{bib/style_CMS_TDR}
 %\bibliographystyle{apalike}
@@ -17,7 +18,9 @@
 %\bibliographystyle{alpha}
 %\bibliographystyle{these} % after change: 1 time bibtex, 2 times latex!
 %\nocite{*} % includes all entries from the database, whether they are referenced in the document or not
+\fancyhead[L]{}
 \begin{flushleft} % avoid full justification of text
+\fancyhead[L]{}
   \bibliography{
     bib/refs_SM,
     bib/refs_Higgs,
@@ -28,7 +31,9 @@
     bib/refs_samples,
     bib/refs_stats,
     bib/chap02_theory,
-    bib/chap03_cms
+    bib/chap03_cms,
+    bib/chap04_reco
  }
 \end{flushleft}
 \endgroup
+\fancyhead[L]{}
