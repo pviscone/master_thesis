@@ -3,4 +3,33 @@
 \minitoc
 \section{Neural networks}
 \subsection{Attention mechanism}
-\section{Maximum likelihood estimation}
+
+\section{Signal extraction}
+The signal extraction procedure relies on a fit of a binned distribution.
+The corresponding likelihood is a product of Poisson distributions, one for each bin, that contains the parameter of interest (POI) to fit.\\
+Given M regions, each represented with a histogram with $N_i$ bins, the signal and background MC prediction $s_{ij}$, $b_{ij}$, and the j-th bin content for the i-th region $n_{ij}$, the likelihood is 
+\begin{equation}
+    \mathcal{L}(\mu)=\prod_i^M \prod_j^{N_i} \frac{(\mu s_{ij}+b_{ij})^{n_{ij}}}{n_{ij}!} e^{-(\mu s_{ij}+b_{ij})}
+\end{equation}
+In this case, the POI is the signal strength $\mu$, that is estimated by finding the value that maximizes the likelihood, using the MINUIT algorithm \ADDREF.
+\begin{equation*}
+    \hat{\mu}=argmax_\mu \mathcal{L}(\mu)
+\end{equation*}
+
+\subsection{Systematic uncertainties}
+To incorporate in the model all the relevant uncertainties (\ie luminosity and rate uncertainties, uncertainties related to the detector resolution, etc.) we add to the likelihood the so-called nuisance parameters $\theta$.\\
+The likelihood becomes
+\begin{equation}
+    \mathcal{L}(\mu,\vec{\theta})=\prod_i^M \prod_j^{N_i} \frac{(\mu s_{ij}(\vec{\theta})+b_{ij}(\vec{\theta}))^{n_{ij}}}{n_{ij}!} e^{-(\mu s_{ij}(\vec{\theta})+b_{ij}\vec{\theta})} \prod_k  \pi_{k}(\theta_k)
+\end{equation}
+where $\pi_{k}$ is the prior probability distribution of the nuisance $\theta_k$.
+Three types of nuisances can be identified:
+\begin{itemize}
+    \item \text{Normalization nuisances}: Multiplicative corrections that affect the normalization of one process (\eg the cross-section uncertainties) or all processes (\eg the luminosity uncertainties).\\
+    This type of uncertainty does not change the shape of the histogram but changes the number of expected events.
+\end{itemize}
+
+\subsection{Profile Likelihood}
+
+\subsection{Asimov dataset}
+
