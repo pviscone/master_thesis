@@ -195,24 +195,20 @@ The variance of $\hat{\mu}_b$ depends on $\mu$ itself, but, in the contest of th
 \end{equation}
  \item The Cramer-Rao theorem \cite{James2006StatisticalEdition} states that, for a probability density function of the exponential family, to whom the Poisson distribution belongs, it holds
 \begin{equation}
-    \mathrm{Var}(\hat{\mu})=-\frac{(1-\partial_\mu b)^2}{E[\partial_\mu^2 \ln \mathcal{L}(\mu)]}
+    \mathrm{Var}(\hat{\mu})=-\frac{(1-\partial_\mu b)^2}{E[\partial_\mu^2 \ln \mathcal{L}]}
 \end{equation}
 where $b$ is the bias of the estimator.
-\begin{itemize}
-    \item The maximum likelihood estimator is asymptotically unbiased, so we can neglect $b$
-    \item We can approximate the expectation value $E[\partial_\mu^2 \ln \mathcal{L}(\mu)] \sim \partial_\mu^2 \ln \mathcal{L}(\mu)|_{\hat{\mu}}$
-\end{itemize}
-So we have that
+The maximum likelihood estimator is asymptotically unbiased, so we can neglect $b$.
 \begin{equation}
-    \partial_\mu^2 \ln \mathcal{L}_b(\hat{\mu}_b)\sim-\frac{1}{\mathrm{Var}(\hat{\mu}_b)}
+    E[\partial_\mu^2 \ln \mathcal{L}_b]\sim-\frac{1}{\mathrm{Var}(\hat{\mu}_b)}
 \end{equation}
 and for the total likelihood
 \begin{equation}
-    \partial_\mu^2 \ln \mathcal{L}(\hat{\mu})=
-    \sum_b \partial_\mu^2 \ln \mathcal{L}_b(\hat{\mu}_b)=\sum_b
+    E[\partial_\mu^2 \ln \mathcal{L}]=
+    \sum_b E[\partial_\mu^2 \ln \mathcal{L}_b]=\sum_b
     -\frac{1}{\mathrm{Var}(\hat{\mu}_b)}
 \end{equation}
-but since it holds $\mathrm{Var}(\hat{\mu}) =-1/\partial_\mu^2 \ln \mathcal{L}(\hat{\mu})$, then
+but since it holds $\mathrm{Var}(\hat{\mu}) =-1/E[\partial_\mu^2 \ln \mathcal{L}]$, then
 \begin{equation}
     \mathrm{Var}(\hat{\mu})=\left[\sum_b \frac{1}{\mathrm{Var}(\hat{\mu}_b)}\right]^{-1}= \left[\sum_b \frac{s_b^2}{s_b+b_b} \right]^{-1}
 \end{equation}
