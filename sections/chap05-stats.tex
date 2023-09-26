@@ -2,10 +2,265 @@
 \newchap{Statistical methods}\label{sec:STAT}
 \minitoc
 \section{Neural networks}
+A neural network (NN) is a machine learning\footnote{Machine learning is the process by which a computer program uses data to infer and build a predictive model.} model that can solve a wide range of problems and make predictions, learning from the data.\\
+\\
+The learning of a NN can be supervised, if our data, \ie the input of the NN, is labeled, \ie we have what the output of the NN should be; or, vice versa, unsupervised.\\
+In the context of supervised learning, there are mainly two classes of problems that a neural network can address:
+\begin{itemize}
+    \item \textbf{Regression}: Given a set of inputs $\bm{x} \in \mathbb{R}^N$, predict a set of output $\bm{y} \in \mathbb{R}^M$
+    \item \textbf{Classification}: Given a set of inputs $\bm{x} \in \mathbb{R}^N$, predict a set of output $\bm{y} \in \mathbb{Z}_M$
+\end{itemize}
+In this work, NNs are used as a tool to classify different events in signal or background, giving to the input of the NN different features of the events (like the 4-vectors of all the particles in the event). So, in this section, the discussion will be focused on the classification problem.
+
+\paragraph*{Perceptron}\hspace{1cm}\\
+\begin{minipage}{\linewidth}
+    \begin{minipage}{0.46\linewidth}
+        
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=\linewidth]{fig//chap05-stats/perceptron.png}
+        \vspace{0.5cm}
+        \caption{Visualization of a perception with three inputs $x_{ij}$. Each feature input is multiplied by a weight and everything is summed, along with the bias $w_0$. The result is passed to the activation function $f$, which, in this case, is the Heaviside theta function}
+        \label{fig:perceptron}
+    \end{figure}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.51\linewidth}
+    %\vspace{-1.25cm}
+        The simplest NN is the Rosenblatt perceptron \ADDREF (\Fig{fig:perceptron}), a NN with one single neuron that addresses the binary classification problem.\\
+        The characteristics of the neuron are:
+            \begin{itemize}
+                \item The dimension of the input. Each data entry is N-dimensional and each dimension is called a "feature".
+
+                \item Each neuron has N weights, plus one bias, that are derived from the data through the learning procedure
+
+                \item The activation function, \ie the function is applied do the dot product $\bm{x}\cdot \bm{w}+w_0$.
+                In the case of the perception, $f$ is the Heaviside theta function.
+            \end{itemize}
+    \end{minipage}
+    \vspace{0.75cm}
+\end{minipage}
+\\
+Given a set of inputs $\bm{x} \in \mathbb{R}^N$ and a set of weights $\bm{w} \in \mathbb{R}^{N+1}$, the output will be
+\begin{equation}
+    y=
+    \begin{cases}
+        1 & \text{if }\sum_{i=1}^N w_i x_i + w_0 >0\\
+        0 & \text{Otherwise}
+    \end{cases}
+\end{equation}
+The weights $w_i$ are obtained through the learning procedure.\\
+Given $\hat{y}_i$ the truth label of the input $\bm{x}_i$, and $x_{ji}$ the i-th features of the j-th data point:\\
+\begin{algorithm}
+\caption{Perceptron learning}\label{algo:perceptron}
+\begin{algorithmic}[1]
+    \State Initialize the weights randomly
+    \For{T times} 
+        \For{$i=0$ to len($\bm{x}$)}
+            \State Compute $y_i(\bm{x}_i)=f(\bm{w}\cdot \bm{x}_i+w_0)$
+            \State Update the weights $w_j=w_j+r(\hat{y}_i-y_i)x_{ji}$
+        \EndFor
+    \EndFor
+\end{algorithmic}
+\end{algorithm}
+\\
+Each iteration is called an "epoch". The number of epochs T and the so-called "learning parameter" $r$ are the first two examples of hyperparameters that have to be fixed by the user.\\
+\\
+The perceptron is a linear classifier. It means that it can not solve non-linearly separable problems, like an XOR gate, and can not address multiclass classification problems.
+
+
+
+\paragraph*{Feedforward neural networks}
+Perceptrons can be connected in layers to build a feed-forward neural network in which each layer is fully connected to the neurons of the previous one.
+So, the output of the j-th neuron in the k-th layer is
+\begin{equation}
+    y^k_{j}=  f^k\left(\sum_i w^k_{ji} y^{k-1}_i + w_{j0}^k\right)
+\end{equation}
+where $f$ is the so-called activation function of the neuron.\\
+The universal approximation theorem \ADDREF, asserts that a neural network with one single hidden layer and enough number of neurons can approximate any function.\\
+Despite that, it could be needed an arbitrarily large of neurons to approximate one function using a single layer, so, to simplify the learning process, more layers can be added.\\
+A neural network can work in two regimes: evaluation and training.\\
+\\
+The training regime is the phase in which each weight of the network is tuned learning from the data, and is divided into different steps that will be discussed in detail in the next paragraphs:
+\begin{enumerate}
+    \item Architecture definition: the number of neurons, layers, and the activation functions have to be defined.
+    \item Weight initialization: the weights are initialized randomly.
+    \item Evaluation of the output: the evaluation phase
+    \item Loss evaluation: The loss-function value is computed.
+    \item Backpropagation: The gradients of the loss with respect to each weight are computed and the weights are updated.
+    \item Iterate from point 3. T times.
+\end{enumerate}
+After that the NN is trained, it can be used in the evaluation mode, feeding the data to it, propagating the information in the network, and collecting the output to obtain the predictions.\\
+
+\begin{figure}[h!]
+    \vspace{-0.8cm}
+    \centering
+    \includegraphics[width=0.95\linewidth]{fig/chap05-stats/dnn.png}
+    \caption{Sketch of the training process of a binary classifier NN with 2 input features.}
+    \label{fig:dnn}
+\end{figure}
+
+
+
+
+\paragraph*{Loss function}
+Under the hood, a neural network is just an optimizer that tries to find the optimal function that minimizes a specitfic metric.\\
+In other words, it is just a tool to perform a multidimensional fit, specifying the objective function in terms of sum and composition of activation function\footnote{This is called "induction bias" and is determined by the architecture of the NN}.\\
+The metric that the NN tries to minimize during the learning phase is the so-called "Loss function", a continuous function that compares the prediction of the NN with the labels and has its minimum, ideally, when all the data are predicted correctly.\\
+For example, in the case of a regression problem, one of the most used loss functions is the MSE $L=\sum(y_i-\hat{y_i})^2$, which is the same metric that is minimized when a least squares fit is performed.\\
+\\
+In the context of the classification problems, the most used loss function is the cross-entropy loss \ADDREF.\\
+Assuming that each class belongs to one output neuron, we can use the so-called one-hot encoding, which is a binary representation method where a categorical variable is transformed into a binary vector with a 1 indicating the presence of a particular category and 0s elsewhere\footnote{So, for example, if we have 3 classes, the 2nd class is represented with the vector [0,1,0]}.\\
+So the output of the NN will be a vector, as long as the total number of classes, such that the sum of its elements is equal to 1. This can be achieved using the softmax activation function in the output layer (see the paragraph on activation functions).
+\\
+\\
+The one-hot encoding representation is used, instead of the integer encoding that just indexes the classes, to avoid the assumption of natural ordering and to avoid predictions halfway between categories.\\
+In the one-hot encoding representation, the cross-entropy loss is
+\begin{equation}
+    \mathcal{L}=-\sum_i^N w_{\hat{y}_i} \; \bm{\hat{y}_i} \cdot \log \bm{y_i}
+\end{equation}
+where $\bm{\hat{y_i}}$ and $\bm{y_i}$ are respectively the i-th label and prediction, both in the one-hot encoding representation, while $w_{\hat{y_i}}$ is a weight related to each class that is used to compensate the class imbalance in the training dataset, avoiding the NN to be biased towards one specific class.\\
+\\
+The cross-entropy loss is related to the likelihood of the multinomial distribution. Assuming m classes, the negative log-likelihood of the multinomial distribution, for a single data point, is
+\begin{equation}
+    -\log \mathcal{L}_{MN_{i}}(\bm{p_i};\bm{n_i})=-\sum_j^m n_j \log p_j + \text{const.}
+\end{equation}
+where $n_j$ is the number of predicted entries in the j-th class, and $p_j$ is the relative probability, that is what depends on all the weight of the NN.\\
+In the one-hot representation $n_j=\delta_{j\hat{y}_i}$ and $p_j$ is the score ${y}_{\hat{y}_i}$, where $\hat{y}_i$ is the i-th label in the integer representation.
+\begin{equation}
+    \mathcal{L}_{MN_{i}}=-\bm{\hat{y}_i} \cdot \log \bm{y_i}
+\end{equation}
+Since each data point is independent from the others, the total lig-likelihood is the sum of the single log-likelihoods
+\begin{equation}
+    \mathcal{L}_{MN}=-\sum_i \bm{\hat{y}_i} \cdot \log \bm{y_i}
+\end{equation}
+
+\paragraph*{Optimizer and backpropagation}
+To minimize the loss function, neural networks exploit the technique of gradient descent using different algorithms called "optimizers".\\
+The simplest optimizer is the \textit{stochastic gradient descent} (SGD) that, for each data point, computes the gradient of the loss function and updates the weight in the opposite direction of the gradient, propagating it along the network in a procedure called \textit{back-propagation}\footnote{That is just a fancy name to call a composite derivative}.
+\begin{algorithm}
+\caption{Stochastic gradient descent}\label{algo:SGD}
+\begin{algorithmic}[1]
+    \For{i=0 to T}
+        \For{j=0 to len($\bm{x}$)}
+            \State $\bm{w}=-\eta \grad_{\bm{w}} \mathcal{L}(y_j(\bm{w}),\hat{y}_j)$
+        \EndFor
+    \EndFor
+\end{algorithmic}
+\end{algorithm}\\
+where $\eta$ is the \textit{learning rate} hyper-parameter.\\
+The learning rate should be tuned carefully because a small learning rate will make the NN slow to reach the minimum of the loss, while a huge learning rate will make the gradient descent procedure very  unstable, jumping randomly across the loss hypersurface.\\
+\\
+To mitigate the fluctuation of the SGD and to improve the computational efficiency, we can compute the gradient on a batch and then update the weights
+\begin{algorithm}[H]
+\caption{Mini-batch stochastic gradient descent}\label{algo:miniSGD}
+\begin{algorithmic}[1]
+    \For{i=0 to T}
+        \For{k=0 to $n_{\text{batch}}$}
+            \State $\bm{w}=-\eta \grad_{\bm{w}} \sum_j^{\text{batch size}} \mathcal{L}(y_j^k(\bm{w}),\hat{y}_j^k)$
+        \EndFor
+    \EndFor
+\end{algorithmic}
+\end{algorithm}
+In the most modern libraries, the gradient is computed and back-propagated using the \textit{automatic differentiation}.
+In principle, when the NN is evaluated, a computational graph is built where the nodes of the graphs are just the operators applied to the tensors. In the backpropagation phase, the gradients of each node are computed and propagated all the way along the graph using the chain rule.\\
+Furthermore, NNs perform a lot of simple arithmetic operations that can be performed simultaneously in parallel. For this reason, the training and evaluation of NNs can be accelerated using graphing processing units (GPU).\\
+\\
+The list of optimizers is long and each of them has its pros and cons. The SGD has a slower convergence compared to the other optimizers due to its stochastic nature, it is really sensitive to the learning rate, and, especially in high-dimensional and nonconvex problems, it gets stuck very easily in local minima.\\
+\\
+To address these problems, one of the most used optimizers is ADAM (ADAptive Moment estimator) \ADDREF. It is able to adapt the learning rate of each parameter individually computing the moving average of gradients and of square gradients, ensuring a fast convergence.
+\\
+The drawback of ADAM is that has some convergence issues due to its large variance in the first epochs of training in the adaptive learning rate, showing huge fluctuations in the loss, and being too sensitive to the choice of hyperparameters.\\
+\\
+Trying to stem these issues, recently, a new variant of Adam was proposed: RAdam (Rectified Adam) \ADDREF.\\
+RAdam tries to tackle Adam's convergence issues by introducing a term to rectify the variance of the adaptive learning rate that tries to keep the learning rate small in the first few epochs.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{fig//chap05-stats/radam.png}
+    \label{fig:radam}
+\end{figure}
+As the SGD, all the other optimizers can work on minibatch, evaluating the gradients on a group of data points.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{fig//chap05-stats/radam_loss.png}
+    \caption{Evolution of the accuracy and loss function of RAdam, Adam, and SGD with different learning rates on the CIFAR10 problem \ADDREF in the learning epochs \ADDREF.}
+    \label{fig:radam_loss}
+\end{figure}
+
+\paragraph*{Architecture and complexity}
+The architecture of a neural network, specifically the number of layers and neurons, plays a crucial role in determining how well the network can learn and generalize from data.\\
+A neural network can be shallow (few layers) or deep (many layers). \\
+Deep networks tend to capture more complex patterns but suffer the vanishing gradient (see Backpropagation paragraph).\\
+A high number of neurons in each layer improves the capacity to represent functions and makes the network more robust to the noise, embedding the data in a high-dimensional space.\\
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\paragraph*{Dropout}
+\paragraph*{Residuals}
+\paragraph*{Activation functions}
+\paragraph*{Input normalization and weight initialization}
+
+\paragraph*{Hyperparameter optimization}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \subsection{Attention mechanism}
 
-\section{Signal extraction}
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Signal extraction}
 \subsection{Likelihood construction}
 The signal extraction procedure relies on a maximum likelihood fit of a binned distribution of one or more observables.\\
 The likelihood is constructed as the product of Poisson distributions, one for each bin, that contains the parameter of interest (POI) to fit.\\
@@ -13,12 +268,12 @@ Given $C$ channels\footnote{A channel is defined by a set of cuts and selections
 \begin{equation}
     \mathcal{L}(\mu)=\prod_c^C \prod_b^{B_c} \frac{(\mu s_{cb}+b_{cb})^{n_{cb}}}{n_{cb}!} e^{-(\mu s_{cb}+b_{cb})}
 \end{equation}
-In this case, the POI is the signal strength $\mu$, that is estimated by finding the value that maximizes the likelihood. The optimization problem is solved using the \textsc{MIGRAD} algorithm \cite{James1998MINUIT:Manual}, implemented in the \textsc{MINUIT2} library, that performs a line search in direction of the gradient and updates the covariance matrix (inverse of the Hessian matrix) with each step.\\
-To improve the numerical stability, the software implementation exploits the negative log likelihood $\textit{NLL}=-\log{\mathcal{L}}$ instead of the likelihood in the form of the \Eq{eq:likelihood}  
+In this case, the POI is the signal strength $\mu$, which is estimated by finding the value that maximizes the likelihood. The optimization problem is solved using the \textsc{MIGRAD} algorithm \cite{James1998MINUIT:Manual}, implemented in the \textsc{MINUIT2} library, that performs a line search in the direction of the gradient and updates the covariance matrix (inverse of the Hessian matrix) with each step.\\
+To improve the numerical stability, the software implementation exploits the negative log-likelihood $\textit{NLL}=-\log{\mathcal{L}}$ instead of the likelihood in the form of the \Eq{eq:likelihood}  
 \begin{equation*}
     \hat{\mu}=argmin_\mu - \log{\mathcal{L}(\mu)}
 \end{equation*}
-The predictions for each process are obtained through MC simulations, rescaled to match the total number of expected observed events. If $N^{MC}_{cp}$ is the total number of entries in the histogram relative to the process $p$ in the channel $c$, the respective entries have to be rescaled by a factor $w_{cp}$
+The predictions for each process are obtained through MC simulations, that are rescaled to match the total number of expected observed events. If $N^{MC}_{cp}$ is the total number of entries in the histogram relative to the process $p$ in the channel $c$, the respective entries have to be rescaled by a factor $w_{cp}$
 \begin{equation}
     w_{cp}=\frac{\mathcal{L_I} \sigma_p \epsilon_{cp}}{N_{cp}}
 \end{equation}
@@ -31,7 +286,7 @@ The likelihood becomes \cite{Conway2011IncorporatingSpectra}
     \mathcal{L}(\mu,\vec{\theta})=\prod_c^C \prod_b^{B_c} Poiss \big( n_{cb}| \lambda_{cb}(\mu,\vec{\theta}) \big)  \prod_k  \pi_{k}(\theta_k)
 \end{equation}
 where $\pi_{k}$ is the prior probability distribution of the nuisance $\theta_k$.\\
-The expectation value $\lambda_{cb}$ of the Poisson distribution now depends on the nuisance parameters that can be classified into normalization nuisances, shape nuisances and statistical nuisances.
+The expectation value $\lambda_{cb}$ of the Poisson distribution now depends on the nuisance parameters that can be classified into normalization nuisances, shape nuisances, and statistical nuisances.
 \begin{equation}\label{eq:lambda}
      \lambda_{cb}( \mu,\vec{\theta})=\sum_p^{P_c}M_{cp}(\mu) N_{cp}(\vec{\theta}_n)y_{cpb}(\vec{\theta}_s)+E_{cb}(\vec{\theta}_{MC})
 \end{equation}
@@ -67,8 +322,8 @@ Given that we know the central values and the standard deviations of all the var
     \begin{equation}
         y_{cpb}(\theta_s)=max\left(0,y_{cpb}+\sum_k f_{cpb}\left(\theta_k^{(s)} \right)\right)
     \end{equation}
-    In this way we can clip $y_{cpb}$ to 0 preventing the height of the bin to being negative.\\
-    The vertical morphing procedure is shown and described in details in \Fig{fig:morphing}
+    In this way, we can clip $y_{cpb}$ to 0 preventing the height of the bin from being negative.\\
+    The vertical morphing procedure is shown and described in detail in \Fig{fig:morphing}
 
 
 
@@ -97,7 +352,7 @@ Given that we know the central values and the standard deviations of all the var
 \end{figure}
 
 \paragraph*{Smoothing}
-For some systematics, up and down variations can lead to significant statistical fluctuations in the less populated bins, that, usually, are the high signal purity regions of the histogram.\\
+For some systematics, up and down variations can lead to significant statistical fluctuations in the less populated bins, which, usually, are the high signal purity regions of the histogram.\\
 To overcome this inconvenience, a smoothing procedure is applied.
 \begin{algorithm}
 \caption{Smoothing algorithm}\label{algo:smooth}
@@ -132,7 +387,7 @@ The LOWESS algorithm \cite{Cleveland1979RobustScatterplots} (LOcally WEighted Sc
 
 
 \subsection{Profile Likelihood}
-According to the Wilks' theorem \cite{James2006StatisticalEdition}, the distribution of the likelihood ratio is asymptotically distributed like a $\chi^2$.
+According to Wilks' theorem \cite{James2006StatisticalEdition}, the distribution of the likelihood ratio is asymptotically distributed like a $\chi^2$.
 \\
 We have to fit just the POI $\mu$, so we can define the profile likelihood
 \begin{equation}
@@ -142,7 +397,7 @@ $\hat{\mu}$ and $\bm{\hat{\theta}}$ are the parameters that maximize the likelih
 Since $\int_0^1\chi^2_1(x) dx =0.683 = 1\sigma$, to compute the 68\% confidence level (CL) on $\hat{\mu}$, we can compute the profile likelihood and find the values of $\mu$ for which holds $-2\Delta \ln{\mathcal{L}(\mu)}=1$.\\
 \\
 To understand how different groups of nuisances affect the profile likelihood and the total uncertainty on $\mu$, some of the $\bm{\tilde{\theta}}(\mu)$ can be frozen in turn to the values $\bm{\hat{\theta}}$.\\
-The so-called "breakdown procedure" consists in freezing sequentially groups of nuisance parameters, computing the profile likelihood and the relative uncertainties and subtracting them in quadrature from the total uncertainty.
+The so-called "breakdown procedure" consists of freezing sequentially groups of nuisance parameters, computing the profile likelihood and the relative uncertainties, and subtracting them in quadrature from the total uncertainty.
 
 
 \paragraph*{Impact plots} are a useful tool to understand the impact that each nuisance has on the total uncertainty. An example is shown in \Fig{fig:impact}.\\
@@ -154,7 +409,7 @@ The so-called "breakdown procedure" consists in freezing sequentially groups of 
         \begin{equation}
              \hat{\theta}_k=argmin_{\theta_k} -2 \ln \left( \frac{\mathcal{L}(\theta_k, \tilde{\mu}(\theta_k),\bm{\tilde{\theta}}(\theta_k))}{\mathcal{L}(\hat{\mu},\bm{\hat{\theta}},\hat{\theta}_k)} \right)
         \end{equation}
-        is computed, along with the respective uncertainty, exploiting the Wilks' theorem as explained before.
+        is computed, along with the respective uncertainty, exploiting Wilks' theorem as explained before.
         \item[\ding{226}] The blue crosses ("Pulls") corresponds to $(\hat{\theta}-\theta_{\text{pre-fit}})/\sqrt{\sigma_{\text{pre-fit}}^2-\sigma_{\text{post-fit}}^2}$.\\
         They tell us how much the fitted values are in tension with the pre-fit values defined by the priors.      
     \end{itemize}
@@ -217,4 +472,6 @@ So, to estimate the uncertainty on $\hat{\mu}$ using the Asimov dataset, we can 
 \begin{equation}
     Q=\sum_c \sum_b \frac{s_{cb}^2}{s_{cb}+b_{cb}}
 \end{equation}
-and assert $\sigma(\hat{\mu}) \sim 1/\sqrt{Q}$
+and assert $\sigma(\hat{\mu}) \sim 1/\sqrt{Q}$\\
+\\
+Furthermore, the $(x_b,Q_b)$ plot helps us to choose the binning of the histogram to optimize the statistical significance.

@@ -39,7 +39,7 @@
 %\usepackage{wrapfig} % to wrap text around figure
 \usepackage[hang,flushmargin]{footmisc} % force footnotes below floats %add perpage to reset counter each page
 \usepackage{etoolbox}
-
+\renewcommand{\thealgorithm}{}
 % Make custom counter for the footnotes
 % Patch the footnote command to bend to our needs
 \patchcmd{\footnote}{\@mpfn}{{myfootnote}}\relax\relax
@@ -174,7 +174,7 @@
 
 % PARAGRAPH SPACING
 \parskip=0cm
-\parindent=0.5cm
+\parindent=0.cm
 
 % LINE SPACING
 \usepackage{lineno} % line numbers
