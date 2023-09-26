@@ -143,7 +143,7 @@ The simplest optimizer is the \textit{stochastic gradient descent} (SGD) that, f
 \begin{algorithmic}[1]
     \For{i=0 to T}
         \For{j=0 to len($\bm{x}$)}
-            \State $\bm{w}=-\eta \grad_{\bm{w}} \mathcal{L}(y_j(\bm{w}),\hat{y}_j)$
+            \State $\bm{w}=\bm{w}-\eta \grad_{\bm{w}} \mathcal{L}(y_j(\bm{w}),\hat{y}_j)$
         \EndFor
     \EndFor
 \end{algorithmic}
@@ -157,7 +157,7 @@ To mitigate the fluctuation of the SGD and to improve the computational efficien
 \begin{algorithmic}[1]
     \For{i=0 to T}
         \For{k=0 to $n_{\text{batch}}$}
-            \State $\bm{w}=-\eta \grad_{\bm{w}} \sum_j^{\text{batch size}} \mathcal{L}(y_j^k(\bm{w}),\hat{y}_j^k)$
+            \State $\bm{w}=\bm{w}-\eta \grad_{\bm{w}} \sum_j^{\text{batch size}} \mathcal{L}(y_j^k(\bm{w}),\hat{y}_j^k)$
         \EndFor
     \EndFor
 \end{algorithmic}
