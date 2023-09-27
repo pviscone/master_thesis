@@ -1,5 +1,5 @@
 %!TEX root = ../thesis.tex
-\newchap{Statistical methods}\label{sec:STAT}
+\newchap{Analysis methods}\label{sec:STAT}
 \minitoc
 \section{Neural networks}
 A neural network (NN) is a machine learning\footnote{Machine learning is the process by which a computer program uses data to infer and build a predictive model.} model that can solve a wide range of problems and make predictions, learning from the data.\\
@@ -130,12 +130,12 @@ In the one-hot representation $n_j=\delta_{j\hat{y}_i}$ and $p_j$ is the score $
 \begin{equation}
     \mathcal{L}_{MN_{i}}=-\bm{\hat{y}_i} \cdot \log \bm{y_i}
 \end{equation}
-Since each data point is independent from the others, the total lig-likelihood is the sum of the single log-likelihoods
+Since each data point is independent from the others, the total log-likelihood is the sum of the single log-likelihoods
 \begin{equation}
     \mathcal{L}_{MN}=-\sum_i \bm{\hat{y}_i} \cdot \log \bm{y_i}
 \end{equation}
 
-\paragraph*{Optimizer and backpropagation}
+\paragraph*{Optimizers and backpropagation}
 To minimize the loss function, neural networks exploit the technique of gradient descent using different algorithms called "optimizers".\\
 The simplest optimizer is the \textit{stochastic gradient descent} (SGD) that, for each data point, computes the gradient of the loss function and updates the weight in the opposite direction of the gradient, propagating it along the network in a procedure called \textit{back-propagation}\footnote{That is just a fancy name to call a composite derivative}.
 \begin{algorithm}
@@ -184,34 +184,115 @@ As the SGD, all the other optimizers can work on minibatch, evaluating the gradi
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{fig//chap05-stats/radam_loss.png}
-    \caption{Evolution of the accuracy and loss function of RAdam, Adam, and SGD with different learning rates on the CIFAR10 problem \ADDREF in the learning epochs \ADDREF.}
+    \caption{Evolution of the accuracy (top) and loss function (bottom) of RAdam, Adam, and SGD with different learning rates on the CIFAR10 problem \ADDREF in the learning epochs \ADDREF.}
     \label{fig:radam_loss}
 \end{figure}
-
+\vspace{-1cm}
 \paragraph*{Architecture and complexity}
 The architecture of a neural network, specifically the number of layers and neurons, plays a crucial role in determining how well the network can learn and generalize from data.\\
-A neural network can be shallow (few layers) or deep (many layers). \\
-Deep networks tend to capture more complex patterns but suffer the vanishing gradient (see Backpropagation paragraph).\\
-A high number of neurons in each layer improves the capacity to represent functions and makes the network more robust to the noise, embedding the data in a high-dimensional space.\\
+A neural network can be shallow (few layers with many neurons) or deep (many layers with few neurons in each layer). \\
+Deep networks tend to capture more complex patterns but suffer the vanishing gradient (the  magnitude of the gradient decreases propagating back in the network).\\
+A high number of neurons improves the capacity to represent functions and makes the network more robust to the noise, embedding the data in a high-dimensional space.\\
+Complex NNs are more prone to the \textit{overfitting}.
+Overfitting is the behavior of an NN that occurs when the model performs well on the training dataset but doesn't perform in the same way on other data.\\
+This occurs because the NN starts to learn the noise and the fluctuations of the training dataset, worsening its generalization capabilities and losing its predictive power.\\
+During the training of an NN, overfitting is the most important thing to take under control, and, to do it, the loss is evaluated, for each epoch, not only for the data on which the network is training, but also for other data, called the "validation dataset".
+\\
+In the case of overfitting, we will see the validation loss that will start to increase, separating from the training loss.\\
+On the other hand, if the network is too simple, we will fall into the underfitting, \ie the objective function represented by the NN is too simple to fit the data.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{fig/chap05-stats/overfit.jpg}
+    \caption{Representation of underfitting, of a good fit, and of overfitting. The right plot shows the behavior of the validation loss in case of overfitting}
+    \label{fig:overfitting}
+\end{figure}
+
+There are several techniques that we can use to prevent the overfitting 
+\begin{itemize}
+    \item Diminish the number of neurons and the complexity of the network
+    \item Increase the size of the training dataset
+    \item Add a penalty term to the loss function, like the L2 regularization
+    \begin{equation}
+        \mathcal{L}^{'}=\mathcal{L}+\lambda \sum ||\bm{w}||^2
+    \end{equation}
+    a term that penalizes scenarios in which the weights assume large values (that usually is one consequence of the overfitting)
+    \item \textbf{Early stopping}: stop the learning when the validation loss has reached a plateau, before that it starts to increase
+    \item \textbf{Dropout}: the dropout \ADDREF is the probability that, in a single epoch during the training, one neuron will just be ignored and its connection with the rest of the network will be dropped out. \\
+    By randomly disabling neurons, dropout prevents any single neuron from becoming overly specialized on a specific feature in the training data.\\
+    Furthermore, introducing this stochastic behavior, it can also accelerate the training, preventing the network from getting stuck in local minima of the loss.\\
+    The dropout rate is another hyperparameter that should be tuned carefully by the user.
+\end{itemize}
+
+\paragraph*{Residuals}\hspace{1cm}\\
+
+\begin{minipage}{\linewidth}
+    \vspace{0.1cm}
+    \begin{minipage}{0.55\linewidth}
+        To mitigate the effect of the vanishing gradient, some "skip connections" can be used to back-propagate the gradients better through the network, ensuring that the output of a layer is added together with the output of a later layer.\\
+        If the dimensionality at the beginning of the connection is different from the dimensionality at the end of the connection, the residual can be multiplied by a linear projection to align the dimensions.\\
+        These kinds of networks are called "residual networks" or ResNets \ADDREF.
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.4\linewidth}
+        \centering
+        \includegraphics[width=1\linewidth]{fig/chap05-stats/res.png}
+        \captionof{figure}{Visualization of the skip connection in a residual block of a ResNet.}
+        \label{fig:resnet}
+    \end{minipage}
+\end{minipage}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-\paragraph*{Dropout}
-\paragraph*{Residuals}
 \paragraph*{Activation functions}
+The activation functions in a neural network must possess some properties:
+\begin{itemize}
+    \item Continuity and differentiability: to compute the gradients of the loss with respect to the weights.
+    \item Non-linearity: the activation functions must be non-linear because the composition of linear functions is still a linear function
+    \item Their derivative must tend to a finite value for $x \to \pm \infty$ to avoid the so-called "explosive gradient", the opposite phenomena of the vanishing gradient.
+\end{itemize}
+The activation functions of the output layer are different from the others.\\
+In a regression problem, the activation function of the output layer is a linear function, while, in the case of classification, using the one-hot encoding, the used activation function is the \textit{softmax} function
+\begin{equation}
+    {f (\mathbf {x} )_{j}={\frac {e^{x_{j}}}{\sum _{k=1}^{K}e^{x_{k}}}}} \quad \text{for } j=1,\dots,K
+\end{equation}
+where K is the number of classes.\\
+The softmax function ensures that the output of the network is a vector of length K, such that the sum of its elements is always 1. This allows us to threaten the output of the network as a probability.\\
+\\
+In the hidden layers, instead, we have more choices. The first activation functions ever used were the logistic function and the hyperbolic tangent, which are related to each other, and have a finite codomain.\\
+These two functions were chosen due to the interpretation that we can give to them, like in the perceptron\footnote{in fact the logistic function can be seen as the "smoothed version" of the Heaviside theta function}: when the function is around its lower bound, the neuron is off, and when the function is around its upper bound, the neuron is on.
+\begin{align}
+    \tanh(x)&= \frac{e^x-e^{-x}}{e^x+e^{-x}}=2\sigma(2x)-1  \\
+    \sigma(x)&=\frac{1}{1+e^{-x}} 
+\end{align}
+But the derivative of these functions is significantly different from zero just in a narrow range, slowing the learning of the network once the function saturates.\\
+\\
+Another activation function that was proposed was the ReLU (Rectified linear unit)\ADDREF, one of the most used function
+\begin{equation}
+    f(x)=\max(0,x)
+\end{equation}
+The ReLU allows a better propagation of the gradients and is very efficient from the computational point of view since is a piecewise linear function and the gradient is a constant.\\
+Furthermore, the ReLU introduces a sparse representation in the network:
+when the network is initialized, about half of the neurons have a non-zero output, and this has an effect similar to the dropout.\\
+Despite that, the ReLU suffers the so-called "dying ReLU problem": some units can be pushed into some states in which they become inactive to all possible inputs, making an always zero gradient. In this state, the neuron enters an endless dead state.\\
+\\
+To solve the dying ReLU problem, a lot of ReLU-like functions were proposed. In this work, the most used activations function was the recently proposed SWISH \ADDREF 
+\begin{equation}
+    f(x; \beta)=\frac{x}{1+e^{-\beta x}}
+\end{equation}
+where $\beta$ is a learnable parameter.\\
+The SWISH function has a smooth gradient that can avoid the dying ReLU problem, ensuring the neurons continue to produce non-zero outputs.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\linewidth]{fig//chap05-stats/act.png}
+    \caption{Logistic, ReLU, and SWISH activation functions.}
+    \label{fig:activation}
+\end{figure}
+
+Anyway, despite all the motivations that were provided, the best activation function does not exist. \\
+Neural networks are closer to alchemy than anyone might think, and every choice is justifiable only through heuristics.
+
+
 \paragraph*{Input normalization and weight initialization}
 
 \paragraph*{Hyperparameter optimization}
