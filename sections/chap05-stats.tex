@@ -2,15 +2,16 @@
 \newchap{Analysis methods}\label{sec:STAT}
 \minitoc
 \section{Neural networks}
-A neural network (NN) is a machine learning\footnote{Machine learning is the process by which a computer program uses data to infer and build a predictive model.} model that can solve a wide range of problems and make predictions, learning from the data.\\
+In this work, neural networks are used as a tool to classify different events in signal or background, giving to the input of the NN different features of the events (like the 4-vectors of all the particles in the event). So, in this section, the discussion will be focused on the classification problem.\\
 \\
-The learning of a NN can be supervised, if our data, \ie the input of the NN, is labeled, \ie we have what the output of the NN should be; or, vice versa, unsupervised.\\
+A neural network (NN) is a machine learning\footnote{Machine learning is the process by which a computer program uses data to infer and build a predictive model.} model that can solve a wide range of problems and make predictions, learning from the data.\\
+The learning of an NN can be supervised, if the target of our dataset is known, or, vice versa, unsupervised.\\
 In the context of supervised learning, there are mainly two classes of problems that a neural network can address:
 \begin{itemize}
     \item \textbf{Regression}: Given a set of inputs $\bm{x} \in \mathbb{R}^N$, predict a set of output $\bm{y} \in \mathbb{R}^M$
     \item \textbf{Classification}: Given a set of inputs $\bm{x} \in \mathbb{R}^N$, predict a set of output $\bm{y} \in \mathbb{Z}_M$
 \end{itemize}
-In this work, NNs are used as a tool to classify different events in signal or background, giving to the input of the NN different features of the events (like the 4-vectors of all the particles in the event). So, in this section, the discussion will be focused on the classification problem.
+
 
 \paragraph*{Perceptron}\hspace{1cm}\\
 \begin{minipage}{\linewidth}
@@ -20,22 +21,22 @@ In this work, NNs are used as a tool to classify different events in signal or b
         \centering
         \includegraphics[width=\linewidth]{fig//chap05-stats/perceptron.png}
         \vspace{0.5cm}
-        \caption{Visualization of a perception with three inputs $x_{ij}$. Each feature input is multiplied by a weight and everything is summed, along with the bias $w_0$. The result is passed to the activation function $f$, which, in this case, is the Heaviside theta function}
+        \caption{Visualization of a perceptron with three dimensional inputs $x_{ij}$. Each feature input is multiplied by a weight and everything is summed, along with the bias $w_0$. The result is passed to the activation function $f$, which, in this case, is the Heaviside theta function}
         \label{fig:perceptron}
     \end{figure}
     \end{minipage}
     \hfill
     \begin{minipage}{0.51\linewidth}
     %\vspace{-1.25cm}
-        The simplest NN is the Rosenblatt perceptron \ADDREF (\Fig{fig:perceptron}), a NN with one single neuron that addresses the binary classification problem.\\
+        The simplest NN is the Rosenblatt perceptron \cite{Rosenblatt1958TheBrain} (\Fig{fig:perceptron}), a NN with one single neuron that addresses the binary classification problem.\\
         The characteristics of the neuron are:
             \begin{itemize}
                 \item The dimension of the input. Each data entry is N-dimensional and each dimension is called a "feature".
 
-                \item Each neuron has N weights, plus one bias, that are derived from the data through the learning procedure
+                \item Each neuron has N weights, plus one bias, that are tuned through the learning procedure, looking at the data.
 
                 \item The activation function, \ie the function is applied do the dot product $\bm{x}\cdot \bm{w}+w_0$.
-                In the case of the perception, $f$ is the Heaviside theta function.
+                In the case of the perceptron, $f$ is the Heaviside theta function.
             \end{itemize}
     \end{minipage}
     \vspace{0.75cm}
@@ -71,21 +72,21 @@ The perceptron is a linear classifier. It means that it can not solve non-linear
 
 
 \paragraph*{Feedforward neural networks}
-Perceptrons can be connected in layers to build a feed-forward neural network in which each layer is fully connected to the neurons of the previous one.
+Neurons can be connected in layers to build a feed-forward neural network in which each layer is fully connected to the neurons of the previous one.
 So, the output of the j-th neuron in the k-th layer is
 \begin{equation}
     y^k_{j}=  f^k\left(\sum_i w^k_{ji} y^{k-1}_i + w_{j0}^k\right)
 \end{equation}
 where $f$ is the so-called activation function of the neuron.\\
-The universal approximation theorem \ADDREF, asserts that a neural network with one single hidden layer and enough number of neurons can approximate any function.\\
-Despite that, it could be needed an arbitrarily large of neurons to approximate one function using a single layer, so, to simplify the learning process, more layers can be added.\\
+The universal approximation theorem \cite{Hornik1989MultilayerApproximators}, asserts that a neural network with one single hidden layer and enough number of neurons can approximate any function.\\
+Despite that, it could be needed an arbitrarily large number of neurons to approximate one function using a single layer, so, to simplify the learning process, more layers can be added.\\
 A neural network can work in two regimes: evaluation and training.\\
 \\
 The training regime is the phase in which each weight of the network is tuned learning from the data, and is divided into different steps that will be discussed in detail in the next paragraphs:
 \begin{enumerate}
-    \item Architecture definition: the number of neurons, layers, and the activation functions have to be defined.
+    \item Architecture definition: the number of neurons, layers, and activation functions have to be defined.
     \item Weight initialization: the weights are initialized randomly.
-    \item Evaluation of the output: the evaluation phase
+    \item Evaluation of the output: the evaluation phase in which the NN makes the predictions.
     \item Loss evaluation: The loss-function value is computed.
     \item Backpropagation: The gradients of the loss with respect to each weight are computed and the weights are updated.
     \item Iterate from point 3. T times.
@@ -103,15 +104,15 @@ After that the NN is trained, it can be used in the evaluation mode, feeding the
 
 
 
-\paragraph*{Loss function}
-Under the hood, a neural network is just an optimizer that tries to find the optimal function that minimizes a specitfic metric.\\
+\subsection{Loss function}
+Under the hood, a neural network is just an optimizer that tries to find the optimal function that minimizes a specific metric.\\
 In other words, it is just a tool to perform a multidimensional fit, specifying the objective function in terms of sum and composition of activation function\footnote{This is called "induction bias" and is determined by the architecture of the NN}.\\
 The metric that the NN tries to minimize during the learning phase is the so-called "Loss function", a continuous function that compares the prediction of the NN with the labels and has its minimum, ideally, when all the data are predicted correctly.\\
 For example, in the case of a regression problem, one of the most used loss functions is the MSE $L=\sum(y_i-\hat{y_i})^2$, which is the same metric that is minimized when a least squares fit is performed.\\
 \\
-In the context of the classification problems, the most used loss function is the cross-entropy loss \ADDREF.\\
+In the context of classification problems, the most used loss function is the cross-entropy loss.\\
 Assuming that each class belongs to one output neuron, we can use the so-called one-hot encoding, which is a binary representation method where a categorical variable is transformed into a binary vector with a 1 indicating the presence of a particular category and 0s elsewhere\footnote{So, for example, if we have 3 classes, the 2nd class is represented with the vector [0,1,0]}.\\
-So the output of the NN will be a vector, as long as the total number of classes, such that the sum of its elements is equal to 1. This can be achieved using the softmax activation function in the output layer (see the paragraph on activation functions).
+So the output of the NN will be a vector as long as the total number of classes, and such that the sum of its elements is equal to 1. This can be achieved using the softmax activation function in the output layer (see the paragraph on activation functions).
 \\
 \\
 The one-hot encoding representation is used, instead of the integer encoding that just indexes the classes, to avoid the assumption of natural ordering and to avoid predictions halfway between categories.\\
@@ -121,12 +122,12 @@ In the one-hot encoding representation, the cross-entropy loss is
 \end{equation}
 where $\bm{\hat{y_i}}$ and $\bm{y_i}$ are respectively the i-th label and prediction, both in the one-hot encoding representation, while $w_{\hat{y_i}}$ is a weight related to each class that is used to compensate the class imbalance in the training dataset, avoiding the NN to be biased towards one specific class.\\
 \\
-The cross-entropy loss is related to the likelihood of the multinomial distribution. Assuming m classes, the negative log-likelihood of the multinomial distribution, for a single data point, is
+The cross-entropy loss is related to the likelihood of the multinomial distribution. Assuming m classes, the negative log-likelihood of the multinomial distribution, for a single data point, is\\
 \begin{equation}
     -\log \mathcal{L}_{MN_{i}}(\bm{p_i};\bm{n_i})=-\sum_j^m n_j \log p_j + \text{const.}
 \end{equation}
-where $n_j$ is the number of predicted entries in the j-th class, and $p_j$ is the relative probability, that is what depends on all the weight of the NN.\\
-In the one-hot representation $n_j=\delta_{j\hat{y}_i}$ and $p_j$ is the score ${y}_{\hat{y}_i}$, where $\hat{y}_i$ is the i-th label in the integer representation.
+where $n_j$ is the number of predicted entries in the j-th class, and $p_j$ is the probability that the data belongs to the j-th class, and it's what depends on all the weight of the NN.\\
+In the one-hot encoding representation $n_j=\delta_{j\hat{y}_i}$ and $p_j$ is the score ${y}_{\hat{y}_i}$, where $\hat{y}_i$ is the i-th label in the integer representation.
 \begin{equation}
     \mathcal{L}_{MN_{i}}=-\bm{\hat{y}_i} \cdot \log \bm{y_i}
 \end{equation}
@@ -135,9 +136,9 @@ Since each data point is independent from the others, the total log-likelihood i
     \mathcal{L}_{MN}=-\sum_i \bm{\hat{y}_i} \cdot \log \bm{y_i}
 \end{equation}
 
-\paragraph*{Optimizers and backpropagation}
+\subsubsection*{Optimizers and backpropagation}
 To minimize the loss function, neural networks exploit the technique of gradient descent using different algorithms called "optimizers".\\
-The simplest optimizer is the \textit{stochastic gradient descent} (SGD) that, for each data point, computes the gradient of the loss function and updates the weight in the opposite direction of the gradient, propagating it along the network in a procedure called \textit{back-propagation}\footnote{That is just a fancy name to call a composite derivative}.
+The simplest optimizer is the \textit{stochastic gradient descent} (SGD) that, for each data point, computes the gradient of the loss function and updates the weight in the opposite direction of the gradient, propagating it along the network in a procedure called \textit{back-propagation}\footnote{That is just a fancy name to call a composite derivative.}.
 \begin{algorithm}
 \caption{Stochastic gradient descent}\label{algo:SGD}
 \begin{algorithmic}[1]
@@ -151,7 +152,7 @@ The simplest optimizer is the \textit{stochastic gradient descent} (SGD) that, f
 where $\eta$ is the \textit{learning rate} hyper-parameter.\\
 The learning rate should be tuned carefully because a small learning rate will make the NN slow to reach the minimum of the loss, while a huge learning rate will make the gradient descent procedure very  unstable, jumping randomly across the loss hypersurface.\\
 \\
-To mitigate the fluctuation of the SGD and to improve the computational efficiency, we can compute the gradient on a batch and then update the weights
+To mitigate the fluctuation of the SGD and to improve the computational efficiency, we can compute the gradient on a batch of data and then update the weights
 \begin{algorithm}[H]
 \caption{Mini-batch stochastic gradient descent}\label{algo:miniSGD}
 \begin{algorithmic}[1]
@@ -163,32 +164,31 @@ To mitigate the fluctuation of the SGD and to improve the computational efficien
 \end{algorithmic}
 \end{algorithm}
 In the most modern libraries, the gradient is computed and back-propagated using the \textit{automatic differentiation}.
-In principle, when the NN is evaluated, a computational graph is built where the nodes of the graphs are just the operators applied to the tensors. In the backpropagation phase, the gradients of each node are computed and propagated all the way along the graph using the chain rule.\\
+In principle, when the NN is evaluated, a computational graph is built. The nodes of the graphs are just the operators applied to the tensors and, in the backpropagation phase, the gradients of each node are computed and propagated all the way along the graph using the chain rule.\\
 Furthermore, NNs perform a lot of simple arithmetic operations that can be performed simultaneously in parallel. For this reason, the training and evaluation of NNs can be accelerated using graphing processing units (GPU).\\
 \\
 The list of optimizers is long and each of them has its pros and cons. The SGD has a slower convergence compared to the other optimizers due to its stochastic nature, it is really sensitive to the learning rate, and, especially in high-dimensional and nonconvex problems, it gets stuck very easily in local minima.\\
 \\
-To address these problems, one of the most used optimizers is ADAM (ADAptive Moment estimator) \ADDREF. It is able to adapt the learning rate of each parameter individually computing the moving average of gradients and of square gradients, ensuring a fast convergence.
+To address these problems, one of the most used optimizers is ADAM (ADAptive Moment estimator) \cite{Kingma2014Adam:Optimization}. It is able to adapt the learning rate of each parameter individually computing the moving average of gradients and of square gradients, ensuring a fast convergence.
 \\
-The drawback of ADAM is that has some convergence issues due to its large variance in the first epochs of training in the adaptive learning rate, showing huge fluctuations in the loss, and being too sensitive to the choice of hyperparameters.\\
-\\
-Trying to stem these issues, recently, a new variant of Adam was proposed: RAdam (Rectified Adam) \ADDREF.\\
-RAdam tries to tackle Adam's convergence issues by introducing a term to rectify the variance of the adaptive learning rate that tries to keep the learning rate small in the first few epochs.
+The drawback of ADAM is that it has some convergence issues due to its large variance in the first epochs of training in the adaptive learning rate, showing huge fluctuations in the loss, and being too sensitive to the choice of hyperparameters.\\
+Trying to stem these issues, recently, a new variant of Adam was proposed: RAdam (Rectified Adam) \cite{Liu2019OnBeyond}.\\
+RAdam tries to tackle Adam's convergence issues by introducing a term to rectify the variance of the adaptive learning rate, trying to keep it small in the first epochs.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\linewidth]{fig//chap05-stats/radam.png}
+    \includegraphics[width=0.95\linewidth]{fig//chap05-stats/radam.png}
     \label{fig:radam}
 \end{figure}
 As the SGD, all the other optimizers can work on minibatch, evaluating the gradients on a group of data points.
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{fig//chap05-stats/radam_loss.png}
-    \caption{Evolution of the accuracy (top) and loss function (bottom) of RAdam, Adam, and SGD with different learning rates on the CIFAR10 problem \ADDREF in the learning epochs \ADDREF.}
+    \caption{Evolution of the accuracy (top) and loss function (bottom) of RAdam, Adam, and SGD with different learning rates on the CIFAR10 problem \cite{Ho-Phuoc2018CIFAR10Humans} in the learning epochs \cite{Liu2019OnBeyond}.}
     \label{fig:radam_loss}
 \end{figure}
 \vspace{-1cm}
-\paragraph*{Architecture and complexity}
+\subsection{Architecture and complexity}
 The architecture of a neural network, specifically the number of layers and neurons, plays a crucial role in determining how well the network can learn and generalize from data.\\
 A neural network can be shallow (few layers with many neurons) or deep (many layers with few neurons in each layer). \\
 Deep networks tend to capture more complex patterns but suffer the vanishing gradient (the  magnitude of the gradient decreases propagating back in the network).\\
@@ -200,7 +200,7 @@ During the training of an NN, overfitting is the most important thing to take un
 \\
 In the case of overfitting, we will see the validation loss that will start to increase, separating from the training loss.\\
 On the other hand, if the network is too simple, we will fall into the underfitting, \ie the objective function represented by the NN is too simple to fit the data.
-
+\vspace{-0.15cm}
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\linewidth]{fig/chap05-stats/overfit.jpg}
@@ -208,7 +208,7 @@ On the other hand, if the network is too simple, we will fall into the underfitt
     \label{fig:overfitting}
 \end{figure}
 
-There are several techniques that we can use to prevent the overfitting 
+There are several techniques that can be used to prevent the overfitting:
 \begin{itemize}
     \item Diminish the number of neurons and the complexity of the network
     \item Increase the size of the training dataset
@@ -217,10 +217,10 @@ There are several techniques that we can use to prevent the overfitting
         \mathcal{L}^{'}=\mathcal{L}+\lambda \sum ||\bm{w}||^2
     \end{equation}
     a term that penalizes scenarios in which the weights assume large values (that usually is one consequence of the overfitting)
-    \item \textbf{Early stopping}: stop the learning when the validation loss has reached a plateau, before that it starts to increase
-    \item \textbf{Dropout}: the dropout \ADDREF is the probability that, in a single epoch during the training, one neuron will just be ignored and its connection with the rest of the network will be dropped out. \\
-    By randomly disabling neurons, dropout prevents any single neuron from becoming overly specialized on a specific feature in the training data.\\
-    Furthermore, introducing this stochastic behavior, it can also accelerate the training, preventing the network from getting stuck in local minima of the loss.\\
+    \item \textbf{Early stopping}: stop the learning when the validation loss has reached a plateau, before it starts to increase
+    \item \textbf{Dropout}: the dropout \cite{Srivastava2014Dropout:Overfitting} is the probability that, in a single epoch during the training, one neuron will just be ignored and its connection with the rest of the network will be dropped out. \\
+    By randomly disabling neurons, dropout prevents any single neuron from becoming overly specialized on a specific feature of the training data.\\
+    Furthermore, introducing this stochastic behavior can also accelerate the training, preventing the network from getting stuck in local minima of the loss.\\
     The dropout rate is another hyperparameter that should be tuned carefully by the user.
 \end{itemize}
 
@@ -231,7 +231,7 @@ There are several techniques that we can use to prevent the overfitting
     \begin{minipage}{0.55\linewidth}
         To mitigate the effect of the vanishing gradient, some "skip connections" can be used to back-propagate the gradients better through the network, ensuring that the output of a layer is added together with the output of a later layer.\\
         If the dimensionality at the beginning of the connection is different from the dimensionality at the end of the connection, the residual can be multiplied by a linear projection to align the dimensions.\\
-        These kinds of networks are called "residual networks" or ResNets \ADDREF.
+        These networks are called "residual networks" or ResNets \cite{He2015DeepRecognition}.
     \end{minipage}
     \hfill
     \begin{minipage}{0.4\linewidth}
@@ -243,7 +243,7 @@ There are several techniques that we can use to prevent the overfitting
 \end{minipage}
 
 
-\paragraph*{Activation functions}
+\subsubsection*{Activation functions}
 The activation functions in a neural network must possess some properties:
 \begin{itemize}
     \item Continuity and differentiability: to compute the gradients of the loss with respect to the weights.
@@ -253,7 +253,7 @@ The activation functions in a neural network must possess some properties:
 The activation functions of the output layer are different from the others.\\
 In a regression problem, the activation function of the output layer is a linear function, while, in the case of classification, using the one-hot encoding, the used activation function is the \textit{softmax} function
 \begin{equation}
-    {f (\mathbf {x} )_{j}={\frac {e^{x_{j}}}{\sum _{k=1}^{K}e^{x_{k}}}}} \quad \text{for } j=1,\dots,K
+    {\textit{softmax} (\mathbf {x} )_{j}={\frac {e^{x_{j}}}{\sum _{k=1}^{K}e^{x_{k}}}}} \quad \text{for } j=1,\dots,K
 \end{equation}
 where K is the number of classes.\\
 The softmax function ensures that the output of the network is a vector of length K, such that the sum of its elements is always 1. This allows us to threaten the output of the network as a probability.\\
@@ -266,64 +266,177 @@ These two functions were chosen due to the interpretation that we can give to th
 \end{align}
 But the derivative of these functions is significantly different from zero just in a narrow range, slowing the learning of the network once the function saturates.\\
 \\
-Another activation function that was proposed was the ReLU (Rectified linear unit)\ADDREF, one of the most used function
+Another activation function that was proposed was the ReLU (Rectified linear unit)\cite{FredAgarap2018DeepReLU}, one of the most used activation function
 \begin{equation}
-    f(x)=\max(0,x)
+    \textit{ReLU}(x)=\max(0,x)
 \end{equation}
 The ReLU allows a better propagation of the gradients and is very efficient from the computational point of view since is a piecewise linear function and the gradient is a constant.\\
 Furthermore, the ReLU introduces a sparse representation in the network:
-when the network is initialized, about half of the neurons have a non-zero output, and this has an effect similar to the dropout.\\
+when the network is initialized, only about half of the neurons have a non-zero output, and this has a regularization effect similar to the dropout.\\
 Despite that, the ReLU suffers the so-called "dying ReLU problem": some units can be pushed into some states in which they become inactive to all possible inputs, making an always zero gradient. In this state, the neuron enters an endless dead state.\\
 \\
-To solve the dying ReLU problem, a lot of ReLU-like functions were proposed. In this work, the most used activations function was the recently proposed SWISH \ADDREF 
+To solve the dying ReLU problem, a lot of ReLU-like functions were proposed. In this work, the used activations function was the recently proposed Swish \cite{Ramachandran2017SearchingFunctions}. 
 \begin{equation}
-    f(x; \beta)=\frac{x}{1+e^{-\beta x}}
+    \textit{Swish}(x; \beta)=\frac{x}{1+e^{-\beta x}}
 \end{equation}
 where $\beta$ is a learnable parameter.\\
-The SWISH function has a smooth gradient that can avoid the dying ReLU problem, ensuring the neurons continue to produce non-zero outputs.
+The Swish function has a smooth gradient that can avoid the dying ReLU problem, ensuring the neurons continue to produce non-zero outputs.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.85\linewidth]{fig//chap05-stats/act.png}
-    \caption{Logistic, ReLU, and SWISH activation functions.}
+    \caption{Logistic, ReLU, and Swish activation functions.}
     \label{fig:activation}
 \end{figure}
 
-Anyway, despite all the motivations that were provided, the best activation function does not exist. \\
-Neural networks are closer to alchemy than anyone might think, and every choice is justifiable only through heuristics.
+Anyway, despite all the motivations that were provided, the best activation function does not exist and, in general, in the field of neural networks, every choice is justifiable only through heuristics.
 
 
-\paragraph*{Input normalization and weight initialization}
+\subsubsection*{Input normalization}
+The features of the input data have different distributions with different ranges and scales. The parameters associated with each feature will also have different scales and this can lead to a loss function whose gradient will be biased toward certain parameters, as shown in \Fig{fig:loss_normalization}.\\
+\vspace{-0.5cm}
+\begin{figure}[H]
+    \hspace{-0.5cm}
+    \centering
+    \includegraphics[width=0.85\linewidth]{fig/chap05-stats/loss_norm.png}
+    \vspace{0.5cm}
+    \caption{Loss curve levels in case of non-normalized inputs (left) and normalized inputs (right) \cite{NormalizingNormalization.}.}
+    \label{fig:loss_normalization}
+    \vspace{-0.5cm}
+\end{figure}
+To make the learning of the network more stable and faster, we can normalize all inputs to a standard scale, allowing us to use larger learning rates.\\
+Furthermore, this also avoids the saturation of a large number of activation functions in the first epochs which can lead to a slow learning due to the small gradients in the saturation regime.\\
+For specific activation functions, like the ReLU-like, having inputs with zero mean will cause $\sim 50\%$ of the neurons to be inactive, creating a sparse representation (see paragraph on activation functions).\\
+\\
+One of the most used input normalization techniques is the \textit{Batch norm} \cite{Ioffe2015BatchShift}, which consists of normalizing each input feature with its mean and standard deviation computed across all the batch
+\begin{equation}
+    \bm{x}_i^{'}=\frac{\bm{x}_i-\mu_i}{\sigma_i+\epsilon}
+\end{equation}
+where $\bm{x}_i$ is the i-th feature of the input tensor and $\epsilon$ a small number added to prevent numerical issues.\\
+\\
+Despite that,  the mean and the standard deviations are not robust estimators, and, if a feature has significant outliers, the batch norm can create distributions not centered around zero.\\
+To overcome this issue, we can replace the mean and the standard deviation with more robust estimators like the median, we can just clip the outlier to a threshold value, or we can apply a function that will shrink them.\\
+In this work, the applied normalization to feature that has significant outliers is the following\footnote{$\bm{x_i}$ should be positive to apply this normalization}
+\begin{equation}
+    \bm{x}_i^{'}=\frac{\log \left(1+\bm{x}_i \right)-\mu_{i}^{\log}}{\sigma_i^{\log}+\epsilon}
+\end{equation}
+where $\mu_i^{\log}$ and $\sigma_i^{\log}$ are the mean and the standard deviation computed on $\log(1+\bm{x}_i)$
 
-\paragraph*{Hyperparameter optimization}
+\paragraph*{Internal normalization}
+During the training, the distribution of each layer’s weights changes, as the parameters of the previous layers change.
+This slows down the training by requiring lower learning
+rates. \\
+This behavior is called "internal covariate
+shift", and we can address the problem by introducing a normalizing layer in the network.\\
+\\
+We could use the batch norm or, instead, the layer norm \cite{Ba2016LayerNormalization}, which is the same thing as the batch norm but the mean and the standard deviation are computed across the features instead of across the batch.\\
+In some architectures (like RNN) or domains (natural language processing), the layer norm was proven to work better than the batch norm.
 
 
 
+\subsubsection*{Weight initialization}
+The initialization of the weights is strictly related to the chosen normalization and to the chosen activation functions.\\
+Large or small initialization values will lead respectively to the problem of exploding and vanishing gradient.\\
+An appropriate initialization should impose a zero mean of the weights and a variance that should stay constant across all the layers.\\
+\\
+To do it, if we use activation functions that are linear around zero (like the $\tanh$), we can use the Xavier initialization \cite{Glorot2010UnderstandingNetworks}.
+\begin{equation}
+    W\sim U \left[-\frac{\sqrt{6}}{\sqrt{n_j+n_{j+1}}},\frac{\sqrt{6}}{\sqrt{n_j+n_{j+1}}} \right]
+\end{equation}
+where $n_j$ is the number of units in the j-th layer.\\
+If we use ReLU-like functions, instead, we should use the He initialization \cite{he2015delving}.
+\begin{equation}
+    W\sim \mathcal{N}\left(0,\frac{2}{n^l}\right)
+\end{equation}
+the derivation of these two distributions is simple and is provided in the respective papers, and consists only of imposing the variance of the output of a unit to be constant across all layers.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+\subsubsection*{Hyperparameter optimization}
+In this section, we have introduced many hyperparameters like the learning rate, the size of the network, etc. These parameters have to be tuned to obtain the best performances.\\
+\\
+The simplest way to perform a hyperparameters search is to perform a \textit{grid seach}, which consists of creating a grid of parameters and repeating the training for each combination of them.\\
+However, this simple algorithm is feasible only for small networks because the number of trainings required depends on a combinatorial factor.\\
+\\
+Clever ways to find the optimal set of hyperparameters can involve Bayesian optimization methods, but, if the model is too big and the time and the computing resources are very scarce, the only remaining tool is manual optimization in which the user tries to find a good set of hyperparameters by trying with just a couple of trainings.
 
 
 \subsection{Attention mechanism}
+Attention is a mechanism that enables models to focus on specific parts or elements of the input data while performing a task.\\
+It is particularly important in fields like natural language processing (NLP) and computer vision.\\
+\\
+Attention networks belong to the class of sequence-to-sequence (seq2seq) models. 
+One of the most common seq2seq tasks is the language translation in which the model takes as input one sentence (\ie a sequence) in a language and translates it into another language (\ie another sequence).
+This means that the inputs of the network are 3 dimensional: one is the batch dimension, one is the sequence dimension, and the last is the feature dimension.\\
+In particle physics, seq2seq models enable us to threaten each event as a sequence composed of its particles and to maintain its structure.
+
+\subsubsection*{Scaled dot product}
+One particular method to implement the attention is the scaled dot product \cite{Vaswani2017AttentionNeed}.\\
+\begin{equation}
+    \textit{Attention}(Q,K,V)=\textit{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V
+\end{equation}
+\vspace{0.2cm}\\
+The scaled dot product has 3 inputs: the Query of dimensions $(N, S_2, d_k)$ and Key of dimension $(N, S_1, d_k)$, and the Value of dimension $(N, S_2, d_v)$, where $N$ is the batch size, and $S_1,S_2$ the length of the sequences.\\
 
 
+\begin{minipage}{\linewidth}
+    \begin{minipage}{0.53\linewidth}
+        $Q,K,V$ are linear embeddings of the inputs, so $Q,K,V=W_{Q,K,V} \cdot X_{Q,K,V}$ where $W$ are the weights learned during the training.\\
+        \\
+        The dot product is used to compute a similarity score between the query and key vectors, weighting $V$ with it.\\
+        $\textit{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)$ has dimension $(N,S_2,S_1)$, so it assigns a score to all the pairs in the two sequences.\\
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.43\linewidth}
+        \vspace{-0.7cm}
+        \centering
+        \includegraphics[width=0.5\linewidth]{fig//chap05-stats/translation.png}
+        \vspace{0.6cm}
+        \captionof{figure}{Attention scores between sentences in English and French. The network has learned to recognize which words have the same meaning also if they are in a different order.}
+        \label{fig:Translation}
+    \end{minipage}
+\end{minipage}
+\vspace{0.1cm}\\
+Attention networks are a rare example of explainability. By studying attention scores we can understand what the network is learning. Usually, instead, neural networks are black boxes that tend to learn representations that are difficult to understand by humans.
+\\
+\\
+In particle physics, this approach is particularly feasible for two reasons
+\begin{itemize}
+    \item There is a natural way to handle missing elements in the sequence: we can just fix the maximum length of the sequence and, for the missing particles, just impose the respective attention scores to zero.\\
+    This allows us to maintain the ragged structure of the event.
+    \item Attention networks are invariant for permutation of the elements in the sequence, so we are not forced to introduce an ordering between the particles
+\end{itemize}
 
 
+\paragraph*{Multihead attention}
+One set of $W_Q,W_K,W_V$ matrices is called an \textit{attention head}, but we can stack multiple attention heads together, allowing the model to attend parts of the sequence differently.\\
+The different heads can be computed in parallel and their output, at the end, is concatenated.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.75\linewidth]{fig//chap05-stats/multihead_attention.png}
+    \caption{(Left) scaled dot product, (right) multi-head attention}
+    \label{fig:multihead}
+\end{figure}
+
+\paragraph*{Self-attention} With a "self-attention layer" we refer to a scaled dot product layer in which $Q,K,V$ are linear embeddings of the same input $\bm{X}$.\\
+It enables the model to capture contextual information and relationships between elements in the sequence, computing attention scores for each element with respect to all the others.\\
+These attention scores determine how much each element should focus on the others and the resulting weighted sum provides a contextually enriched representation of the sequence.
+
+\paragraph*{Cross-attention}
+Cross-attention is an extension of the self-attention mechanism that allows a model to attend to elements in a target sequence based on the elements in another sequence (called context sequence).\\
+The Key and Value vectors are linear embeddings of the context sequence while the Query is a linear embedding of the target sequence.\\
+Cross-attention allows models to establish relationships between elements in different sequences, also of different lengths, making it suitable for tasks that involve aligning information from one sequence with another.
+
+\paragraph*{Self-attention pooling}
 
 
+Pooling is a technique used to downsample or reduce the dimensionality of feature maps or, in our case of a sequence, retaining important information.\\
+As already discussed, we are interested in classifying an event as a signal or background, so we have to reduce the dimensionality of the sequences that contain all the particles in the events, to just one.\\
+Self-attention pooling \cite{Safari2020Self-attentionRecognition} is a pooling layer inspired by self-attention
+\begin{equation}
+    \textit{Self-Att. Pool}=\textit{Softmax}(\bm{W} \bm{X}^T)\bm{X}
+\end{equation}
+where $\bm{X}$ is the input tensor of size $(N,S,F)$ and $\bm{W}$ is a set of trainable weight of size $S^{'},F$, where $S^{'}$ is the target size of the output sequence.\\
+Therefore, self-attention pooling is a weighted average of the sequence features where the weights correspond to the alignment learned by the self-attention mechanism.
 
 
 
@@ -341,8 +454,9 @@ Neural networks are closer to alchemy than anyone might think, and every choice 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
 \section{Signal extraction}
-\subsection{Likelihood construction}
+\subsection{Likelihood construction}Signal
 The signal extraction procedure relies on a maximum likelihood fit of a binned distribution of one or more observables.\\
 The likelihood is constructed as the product of Poisson distributions, one for each bin, that contains the parameter of interest (POI) to fit.\\
 Given $C$ channels\footnote{A channel is defined by a set of cuts and selections that have the scope to isolate the signal and reject the background or viceversa}, each that contains $P_c$ processes, represented with histograms with $B_c$ bins, once we have the signal and the background MC predictions $s_{cb}$, $b_{cb}$, and the observed bin content $n_{cb}$ \footnote{Index $c$ stands for "channel", $p$ for "process", $b$ for "bin"}, the likelihood is \cite{Khachatryan2015PreciseTeV}
@@ -360,7 +474,8 @@ The predictions for each process are obtained through MC simulations, that are r
 \end{equation}
 where $\mathcal{L_I}$ is the integrated luminosity, $\sigma_p$ the cross-section of the process $p$ and $\epsilon_{cp}$ the fraction of events of the process $p$ that pass the preselection defined by the channel $c$ that is estimated using MC events. 
 \\
-\paragraph*{Systematic uncertainties}
+\newpage
+\subsubsection*{Systematic uncertainties}
 To incorporate in the model all the relevant uncertainties (\ie luminosity and rate uncertainties, uncertainties related to the detector resolution, etc.) we add to the likelihood the so-called nuisance parameters $\vec{\theta}$.\\
 The likelihood becomes \cite{Conway2011IncorporatingSpectra}
 \begin{equation}\label{eq:likelihood}
@@ -387,7 +502,8 @@ Given that we know the central values and the standard deviations of all the var
         N_{cp}\left(\vec{\theta}_n\right)=k_{cp}^{\theta^{(n)}_k}
     \end{equation}
     where $k_{cp}$ the relative $+1 \sigma$ variation from the nominal event yield for the process $p$ in the channel $c$ estimated through theory calculation of external measurements, while $\theta_{k}$ is the relative normalization nuisance parameter.\\
-    \item \textbf{Shape nuisances}: Shape changing nuisances are produced by uncertainties
+    \newpage
+    \item \textbf{Shape nuisances}: Shape-changing nuisances are produced by uncertainties
     that cause a different variation of event yields for each different bin.\\
     The model parameters are varied of $\pm 1 \sigma$ around their central value, creating an “Up” and a “Down” variation.\\
     The bin content $y_{cpb}$ has to be modified by multiplying a continuous and differentiable function of $\vec{\theta}_{s}$, so, given $\delta_b^\pm$ the differences between the $\pm 1 \sigma$ bin content variations of the bin and the nominal one, the up and down variations are interpolated with a spline in a procedure called "vertical morphing" \cite{Conway2011IncorporatingSpectra}
@@ -431,11 +547,13 @@ Given that we know the central values and the standard deviations of all the var
     In the top panel, each bin is represented with its $\pm 1 \sigma$ variations and, on top of them, the $y_b+f(\theta_k,\delta_b^\pm)$ interpolation is shown with a red line. In the background of the lower panel, a color map shows, for each value of the bin height, the corresponding value of the nuisance parameter $\theta_k$, while the rotated vertical white shadow represents, for each bin, the probability distribution in arbitrary units of the expectation value of the Poisson distribution $\lambda_b=y_b+f(\theta_k,\delta_b^\pm)$ drawing $\theta_k$ from the normal prior.}
     \label{fig:morphing}
 \end{figure}
-
+\newpage
+\vspace{0.5cm}
 \paragraph*{Smoothing}
 For some systematics, up and down variations can lead to significant statistical fluctuations in the less populated bins, which, usually, are the high signal purity regions of the histogram.\\
 To overcome this inconvenience, a smoothing procedure is applied.
-\begin{algorithm}
+
+\begin{algorithm}[H]
 \caption{Smoothing algorithm}\label{algo:smooth}
 \begin{algorithmic}[1]
     \State Compute $r^{up}_b=y_{b}^{up}/y_b$ and $r^{down}_b=y_{b}^{down}/y_b$
@@ -449,7 +567,7 @@ To overcome this inconvenience, a smoothing procedure is applied.
 The LOWESS algorithm \cite{Cleveland1979RobustScatterplots} (LOcally WEighted Scatterplot Smoothing) performs different linear regressions on a sliding window in different steps.
 
 
-\begin{algorithm}
+\begin{algorithm}[H]
 \caption{LOWESS algorithm}\label{algo:LOWESS}
 \begin{algorithmic}[1]
 
@@ -481,9 +599,10 @@ To understand how different groups of nuisances affect the profile likelihood an
 The so-called "breakdown procedure" consists of freezing sequentially groups of nuisance parameters, computing the profile likelihood and the relative uncertainties, and subtracting them in quadrature from the total uncertainty.
 
 
-\paragraph*{Impact plots} are a useful tool to understand the impact that each nuisance has on the total uncertainty. An example is shown in \Fig{fig:impact}.\\
+\paragraph*{Impact plots} Impact plots are a useful tool to understand the impact that each nuisance has on the total uncertainty. An example is shown in \Fig{fig:impact}.\\
 \begin{itemize}
     \item In the left panel there are the names of the systematic sources, sorted according to their impact on the total uncertainty.
+    \newpage
     \item In the center panel, there are two elements:
     \begin{itemize}
         \item[\ding{226}] The black bars ("Fit") represent the profile likelihood of the nuisance parameter. For each nuisance
@@ -512,6 +631,7 @@ To perform a simulation of an analysis, $n_{cb}$ can be replaced by MC events, c
 \end{equation}
 In this way will be always $\hat{\mu}=1$ and $\bm{\hat{\theta}}=0$.\\
 Using the Asimov dataset, the statistical uncertainties on $\hat{\mu}$ can be estimated through an approximation.
+\newpage
 \begin{enumerate}
     \item Let's consider the Poisson log-likelihood for a single bin
 \begin{equation}
@@ -525,7 +645,7 @@ The variance of the estimator $\hat{\mu}_b$ is
 \begin{equation}
     {\mathrm{Var}}(\hat{\mu}_b)=\frac{{\mathrm{Var}}(n_b)}{s_b^2}=\frac{\mu s_b + b_b }{s_b^2}
 \end{equation}
-The variance of $\hat{\mu}_b$ depends on $\mu$ itself, but, in the contest of the Asimov dataset, we can approximate it imposing $\mu=\hat{\mu}_b=1$, so the variance becomes
+The variance of $\hat{\mu}_b$ depends on $\mu$ itself, but, in the context of the Asimov dataset, we can approximate it imposing $\mu=\hat{\mu}_b=1$, so the variance becomes
 \begin{equation}
     {\mathrm{Var}}(\hat{\mu}_b)\sim \frac{s_b+b_b}{s_b^2}
 \end{equation}
