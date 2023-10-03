@@ -1,3 +1,747 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:770db01418f7a937278f1da2eb06f42396c64fe14ed8a439123b9ded8959eb4f
-size 42650
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 26.4.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns:svg="http://www.w3.org/2000/svg"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1376.6 1330"
+	 style="enable-background:new 0 0 1376.6 1330;" xml:space="preserve">
+<style type="text/css">
+	.st0{font-family:'Arial-BoldMT';}
+	.st1{font-size:64px;}
+	.st2{fill:#E6CC01;fill-opacity:3.000000e-02;stroke:#772222;stroke-miterlimit:10;stroke-opacity:0.15;}
+	.st3{opacity:0.5;fill:#CCDDFF;enable-background:new    ;}
+	.st4{fill:#001122;}
+	.st5{font-size:30px;}
+	.st6{fill:#112233;}
+	.st7{font-family:'ArialMT';}
+	.st8{font-size:40px;}
+	.st9{opacity:0.65;}
+	.st10{font-size:24px;}
+	.st11{fill:#CC99FF;}
+	.st12{font-size:54px;}
+	.st13{fill:none;stroke:url(#SVGID_1_);stroke-width:10;}
+	.st14{opacity:0.25;fill:#FFFFFF;enable-background:new    ;}
+	.st15{fill:url(#SVGID_00000093897579417846236320000017951646661073663631_);}
+	.st16{fill:#1A1A1A;}
+	.st17{font-family:'AppleSymbols';}
+	.st18{font-size:42px;}
+	.st19{fill:none;stroke:url(#SVGID_00000119813383292850047260000007444440544224610210_);stroke-width:10;}
+	.st20{fill:url(#SVGID_00000018937262437478482250000011046502195513248947_);}
+	.st21{fill:none;stroke:url(#SVGID_00000122699442028189961950000014714380272476732338_);stroke-width:10;}
+	.st22{fill:url(#SVGID_00000172414257174917426490000014237501171000022969_);}
+	.st23{fill:none;stroke:url(#SVGID_00000123438958144691042020000003702226783426075281_);stroke-width:10;}
+	.st24{fill:url(#SVGID_00000002364423644277497780000013936423583610272653_);}
+	.st25{fill:none;stroke:url(#SVGID_00000161610055596628744810000008794719988138470556_);stroke-width:10;}
+	.st26{fill:url(#SVGID_00000070803662820835446210000013050359081582137506_);}
+	.st27{fill:none;stroke:url(#SVGID_00000014598737254475340310000000825364196414829227_);stroke-width:10;}
+	.st28{fill:url(#SVGID_00000067209921829266334900000011776027864861535139_);}
+	.st29{fill:#55CC22;}
+	.st30{fill:none;stroke:url(#SVGID_00000042015577793584312710000016944512683936420257_);stroke-width:10;}
+	.st31{fill:url(#SVGID_00000114792176431939705510000015125816767870117533_);}
+	.st32{fill:none;stroke:url(#SVGID_00000158739898851931415550000000800876423410998969_);stroke-width:10;}
+	.st33{fill:url(#SVGID_00000027596552658349534310000015399760735302438821_);}
+	.st34{font-family:'TimesNewRomanPSMT';}
+	.st35{font-size:72px;}
+	.st36{font-size:48px;}
+	.st37{font-size:36px;}
+	.st38{fill:none;stroke:url(#SVGID_00000073698334477776152300000004977477155167709116_);stroke-width:10;}
+	.st39{fill:url(#SVGID_00000106831293376039449430000002212709806658172053_);}
+	.st40{fill:none;stroke:url(#SVGID_00000121251347970200931920000010147380427743628697_);stroke-width:10;}
+	.st41{fill:url(#SVGID_00000153706699330627354870000009649216823121642678_);}
+	.st42{fill:none;stroke:url(#SVGID_00000162330125532639262020000012149005268587742855_);stroke-width:10;}
+	.st43{fill:url(#SVGID_00000052093735808431170770000004424310402584472760_);}
+	.st44{fill:none;stroke:url(#SVGID_00000150807391105477336010000009661676302034158224_);stroke-width:10;}
+	.st45{fill:url(#SVGID_00000145053066603844532310000010936990326656461199_);}
+	.st46{fill:#FF6C6C;}
+	.st47{fill:none;stroke:url(#SVGID_00000070818176837049223100000000140744281639945121_);stroke-width:10;}
+	.st48{fill:url(#SVGID_00000067957205923244240840000009745959050140586635_);}
+	.st49{fill:none;stroke:url(#SVGID_00000070819953255285653580000017158275982997634724_);stroke-width:10;}
+	.st50{fill:url(#SVGID_00000121996114183692321860000003089589495943785110_);}
+	.st51{fill:none;stroke:url(#SVGID_00000111910282946182563980000000087170903830625701_);stroke-width:10;}
+	.st52{fill:url(#SVGID_00000144330033706018562870000009333289758107511961_);}
+	.st53{fill:none;stroke:url(#SVGID_00000086669187139986396360000001277903699946971781_);stroke-width:10;}
+	.st54{fill:url(#SVGID_00000006699719503275882420000015154574527902359953_);}
+	.st55{fill:#EEBB33;}
+	.st56{fill:none;stroke:url(#SVGID_00000002374561110493926670000017485631604171934118_);stroke-width:10;}
+	.st57{fill:url(#SVGID_00000159449632587301812190000010134588415924048513_);}
+	.st58{fill:none;stroke:url(#SVGID_00000179647595272747837450000004862076422104819338_);stroke-width:10;}
+	.st59{fill:url(#SVGID_00000003797704539472420930000012983271506164339585_);}
+</style>
+<text transform="matrix(1 0 0 1 92.1562 95)" class="st0 st1">Standard Model of Elementary Particles</text>
+<g transform="translate(-20 0)">
+	<path id="fstrong" class="st2" d="M240.8,322.6c-30.4,0-55,24.6-55,55v250c0,30.4,24.6,55,55,55h500c30.4,0,55-24.6,55-55
+		c0-107.7,87.3-195,195-195h10c30.4,0,55-24.6,55-55s-24.6-55-55-55L240.8,322.6"/>
+	<path id="felecmag" class="st2" d="M240.8,312.6c-35.9,0-65,29.1-65,65v510c0,35.9,29.1,65,65,65h500c35.9,0,65-29.1,65-65
+		c0-107.7,82.8-195,185-195h10c35.9,0,65-29.1,65-65s-29.1-65-65-65h-10c-102.2,0-185-82.8-185-185c0-35.9-29.1-65-65-65
+		L240.8,312.6"/>
+	<path id="fweak" class="st2" d="M240.8,302.6c-41.4,0-75,33.6-75,75v760c0,41.4,33.6,75,75,75h760c41.4,0,75-33.6,75-75v-250
+		c0-41.4-33.6-75-75-75h-10c-96.6,0-175-78.4-175-175v-260c0-41.4-33.6-75-75-75L240.8,302.6"/>
+</g>
+<g>
+	<path class="st3" d="M130,137.6h680c16.6,0,30,13.4,30,30v20c0,16.6-13.4,30-30,30H130c-16.6,0-30-13.4-30-30v-20
+		C100,151,113.4,137.6,130,137.6z"/>
+	<text transform="matrix(1 0 0 1 275.791 166)" class="st4 st0 st5">three generations of matter</text>
+	<text transform="matrix(1 0 0 1 396.6626 202)" class="st4 st0 st5">(fermions)</text>
+	<g transform="translate(100 255)">
+		<text transform="matrix(1 0 0 1 114.4434 -1.464844e-05)" class="st6 st7 st8">I</text>
+		<text transform="matrix(1 0 0 1 358.8867 -1.464844e-05)" class="st6 st7 st8">II</text>
+		<text transform="matrix(1 0 0 1 603.3301 -1.464844e-05)" class="st6 st7 st8">III</text>
+	</g>
+</g>
+<g>
+	<path class="st3" d="M890,137.6h440c16.6,0,30,13.4,30,30v20c0,16.6-13.4,30-30,30H890c-16.6,0-30-13.4-30-30v-20
+		C860,151,873.4,137.6,890,137.6z"/>
+	<text transform="matrix(1 0 0 1 916.582 166)" class="st0 st5">interactions / force carriers</text>
+	<text transform="matrix(1 0 0 1 1046.6748 202)" class="st0 st5">(bosons)</text>
+</g>
+<g transform="translate(85 20)" class="st9">
+	<text transform="matrix(1 0 0 1 -57.3398 295)" class="st7 st10">mass</text>
+	<text transform="matrix(1 0 0 1 -73.3828 335)" class="st7 st10">charge</text>
+	<text transform="matrix(1 0 0 1 -44.0273 375)" class="st7 st10">spin</text>
+</g>
+<g>
+	<text transform="matrix(6.123234e-17 -1 1 6.123234e-17 70 769.9994)" class="st11 st0 st12">QUARKS</text>
+	<g transform="translate(100 275)">
+		<g>
+			<g id="tilequ">
+				<g>
+					<g id="box">
+						
+							<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="-157.9523" y1="-499.2732" x2="-2.9523" y2="-234.2732" gradientTransform="matrix(1 0 0 1 200 486)">
+							<stop  offset="0" style="stop-color:#EEBBFF"/>
+							<stop  offset="1" style="stop-color:#AA77DD"/>
+						</linearGradient>
+						<path class="st13" d="M30,5h180c13.8,0,25,11.2,25,25v180c0,13.8-11.2,25-25,25H30c-13.8,0-25-11.2-25-25V30
+							C5,16.2,16.2,5,30,5z"/>
+					</g>
+				</g>
+				<g>
+					<g id="ball">
+						<circle class="st14" cx="120" cy="100" r="50.4"/>
+						<circle class="st14" cx="120" cy="100" r="47.7"/>
+						
+							<linearGradient id="SVGID_00000177475223166828466260000002452845601793093816_" gradientUnits="userSpaceOnUse" x1="-97.092" y1="-416.3858" x2="-52.092" y2="-336.3858" gradientTransform="matrix(1 0 0 1 200 486)">
+							<stop  offset="0" style="stop-color:#EEBBFF"/>
+							<stop  offset="1" style="stop-color:#AA77DD"/>
+						</linearGradient>
+						<circle style="fill:url(#SVGID_00000177475223166828466260000002452845601793093816_);" cx="120" cy="100" r="45"/>
+					</g>
+				</g>
+			</g>
+		</g>
+		<text transform="matrix(1 0 0 1 102.2031 120)" class="st7 st1">u</text>
+		<text transform="matrix(1 0 0 1 15 40)" class="st16 st17 st5">≃</text>
+		<text transform="matrix(1 0 0 1 32.5 40)" class="st16 st7 st10">2.2 MeV/c²</text>
+		<text transform="matrix(1 0 0 1 15 80)" class="st16 st7 st10">⅔</text>
+		<text transform="matrix(1 0 0 1 15 120)" class="st16 st7 st10">½</text>
+		<text transform="matrix(1 0 0 1 94.3447 200)" class="st4 st0 st18">up</text>
+	</g>
+	<g transform="translate(100 525)">
+		<g>
+			<g id="tilequ_00000069382040250531220200000015203020523589419922_">
+				<g>
+					<g id="box_00000110462341306591857560000008180956193432690321_">
+						
+							<linearGradient id="SVGID_00000062167428986625594050000006515551103410261148_" gradientUnits="userSpaceOnUse" x1="-157.9523" y1="-499.2732" x2="-2.9523" y2="-234.2732" gradientTransform="matrix(1 0 0 1 200 486)">
+							<stop  offset="0" style="stop-color:#EEBBFF"/>
+							<stop  offset="1" style="stop-color:#AA77DD"/>
+						</linearGradient>
+						<path style="fill:none;stroke:url(#SVGID_00000062167428986625594050000006515551103410261148_);stroke-width:10;" d="M30,5
+							h180c13.8,0,25,11.2,25,25v180c0,13.8-11.2,25-25,25H30c-13.8,0-25-11.2-25-25V30C5,16.2,16.2,5,30,5z"/>
+					</g>
+				</g>
+				<g>
+					<g id="ball_00000018215719092559798900000001130306911372497801_">
+						<circle class="st14" cx="120" cy="100" r="50.4"/>
+						<circle class="st14" cx="120" cy="100" r="47.7"/>
+						
+							<linearGradient id="SVGID_00000132795231491309164920000010149278626385421194_" gradientUnits="userSpaceOnUse" x1="-97.092" y1="-416.3858" x2="-52.092" y2="-336.3858" gradientTransform="matrix(1 0 0 1 200 486)">
+							<stop  offset="0" style="stop-color:#EEBBFF"/>
+							<stop  offset="1" style="stop-color:#AA77DD"/>
+						</linearGradient>
+						<circle style="fill:url(#SVGID_00000132795231491309164920000010149278626385421194_);" cx="120" cy="100" r="45"/>
+					</g>
+				</g>
+			</g>
+		</g>
+		<text transform="matrix(1 0 0 1 102.2031 120)" class="st7 st1">d</text>
+		<text transform="matrix(1 0 0 1 15 40)" class="st16 st17 st5">≃</text>
+		<text transform="matrix(1 0 0 1 32.5 40)" class="st16 st7 st10">4.7 MeV/c²</text>
+		<text transform="matrix(1 0 0 1 15 80)" class="st16 st7 st10">−⅓</text>
+		<text transform="matrix(1 0 0 1 15 120)" class="st16 st7 st10">½</text>
+		<text transform="matrix(1 0 0 1 65.1826 200)" class="st4 st0 st18">down</text>
+	</g>
+	<g transform="translate(350 275)">
+		<g>
+			<g id="tilequ_00000029007091839662856580000003726015942515547783_">
+				<g>
+					<g id="box_00000084519137994636512630000003372344945874539704_">
+						
+							<linearGradient id="SVGID_00000124854169599964624060000003646911197617150886_" gradientUnits="userSpaceOnUse" x1="-657.9523" y1="-499.2732" x2="-502.9523" y2="-234.2732" gradientTransform="matrix(1 0 0 1 700 486)">
+							<stop  offset="0" style="stop-color:#EEBBFF"/>
+							<stop  offset="1" style="stop-color:#AA77DD"/>
+						</linearGradient>
+						<path style="fill:none;stroke:url(#SVGID_00000124854169599964624060000003646911197617150886_);stroke-width:10;" d="M30,5
+							h180c13.8,0,25,11.2,25,25v180c0,13.8-11.2,25-25,25H30c-13.8,0-25-11.2-25-25V30C5,16.2,16.2,5,30,5z"/>
+					</g>
+				</g>
+				<g>
+					<g id="ball_00000157289771351877130100000017802411104521646771_">
+						<circle class="st14" cx="120" cy="100" r="50.4"/>
+						<circle class="st14" cx="120" cy="100" r="47.7"/>
+						
+							<linearGradient id="SVGID_00000072972341349638053760000010311821281611596698_" gradientUnits="userSpaceOnUse" x1="-597.092" y1="-416.3858" x2="-552.092" y2="-336.3858" gradientTransform="matrix(1 0 0 1 700 486)">
+							<stop  offset="0" style="stop-color:#EEBBFF"/>
+							<stop  offset="1" style="stop-color:#AA77DD"/>
+						</linearGradient>
+						<circle style="fill:url(#SVGID_00000072972341349638053760000010311821281611596698_);" cx="120" cy="100" r="45"/>
+					</g>
+				</g>
+			</g>
+		</g>
+		<text transform="matrix(1 0 0 1 104 120)" class="st7 st1">c</text>
+		<text transform="matrix(1 0 0 1 15 40)" class="st16 st17 st5">≃</text>
+		<text transform="matrix(1 0 0 1 32.5 40)" class="st16 st7 st10">1.28 GeV/c²</text>
+		<text transform="matrix(1 0 0 1 15 80)" class="st16 st7 st10">⅔</text>
+		<text transform="matrix(1 0 0 1 15 120)" class="st16 st7 st10">½</text>
+		<text transform="matrix(1 0 0 1 56.9692 200)" class="st4 st0 st18">charm</text>
+	</g>
+	<g transform="translate(350 525)">
+		<g>
+			<g id="tilequ_00000038408223870615303550000012054970055610071971_">
+				<g>
+					<g id="box_00000003081353097172457020000001671611176446896305_">
+						
+							<linearGradient id="SVGID_00000000926668694591888420000004147561512370105497_" gradientUnits="userSpaceOnUse" x1="-657.9523" y1="-499.2732" x2="-502.9523" y2="-234.2732" gradientTransform="matrix(1 0 0 1 700 486)">
+							<stop  offset="0" style="stop-color:#EEBBFF"/>
+							<stop  offset="1" style="stop-color:#AA77DD"/>
+						</linearGradient>
+						<path style="fill:none;stroke:url(#SVGID_00000000926668694591888420000004147561512370105497_);stroke-width:10;" d="M30,5
+							h180c13.8,0,25,11.2,25,25v180c0,13.8-11.2,25-25,25H30c-13.8,0-25-11.2-25-25V30C5,16.2,16.2,5,30,5z"/>
+					</g>
+				</g>
+				<g>
+					<g id="ball_00000127007448887386333120000012494567273472256423_">
+						<circle class="st14" cx="120" cy="100" r="50.4"/>
+						<circle class="st14" cx="120" cy="100" r="47.7"/>
+						
+							<linearGradient id="SVGID_00000092437506950706321480000007773679230804479151_" gradientUnits="userSpaceOnUse" x1="-597.092" y1="-416.3858" x2="-552.092" y2="-336.3858" gradientTransform="matrix(1 0 0 1 700 486)">
+							<stop  offset="0" style="stop-color:#EEBBFF"/>
+							<stop  offset="1" style="stop-color:#AA77DD"/>
+						</linearGradient>
+						<circle style="fill:url(#SVGID_00000092437506950706321480000007773679230804479151_);" cx="120" cy="100" r="45"/>
+					</g>
+				</g>
+			</g>
+		</g>
+		<text transform="matrix(1 0 0 1 104 120)" class="st7 st1">s</text>
+		<text transform="matrix(1 0 0 1 15 40)" class="st16 st17 st5">≃</text>
+		<text transform="matrix(1 0 0 1 32.5 40)" class="st16 st7 st10">96 MeV/c²</text>
+		<text transform="matrix(1 0 0 1 15 80)" class="st16 st7 st10">−⅓</text>
+		<text transform="matrix(1 0 0 1 15 120)" class="st16 st7 st10">½</text>
+		<text transform="matrix(1 0 0 1 44.1416 200)" class="st4 st0 st18">strange</text>
+	</g>
+	<g transform="translate(600 275)">
+		<g>
+			<g id="tilequ_00000043416342902309009280000011169711523500541099_">
+				<g>
+					<g id="box_00000016777979528198312120000017969890266336056461_">
+						
+							<linearGradient id="SVGID_00000084519048407042120120000015141282352956121729_" gradientUnits="userSpaceOnUse" x1="-1157.9523" y1="-499.2732" x2="-1002.9523" y2="-234.2732" gradientTransform="matrix(1 0 0 1 1200 486)">
+							<stop  offset="0" style="stop-color:#EEBBFF"/>
+							<stop  offset="1" style="stop-color:#AA77DD"/>
+						</linearGradient>
+						<path style="fill:none;stroke:url(#SVGID_00000084519048407042120120000015141282352956121729_);stroke-width:10;" d="M30,5
+							h180c13.8,0,25,11.2,25,25v180c0,13.8-11.2,25-25,25H30c-13.8,0-25-11.2-25-25V30C5,16.2,16.2,5,30,5z"/>
+					</g>
+				</g>
+				<g>
+					<g id="ball_00000047026707325763318820000010234275026135324814_">
+						<circle class="st14" cx="120" cy="100" r="50.4"/>
+						<circle class="st14" cx="120" cy="100" r="47.7"/>
+						
+							<linearGradient id="SVGID_00000040554272784497833000000013148914377261208756_" gradientUnits="userSpaceOnUse" x1="-1097.092" y1="-416.3858" x2="-1052.092" y2="-336.3858" gradientTransform="matrix(1 0 0 1 1200 486)">
+							<stop  offset="0" style="stop-color:#EEBBFF"/>
+							<stop  offset="1" style="stop-color:#AA77DD"/>
+						</linearGradient>
+						<circle style="fill:url(#SVGID_00000040554272784497833000000013148914377261208756_);" cx="120" cy="100" r="45"/>
+					</g>
+				</g>
+			</g>
+		</g>
+		<text transform="matrix(1 0 0 1 111.1094 120)" class="st7 st1">t</text>
+		<text transform="matrix(1 0 0 1 15 40)" class="st16 st17 st5">≃</text>
+		<text transform="matrix(1 0 0 1 32.5 40)" class="st16 st7 st10">173.1 GeV/c²</text>
+		<text transform="matrix(1 0 0 1 15 80)" class="st16 st7 st10">⅔</text>
+		<text transform="matrix(1 0 0 1 15 120)" class="st16 st7 st10">½</text>
+		<text transform="matrix(1 0 0 1 87.3516 200)" class="st4 st0 st18">top</text>
+	</g>
+	<g transform="translate(600 525)">
+		<g>
+			<g id="tilequ_00000098910502383651233080000001971009539972926138_">
+				<g>
+					<g id="box_00000011744742524684476730000007064509060194632117_">
+						
+							<linearGradient id="SVGID_00000116927494267871412250000014752731245554062754_" gradientUnits="userSpaceOnUse" x1="-1157.9523" y1="-499.2732" x2="-1002.9523" y2="-234.2732" gradientTransform="matrix(1 0 0 1 1200 486)">
+							<stop  offset="0" style="stop-color:#EEBBFF"/>
+							<stop  offset="1" style="stop-color:#AA77DD"/>
+						</linearGradient>
+						<path style="fill:none;stroke:url(#SVGID_00000116927494267871412250000014752731245554062754_);stroke-width:10;" d="M30,5
+							h180c13.8,0,25,11.2,25,25v180c0,13.8-11.2,25-25,25H30c-13.8,0-25-11.2-25-25V30C5,16.2,16.2,5,30,5z"/>
+					</g>
+				</g>
+				<g>
+					<g id="ball_00000117637022989714725370000001758498771499975567_">
+						<circle class="st14" cx="120" cy="100" r="50.4"/>
+						<circle class="st14" cx="120" cy="100" r="47.7"/>
+						
+							<linearGradient id="SVGID_00000021835781221731003880000017955748752890118329_" gradientUnits="userSpaceOnUse" x1="-1097.092" y1="-416.3858" x2="-1052.092" y2="-336.3858" gradientTransform="matrix(1 0 0 1 1200 486)">
+							<stop  offset="0" style="stop-color:#EEBBFF"/>
+							<stop  offset="1" style="stop-color:#AA77DD"/>
+						</linearGradient>
+						<circle style="fill:url(#SVGID_00000021835781221731003880000017955748752890118329_);" cx="120" cy="100" r="45"/>
+					</g>
+				</g>
+			</g>
+		</g>
+		<text transform="matrix(1 0 0 1 102.2031 120)" class="st7 st1">b</text>
+		<text transform="matrix(1 0 0 1 15 40)" class="st16 st17 st5">≃</text>
+		<text transform="matrix(1 0 0 1 32.5 40)" class="st16 st7 st10">4.18 GeV/c²</text>
+		<text transform="matrix(1 0 0 1 15 80)" class="st16 st7 st10">−⅓</text>
+		<text transform="matrix(1 0 0 1 15 120)" class="st16 st7 st10">½</text>
+		<text transform="matrix(1 0 0 1 48.8584 200)" class="st4 st0 st18">bottom</text>
+	</g>
+</g>
+<g>
+	<text transform="matrix(6.123234e-17 -1 1 6.123234e-17 70 1269.9994)" class="st29 st0 st12">LEPTONS</text>
+	<g transform="translate(100 790)">
+		<g>
+			<g id="tilele">
+				<g>
+					<g id="box_00000165222103724765660230000016941921504097362341_">
+						
+							<linearGradient id="SVGID_00000066495174199716834420000015738963087031286166_" gradientUnits="userSpaceOnUse" x1="-157.9523" y1="-499.2732" x2="-2.9523" y2="-234.2732" gradientTransform="matrix(1 0 0 1 200 486)">
+							<stop  offset="0" style="stop-color:#AAEE77"/>
+							<stop  offset="1" style="stop-color:#66CC33"/>
+						</linearGradient>
+						<path style="fill:none;stroke:url(#SVGID_00000066495174199716834420000015738963087031286166_);stroke-width:10;" d="M30,5
+							h180c13.8,0,25,11.2,25,25v180c0,13.8-11.2,25-25,25H30c-13.8,0-25-11.2-25-25V30C5,16.2,16.2,5,30,5z"/>
+					</g>
+				</g>
+				<g>
+					<g id="ball_00000007425461690122226140000003150867348370241955_">
+						<circle class="st14" cx="120" cy="100" r="50.4"/>
+						<circle class="st14" cx="120" cy="100" r="47.7"/>
+						
+							<linearGradient id="SVGID_00000062885294287760145020000003073747170646449080_" gradientUnits="userSpaceOnUse" x1="-97.092" y1="-416.3858" x2="-52.092" y2="-336.3858" gradientTransform="matrix(1 0 0 1 200 486)">
+							<stop  offset="0" style="stop-color:#AAEE77"/>
+							<stop  offset="1" style="stop-color:#66CC33"/>
+						</linearGradient>
+						<circle style="fill:url(#SVGID_00000062885294287760145020000003073747170646449080_);" cx="120" cy="100" r="45"/>
+					</g>
+				</g>
+			</g>
+		</g>
+		<text transform="matrix(1 0 0 1 102.2031 120)" class="st7 st1">e</text>
+		<text transform="matrix(1 0 0 1 15 40)" class="st16 st17 st5">≃</text>
+		<text transform="matrix(1 0 0 1 32.5 40)" class="st16 st7 st10">0.511 MeV/c²</text>
+		<text transform="matrix(1 0 0 1 15 80)" class="st16 st7 st10">−1</text>
+		<text transform="matrix(1 0 0 1 15 120)" class="st16 st7 st10">½</text>
+		<text transform="matrix(1 0 0 1 38.3071 200)" class="st4 st0 st18">electron</text>
+	</g>
+	<g transform="translate(100 1040)">
+		<g>
+			<g id="tilele_00000064352081766627756570000004210976227107760541_">
+				<g>
+					<g id="box_00000123402182385645894500000007353205784115695236_">
+						
+							<linearGradient id="SVGID_00000143587742271351249090000009115427142696985733_" gradientUnits="userSpaceOnUse" x1="-157.9523" y1="-499.2732" x2="-2.9523" y2="-234.2732" gradientTransform="matrix(1 0 0 1 200 486)">
+							<stop  offset="0" style="stop-color:#AAEE77"/>
+							<stop  offset="1" style="stop-color:#66CC33"/>
+						</linearGradient>
+						<path style="fill:none;stroke:url(#SVGID_00000143587742271351249090000009115427142696985733_);stroke-width:10;" d="M30,5
+							h180c13.8,0,25,11.2,25,25v180c0,13.8-11.2,25-25,25H30c-13.8,0-25-11.2-25-25V30C5,16.2,16.2,5,30,5z"/>
+					</g>
+				</g>
+				<g>
+					<g id="ball_00000163068072401321768540000010808355896434536093_">
+						<circle class="st14" cx="120" cy="100" r="50.4"/>
+						<circle class="st14" cx="120" cy="100" r="47.7"/>
+						
+							<linearGradient id="SVGID_00000121237639386992525400000007476482955650925187_" gradientUnits="userSpaceOnUse" x1="-97.092" y1="-416.3858" x2="-52.092" y2="-336.3858" gradientTransform="matrix(1 0 0 1 200 486)">
+							<stop  offset="0" style="stop-color:#AAEE77"/>
+							<stop  offset="1" style="stop-color:#66CC33"/>
+						</linearGradient>
+						<circle style="fill:url(#SVGID_00000121237639386992525400000007476482955650925187_);" cx="120" cy="100" r="45"/>
+					</g>
+				</g>
+			</g>
+		</g>
+		<text transform="matrix(1 0 0 1 93.0703 110)" class="st34 st35">ν</text>
+		<text transform="matrix(1 0 0 1 125.625 118)" class="st34 st36">e</text>
+		<text transform="matrix(1 0 0 1 15 40)" class="st16 st7 st10">&lt;1.0 eV/c²</text>
+		<text transform="matrix(1 0 0 1 15 80)" class="st16 st7 st10">0</text>
+		<text transform="matrix(1 0 0 1 15 120)" class="st16 st7 st10">½</text>
+		<text transform="matrix(1 0 0 1 49.9775 180)" class="st4 st0 st37">electron</text>
+		<text transform="matrix(1 0 0 1 48.0088 220)" class="st4 st0 st37">neutrino</text>
+	</g>
+	<g transform="translate(350 790)">
+		<g>
+			<g id="tilele_00000125569854483003204660000015797644993794207882_">
+				<g>
+					<g id="box_00000124123860248827226400000004123691337153010563_">
+						
+							<linearGradient id="SVGID_00000136391990948804762710000004853231518170815391_" gradientUnits="userSpaceOnUse" x1="-657.9523" y1="-499.2732" x2="-502.9523" y2="-234.2732" gradientTransform="matrix(1 0 0 1 700 486)">
+							<stop  offset="0" style="stop-color:#AAEE77"/>
+							<stop  offset="1" style="stop-color:#66CC33"/>
+						</linearGradient>
+						<path style="fill:none;stroke:url(#SVGID_00000136391990948804762710000004853231518170815391_);stroke-width:10;" d="M30,5
+							h180c13.8,0,25,11.2,25,25v180c0,13.8-11.2,25-25,25H30c-13.8,0-25-11.2-25-25V30C5,16.2,16.2,5,30,5z"/>
+					</g>
+				</g>
+				<g>
+					<g id="ball_00000036229583742846625110000009407595397222933896_">
+						<circle class="st14" cx="120" cy="100" r="50.4"/>
+						<circle class="st14" cx="120" cy="100" r="47.7"/>
+						
+							<linearGradient id="SVGID_00000029019653248919739190000003559907211925344943_" gradientUnits="userSpaceOnUse" x1="-597.092" y1="-416.3858" x2="-552.092" y2="-336.3858" gradientTransform="matrix(1 0 0 1 700 486)">
+							<stop  offset="0" style="stop-color:#AAEE77"/>
+							<stop  offset="1" style="stop-color:#66CC33"/>
+						</linearGradient>
+						<circle style="fill:url(#SVGID_00000029019653248919739190000003559907211925344943_);" cx="120" cy="100" r="45"/>
+					</g>
+				</g>
+			</g>
+		</g>
+		<text transform="matrix(1 0 0 1 100.6992 120)" class="st34 st35">μ</text>
+		<text transform="matrix(1 0 0 1 15 40)" class="st16 st17 st5">≃</text>
+		<text transform="matrix(1 0 0 1 32.5 40)" class="st16 st7 st10">105.66 MeV/c²</text>
+		<text transform="matrix(1 0 0 1 15 80)" class="st16 st7 st10">−1</text>
+		<text transform="matrix(1 0 0 1 15 120)" class="st16 st7 st10">½</text>
+		<text transform="matrix(1 0 0 1 62.8447 200)" class="st4 st0 st18">muon</text>
+	</g>
+	<g transform="translate(350 1040)">
+		<g>
+			<g id="tilele_00000168080205708913899030000009080309837394888839_">
+				<g>
+					<g id="box_00000096041839606895705640000003116639111724582027_">
+						
+							<linearGradient id="SVGID_00000072958853696327005550000010276231935795747217_" gradientUnits="userSpaceOnUse" x1="-657.9523" y1="-499.2732" x2="-502.9523" y2="-234.2732" gradientTransform="matrix(1 0 0 1 700 486)">
+							<stop  offset="0" style="stop-color:#AAEE77"/>
+							<stop  offset="1" style="stop-color:#66CC33"/>
+						</linearGradient>
+						<path style="fill:none;stroke:url(#SVGID_00000072958853696327005550000010276231935795747217_);stroke-width:10;" d="M30,5
+							h180c13.8,0,25,11.2,25,25v180c0,13.8-11.2,25-25,25H30c-13.8,0-25-11.2-25-25V30C5,16.2,16.2,5,30,5z"/>
+					</g>
+				</g>
+				<g>
+					<g id="ball_00000084492686696808893950000017582945534519483296_">
+						<circle class="st14" cx="120" cy="100" r="50.4"/>
+						<circle class="st14" cx="120" cy="100" r="47.7"/>
+						
+							<linearGradient id="SVGID_00000093134597735415016980000014078980121872973981_" gradientUnits="userSpaceOnUse" x1="-597.092" y1="-416.3858" x2="-552.092" y2="-336.3858" gradientTransform="matrix(1 0 0 1 700 486)">
+							<stop  offset="0" style="stop-color:#AAEE77"/>
+							<stop  offset="1" style="stop-color:#66CC33"/>
+						</linearGradient>
+						<circle style="fill:url(#SVGID_00000093134597735415016980000014078980121872973981_);" cx="120" cy="100" r="45"/>
+					</g>
+				</g>
+			</g>
+		</g>
+		<text transform="matrix(1 0 0 1 90.8555 110)" class="st34 st35">ν</text>
+		<text transform="matrix(1 0 0 1 123.4102 118)" class="st34 st36">μ</text>
+		<text transform="matrix(1 0 0 1 15 40)" class="st16 st7 st10">&lt;0.17 MeV/c²</text>
+		<text transform="matrix(1 0 0 1 15 80)" class="st16 st7 st10">0</text>
+		<text transform="matrix(1 0 0 1 15 120)" class="st16 st7 st10">½</text>
+		<text transform="matrix(1 0 0 1 71.0098 180)" class="st4 st0 st37">muon</text>
+		<text transform="matrix(1 0 0 1 48.0088 220)" class="st4 st0 st37">neutrino</text>
+	</g>
+	<g transform="translate(600 790)">
+		<g>
+			<g id="tilele_00000036217189415350156250000006144542300529363861_">
+				<g>
+					<g id="box_00000057131592052754783040000001875359074457971335_">
+						
+							<linearGradient id="SVGID_00000104693029125454585550000006577162796477196931_" gradientUnits="userSpaceOnUse" x1="-1157.9523" y1="-499.2732" x2="-1002.9523" y2="-234.2732" gradientTransform="matrix(1 0 0 1 1200 486)">
+							<stop  offset="0" style="stop-color:#AAEE77"/>
+							<stop  offset="1" style="stop-color:#66CC33"/>
+						</linearGradient>
+						<path style="fill:none;stroke:url(#SVGID_00000104693029125454585550000006577162796477196931_);stroke-width:10;" d="M30,5
+							h180c13.8,0,25,11.2,25,25v180c0,13.8-11.2,25-25,25H30c-13.8,0-25-11.2-25-25V30C5,16.2,16.2,5,30,5z"/>
+					</g>
+				</g>
+				<g>
+					<g id="ball_00000148663404586144247550000000251608069601500558_">
+						<circle class="st14" cx="120" cy="100" r="50.4"/>
+						<circle class="st14" cx="120" cy="100" r="47.7"/>
+						
+							<linearGradient id="SVGID_00000172419765784432540950000016293642306701856913_" gradientUnits="userSpaceOnUse" x1="-1097.092" y1="-416.3858" x2="-1052.092" y2="-336.3858" gradientTransform="matrix(1 0 0 1 1200 486)">
+							<stop  offset="0" style="stop-color:#AAEE77"/>
+							<stop  offset="1" style="stop-color:#66CC33"/>
+						</linearGradient>
+						<circle style="fill:url(#SVGID_00000172419765784432540950000016293642306701856913_);" cx="120" cy="100" r="45"/>
+					</g>
+				</g>
+			</g>
+		</g>
+		<text transform="matrix(1 0 0 1 105.5332 120)" class="st34 st35">τ</text>
+		<text transform="matrix(1 0 0 1 15 40)" class="st16 st17 st5">≃</text>
+		<text transform="matrix(1 0 0 1 32.5 40)" class="st16 st7 st10">1.7768 GeV/c²</text>
+		<text transform="matrix(1 0 0 1 15 80)" class="st16 st7 st10">−1</text>
+		<text transform="matrix(1 0 0 1 15 120)" class="st16 st7 st10">½</text>
+		<text transform="matrix(1 0 0 1 88.5 200)" class="st4 st0 st18">tau</text>
+	</g>
+	<g transform="translate(600 1040)">
+		<g>
+			<g id="tilele_00000001629085801930150370000007997289774839718784_">
+				<g>
+					<g id="box_00000083779077149786530210000013944685896175572913_">
+						
+							<linearGradient id="SVGID_00000116955804540412797680000010898449469083371434_" gradientUnits="userSpaceOnUse" x1="-1157.9523" y1="-499.2732" x2="-1002.9523" y2="-234.2732" gradientTransform="matrix(1 0 0 1 1200 486)">
+							<stop  offset="0" style="stop-color:#AAEE77"/>
+							<stop  offset="1" style="stop-color:#66CC33"/>
+						</linearGradient>
+						<path style="fill:none;stroke:url(#SVGID_00000116955804540412797680000010898449469083371434_);stroke-width:10;" d="M30,5
+							h180c13.8,0,25,11.2,25,25v180c0,13.8-11.2,25-25,25H30c-13.8,0-25-11.2-25-25V30C5,16.2,16.2,5,30,5z"/>
+					</g>
+				</g>
+				<g>
+					<g id="ball_00000138563157590297739570000013428873461126526100_">
+						<circle class="st14" cx="120" cy="100" r="50.4"/>
+						<circle class="st14" cx="120" cy="100" r="47.7"/>
+						
+							<linearGradient id="SVGID_00000080906922361379428950000002030811798605289362_" gradientUnits="userSpaceOnUse" x1="-1097.092" y1="-416.3858" x2="-1052.092" y2="-336.3858" gradientTransform="matrix(1 0 0 1 1200 486)">
+							<stop  offset="0" style="stop-color:#AAEE77"/>
+							<stop  offset="1" style="stop-color:#66CC33"/>
+						</linearGradient>
+						<circle style="fill:url(#SVGID_00000080906922361379428950000002030811798605289362_);" cx="120" cy="100" r="45"/>
+					</g>
+				</g>
+			</g>
+		</g>
+		<text transform="matrix(1 0 0 1 94.0781 110)" class="st34 st35">ν</text>
+		<text transform="matrix(1 0 0 1 126.6328 118)" class="st34 st36">τ</text>
+		<text transform="matrix(1 0 0 1 15 40)" class="st16 st7 st10">&lt;18.2 MeV/c²</text>
+		<text transform="matrix(1 0 0 1 15 80)" class="st16 st7 st10">0</text>
+		<text transform="matrix(1 0 0 1 15 120)" class="st16 st7 st10">½</text>
+		<text transform="matrix(1 0 0 1 93 180)" class="st4 st0 st37">tau</text>
+		<text transform="matrix(1 0 0 1 48.0088 220)" class="st4 st0 st37">neutrino</text>
+	</g>
+</g>
+<g>
+	<text transform="matrix(6.123234e-17 -1 1 6.123234e-17 1170 1269.9994)" class="st46 st0 st12">GAUGE BOSONS</text>
+	<text transform="matrix(6.123234e-17 -1 1 6.123234e-17 1210 1269.9994)" class="st46 st0 st37">VECTOR BOSONS</text>
+	<g transform="translate(860 275)">
+		<g>
+			<g id="tilegb">
+				<g>
+					<g id="box_00000018925421475106550600000008258856433679383980_">
+						
+							<linearGradient id="SVGID_00000165944372252162581800000000442287538406135452_" gradientUnits="userSpaceOnUse" x1="-1677.9523" y1="-499.2732" x2="-1522.9523" y2="-234.2732" gradientTransform="matrix(1 0 0 1 1720 486)">
+							<stop  offset="0" style="stop-color:#FF9977"/>
+							<stop  offset="1" style="stop-color:#DD5544"/>
+						</linearGradient>
+						<path style="fill:none;stroke:url(#SVGID_00000165944372252162581800000000442287538406135452_);stroke-width:10;" d="M30,5
+							h180c13.8,0,25,11.2,25,25v180c0,13.8-11.2,25-25,25H30c-13.8,0-25-11.2-25-25V30C5,16.2,16.2,5,30,5z"/>
+					</g>
+				</g>
+				<g>
+					<g id="ball_00000057846747510820468700000008505813792657167796_">
+						<circle class="st14" cx="120" cy="100" r="50.4"/>
+						<circle class="st14" cx="120" cy="100" r="47.7"/>
+						
+							<linearGradient id="SVGID_00000025410338760537699990000000366305787513278876_" gradientUnits="userSpaceOnUse" x1="-1617.092" y1="-416.3858" x2="-1572.092" y2="-336.3858" gradientTransform="matrix(1 0 0 1 1720 486)">
+							<stop  offset="0" style="stop-color:#FF9977"/>
+							<stop  offset="1" style="stop-color:#DD5544"/>
+						</linearGradient>
+						<circle style="fill:url(#SVGID_00000025410338760537699990000000366305787513278876_);" cx="120" cy="100" r="45"/>
+					</g>
+				</g>
+			</g>
+		</g>
+		<text transform="matrix(1 0 0 1 102.2031 120)" class="st7 st1">g</text>
+		<text transform="matrix(1 0 0 1 15 40)" class="st16 st7 st10">0</text>
+		<text transform="matrix(1 0 0 1 15 80)" class="st16 st7 st10">0</text>
+		<text transform="matrix(1 0 0 1 15 120)" class="st16 st7 st10">1</text>
+		<text transform="matrix(1 0 0 1 62.855 200)" class="st4 st0 st18">gluon</text>
+	</g>
+	<g transform="translate(860 525)">
+		<g>
+			<g id="tilegb_00000104686347255095026530000011086916183841483669_">
+				<g>
+					<g id="box_00000085231285263412720690000011947889520732977851_">
+						
+							<linearGradient id="SVGID_00000140707229942812228790000010089560844303392154_" gradientUnits="userSpaceOnUse" x1="-1677.9523" y1="-499.2732" x2="-1522.9523" y2="-234.2732" gradientTransform="matrix(1 0 0 1 1720 486)">
+							<stop  offset="0" style="stop-color:#FF9977"/>
+							<stop  offset="1" style="stop-color:#DD5544"/>
+						</linearGradient>
+						<path style="fill:none;stroke:url(#SVGID_00000140707229942812228790000010089560844303392154_);stroke-width:10;" d="M30,5
+							h180c13.8,0,25,11.2,25,25v180c0,13.8-11.2,25-25,25H30c-13.8,0-25-11.2-25-25V30C5,16.2,16.2,5,30,5z"/>
+					</g>
+				</g>
+				<g>
+					<g id="ball_00000127736715195242529670000001764349770811892374_">
+						<circle class="st14" cx="120" cy="100" r="50.4"/>
+						<circle class="st14" cx="120" cy="100" r="47.7"/>
+						
+							<linearGradient id="SVGID_00000013886650079901424270000004712469305473093292_" gradientUnits="userSpaceOnUse" x1="-1617.092" y1="-416.3858" x2="-1572.092" y2="-336.3858" gradientTransform="matrix(1 0 0 1 1720 486)">
+							<stop  offset="0" style="stop-color:#FF9977"/>
+							<stop  offset="1" style="stop-color:#DD5544"/>
+						</linearGradient>
+						<circle style="fill:url(#SVGID_00000013886650079901424270000004712469305473093292_);" cx="120" cy="100" r="45"/>
+					</g>
+				</g>
+			</g>
+		</g>
+		<text transform="matrix(1 0 0 1 104.0918 120)" class="st34 st35">γ</text>
+		<text transform="matrix(1 0 0 1 15 40)" class="st16 st7 st10">0</text>
+		<text transform="matrix(1 0 0 1 15 80)" class="st16 st7 st10">0</text>
+		<text transform="matrix(1 0 0 1 15 120)" class="st16 st7 st10">1</text>
+		<text transform="matrix(1 0 0 1 48.8687 200)" class="st4 st0 st18">photon</text>
+	</g>
+	<g transform="translate(860 790)">
+		<g>
+			<g id="tilegb_00000116210829802664446900000001831845908684901783_">
+				<g>
+					<g id="box_00000015334015488600116310000014465484891799370889_">
+						
+							<linearGradient id="SVGID_00000142152342119341657910000008950107215783996854_" gradientUnits="userSpaceOnUse" x1="-1677.9523" y1="-499.2732" x2="-1522.9523" y2="-234.2732" gradientTransform="matrix(1 0 0 1 1720 486)">
+							<stop  offset="0" style="stop-color:#FF9977"/>
+							<stop  offset="1" style="stop-color:#DD5544"/>
+						</linearGradient>
+						<path style="fill:none;stroke:url(#SVGID_00000142152342119341657910000008950107215783996854_);stroke-width:10;" d="M30,5
+							h180c13.8,0,25,11.2,25,25v180c0,13.8-11.2,25-25,25H30c-13.8,0-25-11.2-25-25V30C5,16.2,16.2,5,30,5z"/>
+					</g>
+				</g>
+				<g>
+					<g id="ball_00000178192050420994700370000002161752365720114335_">
+						<circle class="st14" cx="120" cy="100" r="50.4"/>
+						<circle class="st14" cx="120" cy="100" r="47.7"/>
+						
+							<linearGradient id="SVGID_00000025425216816994653530000007507926742851432634_" gradientUnits="userSpaceOnUse" x1="-1617.092" y1="-416.3858" x2="-1572.092" y2="-336.3858" gradientTransform="matrix(1 0 0 1 1720 486)">
+							<stop  offset="0" style="stop-color:#FF9977"/>
+							<stop  offset="1" style="stop-color:#DD5544"/>
+						</linearGradient>
+						<circle style="fill:url(#SVGID_00000025425216816994653530000007507926742851432634_);" cx="120" cy="100" r="45"/>
+					</g>
+				</g>
+			</g>
+		</g>
+		<text transform="matrix(1 0 0 1 100.4531 120)" class="st7 st1">Z</text>
+		<text transform="matrix(1 0 0 1 15 40)" class="st16 st17 st5">≃</text>
+		<text transform="matrix(1 0 0 1 32.5 40)" class="st16 st7 st10">91.19 GeV/c²</text>
+		<text transform="matrix(1 0 0 1 15 80)" class="st16 st7 st10">0</text>
+		<text transform="matrix(1 0 0 1 15 120)" class="st16 st7 st10">1</text>
+		<text transform="matrix(1 0 0 1 38.3481 200)" class="st4 st0 st18">Z boson</text>
+	</g>
+	<g transform="translate(860 1040)">
+		<g>
+			<g id="tilegb_00000047023238297209594040000017606078354668913853_">
+				<g>
+					<g id="box_00000108286273755088110250000014940881813792377751_">
+						
+							<linearGradient id="SVGID_00000072973358813211045700000005685247845644134279_" gradientUnits="userSpaceOnUse" x1="-1677.9523" y1="-499.2732" x2="-1522.9523" y2="-234.2732" gradientTransform="matrix(1 0 0 1 1720 486)">
+							<stop  offset="0" style="stop-color:#FF9977"/>
+							<stop  offset="1" style="stop-color:#DD5544"/>
+						</linearGradient>
+						<path style="fill:none;stroke:url(#SVGID_00000072973358813211045700000005685247845644134279_);stroke-width:10;" d="M30,5
+							h180c13.8,0,25,11.2,25,25v180c0,13.8-11.2,25-25,25H30c-13.8,0-25-11.2-25-25V30C5,16.2,16.2,5,30,5z"/>
+					</g>
+				</g>
+				<g>
+					<g id="ball_00000051376607178192449340000011403060906037316994_">
+						<circle class="st14" cx="120" cy="100" r="50.4"/>
+						<circle class="st14" cx="120" cy="100" r="47.7"/>
+						
+							<linearGradient id="SVGID_00000179634373399523562620000017135570487695669154_" gradientUnits="userSpaceOnUse" x1="-1617.092" y1="-416.3858" x2="-1572.092" y2="-336.3858" gradientTransform="matrix(1 0 0 1 1720 486)">
+							<stop  offset="0" style="stop-color:#FF9977"/>
+							<stop  offset="1" style="stop-color:#DD5544"/>
+						</linearGradient>
+						<circle style="fill:url(#SVGID_00000179634373399523562620000017135570487695669154_);" cx="120" cy="100" r="45"/>
+					</g>
+				</g>
+			</g>
+		</g>
+		<text transform="matrix(1 0 0 1 89.7969 120)" class="st7 st1">W</text>
+		<text transform="matrix(1 0 0 1 15 40)" class="st16 st17 st5">≃</text>
+		<text transform="matrix(1 0 0 1 32.5 40)" class="st16 st7 st10">80.433 GeV/c²</text>
+		<text transform="matrix(1 0 0 1 15 80)" class="st16 st7 st10">±1</text>
+		<text transform="matrix(1 0 0 1 15 120)" class="st16 st7 st10">1</text>
+		<text transform="matrix(1 0 0 1 31.355 200)" class="st4 st0 st18">W boson</text>
+	</g>
+</g>
+<g>
+	<text transform="matrix(6.123234e-17 -1 1 6.123234e-17 1350 1004.0287)" class="st55 st0 st12">SCALAR BOSONS</text>
+	<g transform="translate(1120 275)">
+		<g>
+			<g id="tilesb">
+				<g>
+					<g id="box_00000079483428037159007870000001726351138268043668_">
+						
+							<linearGradient id="SVGID_00000052796614544736616370000011953788686646804627_" gradientUnits="userSpaceOnUse" x1="-2197.9521" y1="-499.2732" x2="-2042.9523" y2="-234.2732" gradientTransform="matrix(1 0 0 1 2240 486)">
+							<stop  offset="0" style="stop-color:#EEE677"/>
+							<stop  offset="1" style="stop-color:#EEBB33"/>
+						</linearGradient>
+						<path style="fill:none;stroke:url(#SVGID_00000052796614544736616370000011953788686646804627_);stroke-width:10;" d="M30,5
+							h180c13.8,0,25,11.2,25,25v180c0,13.8-11.2,25-25,25H30c-13.8,0-25-11.2-25-25V30C5,16.2,16.2,5,30,5z"/>
+					</g>
+				</g>
+				<g>
+					<g id="ball_00000092455756222806597900000016269609986306379934_">
+						<circle class="st14" cx="120" cy="100" r="50.4"/>
+						<circle class="st14" cx="120" cy="100" r="47.7"/>
+						
+							<linearGradient id="SVGID_00000158728084711946389040000008042071740793368994_" gradientUnits="userSpaceOnUse" x1="-2137.092" y1="-416.3858" x2="-2092.092" y2="-336.3858" gradientTransform="matrix(1 0 0 1 2240 486)">
+							<stop  offset="0" style="stop-color:#EEE677"/>
+							<stop  offset="1" style="stop-color:#EEBB33"/>
+						</linearGradient>
+						<circle style="fill:url(#SVGID_00000158728084711946389040000008042071740793368994_);" cx="120" cy="100" r="45"/>
+					</g>
+				</g>
+			</g>
+		</g>
+		<text transform="matrix(1 0 0 1 96.8906 120)" class="st7 st1">H</text>
+		<text transform="matrix(1 0 0 1 15 40)" class="st16 st17 st5">≃</text>
+		<text transform="matrix(1 0 0 1 32.5 40)" class="st16 st7 st10">124.97 GeV/c²</text>
+		<text transform="matrix(1 0 0 1 15 80)" class="st16 st7 st10">0</text>
+		<text transform="matrix(1 0 0 1 15 120)" class="st16 st7 st10">0</text>
+		<text transform="matrix(1 0 0 1 64.0034 200)" class="st4 st0 st18">higgs</text>
+	</g>
+</g>
+<g>
+	<text transform="matrix(6.123234e-17 -1 1 6.123234e-17 1610 1004.056)" class="st0 st12" style="fill:#77AADD;">TENSOR BOSONS</text>
+	<text transform="matrix(6.123234e-17 -1 1 6.123234e-17 1555 810.0013)" class="st0 st37" style="fill:#77AADD;">HYPOTHETICAL</text>
+	<g transform="translate(1380 275)">
+		<g>
+			<g id="tiletb">
+				<g>
+					<g id="box_00000050624554714137727540000006881656267512898990_">
+						
+							<linearGradient id="SVGID_00000096755336799722668400000018150257130759659945_" gradientUnits="userSpaceOnUse" x1="-2717.9521" y1="-499.2732" x2="-2562.9521" y2="-234.2732" gradientTransform="matrix(1 0 0 1 2760 486)">
+							<stop  offset="0" style="stop-color:#99CCFF"/>
+							<stop  offset="1" style="stop-color:#6699CC"/>
+						</linearGradient>
+						<path style="fill:none;stroke:url(#SVGID_00000096755336799722668400000018150257130759659945_);stroke-width:10;" d="M30,5
+							h180c13.8,0,25,11.2,25,25v180c0,13.8-11.2,25-25,25H30c-13.8,0-25-11.2-25-25V30C5,16.2,16.2,5,30,5z"/>
+					</g>
+				</g>
+				<g>
+					<g id="ball_00000174564839867583722940000000126810721498044546_">
+						<circle class="st14" cx="120" cy="100" r="50.4"/>
+						<circle class="st14" cx="120" cy="100" r="47.7"/>
+						
+							<linearGradient id="SVGID_00000088119826861826900720000013920166735622291620_" gradientUnits="userSpaceOnUse" x1="-2657.092" y1="-416.3858" x2="-2612.092" y2="-336.3858" gradientTransform="matrix(1 0 0 1 2760 486)">
+							<stop  offset="0" style="stop-color:#99CCFF"/>
+							<stop  offset="1" style="stop-color:#6699CC"/>
+						</linearGradient>
+						<circle style="fill:url(#SVGID_00000088119826861826900720000013920166735622291620_);" cx="120" cy="100" r="45"/>
+					</g>
+				</g>
+			</g>
+		</g>
+		<text transform="matrix(1 0 0 1 95.1094 120)" class="st7 st1">G</text>
+		<text transform="matrix(1 0 0 1 15 40)" class="st16 st7 st10">0</text>
+		<text transform="matrix(1 0 0 1 15 80)" class="st16 st7 st10">0</text>
+		<text transform="matrix(1 0 0 1 15 120)" class="st16 st7 st10">2</text>
+		<text transform="matrix(1 0 0 1 37.1587 200)" class="st4 st0 st18">graviton</text>
+	</g>
+</g>
+</svg>
