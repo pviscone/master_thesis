@@ -1,3 +1,79 @@
 %!TEX root = ../thesis.tex
 \newchap{Measurement of the $|V_{cb}|$ CKM element from \ttbar semileptonic decays}\label{sec:AN}
 \minitoc
+
+This work aims to access the $|V_{cb}|$ element through the direct decay of a \PW boson at $\sqrt{s}=13 TeV$ with the recorded luminosity of the RunII.\\
+An inclusive measurement of $\PW \to cb$ would be an impossible task due to the large background but is possible to exploit the semileptonic decay of top pairs and use the lepton to trigger the event and the hadronic \PW decay to measure the $\PW \to cb$ branching fraction.\\
+As lepton $\ell$, we will only consider muons and electrons, due to the lower reconstruction efficiency of $\tau$s, that decay hadronically in the $64.8\%$ of cases.
+\\
+\\
+The value of $|V_{cb}|$ can be extracted from the ratio of branching fractions in which the hadronic \PW decays into charm and beauty quarks over the total \PW hadronic branching fraction
+\begin{equation}
+\begin{gathered}
+    R_{cb}=\frac{\Gamma\left(\ttbar \to b\ell \nu\; b cb\right)}{\Gamma\left(\ttbar \to b\ell \nu\; b q\bar{q}\right)}=\\ =\frac{|V_{cb}|^2}{|V_{ud}|^2+|V_{us}|^2+|V_{ub}|^2+|V_{cd}|^2+|V_{cs}|^2+|V_{cb}|^2}=\frac{|V_{cb}|^2}{2}
+\end{gathered}
+\end{equation}
+In the last step, the unitarity of the CKM matrix is assumed.\\
+The determination of $|V_{cb}|$ through direct \PW decays gives us the opportunity to provide a new determination of $|V_{cb}|$ at a new energy scale ($\sqrt{s}=m_{\PW}$), avoiding complications and theoretical uncertainties due to non-perturbative QCD.\\
+The statistic provided by the RunII does not allow to reach the current precision of $\sim2 \%$ on $|V_{cb}|$ that was obtained observing the semileptonic decays of $B$ mesons, but, despite that, it gives us an opportunity to tackle the $|V_{cb}|$ puzzle with a novel strategy.\\
+The main sources of systematic uncertainties are the b/c tagging uncertainties, but the ratio of branching fractions should allow some cancellations.\\
+\\
+The measurements of $|V_{cb}|$ through semileptonic B meson decays are discussed in sec. \ref{sec:vcb}.
+
+\section{Event signatures}
+\TODO{Change name of the section}\\
+In this chapter, we will name "signal" or "cb events" the $\ttbar \to b\ell\nu\: bcb$ process, and "background" everything else.\\
+\\
+The final state of a signal event consists of one muon or electron, three b jets, one c jet, and some missing energy due to the presence of the neutrino.\\
+The invariant mass of one b jet and the c jet should match the mass of the \PW boson, and, adding another b jet, should match the mass of the top quark.\\
+This final state can be mimicked by the following processes 
+\begin{itemize}
+    \item Semileptonic $\ttbar$ ($\ttbar\to b\ell\nu \: bq\bar{q}$): if one or more jets are mistagged and/or there are additional jets.\\
+    This background depends mainly on the b/c tagging capabilities of the experiment.
+    \item Dileptonic $\ttbar$ ($\ttbar \to b\bar{\ell}\nu \: \bar{b}\ell\bar{\nu}$): the presence of two leptons in the final states increase the trigger probability, while the two missing jets can be originated from additional jets produced by initial state radiation (ISR) of final state radiation (FSR), or from the leptons.
+    \item Dihadronic $\ttbar$ ($\ttbar \to b\bar{q}q \: \bar{b}q\bar{q}$): the missing lepton can be originated by the semileptonic decay of a meson in the jet if it passes the isolation selections, and the missing b jet can be obtained by mistagging or by additional heavy flavor jets.
+    \item W+jets: if the \PW decay into a lepton.
+    \item WW+jets: the semileptonic decay of \PW pairs produced directly by $pp$ collision, in association with two other heavy flavor jets, has the same signature of the signal. The only difference is the mismatch of the invariant mass of 3 jets with the top mass, which, however, is difficult to exploit due to the combinatorial ambiguities and the low tri-jet mass resolution.  
+    \item $t\PW+\text{jets}$: it is similar to the $\PW \PW + \text{jets}$ process, with the difference that only one additional jet is required to match the signal signature.
+\end{itemize}
+The production cross-sections of these processes  at $\sqrt{s}=13\TeV$ with $pp$ collisions are reported in Tab.\ref{tab:cross}
+
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l|cccc|c|c|c}
+          $pp (13\TeV)$&\multicolumn{4}{c|}{$ \ttbar$}&  $ \PW j$& $ \PW \PW j$ & $ t\PW j$\\
+          \hline
+          $\sigma(pb)$&\multicolumn{4}{c|}{$832$}& $59100$ & $118$ &  79  \\
+          \hline
+          &signal&  semiLept&  diLept&  diHad& Lept &  semiLept & semiLept\\
+          &$(b\ell \nu\: bcb)$&$(b\ell \nu\: b\bar{q}q)$&$(b\bar{\ell} \nu\: \bar{b}\ell \bar{\nu})$&$(\bar{b}\bar{q}q\: b\bar{q}q)$&$(\ell \nu j)$&$(\ell \nu \: q\bar{q} \: j)$& $(b\ell\nu q \bar{q} j)$\\
+          \hline
+          $\mathcal{BR}$& $3.7 \cdot 10^{-4}$   & 0.439 & 0.106 & 0.455 & 0.326 & 0.106 & 0.439 \\
+          $\sigma \cdot \mathcal{BR} (pb)$& 0.307 & 365 & 88 & 379 & 19200 & 12.5 & 34.7 \\
+          $\mathcal{L}_I\sigma \cdot\mathcal{BR}$&$4.2 \cdot 10^4$& $5.0 \cdot 10^7$ &  $1.2 \cdot 10^7$&$5.2 \cdot 10^7$  &  $2.6 \cdot 10^9$ & $1.7 \cdot 10^6$  & $4.8 \cdot 10^6$  
+    \end{tabular}
+    \vspace{0.2cm}
+    \caption{Production cross-sections of signal and backgrounds at $\sqrt{s}=13\TeV$. In the first row, there are the production cross-sections from pp collisions at $13 \TeV$, in the following row the respective branching fractions of the different final states, the cross-section of the respective final states, and the total number of events expected in all the Run2, with a total integrated luminosity of $\mathcal{L}_I=138 {fb}^{-1}$}
+    \label{tab:cross}
+\end{table}
+
+\section{Simulation samples}
+\section{Physics objects selections}
+\subsection{Muons}
+\subsection{Electrons}
+\section{Event selections}
+\section{Neutrino reconstruction}
+\section{Feature ranking}
+\subsection{Unidimensional score}
+\subsection{{$N-1,N+1$}}
+\section{Jet-parton assignment}
+\subsection{Leptonic bJet benchmark}
+\subsection{Full kinematic reconstruction}
+
+\section{Event classification}
+
+\section{Signal rate extraction}
+\subsection{Systematic uncertainties}
+\section{Ratio extraction}
+\subsection{Systematic uncertainties}
