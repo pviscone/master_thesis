@@ -2,7 +2,7 @@
 \newchap{Analysis methods}\label{sec:STAT}
 \minitoc
 \section{Neural networks}
-In this work, neural networks are used as a tool to classify different events in signal or background, giving to the input of the NN different features of the events (like the 4-vectors of all the particles in the event). So, in this section, the discussion will be focused on the classification problem.\\
+In this work, neural networks are used as a tool to classify different events in signal or background, giving to the input of the NN different features of the events (like the 4-vectors of the reconstructed particles in the event). So, in this section, the discussion will be focused on the classification problem.\\
 \\
 A neural network (NN) is a machine learning\footnote{Machine learning is the process by which a computer program uses data to infer and build a predictive model.} model that can solve a wide range of problems and make predictions, learning from the data.\\
 The learning of an NN can be supervised, if the target of our dataset is known, or, vice versa, unsupervised.\\
@@ -65,7 +65,7 @@ Given $\hat{y}_i$ the truth label of the input $\bm{x}_i$, and $x_{ji}$ the i-th
 \end{algorithmic}
 \end{algorithm}
 \\
-Each iteration is called an "epoch". The number of epochs T and the so-called "learning parameter" $r$ are the first two examples of hyperparameters that have to be fixed by the user.\\
+Each iteration is called an "epoch". The number of epochs T and the so-called "learning parameter" $r$ are the first two examples of hyperparameters that are chosen by the user.\\
 \\
 The perceptron is a linear classifier. It means that it can not solve non-linearly separable problems, like an XOR gate, and can not address multiclass classification problems.
 
@@ -111,8 +111,8 @@ The metric that the NN tries to minimize during the learning phase is the so-cal
 For example, in the case of a regression problem, one of the most used loss functions is the MSE $L=\sum(y_i-\hat{y_i})^2$, which is the same metric that is minimized when a least squares fit is performed.\\
 \\
 In the context of classification problems, the most used loss function is the cross-entropy loss.\\
-Assuming that each class belongs to one output neuron, we can use the so-called one-hot encoding, which is a binary representation method where a categorical variable is transformed into a binary vector with a 1 indicating the presence of a particular category and 0s elsewhere\footnote{So, for example, if we have 3 classes, the 2nd class is represented with the vector [0,1,0]}.\\
-So the output of the NN will be a vector as long as the total number of classes, and such that the sum of its elements is equal to 1. This can be achieved using the softmax activation function in the output layer (see the paragraph on activation functions).
+Assuming that each class belongs to one output neuron, we can use the so-called one-hot encoding, which is a binary representation method where a categorical variable is transformed into a binary vector with a 1 indicating the presence of a particular category and zeros elsewhere\footnote{For example, if we have 3 classes, the 2nd class is represented with the vector [0,1,0]}.\\
+The output of the NN will be a vector as long as the total number of classes, and such that the sum of its elements is equal to 1. This can be achieved using the softmax activation function in the output layer (see the paragraph on activation functions).
 \\
 \\
 The one-hot encoding representation is used, instead of the integer encoding that just indexes the classes, to avoid the assumption of natural ordering and to avoid predictions halfway between categories.\\
@@ -126,7 +126,7 @@ The cross-entropy loss is related to the likelihood of the multinomial distribut
 \begin{equation}
     -\log \mathcal{L}_{MN_{i}}(\bm{p_i};\bm{n_i})=-\sum_j^m n_j \log p_j + \text{const.}
 \end{equation}
-where $n_j$ is the number of predicted entries in the j-th class, and $p_j$ is the probability that the data belongs to the j-th class, and it's what depends on all the weight of the NN.\\
+where $n_j$ is the number of predicted entries in the j-th class, and $p_j$ is the probability that the data belongs to the j-th class.\\
 In the one-hot encoding representation $n_j=\delta_{j\hat{y}_i}$ and $p_j$ is the score ${y}_{\hat{y}_i}$, where $\hat{y}_i$ is the i-th label in the integer representation.
 \begin{equation}
     \mathcal{L}_{MN_{i}}=-\bm{\hat{y}_i} \cdot \log \bm{y_i}
@@ -163,9 +163,9 @@ To mitigate the fluctuation of the SGD and to improve the computational efficien
     \EndFor
 \end{algorithmic}
 \end{algorithm}
-In the most modern libraries, the gradient is computed and back-propagated using the \textit{automatic differentiation}.
-In principle, when the NN is evaluated, a computational graph is built. The nodes of the graphs are just the operators applied to the tensors and, in the backpropagation phase, the gradients of each node are computed and propagated all the way along the graph using the chain rule.\\
-Furthermore, NNs perform a lot of simple arithmetic operations that can be performed simultaneously in parallel. For this reason, the training and evaluation of NNs can be accelerated using graphing processing units (GPU).\\
+The gradient is computed and back-propagated using the \textit{automatic differentiation}.
+In principle, when the NN is evaluated, a computational graph is built. The nodes of the graphs are just the operators applied to the tensors\footnote{Tensors are just matrices that contain the input data, the weights, and all the intermediate representations of the network.} and, in the backpropagation phase, the gradients of each node are computed and propagated all the way along the graph using the chain rule.\\
+Furthermore, NNs perform a lot of simple arithmetic operations that can be performed simultaneously in parallel, so they can be accelerated using graphing processing units (GPU).\\
 \\
 The list of optimizers is long and each of them has its pros and cons. The SGD has a slower convergence compared to the other optimizers due to its stochastic nature, it is really sensitive to the learning rate, and, especially in high-dimensional and nonconvex problems, it gets stuck very easily in local minima.\\
 \\
@@ -177,7 +177,7 @@ RAdam tries to tackle Adam's convergence issues by introducing a term to rectify
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.95\linewidth]{fig//chap05-stats/radam.png}
+    \includegraphics[width=0.85\linewidth]{fig//chap05-stats/radam.png}
     \label{fig:radam}
 \end{figure}
 As the SGD, all the other optimizers can work on minibatch, evaluating the gradients on a group of data points.
@@ -191,7 +191,7 @@ As the SGD, all the other optimizers can work on minibatch, evaluating the gradi
 \subsection{Architecture and complexity}
 The architecture of a neural network, specifically the number of layers and neurons, plays a crucial role in determining how well the network can learn and generalize from data.\\
 A neural network can be shallow (few layers with many neurons) or deep (many layers with few neurons in each layer). \\
-Deep networks tend to capture more complex patterns but suffer the vanishing gradient (the  magnitude of the gradient decreases propagating back in the network).\\
+Deep networks tend to capture more complex patterns but suffer the vanishing gradient problem (the  magnitude of the gradient decreases propagating back in the network).\\
 A high number of neurons improves the capacity to represent functions and makes the network more robust to the noise, embedding the data in a high-dimensional space.\\
 Complex NNs are more prone to the \textit{overfitting}.
 Overfitting is the behavior of an NN that occurs when the model performs well on the training dataset but doesn't perform in the same way on other data.\\
@@ -207,7 +207,6 @@ On the other hand, if the network is too simple, we will fall into the underfitt
     \caption{Representation of underfitting, of a good fit, and of overfitting. The right plot shows the behavior of the validation loss in case of overfitting}
     \label{fig:overfitting}
 \end{figure}
-
 There are several techniques that can be used to prevent the overfitting:
 \begin{itemize}
     \item Diminish the number of neurons and the complexity of the network
@@ -217,7 +216,7 @@ There are several techniques that can be used to prevent the overfitting:
         \mathcal{L}^{'}=\mathcal{L}+\lambda \sum ||\bm{w}||^2
     \end{equation}
     a term that penalizes scenarios in which the weights assume large values (that usually is one consequence of the overfitting)
-    \item \textbf{Early stopping}: stop the learning when the validation loss has reached a plateau, before it starts to increase
+    \item \textbf{Early stopping}: stop the learning when the validation loss starts to separate from the training loss.
     \item \textbf{Dropout}: the dropout \cite{Srivastava2014Dropout:Overfitting} is the probability that, in a single epoch during the training, one neuron will just be ignored and its connection with the rest of the network will be dropped out. \\
     By randomly disabling neurons, dropout prevents any single neuron from becoming overly specialized on a specific feature of the training data.\\
     Furthermore, introducing this stochastic behavior can also accelerate the training, preventing the network from getting stuck in local minima of the loss.\\
@@ -248,7 +247,7 @@ The activation functions in a neural network must possess some properties:
 \begin{itemize}
     \item Continuity and differentiability: to compute the gradients of the loss with respect to the weights.
     \item Non-linearity: the activation functions must be non-linear because the composition of linear functions is still a linear function
-    \item Their derivative must tend to a finite value for $x \to \pm \infty$ to avoid the so-called "explosive gradient", the opposite phenomena of the vanishing gradient.
+    \item Their derivative must be bounded to avoid the so-called "explosive gradient", the opposite phenomena of the vanishing gradient.
 \end{itemize}
 The activation functions of the output layer are different from the others.\\
 In a regression problem, the activation function of the output layer is a linear function, while, in the case of classification, using the one-hot encoding, the used activation function is the \textit{softmax} function
@@ -256,7 +255,7 @@ In a regression problem, the activation function of the output layer is a linear
     {\textit{softmax} (\mathbf {x} )_{j}={\frac {e^{x_{j}}}{\sum _{k=1}^{K}e^{x_{k}}}}} \quad \text{for } j=1,\dots,K
 \end{equation}
 where K is the number of classes.\\
-The softmax function ensures that the output of the network is a vector of length K, such that the sum of its elements is always 1. This allows us to threaten the output of the network as a probability.\\
+The softmax function ensures that the output of the network is a vector of length K, such that the sum of its elements is always 1. This allows us to treat the output of the network as a probability.\\
 \\
 In the hidden layers, instead, we have more choices. The first activation functions ever used were the logistic function and the hyperbolic tangent, which are related to each other, and have a finite codomain.\\
 These two functions were chosen due to the interpretation that we can give to them, like in the perceptron\footnote{in fact the logistic function can be seen as the "smoothed version" of the Heaviside theta function}: when the function is around its lower bound, the neuron is off, and when the function is around its upper bound, the neuron is on.
@@ -316,7 +315,7 @@ where $\bm{x}_i$ is the i-th feature of the input tensor and $\epsilon$ a small 
 \\
 Despite that,  the mean and the standard deviations are not robust estimators, and, if a feature has significant outliers, the batch norm can create distributions not centered around zero.\\
 To overcome this issue, we can replace the mean and the standard deviation with more robust estimators like the median, we can just clip the outlier to a threshold value, or we can apply a function that will shrink them.\\
-In this work, the applied normalization to feature that has significant outliers is the following\footnote{$\bm{x_i}$ should be positive to apply this normalization}
+In this work, the applied normalization to positive value features that have significant outliers is the following
 \begin{equation}
     \bm{x}_i^{'}=\frac{\log \left(1+\bm{x}_i \right)-\mu_{i}^{\log}}{\sigma_i^{\log}+\epsilon}
 \end{equation}
@@ -366,7 +365,7 @@ It is particularly important in fields like natural language processing (NLP) an
 Attention networks belong to the class of sequence-to-sequence (seq2seq) models. 
 One of the most common seq2seq tasks is the language translation in which the model takes as input one sentence (\ie a sequence) in a language and translates it into another language (\ie another sequence).
 This means that the inputs of the network are 3 dimensional: one is the batch dimension, one is the sequence dimension, and the last is the feature dimension.\\
-In particle physics, seq2seq models enable us to threaten each event as a sequence composed of its particles and to maintain its structure.
+In particle physics, seq2seq models enable us to treat each event as a sequence composed of its particles and to maintain its structure.
 
 \subsubsection*{Scaled dot product}
 One particular method to implement the attention is the scaled dot product \cite{Vaswani2017AttentionNeed}.\\
@@ -374,7 +373,7 @@ One particular method to implement the attention is the scaled dot product \cite
     \textit{Attention}(Q,K,V)=\textit{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V
 \end{equation}
 \vspace{0.2cm}\\
-The scaled dot product has 3 inputs: the Query of dimensions $(N, S_2, d_k)$ and Key of dimension $(N, S_1, d_k)$, and the Value of dimension $(N, S_2, d_v)$, where $N$ is the batch size, and $S_1,S_2$ the length of the sequences.\\
+The scaled dot product has 3 inputs\cite{Vaswani2017AttentionNeed}: the Query of dimensions $(N, S_2, d_k)$ and Key of dimension $(N, S_1, d_k)$, and the Value of dimension $(N, S_2, d_v)$, where $N$ is the batch size, and $S_1,S_2$ the length of the sequences.\\
 
 
 \begin{minipage}{\linewidth}
@@ -413,7 +412,7 @@ The different heads can be computed in parallel and their output, at the end, is
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.75\linewidth]{fig//chap05-stats/multihead_attention.png}
-    \caption{(Left) scaled dot product, (right) multi-head attention}
+    \caption{(Left) scaled dot product, (right) multi-head attention \cite{Vaswani2017AttentionNeed}.}
     \label{fig:multihead}
 \end{figure}
 
@@ -456,13 +455,14 @@ Therefore, self-attention pooling is a weighted average of the sequence features
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage
 \section{Signal extraction}
-\subsection{Likelihood construction}Signal
+\subsection{Likelihood construction}
 The signal extraction procedure relies on a maximum likelihood fit of a binned distribution of one or more observables.\\
 The likelihood is constructed as the product of Poisson distributions, one for each bin, that contains the parameter of interest (POI) to fit.\\
-Given $C$ channels\footnote{A channel is defined by a set of cuts and selections that have the scope to isolate the signal and reject the background or viceversa}, each that contains $P_c$ processes, represented with histograms with $B_c$ bins, once we have the signal and the background MC predictions $s_{cb}$, $b_{cb}$, and the observed bin content $n_{cb}$ \footnote{Index $c$ stands for "channel", $p$ for "process", $b$ for "bin"}, the likelihood is \cite{Khachatryan2015PreciseTeV}
+Given $C$ channels\footnote{A channel is defined by a set of cuts and selections that have the scope to isolate the signal and reject the background or viceversa}, each that contains $P_c$ processes, represented with histograms with $B_c$ bins, once we have the signal and the background MC predictions $s_{cb}$, $b_{cb}$, and the observed bin content $n_{cb}$, the likelihood is \cite{Khachatryan2015PreciseTeV}
 \begin{equation}
     \mathcal{L}(\mu)=\prod_c^C \prod_b^{B_c} \frac{(\mu s_{cb}+b_{cb})^{n_{cb}}}{n_{cb}!} e^{-(\mu s_{cb}+b_{cb})}
 \end{equation}
+where index $c$ stands for "channel", $p$ for "process", $b$ for "bin"
 In this case, the POI is the signal strength $\mu$, which is estimated by finding the value that maximizes the likelihood. The optimization problem is solved using the \textsc{MIGRAD} algorithm \cite{James1998MINUIT:Manual}, implemented in the \textsc{MINUIT2} library, that performs a line search in the direction of the gradient and updates the covariance matrix (inverse of the Hessian matrix) with each step.\\
 To improve the numerical stability, the software implementation exploits the negative log-likelihood $\textit{NLL}=-\log{\mathcal{L}}$ instead of the likelihood in the form of the \Eq{eq:likelihood}  
 \begin{equation*}
@@ -489,7 +489,7 @@ The expectation value $\lambda_{cb}$ of the Poisson distribution now depends on 
 The term $M_{cp}(\vec{\mu})$ is the physical model that contains the POI to fit, $N_{cp}(\vec{\theta_n})$ contains the factors relative to normalization nuisances, $y_{cpb}(\vec{\theta}_s)$ is the predicted content of each bin (that depends on shape nuisance parameters) and $E_{cpb}(\vec{\theta}_{MC})$ represents bin per bin the statistical error of the Monte Carlo predictions.\\
 In the absence of systematic uncertainties, we have $N_{cp}=1$ and $E_{cb}=0 \quad \forall c,p,b$ and
 $M_{cp}=\mu$ if $p$ is a signal process, otherwise $M_{cp}=1$; while $y_{cpb}$ is just the predicted bin content for each process.\\
-All the nuisance parameters $\theta_k$ are defined in units of standard deviations\footnote{it means that $\theta=\pm 1$ correspond to a $\pm 1 \sigma$ variation.}.\\
+All the nuisance parameters $\theta_k$ are defined in units of standard deviations\footnote{it means that $\theta=\pm 1$ correspond to a 68\% CL interval.}.\\
 Given that we know the central values and the standard deviations of all the variations, following the maximum entropy principle \cite{Jaynes2003ProbabilityScience}, we can use the normal distribution as a prior for all the nuisance parameters.
 \begin{equation}
     \pi_k(\theta_k)=\mathcal{N}\left(\theta_k|0,1\right)=\frac{1}{\sqrt{2\pi}}e^{-\theta_k^2/2}
@@ -550,7 +550,7 @@ Given that we know the central values and the standard deviations of all the var
 \newpage
 \vspace{0.5cm}
 \paragraph*{Smoothing}
-For some systematics, up and down variations can lead to significant statistical fluctuations in the less populated bins, which, usually, are the high signal purity regions of the histogram.\\
+For some systematics, up and down variations can lead to significant statistical fluctuations in the less populated bins due to low MC statistics, which, usually, are the high signal purity regions of the background histogram.\\
 To overcome this inconvenience, a smoothing procedure is applied.
 
 \begin{algorithm}[H]
@@ -563,9 +563,9 @@ To overcome this inconvenience, a smoothing procedure is applied.
     \State Redefine $y_b^{up}=y_b f^{up}(x_b)$ and $y_b^{down}=y_b f^{down}(x_b)$
 \end{algorithmic}
 \end{algorithm}
-The LOWESS algorithm \cite{Cleveland1979RobustScatterplots} (LOcally WEighted Scatterplot Smoothing) performs different linear regressions on a sliding window in different steps.
+The LOWESS algorithm \cite{Cleveland1979RobustScatterplots} (LOcally WEighted Scatterplot Smoothing) performs different linear regressions on a sliding window iteratively, weighting each point accordingly with its distance from the fitted line in each window.
 
-
+\iffalse
 \begin{algorithm}[H]
 \caption{LOWESS algorithm}\label{algo:LOWESS}
 \begin{algorithmic}[1]
@@ -582,7 +582,7 @@ The LOWESS algorithm \cite{Cleveland1979RobustScatterplots} (LOcally WEighted Sc
 
 \end{algorithmic}
 \end{algorithm}
-
+\fi
 
 \subsection{Profile Likelihood}
 According to Wilks' theorem \cite{James2006StatisticalEdition}, the distribution of the likelihood ratio is asymptotically distributed like a $\chi^2$.
@@ -601,7 +601,7 @@ The so-called "breakdown procedure" consists of freezing sequentially groups of 
 \paragraph*{Impact plots} Impact plots are a useful tool to understand the impact that each nuisance has on the total uncertainty. An example is shown in \Fig{fig:impact}.\\
 \begin{itemize}
     \item In the left panel there are the names of the systematic sources, sorted according to their impact on the total uncertainty.
-    \newpage
+
     \item In the center panel, there are two elements:
     \begin{itemize}
         \item[\ding{226}] The black bars ("Fit") represent the profile likelihood of the nuisance parameter. For each nuisance
@@ -615,7 +615,7 @@ The so-called "breakdown procedure" consists of freezing sequentially groups of 
     \item In the right panel there are the impacts.
     Once we have the fit for each nuisance, we can perform again the profile likelihood procedure on $\mu$ but fixing each nuisance in turn to their $\pm 1 \sigma_{\text{post-fit}}$ value. The blue and the red bars represent the values $\Delta^{\pm} \hat{\mu}=\hat{\mu}(\hat{\theta})-\hat{\mu}(\hat{\theta}_{\pm 1 \sigma})$.    
 \end{itemize}
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
     \includegraphics[width=1\linewidth]{fig/chap05-stats/impact.png}
     \caption{Example of an impact plot. In this plot, the POI $\mu$ is called $r$, and $\theta_I$, $\sigma_I$ are the pre-fit values.}
@@ -630,7 +630,7 @@ To perform a simulation of an analysis, $n_{cb}$ can be replaced by MC events, c
 \end{equation}
 In this way will be always $\hat{\mu}=1$ and $\bm{\hat{\theta}}=0$.\\
 Using the Asimov dataset, the statistical uncertainties on $\hat{\mu}$ can be estimated through an approximation.
-\newpage
+
 \begin{enumerate}
     \item Let's consider the Poisson log-likelihood for a single bin
 \begin{equation}
@@ -648,6 +648,7 @@ The variance of $\hat{\mu}_b$ depends on $\mu$ itself, but, in the context of th
 \begin{equation}
     {\mathrm{Var}}(\hat{\mu}_b)\sim \frac{s_b+b_b}{s_b^2}
 \end{equation}
+\newpage
  \item The Cramer-Rao theorem \cite{James2006StatisticalEdition} states that, for a probability density function of the exponential family, to whom the Poisson distribution belongs, it holds
 \begin{equation}
     \mathrm{Var}(\hat{\mu})=-\frac{(1-\partial_\mu b)^2}{E[\partial_\mu^2 \ln \mathcal{L}]}
