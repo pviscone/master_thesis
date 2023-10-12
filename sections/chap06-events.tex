@@ -30,19 +30,18 @@ The measurements of $|V_{cb}|$ through semileptonic B meson decays are discussed
 
 
 \section{Event signatures}
-\TODO{Change name of the section}\\
 In this chapter, we will name "signal" or "cb events" the $\ttbar \to b\ell\nu\: bcb$ process, and "background" everything else.\\
 \\
 The final state of a signal event consists of one muon or electron, three b jets, one c jet, and some missing energy due to the presence of the neutrino.\\
 The invariant mass of one b jet and the c jet should match the mass of the \PW boson, and, adding another b jet, should match the mass of the top quark.\\
 This final state can be mimicked by the following processes.
 \begin{itemize}
-    \item Semileptonic $\ttbar$ ($\ttbar\to b\ell\nu \: bq\bar{q}$): if one or more jets are mistagged and/or there are additional jets.\\
-    This background depends mainly on the b/c tagging capabilities of the experiment.
+    \item Semileptonic $\ttbar$ ($\ttbar\to b\ell\nu \: bq\bar{q}$): if one or more jets are mistagged or there are additional heavy flavor jets.\\
+    The production of additional heavy-flavor jets is highly suppressed so, this background depends mainly on the b/c tagging capabilities of the experiment.
     \item Dileptonic $\ttbar$ ($\ttbar \to b\bar{\ell}\nu \: \bar{b}\ell\bar{\nu}$): the presence of two leptons in the final states increase the trigger probability, while the two missing jets can be originated from additional jets produced by initial state radiation (ISR) of final state radiation (FSR), or from the leptons.
     \item Dihadronic $\ttbar$ ($\ttbar \to b\bar{q}q \: \bar{b}q\bar{q}$): the missing lepton can be originated by the semileptonic decay of a meson in the jet if it passes the isolation selections, and the missing b jet can be obtained by mistagging or by additional heavy flavor jets.
-    \item W+jets: if the \PW decay into a lepton. The additional jets must be three b jets and one c jets but the production of additional heavy flavor jets is highly suppressed.
-    \item WW+jets: the semileptonic decay of \PW pairs produced directly by $pp$ collision, in association with two other b jets, has the same signature of the signal. Another difference with the signal is the mismatch of the invariant mass of 3 jets with the top mass, which, however, is difficult to exploit due to the combinatorial ambiguities and the low tri-jet mass resolution.  
+    \item W+jets $(\PW \to \ell \nu)$: This process is the one with the largest cross-section but the lack of three b jets and one c jets suppress it significantly.
+    \item WW+jets: the semileptonic decay of \PW pairs produced directly by $pp$ collision, in association with two other b jets, has the same signal signature. Another difference with the signal is the mismatch of the invariant mass of 3 jets with the top mass, which, however, is difficult to exploit due to the combinatorial ambiguities and the low tri-jet mass resolution.  
     \item $t\PW+\text{jets}$: it is similar to the $\PW \PW + \text{jets}$ process, with the difference that only one additional b jet instead of two is required to match the signal signature.
     \item $tq$ (t-channel): if the top quark decays into a lepton. There are two missing b jets and, if the quark is not a charm quark, also a c jet.
 \end{itemize}
@@ -72,23 +71,22 @@ The production cross-sections of these processes  at $\sqrt{s}=13\TeV$ with $pp$
     \label{tab:cross}
 \end{table}
 
-\TODO{Aggiungi qualche plot LHE almeno su btagging e num jet, num lept. Oppure mettili nel capitolo della event selection}
 \paragraph*{Analysis strategy}
-In the following sections, we will describe the selection criteria for physics objects and events, defining different signal regions for $\ell=\mu,e$.
+In the following sections, the selection criteria for physics objects and events are described, defining different signal regions for $\ell=\mu,e$.
 Therefore, after reconstructing the kinematics of the events, the signal extraction is performed through a template fit on a NN score, by exploiting multivariate analysis techniques, and also studying the relevant signatures of the events.\\
 This work will be conducted only on MC simulations and the observed data will be replaced by the Asimov dataset.
 
 
 
 \section{Simulation samples}
-The generators that were used to build the MC samples are \MADGRAPH 5 (at the leading order (LO)) and aMC@NLO and \POWHEG 2 (at the next-to-leading order (NLO), including virtual corrections). In all samples, the used PDF set is NNPDF3.1 NNLO and the mass of the top quark is set to 172.5\GeV. the hadronization is handled by \PYTHIA8 exploiting the Lung string model with the \texttt{TuneCP5} set of tuning parameters \cite{Sirunyan2020ExtractionMeasurements}: the $\alpha_S$ value used for the simulation of the multiparton interaction (MPI)\footnote{The MPI are additional soft or semi-hard parton–parton scatterings that occur within the same hadron-hadron collision.}, hard scattering, and FSR and ISR contributions is equal to 0.118 and run according to an NLO evolution.
+The generators that were used to build the MC samples are \MADGRAPH 5 (at the leading order (LO)) and aMC@NLO and \POWHEG 2 (at the next-to-leading order (NLO), including virtual corrections). In all samples, the used PDF set is NNPDF3.1 NNLO and the mass of the top quark is set to 172.5\GeV. The hadronization is handled by \PYTHIA8 exploiting the Lung string model with the \texttt{TuneCP5} set of tuning parameters \cite{Sirunyan2020ExtractionMeasurements}: the $\alpha_S$ value used for the simulation of the multiparton interaction (MPI)\footnote{The MPI are additional soft or semi-hard parton–parton scatterings that occur within the same hadron-hadron collision.}, hard scattering, and FSR and ISR contributions is equal to 0.118 and it runs according to an NLO evolution.
 For each sample, a different number of additional partons is generated to include FSR and ISR contributions and virtual corrections at NLO.
 \\
-After the parton shower evolution, the final jet clusters are matched with the partons obtained from the matrix element calculations and removed, to avoid the double counting of jets\footnote{This procedure is called "Jet matching"}.
+After the parton shower evolution, the final jet clusters are matched with the partons obtained from the matrix element calculations and if the match is found, the event is removed to avoid the double counting\footnote{This procedure is called "Jet matching"}.
 \\
 \\
 The reconstruction and the calibration are performed with the \textit{Ultra Legacy 18} (UL18) setting, which reproduces the state of the detector in 2018.\\
-All the samples were used in the NanoAOD format \cite{Liu2020TheCMS}, a lightweight data format that consists only of flat ROOT NTuple.
+The used samples are NanoAOD files \cite{Liu2020TheCMS}, a lightweight data format that consists only of flat ROOT NTuple.
 \\
 A comparison of all the used samples is reported in Table \ref{tab:samples}.
 \begin{table}[H]
@@ -147,10 +145,10 @@ As already said, the idea of the analysis is to focus on semileptonic decay to e
 The selection of physics objects is crucial to reject non-prompt leptons that can originate from the semileptonic decays of mesons and jets that can originate from prompt leptons or from pile-up.\\
 \\
 The objects taken into consideration are Particle Flow candidates (see sec. \ref{sec:PF}) and the applied selection cuts are the working points (WP) recommended by the CMS Physics Object Groups (POG).\\
-Since the signal cross-section is just $\sigma_{\text{signal}}\sim 0.3 pb$, the requirements will be minimal to preserve the statistics when event selection is performed. 
+Since the signal cross-section is just $\sigma_{\text{signal}}\sim 0.3 pb$, the requirements will be minimal to preserve the statistics. 
 \subsection{Muons}
 \paragraph*{Identification}
-The selected muons are PF candidates reconstructed as \emph{Loose Muons}, \ie muon candidates that are reconstructed either as a global muon or as an arbitrated tracker muon (aTk Muons)footnote{Arbitration is the pattern recognition process which assigns each segment uniquely to a single tracker muon.}.\\
+The selected muons are PF candidates reconstructed as \emph{Loose Muons}, \ie muon candidates that are reconstructed either as a global muon or as an arbitrated tracker muon (aTk Muons)\footnote{Arbitration is the pattern recognition process which assigns each segment uniquely to a single tracker muon.}.\\
 Furthermore, the selected muons must be in the coverage of the tracker $|\eta|<2.4$, and its transverse momentum has to be $p_T>26\GeV$ to pass the HLT single muon trigger. 
 \paragraph*{Isolation}
 To select prompt muons from the \PW decay, the particle flow isolation criteria are applied.\\
@@ -169,10 +167,10 @@ The selected working point is the \emph{Loose PF Isolation}: $\text{Iso}_\mu<0.2
 The selection of electron candidates follows the same principles as the muon selections.\\
 They are required to be into the tracker coverage $|\eta|<2.4$ and its momentum has to be $p_T>30$.\\
 \\
-The identification and isolation of the electron are based on the \emph{medium} working point of \textit{Fall17IsoV2} \cite{2018ElectronConference}, a BDT model which assigns a score to the identification and isolation of the electron, taking as input informations about tracks, calo-clusters, shower shape, the amount of radiation collinear with the electron track, and the PF isolation.\\
+The identification and isolation of the electron are based on the \emph{medium} working point of \textit{Fall17IsoV2} \cite{2018ElectronConference}, a BDT model which assigns a score to the identification and isolation of the electron, taking as input informations about tracks, calo-clusters, shower shape, the amount of collinear radiation to the electron track, and the PF isolation.\\
 \\
 The MVA ID is trained on DrellYan+Jets MC samples, with prompt electrons as signal and unmatched plus non-prompt electrons as background, ignoring electrons from tau decays.\\
-The medium working point has an overall signal efficiency of $\sim 90\%$.
+The medium working point has an overall signal efficiency of $\sim 90\%$ and a background rejection efficiency $>98.5\%$.
 
 \subsection{Jets}\label{sec:jet}
 The jets taken into consideration are the PF AK4 Jet candidates in the calorimeter coverage $|\eta|<4.8$ and with $p_T>20\GeV$.
@@ -188,15 +186,15 @@ $\sigma$ is the jet energy resolution measured with data, and SF are the scale f
 
 \paragraph*{Flavor tagging corrections}
 The distribution shape of the \DeepJet discriminator is another element that shows discrepancies between data and simulated samples.\\
-To improve the agreement between MC simulations and data, simulated events are reweighted, and, for each correction, the event weight is the product of all the correction weights.\\
-For each selected jet, a weight is applied to it, and the event weight is applied by multiplying all the jet-level weights together.
+To improve the agreement between MC simulations and data, simulated events are reweighted, and, for each correction, the event weight is the product of all the weights.\\
+For each selected jet, a weight is applied to it, setting the event weight to the product of all the jet-level weights.
 \\
 \\
 In this work, the applied corrections are the ones related to the b tagging and to the c tagging.\\
 These scale factors are computed through an iterative tag-and-probe procedure \cite{2021B-tagging2018.}, in different bins of $\eta$,$p_T$, and \DeepJet score to compute simultaneously SF for both heavy and light flavor jets.
 \begin{itemize}
     \item For heavy-flavor jets, dileptonic $\ttbar$ events are exploited, using one b jet that passes the medium working point as a tag and the second b jet as a probe.
-    \item For light jets, Z+jets dileptonic samples are used, using a b tag loose working point as a veto to select the tag.
+    \item For light jets, Z+jets dileptonic samples are used, using a b tag loose working point as a veto to select the tag jet.
 \end{itemize}
 The distribution of the \DeepJet score of the probe jets in MC samples is normalized to match the distribution observed in the data subtracting the contribution from jets of opposite flavour class.
 \begin{equation}
@@ -261,7 +259,7 @@ The identification of jets from pile-up relies on three types of properties of t
     \end{minipage}
     \hfill
     \begin{minipage}{0.55\linewidth}
-        \vspace{-1.5cm}
+        \vspace{-0.8cm}
     
         \begin{table}[H]
         \centering
@@ -386,5 +384,5 @@ The identification of jets from pile-up relies on three types of properties of t
 
 
 
-
+\newpage
 \section{Event selections}
