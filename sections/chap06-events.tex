@@ -138,18 +138,20 @@ their expected contributions using event weights
 where $w_{e}$ is the event weight obtained by the product of the weights produced by the generator program with the weights obtained by the jet flavor corrections (see sec. \ref{sec:jet})   
 
 \section{Physics objects selections}
-As already said, the idea of the analysis is to focus on semileptonic (SL) decay to exploit the lepton as a probe, so we are interested in selecting one prompt lepton, along with four jets.\\
+As already said, the idea of the analysis is to focus on semileptonic (SL) decay to exploit the lepton as a probe, so we are interested in selecting one prompt lepton, along with four jets.
 The selection of physics objects is crucial to reject non-prompt leptons that can originate from the semileptonic decays of mesons and jets that can originate from prompt leptons or pile-up.\\
 \\
 The objects taken into consideration are Particle Flow candidates (see sec. \ref{sec:PF}) and the applied selection cuts are the working points (WP) recommended by the CMS Physics Object Groups (POG).\\
 Since the signal cross-section is just $\sigma_{\text{signal}}\sim 0.3 pb$, the requirements will be minimal to preserve the statistics. 
 \subsection{Muons}
 \paragraph*{Identification}
-The selected muons are PF candidates reconstructed as \emph{Loose Muons}, \ie muon candidates that are reconstructed either as a global muon or as an arbitrated tracker muon (aTk Muons)\footnote{Arbitration is the pattern recognition process which assigns each segment uniquely to a single tracker muon.}.\\
-Furthermore, the selected muons must be in the coverage of the tracker $|\eta|<2.4$, and its transverse momentum has to be $p_T>26\GeV$ to pass the HLT single muon trigger. 
+The selected muons are PF candidates reconstructed as \emph{Loose Muons}, \ie muon candidates that are reconstructed either as a global muon or as an arbitrated tracker muon (aTk Muons)\footnotemark.\\
+Furthermore, the selected muons must be in the coverage of the tracker $|\eta|<2.4$, and its transverse momentum has to be $p_T>26\GeV$ to pass the HLT single muon trigger.
 \paragraph*{Isolation}
-To select prompt muons from the \PW decay, the particle flow isolation criteria are applied.\\
-The PF isolation is the scalar sum of the transverse momentum of all the charged particles, neutral hadrons, and  photons inside a cone of radius $\Delta R<0.4$ around the selected muon, subtracting the contributions that arise from pile-up effects \cite{2018MuonData}.
+To select prompt muons from the \PW decay, the particle flow isolation criteria are applied.
+\footnotetext{Arbitration is the pattern recognition process that assigns each segment uniquely to a single tracker muon.}
+\\
+The PF isolation is the scalar sum of the transverse momentum of all the charged particles, neutral hadrons, and  photons inside a cone of radius $\Delta R<0.4$ around the selected muon, subtracting the contributions that arise from pile-up effects \cite{2018MuonData}.    
 \begin{equation}
     \text{Iso}_\mu = \left(\sum_{\text{charged}} p_T+\max\left(0,\sum_{\text{neutral}}E_T+\sum_{\text{photons}}E_T-\sum_{\text{PileUp}}p_T/2\right)\right)\bigg/p_T(\mu)
 \end{equation}
@@ -161,14 +163,14 @@ The selected working point is the \emph{Loose PF Isolation}: $\text{Iso}_\mu<0.2
 
 
 \subsection{Electrons}
-The selection of electron candidates follows the same principles as the muon selections.\\
+The selection of electron candidates follows the same principles as the muon selections.
 They are required to be into the tracker coverage $|\eta|<2.4$ and its momentum has to be $p_T>30$.\\
 \\
 The identification and isolation of the electron are based on the \emph{medium} working point of \textit{Fall17IsoV2} \cite{2018ElectronConference}, a BDT model which assigns a score to the identification and isolation of the electron, taking as input informations about tracks, calo-clusters, shower shape, the amount of collinear radiation to the electron track, and the PF isolation.\\
 \\
 The MVA ID is trained on DrellYan+Jets MC samples, with prompt electrons as signal and unmatched plus non-prompt electrons as background, ignoring electrons from tau decays.\\
+\\
 The medium working point has an overall signal efficiency of $\sim 90\%$ and a background rejection efficiency $>98.5\%$.
-
 \subsection{Jets}\label{sec:jet}
 The jets taken into consideration are the PF AK4 Jet candidates in the calorimeter coverage $|\eta|<4.8$ and with $p_T>20\GeV$.
 
@@ -305,12 +307,26 @@ The identification of jets from pile-up relies on three types of properties of t
     
 \end{minipage}
 
+\begin{center}
+    \vspace{1.5cm}
+    \fontsize{14}{14}\selectfont
+    \textbf{Summary Jets}
+\end{center}
 
-
-
+\begin{minipage}{\linewidth}
+\begin{minipage}{0.53\linewidth}
+      \begin{figure}[H]
+            \centering
+            \includegraphics[width=1\linewidth]{fig//chap07-selection/nJet.png}
+            \caption{Distribution on the number of Jets per event per process after the object selection.}
+            \label{fig:n_jet}
+        \end{figure}
+\end{minipage}
+\hfill
+\begin{minipage}{0.46\linewidth}
+\vspace{-1.25cm}
 \begin{table}[H]
     \centering
-
     \begin{tabular}{c|c}
         \toprule
         \multicolumn{2}{c}{\textbf{Jets}}\\
@@ -323,16 +339,26 @@ The identification of jets from pile-up relies on three types of properties of t
         \midrule
         \textbf{Identification} & Tight\\
         \midrule
-        \textbf{Isolation} & Lead. Lept. $\Delta R>0.4$ matching\\
+        \multirow{2}{*}{\textbf{Isolation}} & Lead. Lept. \\
+        &$\Delta R>0.4$ matching\\
         \midrule
         \textbf{Pile-up Id} & Loose  $(\epsilon\sim99\%)$ \\
         \bottomrule
     \end{tabular}
-\end{table}      
+    \caption{Jets selection cuts.}
+\end{table}
+\end{minipage}   
+\end{minipage}
 
+\newpage
+\begin{center}
+    \vspace{1cm}
+    \fontsize{14}{14}\selectfont
+    \textbf{Summary Muons}
+\end{center}
 \begin{minipage}{\linewidth}
-    \vspace{-0.5cm}
-    \begin{minipage}{0.47\linewidth}
+\begin{minipage}{0.46\linewidth}
+\vspace{-1.25cm}
         \begin{table}[H]
         \centering
         %\fontsize{10.2pt}{10.2pt}\selectfont
@@ -342,7 +368,7 @@ The identification of jets from pile-up relies on three types of properties of t
             \midrule
             \midrule
             \textbf{Muon} & Loose\\
-            \textbf{Identification}& (Global/aTk PFMuon)\\
+            \textbf{Identification}& (Global/aTk Muon)\\
             \midrule
             $\mathbf{p_T}$& $>26 \GeV$\\
             \midrule
@@ -352,11 +378,40 @@ The identification of jets from pile-up relies on three types of properties of t
             &$(\text{Iso}_\mu<0.25)$\\
             \bottomrule
         \end{tabular}
+        \caption{Muons selection cuts.}
     \end{table}
-        
+\end{minipage}
+\hfill
+\begin{minipage}{0.53\linewidth}
+      \begin{figure}[H]
+            \centering
+            \includegraphics[width=1\linewidth]{fig//chap07-selection/nMuons.png}
+            \caption{Distribution on the number of Muons per event per process after the object selection.}
+            \label{fig:n_mu}
+        \end{figure}
+\end{minipage}
+\end{minipage}
+
+
+
+
+\begin{center}
+    \vspace{1cm}
+    \fontsize{14}{14}\selectfont
+    \textbf{Summary Electrons}
+\end{center}
+\begin{minipage}{\linewidth}
+    \begin{minipage}{0.53\linewidth}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=1\linewidth]{fig//chap07-selection/nElectrons.png}
+            \caption{Distribution on the number of Electrons per event per process after the object selection.}
+            \label{fig:n_ele}
+        \end{figure}
     \end{minipage}
     \hfill
-    \begin{minipage}{0.47\linewidth}
+    \begin{minipage}{0.46\linewidth}
+        \vspace{-1.5cm}
         \begin{table}[H]
             \centering
             %\fontsize{13pt}{13pt}\selectfont
@@ -371,14 +426,16 @@ The identification of jets from pile-up relies on three types of properties of t
                 $\bm{|\eta|}$& $<2.4$ \\
                 \midrule
                 \textbf{$e$ Identification}&Medium WP\\
-                \textbf{+ Isolation}&Fall17IsoV2 $(\epsilon \sim 90\%)$\\
+                \textbf{+ Isolation}&Fall17IsoV2 \\
+                &$(\epsilon \sim 90\%)$\\
                 \bottomrule
             \end{tabular}
+            \caption{Electrons selection cuts.}
         \end{table}      
     \end{minipage}
-    \captionof{table}{Summary of the selection cuts on physics objects.}
 \end{minipage}
 
+ 
 \newpage
 \section{Event selections}
 As already discussed, the chosen event selection is minimal to avoid large losses in the signal acceptance efficiency.\\ 
