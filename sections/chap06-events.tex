@@ -1,32 +1,7 @@
 %!TEX root = ../thesis.tex
-\newchap{Event samples and selection}\label{sec:Events}
+\newchap{Semileptonic diTop decays}\label{sec:Events}
+\vspace{-1cm}
 \minitoc
-\vspace{0.5cm}
-This work aims to access the $|V_{cb}|$ element through the direct decay of a \PW boson at $\sqrt{s}=13 TeV$ with the recorded luminosity of the RunII.\\
-\\
-In all the RunII, almost 8 billion single W bosons were produced, and more than 5 billion of them decay hadronically, which means that more than 2 million cb quark pairs can be obtained from the inclusive decay of \PW bosons. \\
-Despite that, an inclusive measurement of $\PW \to cb$ would be an impossible task due to the large QCD background.\\
-\\
-To avoid it, it is possible to exploit the semileptonic decay of top pairs and use the lepton to trigger the event and the hadronic \PW decay to measure the $\PW \to cb$ branching fraction.\\
-As lepton $\ell$, we will only consider muons and electrons, due to the lower reconstruction efficiency of $\tau$s, that decay hadronically in the $64.8\%$ of cases.
-\\
-\\
-The value of $|V_{cb}|$ can be extracted from the ratio of branching fractions in which the hadronic \PW decays into c and b quarks over the  \PW hadronic branching fraction
-\begin{equation}
-\begin{gathered}
-    R_{cb}=\frac{\Gamma\left(\ttbar \to b\ell \nu\; b cb\right)}{\Gamma\left(\ttbar \to b\ell \nu\; b q\bar{q}\right)}=\\ =\frac{|V_{cb}|^2}{|V_{ud}|^2+|V_{us}|^2+|V_{ub}|^2+|V_{cd}|^2+|V_{cs}|^2+|V_{cb}|^2}
-\end{gathered}
-\end{equation}
-and if we assume the unitarity of the CKM matrix
-\begin{equation}
-    R_{cb}=\frac{|V_{cb}|^2}{2}
-\end{equation}
-
-The determination of $|V_{cb}|$ through direct \PW decays gives us the opportunity to provide a new determination of $|V_{cb}|$ at a new energy scale ($\sqrt{s}=m_{\PW}$), avoiding complications and theoretical uncertainties due to non-perturbative QCD.\\
-The statistic provided by the RunII does not allow to reach the current precision of $\sim2 \%$ on $|V_{cb}|$ that was obtained observing the semileptonic decays of $B$ mesons, but, despite that, it gives us an opportunity to tackle the $|V_{cb}|$ puzzle with a novel strategy.\\
-The main sources of systematic uncertainties are the b/c tagging uncertainties, but the ratio of branching fractions should allow some cancellations.\\
-\\
-The measurements of $|V_{cb}|$ through semileptonic B meson decays are discussed in sec. \ref{sec:vcb}.
 
 
 \section{Event signatures}
@@ -46,6 +21,7 @@ This final state can be mimicked by the following processes.
     \item $tq$ (t-channel): if the top quark decays into a lepton. There are two missing b jets and, if the quark is not a charm quark, also a c jet.
 \end{itemize}
 The production cross-sections of these processes  at $\sqrt{s}=13\TeV$ with $pp$ collisions are reported in Tab.\ref{tab:cross}
+
 
 \begin{table}[H]
     \centering
@@ -70,6 +46,27 @@ The production cross-sections of these processes  at $\sqrt{s}=13\TeV$ with $pp$
     \caption{Production cross-sections of signal and backgrounds at $\sqrt{s}=13\TeV$. In the first row, there are the production cross-sections from pp collisions at $13 \TeV$, in the following rows there are the respective branching fractions of the different final states, the cross-section of the respective final states, and the total number of events expected in all the Run2, with a total integrated luminosity of $\mathcal{L}_I=138 {fb}^{-1}$}
     \label{tab:cross}
 \end{table}
+
+\iffalse
+\begin{figure}[H]
+    \vspace{-0.5cm}
+     \centering
+     \begin{subfigure}{0.48\linewidth}
+         \centering
+         \includegraphics[width=\linewidth]{fig//chap07-selection/LHE_Nb.png}
+         \caption{b quark}
+
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}{0.48\linewidth}
+         \centering
+        \includegraphics[width=\linewidth]{fig//chap07-selection/LHE_Nc.png}
+         \caption{c quark}
+     \end{subfigure}
+        \caption{Stacked histogram of the number of c and b quarks for each sample at the parton level.}
+        \label{fig:LHE_flav}
+\end{figure}
+\fi
 
 \paragraph*{Analysis strategy}
 In the following sections, the selection criteria for physics objects and events are described, defining different signal regions for $\ell=\mu,e$.
@@ -102,12 +99,12 @@ A comparison of all the used samples is reported in Table \ref{tab:samples}.
     $(b\ell\nu \: bcb)$ &+\MADSPIN & && signal(Mu,Ele,Tau) \\    
     \midrule
     \ttbar semiLept&\multirow{2}{*}{\POWHEG (NLO)} &\multirow{2}{*}{1}&\multirow{2}{*}{2.24} & $\ell=\mu,e,\tau$   \\
-    $(b\ell\nu \: bqq)$ && && semiLept(Mu,Ele,Tau)\\  
+    $(b\ell\nu \: bqq)$ && && TTsemiLept(Mu,Ele,Tau)\\  
     \midrule
-    \ttbar diLept&\multirow{2}{*}{\POWHEG (NLO)}  &\multirow{2}{*}{1}&\multirow{2}{*}{1.71} & \multirow{2}{*}{diLept}\\
+    \ttbar diLept&\multirow{2}{*}{\POWHEG (NLO)}  &\multirow{2}{*}{1}&\multirow{2}{*}{1.71} & \multirow{2}{*}{TTdiLept}\\
     $(b\bar{\ell}\nu \:\bar{b}\ell\bar{\nu})$&& &\\
     \midrule
-    \ttbar diHad&\multirow{2}{*}{\POWHEG (NLO)} &\multirow{2}{*}{1}&\multirow{2}{*}{0.87} &\multirow{2}{*}{diHad}\\
+    \ttbar diHad&\multirow{2}{*}{\POWHEG (NLO)} &\multirow{2}{*}{1}&\multirow{2}{*}{0.87} &\multirow{2}{*}{TTdiHad}\\
     $(bq\bar{q}\: \bar{b}q\bar{q})$&& &\\
     \midrule
     W+jets& \MADGRAPH (LO) &\multirow{2}{*}{4}&\multirow{2}{*}{0.02} &\multirow{2}{*}{WJets}\\
@@ -116,10 +113,10 @@ A comparison of all the used samples is reported in Table \ref{tab:samples}.
     WW+jets&aMC@NLO (NLO) & \multirow{2}{*}{1} & \multirow{2}{*}{0.56}& \multirow{2}{*}{WWJets}\\
     $\ell \nu \: q\bar{q}$&+\MADSPIN&&\\
     \midrule
-    t\PW & & & & \multirow{2}{*}{tW}\\
+    t\PW & \multirow{2}{*}{\POWHEG (NLO)} & \multirow{2}{*}{1} & \multirow{2}{*}{0.16} & \multirow{2}{*}{tW}\\
     $(b\ell\nu q\bar{q})$&&&&\\
     \midrule
-    tq (t-channel) & & & & \multirow{2}{*}{tq (t-chan.)}\\
+    tq (t-channel) & \multirow{2}{*}{\POWHEG (NLO)} &  \multirow{2}{*}{1} & \multirow{2}{*}{0.11} & \multirow{2}{*}{tq}\\
     $b\ell\nu q$&&&&\\
 
     \bottomrule
@@ -141,8 +138,8 @@ their expected contributions using event weights
 where $w_{e}$ is the event weight obtained by the product of the weights produced by the generator program with the weights obtained by the jet flavor corrections (see sec. \ref{sec:jet})   
 
 \section{Physics objects selections}
-As already said, the idea of the analysis is to focus on semileptonic decay to exploit the lepton as a probe, so we are interested in selecting one prompt lepton, along with four jets.\\
-The selection of physics objects is crucial to reject non-prompt leptons that can originate from the semileptonic decays of mesons and jets that can originate from prompt leptons or from pile-up.\\
+As already said, the idea of the analysis is to focus on semileptonic (SL) decay to exploit the lepton as a probe, so we are interested in selecting one prompt lepton, along with four jets.\\
+The selection of physics objects is crucial to reject non-prompt leptons that can originate from the semileptonic decays of mesons and jets that can originate from prompt leptons or pile-up.\\
 \\
 The objects taken into consideration are Particle Flow candidates (see sec. \ref{sec:PF}) and the applied selection cuts are the working points (WP) recommended by the CMS Physics Object Groups (POG).\\
 Since the signal cross-section is just $\sigma_{\text{signal}}\sim 0.3 pb$, the requirements will be minimal to preserve the statistics. 
@@ -244,6 +241,7 @@ The identification of jets from pile-up relies on three types of properties of t
 \begin{itemize}
     \item  In the tracker acceptance, the tracks associated with the jets can be used to match the jet with the primary interaction vertex.
     \item The shape of the calorimetric deposit is different in case of overlap of multiple interactions.
+    \newpage
     \item The objects' multiplicity.
 \end{itemize}
 
@@ -259,7 +257,7 @@ The identification of jets from pile-up relies on three types of properties of t
     \end{minipage}
     \hfill
     \begin{minipage}{0.55\linewidth}
-        \vspace{-0.8cm}
+        \vspace{-1.5cm}
     
         \begin{table}[H]
         \centering
@@ -381,8 +379,124 @@ The identification of jets from pile-up relies on three types of properties of t
     \captionof{table}{Summary of the selection cuts on physics objects.}
 \end{minipage}
 
-
-
-
 \newpage
 \section{Event selections}
+As already discussed, the chosen event selection is minimal to avoid large losses in the signal acceptance efficiency.\\ 
+The signal events are targeted in two different final states, defined by the flavor of the lepton used as a probe, so, after the physics objects selection, two different channels are defined: a Muon channel that contains events with at least one selected muon, and an Electron channel that contains events with at least one selected electron.\\
+An additional selection on the most b-tagged jet is imposed using the medium working point suggested by the BTag\&Vertexing (BTV) POG.\\
+\\
+The cumulative efficiencies of each cut are described in Tab.\ref{tab:event_selection} and the final event counts normalized with the RunII luminosity and the respective cross-sections in \Fig{fig:event_selection}
+\begin{table}[H]
+    \centering
+    \fontsize{11.5pt}{11.5pt}\selectfont
+    \begin{tabular}{l|ccc||ccc}
+        \toprule
+         &  \multicolumn{3}{c||}{\textbf{Muons}} &\multicolumn{3}{c}{\textbf{Electrons}} \\
+         \midrule
+         \midrule
+         Cumulative& \multirow{2}{*}{$\bm{\geq1 \mu}$} & \multirow{2}{*}{$\bm{\geq4}$ \textbf{Jets}} & $\bm{\max({\textbf{btag}})}$& \multirow{2}{*}{$\bm{\geq1e}$} & \multirow{2}{*}{$\bm{\geq4}$ \textbf{Jets}} & $\bm{\max({\textbf{btag}})}$\\
+         efficiencies&&&$\bm{>0.27}$&&&$\bm{>0.27}$\\
+         \midrule
+         \textbf{signalMu}& $64.1\%$ & $53.5\%$ & $51.8\%$ &0.22\% & 0.18\% & 0.16\%\\
+         \midrule
+         \textbf{signalEle}& 0.65\% & 0.50\% & 0.46\% & 52.3\% & 43.5\% & 42.1\% \\
+         \midrule
+         \textbf{signalTau}& 4.86\% & 3.95\% & 3.80\% & 3.37\% & 2.79\% & 2.70\%\\
+         \midrule
+         \textbf{TTsemiLeptMu}& 21.2\% & 18.0\% & 16.6\% & 0.05\% & 0.04\% & 0.03\% \\
+         \midrule
+         \textbf{TTsemiLeptEle}& 0.16\% & 0.13\% & 0.10\% & 17.3\% & 15.2\% & 13.9\% \\
+         \midrule
+         \textbf{TTsemiLeptTau}& 1.53\%  & 1.28\% & 1.16\% &1.08\% &0.94\% &0.86\%\\
+         \midrule
+         \textbf{TTdiLept}& 40.9\% & 27.4\% & 25.3\% & 33.8\% &22.7\% &20.9\% \\
+         \midrule
+         \textbf{TTdiHad}& 0.45\%  & 0.40\% & 0.31\% & 0.16\% &0.15\% &0.12\% \\
+         \midrule
+         \textbf{WJets Lept}& 15.0\% & 0.24\% & 0.03\% & 10.6\% & 0.20\% &0.03\%\\
+         \midrule
+         \textbf{WWJets SL}& 19.4\% & 5.52\% & 0.81\% & 15.3\% & 4.42\% & 0.64\% \\
+         \midrule
+         \textbf{tW SL}& 26.7\% & 13.4\%  & 11.2\% & 21.7\% &10.8\% &9.0\%  \\
+         \midrule
+         \textbf{tq Lept}& 20.5\%  & 5.13\% & 4.27\% & 15.0\% & 3.83\% &3.18\% \\
+         \bottomrule
+    \end{tabular}
+    \caption{Cumulative efficiencies of the selections in the Muons and Electrons channel after the physics objects selection}
+    \label{tab:event_selection}
+\end{table}
+
+The main background contribution in each channel is from the \ttbar semileptonic decay, that is 3 order of magnitude greater than the signal.\\
+Another significant contribution is from the \ttbar dileptonic (DL) process. The contribution from the WW+Jets process is two order of magnitude smaller than \ttbar SL and \ttbar DL processes, while the remaining processes' contribution is one order of magnitude smaller than the leading backgrounds. 
+
+\begin{figure}[H]
+     \centering
+     \begin{subfigure}{0.7\linewidth}
+         \centering
+         \includegraphics[width=\linewidth]{fig//chap07-selection/ele_selection.png}
+         \caption{Electrons channel}
+
+     \end{subfigure}
+     
+     \vspace{0.5cm}
+     \begin{subfigure}{0.7\linewidth}
+         \centering
+        \includegraphics[width=\linewidth]{fig//chap07-selection/mu_selection.png}
+         \caption{Muons channel}
+     \end{subfigure}
+     \vspace{0.5cm}
+        \caption{Event number for each process for each cut. In the legend the final number of events for each process after the preselection is shown. The processes are ordered in their final event number.}
+        \label{fig:event_selection}
+\end{figure}
+\TODO{PLOT: prima di event selection ma post obj selection: nJet,nMu,nEle}
+\TODO{PLOT: Dopo event selection ma senza btag cut: Jet\_{pt,btag} up to 4 (linea taglio su btag leading), ctag up to 2, leading mu and ele pt}
+\newpage
+\section{Neutrino reconstruction}
+To fully reconstruct the kinematics of the event and to allow the reconstruction of the leptoninc decaying top quark, the longitudinal component of the neutrino was reconstructed exploiting the transverse momentum of the missing energy, its pseudorapidity, the lepton's four vector, and fixing the mass of the \PW boson to $m_W=80.385 \GeV$.
+\begin{equation}
+    (p^\mu_\nu+p^\mu_\ell)^2=m_W^2 
+\end{equation}
+The equation to solve for $p_z^{\nu}$ is a second order equation
+\begin{equation*}
+    p_z^\nu=\frac{p_z^\ell(m_W^2+2\vec{p}_T^{\:\ell} \cdot \vec{p}_T^{\:\nu})\pm\sqrt{(p_z^\ell)^2 (m_W^2+2\vec{p}_T^{\:\ell} \cdot \vec{p}_T^{\:\nu})^2-|p_T^\ell|^2[4(E_\ell p_T^\nu)^2-(m_W^2+2\vec{p}_T^{\:\ell} \cdot \vec{p}_T^{\:\ell})^2)]}}{2|p_T^\nu|^2}
+\end{equation*}
+
+Since the equation has multiple solutions, that can also be complex, multiple cases should be discussed. If the equation has a complex solution the real part is taken. If the equation allows two real solutions, we must choose one.\\
+In \Fig{fig:nu_comparison} it is shown a comparison between the solution with the smaller magnitude, the solution with the greater magnitude, and the truth value of $p_z^\nu$ at the LHE level.\\
+This study was performed using signal samples.
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{fig//chap07-selection/Pznu_LHE_comparison.png}
+    \caption{In the left panels there are the events that have two real solutions, while in the right panel the ones with the complex solutions of which only the real part is shown. In the top panel the distribution of the absolute value of the solutions and the LHE truth value are shown, while in the bottom panels, there are the distributions of the differences between the solutions and the LHE truth values. $\Delta$ in the legend is the discriminant of the second order equation. The distributions are in arbitrary units.}
+    \label{fig:nu_comparison}
+\end{figure}
+
+
+
+
+The distribution of the solutions with the smaller absolute value is in better accordance with the truth value, so the strategy will be:\\
+\begin{minipage}{\linewidth}
+    \begin{minipage}{0.42\linewidth}
+
+\begin{itemize}
+    \item The solution is complex: take the real part.
+    \item There are two real solutions: take the smallest in the absolute value.
+\end{itemize}
+
+        Of course, in the complex solution case, if we consider only the real part, the chosen value will violate the W mass constraint, so, the invariant mass of the sum of the lepton and the reconstructed neutrino will not be $m_W$. In  \Fig{fig:LeptW_reco} the distribution of the leptonic W mass is shown.
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.55\linewidth}
+    \vspace{-0.2cm}
+    \begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{fig//chap07-selection/Wmass_reconstructed.png}
+    \caption{Distribution of the reconstructed W mass in the real solution case and the complex solution case, taking only the real part.}
+    \label{fig:LeptW_reco}
+\end{figure}
+        
+    \end{minipage}
+
+\end{minipage}

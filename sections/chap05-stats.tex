@@ -1,5 +1,6 @@
 %!TEX root = ../thesis.tex
 \newchap{Analysis methods}\label{sec:STAT}
+\vspace{-1cm}
 \minitoc
 \section{Neural networks}
 In this work, neural networks are used as a tool to classify different events in signal or background, giving to the input of the NN different features of the events (like the 4-vectors of the reconstructed particles in the event). So, in this section, the discussion will be focused on the classification problem.\\
@@ -28,7 +29,7 @@ In the context of supervised learning, there are mainly two classes of problems 
     \hfill
     \begin{minipage}{0.51\linewidth}
     %\vspace{-1.25cm}
-        The simplest NN is the Rosenblatt perceptron \cite{Rosenblatt1958TheBrain} (\Fig{fig:perceptron}), a NN with one single neuron that addresses the binary classification problem.\\
+        The simplest NN is the Rosenblatt perceptron \cite{Rosenblatt1958TheBrain} (\Fig{fig:perceptron}), an NN with one single neuron that addresses the binary classification problem.\\
         The characteristics of the neuron are:
             \begin{itemize}
                 \item The dimension of the input. Each data entry is N-dimensional and each dimension is called a "feature".
@@ -169,7 +170,7 @@ Furthermore, NNs perform a lot of simple arithmetic operations that can be perfo
 \\
 The list of optimizers is long and each of them has its pros and cons. The SGD has a slower convergence compared to the other optimizers due to its stochastic nature, it is really sensitive to the learning rate, and, especially in high-dimensional and nonconvex problems, it gets stuck very easily in local minima.\\
 \\
-To address these problems, one of the most used optimizers is ADAM (ADAptive Moment estimator) \cite{Kingma2014Adam:Optimization}. It is able to adapt the learning rate of each parameter individually computing the moving average of gradients and of square gradients, ensuring a fast convergence.
+To address these problems, one of the most used optimizers is ADAM (ADAptive Moment estimator) \cite{Kingma2014Adam:Optimization}. It is able to adapt the learning rate of each parameter individually computing the moving average of gradients and square gradients, ensuring a fast convergence.
 \\
 The drawback of ADAM is that it has some convergence issues due to its large variance in the first epochs of training in the adaptive learning rate, showing huge fluctuations in the loss, and being too sensitive to the choice of hyperparameters.\\
 Trying to stem these issues, recently, a new variant of Adam was proposed: RAdam (Rectified Adam) \cite{Liu2019OnBeyond}.\\
@@ -250,7 +251,7 @@ The activation functions in a neural network must possess some properties:
     \item Their derivative must be bounded to avoid the so-called "explosive gradient", the opposite phenomena of the vanishing gradient.
 \end{itemize}
 The activation functions of the output layer are different from the others.\\
-In a regression problem, the activation function of the output layer is a linear function, while, in the case of classification, using the one-hot encoding, the used activation function is the \textit{softmax} function
+In a regression problem, the activation function of the output layer is linear, while, in the case of classification, using the one-hot encoding, the used activation function is the \textit{softmax} function
 \begin{equation}
     {\textit{softmax} (\mathbf {x} )_{j}={\frac {e^{x_{j}}}{\sum _{k=1}^{K}e^{x_{k}}}}} \quad \text{for } j=1,\dots,K
 \end{equation}
@@ -334,7 +335,7 @@ In some architectures (like RNN) or domains (natural language processing), the l
 
 
 \subsubsection*{Weight initialization}
-The initialization of the weights is strictly related to the chosen normalization and to the chosen activation functions.\\
+The initialization of the weights is strictly related to the chosen normalization and the chosen activation functions.\\
 Large or small initialization values will lead respectively to the problem of exploding and vanishing gradient.\\
 An appropriate initialization should impose a zero mean of the weights and a variance that should stay constant across all the layers.\\
 \\
@@ -428,7 +429,7 @@ Cross-attention allows models to establish relationships between elements in dif
 \paragraph*{Self-attention pooling}
 
 
-Pooling is a technique used to downsample or reduce the dimensionality of feature maps or, in our case of a sequence, retaining important information.\\
+Pooling is a technique used to downsample or reduce the dimensionality of feature maps or, in our case a sequence, retaining important information.\\
 As already discussed, we are interested in classifying an event as a signal or background, so we have to reduce the dimensionality of the sequences that contain all the particles in the events, to just one.\\
 Self-attention pooling \cite{Safari2020Self-attentionRecognition} is a pooling layer inspired by self-attention
 \begin{equation}

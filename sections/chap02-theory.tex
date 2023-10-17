@@ -1,16 +1,17 @@
 %!TEX root = ../thesis.tex
 \newchap{Theoretical framework}\label{sec:TH}
+\vspace{-1cm}
 \minitoc
 \section{The Standard Model of particle physics}
 
-The Standard Model of particle physics (SM) is a quantum field theory (QFT) that describes all known fundamental particles and forces known beside gravity: the electromagnetic, the strong and the weak force. \\
-The QFT is a framework that combines quantum mechanics, classical field theory and special relativity, allowing us to describe a particle as the excitation of a quantum field or, more formally, with an irreducible representation of the Poisson group that is characterized by the mass, spin, and additional quantum numbers of the particle.
-Such theories are characterized by a Lagrangian density $\Lg{}$ that must be Lorentz invariant, must respect locality and must be renormalizable, \ie the perturbative expansions of the amplitudes must converge. \\
+The Standard Model of particle physics (SM) is a quantum field theory (QFT) that describes all known fundamental particles and forces besides gravity: the electromagnetic, the strong, and the weak force. \\
+The QFT is a framework that combines quantum mechanics, classical field theory, and special relativity, allowing us to describe a particle as the excitation of a quantum field or, more formally, with an irreducible representation of the Poisson group that is characterized by the mass, spin, and additional quantum numbers of the particle.
+Such theories are characterized by a Lagrangian density $\Lg{}$ that must be Lorentz invariant, must respect locality, and must be renormalizable, \ie the perturbative expansions of the amplitudes must converge. \\
 In the SM, additional local symmetries (Gauge symmetries) are imposed to describe the interactions between particles and, according to the Noether theorem \cite{NoetherInvarianteVariationsprobleme}, for each global symmetry a conserved charge arises.
 
 \subsubsection*{Particles of the Standard Model}
 Particles are divided into two main categories: fermions and bosons. 
-Fermions are particles with half integer spin that obey to the Fermi-Dirac statistics and to the Pauli principle. 
+Fermions are particles with half-integer spin that obey the Fermi-Dirac statistics and the Pauli principle. 
 Furthermore, each fermion has an antiparticle with the same mass but opposite quantum numbers.\\
 Bosons are particles with integer spin that obey the Bose-Einstein statistics. In the SM there are the vector bosons (spin 1), the mediators of the forces, and the Higgs boson, the only scalar boson of the SM (spin 0). All the particles of the SM and their properties are summarized in \Fig{fig:SMpart}.
 
@@ -26,7 +27,7 @@ Bosons are particles with integer spin that obey the Bose-Einstein statistics. I
 %commented
 \iffalse
 \paragraph*{Interactions}
-The three fundamental interactions described by the SM are the electromagnetic, the strong and the weak force.\\
+The three fundamental interactions described by the SM are the electromagnetic, the strong, and the weak force.\\
 Each interaction has a Gauge boson that arises from a symmetry group.\\
 The \emph{electromagnetic interaction} is described by the quantum electrodynamics (QED) \cite{FeynmanQED:Matter}, a \U{1} Gauge theory, and is mediated by the photon.\\
 The \emph{strong interaction} is described by the quantum chromodynamics (QCD) \cite{Chromodynamics1995QUANTUMCHROMODYNAMICS} through the \SU{3} group.\\
@@ -36,10 +37,10 @@ The \emph{strong interaction} is described by the quantum chromodynamics (QCD) \
 \paragraph*{Fermions}
 Fermions are divided into leptons and quarks, both divided into 3 generations, for a total of 12 fermions.\\
 \emph{Quarks} are the constituents of the hadrons. They have a fractional electric charge and a color charge (or an anticolor charge for the antiquarks).\\
-Quarks are divided into up-type quarks (up, charm, and top) with an electric charge of $Q=2/3$ and into down-type quarks (down, strange and bottom) with an electric charge of $Q=-1/3$.
-One of the main properties of the QCD is the color confinement: isolated particles must be color singlets, so free quarks can't be observed because they hadronize (see sec. \ref{sub:QCD}).
+Quarks are divided into up-type quarks (up, charm, and top) with an electric charge of $Q=2/3$ and into down-type quarks (down, strange, and bottom) with an electric charge of $Q=-1/3$.
+One of the main properties of the QCD is color confinement: isolated particles must be color singlets, so free quarks can't be observed because they hadronize (see sec. \ref{sub:QCD}).
 The only exception is the top quark that decays before the hadronization due to its short lifetime.\\
-Furthermore, weak interactions don't couple identically with all the flavours: charged weak interactions mix the down-type quarks flavour according to the unitary CKM matrix, while neutral weak interactions have different couplings that depend on the weak isospin of the fermion.\\
+Furthermore, weak interactions don't couple identically with all the flavors: charged weak interactions mix the flavor of the down-type quarks according to the unitary CKM matrix, while neutral weak interactions have different couplings that depend on the weak isospin of the fermion.\\
 \emph{Leptons} are the electron (\Pe), the muon (\PGm), the tau (\PGt) and their respective neutrinos (\PGne, \PGnGm, \PGnGt).
 A charged lepton and its respective neutrino represent a generation of leptons with a corresponding family lepton flavor number $L_{\ell_i}=n_{\ell_i}-n_{\PAl_i}$ that, in SM, is conserved together with the total lepton number $L=n_\ell-n_\PAl$.
 The leptons participate in all the interactions except the strong force.\\
@@ -52,10 +53,10 @@ The Lagrangian (density) for a free fermion field is the Dirac Lagrangian
 \mathcal{L}_{\text{Dirac}}=i\bar{\psi}\gamma^{\mu}\partial_{\mu}\psi-m\bar{\psi}\psi
 \end{equation}
 where $\aff{\psi}{}=\ff{\psi}{}^\dagger\gamma^0$ is the adjoint Dirac spinor, and $\gamma^\mu$ are the 4 Dirac matrices that obey the Clifford algebra $\{\gamma^\mu,\gamma^\nu\}=2\eta^{\mu\nu}$.\\
-The corresponding equation of motion has two solutions: the one with the positive energy represents the fermion field, the one with the negative energy represents the anti-fermion field.\\
+The corresponding equation of motion has two solutions: the one with the positive energy represents the fermion field, and the one with the negative energy represents the anti-fermion field.\\
 Dirac spinors are representations of the Lorentz group $SO^+(1,3)$ that can be decomposed into the $\SU[L]{2} \otimes \SU[R]{2}$ group.\\
 Using this different representation, Dirac spinors can be described in the so-called chiral basis $\psi=\left(\psi_L,\psi_R \right)$ where $\psi_{L/R}$ are called left/right Weyl spinors and are respectively the $\left(\frac{1}{2},0\right)$ and the $\left(0,\frac{1}{2}\right)$ representations of the $\SU{2} \otimes \SU{2}$ group.\\
-The chirality operator $\gamma^5=i\gamma^0\gamma^1\gamma^2\gamma^3$ anti-commutes with all the gamma matrices and commute with the Dirac Hamiltonian only if the mass is zero, so the chirality is a good quantum number only for massless particles.\\
+The chirality operator $\gamma^5=i\gamma^0\gamma^1\gamma^2\gamma^3$ anti-commutes with all the gamma matrices and commutes with the Dirac Hamiltonian only if the mass is zero, so the chirality is a good quantum number only for massless particles.\\
 The chirality plays an important role in the weak interaction, as described in sec. \ref{sub:weak}
 \paragraph*{Gauge theories}
 The standard procedure to introduce a global symmetry in the Lagrangian and a Gauge boson field is the following:
@@ -89,7 +90,7 @@ In the SM, all the fermions, except the neutrinos, have an electric charge and a
 
 
 \subsection{Quantum chromodynamics}\label{sub:QCD}
-The quantum chromodynamics (QCD) is the \SU{3} Gauge theory that describes the strong interaction and involves gluons and quarks, bonding together into hadronic states.
+Quantum chromodynamics (QCD) is the \SU{3} Gauge theory that describes the strong interaction and involves gluons and quarks, bonding together into hadronic states.
 The quantum number related to strong interaction is the color charge.
 Applying the gauging technique described in the section \ref{sub:gauge_qed} is possible to obtain the QCD Lagrangian.
 \begin{equation}\label{eq:QCD}
@@ -106,23 +107,23 @@ There are significant differences with the QED due to the non-abelianity of \SU{
         \alpha_S(\mu^2)\propto \frac{1}{\ln \left( \frac{\mu^2}{\Lambda_{\text{QCD}}^2}\right)}        
     \end{equation}
     Where $\Lambda_{QCD}\approx 200 \MeV$ and $\mu$ is the energy scale.\\
-    When $\mu \gg \Lambda_{QCD}$, strong interactions can be described using perturbative techniques (pQCD) but, at low-energy scales, the QCD is non perturbative and that leads to the third property of the QCD
+    When $\mu \gg \Lambda_{QCD}$, strong interactions can be described using perturbative techniques (pQCD) but, at low-energy scales, the QCD is non-perturbative and that leads to the third property of the QCD
     \item \textbf{Color confinement}: At low-energy scales, the strong coupling is so large that quarks are always bounded in color singlets and isolated quarks can't be observed.\\
     This is also why the strong force is a short-range interaction, while the electromagnetic force is a long-range interaction.
 \end{itemize}
 
 \subsection{Electroweak unification}\label{sub:weak}
 \paragraph*{Weak interactions}
-The weak interaction was first introduced by Enrico Fermi to explain the $\beta$ decay through the 4 point Fermi interaction \cite{Fermi1934Tentativo} and is the only force that involves all the fermions and that violates the parity and the charge parity conservation. \\
+The weak interaction was first introduced by Enrico Fermi to explain the $\beta$ decay through the 4-point Fermi interaction \cite{Fermi1934Tentativo} and is the only force that involves all the fermions and that violates the parity and the charge parity conservation. \\
 The quantum number related to the weak interaction is the weak isospin, generated by the \SU{2} gauge group that creates 3 gauge bosons: the $W^\pm$ and the $Z$ bosons.\\
 Trying to build the weak Lagrangian only using the gauging technique described in the section \ref{sub:gauge_qed} doesn't work in this case for different reasons:
 \begin{itemize}
-    \item The W boson and the Z boson would have the same coupling to the fermions, while experimentally this was disproven. To address this problem, the weak interaction was unified to the electromagnetic interaction.
-    \item The W/Z bosons are proven to be massive bosons, while gauge bosons are always massless. The massive term can't be added arbitrary to the Lagrangian because such a theory would be non renormalizable, so they have to be added through the Higgs mechanism as described in the section \ref{sub:SM}.\\
-    The non-zero W/Z mass  is also the cause why the weak interactions have a finite range, given that the weak interactions are suppressed by the weak propagator $1/(q^2-M_{W/Z}^2)$.
-    \item The weak interaction doesn't couple identically with all the quarks, but the down-type flavours are mixed by the Cabibbo-Kobayashi-Maskawa (CKM) matrix \cite{Kobayashi1973CP-ViolationInteraction}, as described in section \ref{sec:CKM}. The elements of the CKM matrix are complex, and this leads to the CP violation.
+    \item The W boson and the Z boson would have the same coupling to the fermions, while experimentally this was disproven. To address this problem, the weak interaction was unified with the electromagnetic interaction.
+    \item The W/Z bosons are proven to be massive bosons, while gauge bosons are always massless. The massive term can't be added arbitrarily to the Lagrangian because such a theory would be non-renormalizable, so they have to be added through the Higgs mechanism as described in the section \ref{sub:SM}.\\
+    The non-zero W/Z mass  is also the cause of why the weak interactions have a finite range, given that the weak interactions are suppressed by the weak propagator $1/(q^2-M_{W/Z}^2)$.
+    \item The weak interaction doesn't couple identically with all the quarks, but the down-type flavors are mixed by the Cabibbo-Kobayashi-Maskawa (CKM) matrix \cite{Kobayashi1973CP-ViolationInteraction}, as described in section \ref{sec:CKM}. The elements of the CKM matrix are complex, and this leads to the CP violation.
     \item To introduce the parity violation in the Lagrangian, the $\gamma^\mu$ in the interaction term of the Lagrangian has to be replaced with $\gamma^\mu \left(1-\gamma^5 \right)/2 $.\\
-    The term $(1-\gamma^5)/2$ is the left chirality projector, and this implies that weak interaction couples only with the left part of the spinor. This will turn to be true only for charged weak interactions, while for neutral weak interactions, the mixing between the photon and the Z boson in the electroweak (EW) unification process will reintroduce the coupling with the right spinors.
+    The term $(1-\gamma^5)/2$ is the left chirality projector, and this implies that weak interaction couples only with the left part of the spinor. This will turn out to be true only for charged weak interactions, while for neutral weak interactions, the mixing between the photon and the Z boson in the electroweak (EW) unification process will reintroduce the coupling with the right spinors.
 \end{itemize}
 
 \paragraph*{Electroweak unification}\label{sub:EW}
@@ -160,16 +161,16 @@ After the mixing, we can break the electroweak Lagrangian into different pieces:
 \begin{itemize}
     \item  $\Lg{kin}$ is the fermions kinetic term
     \item $\Lg{QED}$ is the interaction term of the QED Lagrangian described in section \ref{sub:gauge_qed}
-    \item $\Lg{wcc}$ is the interaction term of the weak charged currents
+    \item $\Lg{wcc}$ is the interaction term of the weak-charged currents
     \begin{equation}
         {\mathcal{L}}_{wcc}\,=\,\frac{g}{2{\sqrt{2}}}\,\left\{W_{\mu}^{\dagger}\,\bar{L}\gamma^{\mu}(1-\gamma_{5})L+\,\dots \right\}
     \end{equation}
     the charged weak interactions preserve the vector minus axial (V-A) structure, and this implies that the $W^\pm$ bosons interact only with the left doublets.\\
-    Furthermore, the weak interactions mix the down-type quark flavours so the terms that involve quarks have to include a unitary matrix, the CKM matrix. (see sec.\ref{sec:CKM})
+    Furthermore, the weak interactions mix the down-type quark flavors so the terms that involve quarks have to include a unitary matrix, the CKM matrix. (see sec.\ref{sec:CKM})
     \begin{equation}
         \Lg{wcc}^q=-\frac{g}{\sqrt{2}}(\overline{{{u}}}_{L},\overline{{{c}}}_{L},\overline{{{t}}}_{L})\gamma^{\mu}W_{\mu}^{+}V_{\mathrm{CKM}}\tb{d_{L}}{s_{L}}{b_L}+\dots
     \end{equation}
-    This also does not allow the presence of flavour changing neutral currents (FCNC).
+    This also does not allow the presence of flavour-changing neutral currents (FCNC).
     \item $\Lg{wnc}$ is the interaction term of the weak neutral currents,
     \begin{equation}
         \Lg{wnc}=\frac{e}{2\sin\theta_{W}\cos\theta_{W}}\,Z_{\mu}\sum_{f}\,\bar{f}\gamma^{\mu}(v_{f}-I^3_{f}\gamma_{5})\,f\;
@@ -212,7 +213,7 @@ Replacing \Eq{eq:higgs_intro} into the \Eq{eq:Higgs_preSSB} the W/Z bosons acqui
     M_{W^\pm}=\frac{1}{2}gv\\
     M_Z=\frac{M_{W^\pm}}{\cos (\theta_W)}
 \end{gather}
-This also generates the Higgs boson mass $m_H=\sqrt{2\lambda}\mu$, the interactions between the Higgs boson and the vector bosons and the Higgs self-interactions.
+This also generates the Higgs boson mass $m_H=\sqrt{2\lambda}\mu$, the interactions between the Higgs boson and the vector bosons, and the Higgs self-interactions.
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.7\linewidth]{fig/chap02-theory/higgs.pdf}
@@ -226,7 +227,7 @@ This problem can be addressed by introducing the Yukawa interaction between ferm
 \begin{equation}
     \Lg{Yukawa}=-\left(g_{i j}^{d}\bar{Q}_{L,i}\phi d_{R,j}+g_{i j}^{u}\bar{Q}_{L,i}(i\sigma^{2}\phi^{\dagger})u_{R,j}+g_{i j}^{\ell}\bar{\mathcal{L}}_{L,i}\phi\ell_{R,j}\right)+h.c.
 \end{equation}
-After the SSB, the fermions masses arise from the Yukawa interaction.
+After the SSB, the masses of the fermions arise from the Yukawa interaction.
 \begin{gather}
     \Lg{masses}=-M_{i j}^{\ell}\bar{\ell}_{L,i}\ell_{R,j}-M_{i j}^{d}\bar{d}_{L,i}d_{R,j}-M_{i j}^{u}\bar{u}_{L,i}u_{R,j}\\
     M^{\ell,d,u}=\frac{v}{\sqrt{2}}g^{\ell,d,u}
@@ -245,8 +246,14 @@ At this point, the SM is complete. A summary of all the particles of the SM and 
 \\
 \input{example/tex/intro-tab-SM_fields.tex}
 
+
+
+
+
+
+
 \section{The CKM matrix}\label{sec:CKM}
-As already introduced, the weak interactions mix the down-type quarks with the Cabibbo-Kobayashi-Maskawa (CKM) matrix \cite{Cabibbo_angle,Kobayashi1973CP-ViolationInteraction}.
+As already discussed, the weak interactions mix the down-type quarks with the Cabibbo-Kobayashi-Maskawa (CKM) matrix \cite{Cabibbo_angle,Kobayashi1973CP-ViolationInteraction}.
 \begin{equation}
     \Lg{wcc}^q=-\frac{g}{\sqrt{2}}(\overline{{{u}}}_{L},\overline{{{c}}}_{L},\overline{{{t}}}_{L})\gamma^{\mu}W_{\mu}^{+}V_{\mathrm{CKM}}\tb{d_{L}}{s_{L}}{b_L}+\dots
 \end{equation}
@@ -257,7 +264,7 @@ The CKM matrix is a $3 \times 3$ complex matrix that can be written in terms of 
 These parameters can be determined through global fits that combine experimental data from different experiments, imposing the constraints of the standard model (\eg the unitarity), or can be measured independently \cite{PDG_2022}.\\
 Measure all the parameters independently allows us to verify the unitarity of the CKM matrix that, if violated, can be a sign of new physics.\\
 The $|V_{ud}|$ is the element measured with the highest precision through  the study of $\beta$ decays. The other $|V_{uq}|$ and $|V_{cq}|$ elements are measured through leptonic and semileptonic meson decays, but these kinds of measures are highly affected by theoretical uncertainties due to the non-perturbative nature of the strong interaction at low energy that bonds the quarks in the meson.
-The $|V_{tq}|$ elements are not affected by non-perturbative QCD uncertainties, but the QCD background of a hadron collider makes their measure really challenging and, at this time, an electron-positron collider with a sufficient energy in the center of mass to produce a top quark does not exist yet.
+The $|V_{tq}|$ elements are not affected by non-perturbative QCD uncertainties, but the QCD background of a hadron collider makes their measure challenging and, at this time, an electron-positron collider with sufficient energy in the center of mass to produce a top quark does not exist yet.
 \\
 \\
 There are two common parametrizations of the CKM matrix: the standard parametrization and the Wolfenstein parametrization \cite{PDG_2022}.
@@ -282,7 +289,7 @@ Defining new four real parameters,
     s_{13}e^{i\delta}=A\lambda^{3}(\rho+i\eta)=\frac{A\lambda^{3}(\bar{\rho}+i\bar{\eta})\sqrt{1-A^{2}\lambda^{4}}}{\sqrt{1-\lambda^{2}}\left[1-A^{2}\lambda^{4}(\bar{\rho}+i\bar{\eta})\right]}\,
 .
 \end{gather}
-the Wolfenstein parametrization shows clearly the order of magnitude of the different elements in powers of $\lambda$
+the Wolfenstein parameterization shows clearly the order of magnitude of the different elements in powers of $\lambda$
 \begin{equation}
     V_{C K M}\simeq\left(\begin{array}{c c c}{{1-\frac{\lambda^{2}}2\ \ \ }}&{{\lambda}}&{{\lambda^{3}(\rho-i\eta)}}\\ {{-\lambda}}&{{1-\frac{\lambda^{2}}2\ \ \ }}&{{A\lambda^{2}}}\\ {{A\lambda^{3}(1-\rho-i\eta)}}&{{-A\lambda^{2}}}&{{1}}\end{array}\right)+{\cal O}(\lambda^{4}).
 \end{equation}
@@ -308,26 +315,42 @@ These constraints can be represented in the complex $(\bar{\rho},\bar{\eta})$ pl
     \label{fig:triangle}
 \end{figure}
 
-\subsection{The $V_{cb}$ element}\label{sec:vcb}
-The $V_{cb}$ element plays an important role in the unitarity of the CKM matrix. The radius of the unitarity-clock, the green circle centered in the origin in \Fig{fig:triangle}, is proportional to the ratio $|V_{ub}/V_{cb}|$, so $V_{cb}$ normalize the whole triangle \cite{Ricciardi2019DeterminationV_cb}.\\
-$|V_{cb}|$ is measured from the semileptonic inclusive and exclusive $b \to c\ell\nu$
-decays but the parton level amplitude, that is proportional to $|V_{cb}|^2$, has to be corrected by introducing form factors that take into account the contributions by strong interactions in the meson. These corrections inevitably lead to theoretical uncertainties that are of the same order of the experimental systematic uncertainties.
-Furthermore, the inclusive and exclusive measurements of the $V_{cb}$ element have always been incompatible and separated by $\sim 2 \sigma$ as shown in \Fig{fig:vcbvub}. \\
-Recently, a revision of the techniques involved in the calculations of the QCD contributions has narrowed the gap, but the $V_{cb}$ puzzle is still unresolved \cite{Bona2023NewScheme}.\\
-These issues also concern the $|V_{ub}|$ measurements.
+
+
+
+\newchap{The $|V_{cb}|$ CKM element}\label{sec:vcb}
+\vspace{-1cm}
+\minitoc
+\section{The $V_{cb}$ element}\label{sec:vcb}
+\begin{minipage}{\linewidth}
+    \begin{minipage}{0.43\linewidth}
+        The $V_{cb}$ element plays an important role in the unitarity of the CKM matrix. The radius of the unitarity-clock, the green circle centered in the origin in \Fig{fig:triangle}, is proportional to the ratio $|V_{ub}/V_{cb}|$, so $V_{cb}$ normalize the whole triangle \cite{Ricciardi2019DeterminationV_cb}.\\
+        \\
+        $|V_{cb}|$ is measured from the semileptonic inclusive and exclusive $b \to c\ell\nu$
+        decays but the parton level amplitude, that is proportional to $|V_{cb}|^2$, has to be corrected by introducing form factors that take into account the contributions by strong interactions in the meson. These corrections inevitably lead to theoretical uncertainties that are of the same order as the experimental systematic uncertainties.
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.55\linewidth}
+        \vspace{-1.25cm}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\linewidth]{fig//chap02-theory/vubvcb.png}
+            \caption{$|V_{cb}|$ and $|V_{ub}|$ global fit and averages of inclusive and exclusive measurements performed by the UTfit collaboration \cite{Bona2023NewScheme}}
+            \label{fig:vcbvub}
+        \end{figure}
+    \end{minipage}
+\end{minipage}
 \\
-\begin{figure}[h]
-    \vspace{-1cm}
-    \centering
-    \includegraphics[width=0.7\linewidth]{fig//chap02-theory/vubvcb.png}
-    \caption{$|V_{cb}|$ and $|V_{ub}|$ global fit and averages of inclusive and exclusive measurements performed by the UTfit collaboration \cite{Bona2023NewScheme}}
-    \label{fig:vcbvub}
-\end{figure}
+\\
+Furthermore, the inclusive and exclusive measurements of the $V_{cb}$ element have always been incompatible and separated by $\sim 2 \sigma$ as shown in \Fig{fig:vcbvub}.\\
+Recently, a revision of the techniques involved in the calculations of the QCD contributions has narrowed the gap, but the $V_{cb}$ puzzle is still unresolved \cite{Bona2023NewScheme}.\\
+These issues also concern the $|V_{ub}|$ measurements.\\
 \\
 A summary of the single measurements of the $|V_{cb}|$ element can be found in \cite{PDG_2022}.
+\subsection{$|V_{cb}|$ from semileptonic B meson decays}
 \paragraph*{Inclusive measurement}
 The inclusive channel $B\to X_c \ell \nu$ is less model dependent than the exclusive one \cite{Smith2005DeterminationSpectra}.
-The QCD contributions can be included by adding two terms in the amplitude: a perturbative term and a non perturbative term.
+The QCD contributions can be included by adding two terms in the amplitude: a perturbative term and a non-perturbative term.
 \begin{equation}
     \Gamma(B\rightarrow X_c\ell\nu)=\frac{G_{F}^{2}m_{b}^{5}|V_{c b}|^{2}}{192\pi^{3}}[1+P(\alpha_{s},\mu,m_{b}/m_{c})+N(m_b,m_c,\mu_\pi^2,\mu_G^2,\rho_D^2,\rho_{LS}^3)]
 \end{equation}
@@ -343,22 +366,134 @@ The average of the inclusive measurements is \cite{Bordone2021ThreeVcb}
 The two main exclusive channels studied for $|V_{cb}|$ determination are the $\PAB \to D^* \ell \PAGnl$ and the $\PAB \to D \ell \PAGnl$.
 The first channel was measured with an uncertainty of $\simeq 2\%$ with comparable contributions from theory and experiment, while the latter was measured with an uncertainty of the $\simeq 3\%$ but recently
 some questions about the form factor parametrization were raised.\\
-The exclusive measurement requires to  know six form factors that can be computed using lattice QCD (LQCD) techniques. In the limit of heavy quarks, the six form factors collapse into a single one, and corrections to the $m_b \to \infty$ limit can be obtained through the HQET framework \cite{PDG_2022}.\\
+The exclusive measurement requires knowing six form factors that can be computed using lattice QCD (LQCD) techniques. In the limit of heavy quarks, the six form factors collapse into a single one, and corrections to the $m_b \to \infty$ limit can be obtained through the HQET framework \cite{PDG_2022}.\\
 The average of the exclusive measurements is \cite{Bona2023NewScheme}
 \begin{equation}
     |V_{cb}|\times10^3\text{ (excl)}=39.44\pm 0.63
 \end{equation}
 
+\section{CKM measurements from hadronic W decays}
+\subsection{LEP2 measurements}
+The Large Electron-positron Collider (LEP) was an electron-positron collider that reached a peak energy in the center of mass of 209 GeV. It was built at CERN and is located in the tunnel that now hosts the LHC accelerator facility and started its physics program in 1989.\\
+\\
+The LEP2 physics program started in 1996, running at a center of mass energy  that was increased from the Z resonance to 202\GeV at the end of 1999, above the production threshold of WW pairs. 
+In this period, the four LEP experiments, ALEPH, DELPHI, L3, and OPAL have collected  $\sim450 \text{pb}^{-1}$ of data above the WW pair production threshold, corresponding to over 6000 WW events per experiment \cite{Nowell2000MeasurementLEP2}.\\
+With more than 8000 hadronic W decays, the LEP experiments were able to access some CKM elements directly from W decays.
 
-\section{The Top quark}
-The top quark is the heaviest particle of the standard model, discovered at Fermilab in the 1995 by the CDF and the D0 collaborations \cite{Abe1995ObservationFermilab,Abe1995ObservationFermilab}.
+\paragraph*{Rate of charm production}
+ALEPH and OPAL performed a measure of the rate or $W\to cX$ decays on both semileptonic and fully hadronic WW pairs.
+\begin{equation}
+    R_c^W=\frac{\Gamma(W\to cX)}{\Gamma(W\to q\bar{q})}=\frac{|V_{cd}|^2+|V_{cs}|^2+|V_{cb}|^2}{|V_{cd}|^2+|V_{cs}|^2+|V_{cb}|^2+|V_{ud}|^2+|V_{us}|^2+|V_{ub}|^2}
+\end{equation}
+This is a unitarity test of the second row of the CKM matrix, indeed, if the unitarity hypothesis holds, it has to be $R_c^W=0.5$.
+\\
+\\
+ALEPH performed the measurement extracting $R_c^W$ with a binned maximum-likelihood fit on the shape of the most c tagged jet.\\
+The charm jet tagger was a feed-forward neural network with 12 variables as input that uses mainly information from charm lifetime, jet-shape properties, reconstruction of D mesons, and lepton identification.\cite{Barate1999ATag} \\
+\\
+On the other hand, OPAL used a relative likelihood discriminant calculated for each jet to separate jets originating from
+charm quarks and jets from light quarks. This discriminant relies on jet and event shape properties,
+lifetime information, and lepton identification \cite{Abbiendi2000ADecays}.
+\\
+\\
+The results of both experiments are consistent with the unitarity hypothesis with an uncertainty of $\sim 10\%$
+\begin{equation}
+\begin{aligned}
+    R_c^W&=0.51 \pm 0.05 \text{ (stat)} \pm 0.03 \text{ (syst)} & \text{(ALEPH)}\\
+    R_c^W&=0.481 \pm 0.042 \text{ (stat)} \pm 0.032 \text{ (syst)} & \text{(OPAL)}
+\end{aligned}
+\end{equation}
+$R_C^W$ allow also an indirect measure of $|V_{cs}|$, subtracting the other $|V_{cx}|$ CKM elements in quadrature from $R_C^W$ obtained from other determinations.
+
+\begin{equation}
+\begin{aligned}
+    |V_{cs}|&=1.00\pm0.11  \text{ (stat)} \pm 0.07 \text{ (syst)} & \text{(ALEPH)}\\
+    |V_{cs}|&=0.969\pm0.058 & \text{(OPAL)}
+\end{aligned}
+\end{equation}
+\begin{figure}[H]
+    \begin{subfigure}{0.49\linewidth}
+        \centering
+         \includegraphics[width=\linewidth]{fig//chap02-theory/opal.png}
+         \caption{OPAL: Output of the combined likelihood used to tag charm hadrons at 183–189 \GeV. \\\\}
+    \end{subfigure}
+     \hfill
+     \begin{subfigure}{0.46\linewidth}
+         \centering
+        \includegraphics[width=\linewidth]{fig//chap02-theory/aleph.png}
+         \caption{ALEPH: Maximum c tagging NN score for the dijet pairs. In the top panel there are the semileptonic WW pairs, in the bottom panel there are the fully hadronic}
+     \end{subfigure}
+        \label{fig:rc_lep}
+\end{figure}
+\vspace{-0.5cm}
+\paragraph*{Direct measure of $|V_{cs}|$}
+The $V_{cs}$ CKM element was measured directly from W decays by the DELPHI collaboration, using semileptonic and fully hadronic decays of WW pairs measuring $r^{(cs)}$ \cite{Abreu1998MeasurementLEP2}.
+\vspace{-0.5cm}
+\begin{equation}
+    r^{(cs)}=\frac{\Gamma(W\to cs)}{\Gamma(W\to q\bar{q})}=\frac{|V_{cs}|^2}{2}
+\end{equation}
+where, in the last step, the unitarity of the CKM matrix is assumed.\\
+To discriminate the signal, DELPHI built a cs tagger $P_{cs}$ that relies on information from the vertex and tracking detectors and on particle identification obtained by exploiting the Cherenkov subdetectors.\\
+\begin{minipage}{\linewidth}
+\begin{minipage}{0.4\linewidth}
+    The value of $V_{cs}$ was extracted fitting the $P_{cs}$ distribution of selected di-jet combinations by using the maximum likelihood method on a multinomial likelihood
+    \\
+    The direct determination of $|V_{cs}|$ was performed on just 100 W pairs collected in 1996, leading to a large total uncertainty of $\sim 40\%$\\
+\end{minipage}
+\hfill
+\begin{minipage}{0.58\linewidth}
+    \vspace{-0.5cm}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=\linewidth]{fig//chap02-theory/delphi.png}
+        \caption{$P_{cs}$ spectra. The yellow is $W\to cX$, the red $W\to uX$, and the blue the background}
+        \label{fig:enter-label}
+    \end{figure}
+\end{minipage}
+    
+\end{minipage}
+However, for the first time, DELPHI was able to provide a determination of $|V_{cs}|$ dominated by the statistical uncertainties and not dependent on theoretical systematics.
+\begin{align}
+    |V_{cs}|&=0.94^{+0.32}_{-0.26}  \text{ (stat)} \pm 0.13 \text{ (syst)} & \text{(DELPHI)}
+\end{align}
+
+
+
+
+
+\subsection{$|V_{cb}|$ with LHC data}
+This work aims to access the $|V_{cb}|$ element through the direct decay of a \PW boson at $\sqrt{s}=13 TeV$ with the recorded luminosity of the RunII.\\
+\\
+At LHC, in all the RunII, more than 8 billion single W bosons and more than 16 million WW pairs were produced: of these, more than 5 billion W bosons decay hadronically, which means that more than 2 million cb quark pairs can be obtained from the inclusive decay of \PW bosons, exploiting the advanced b tagging capabilities of the modern experiments. \\
+Despite that, contrary to any electron-positron collider, an inclusive measurement of $\PW \to cb$ at a hadron collider would be an impossible task due to the large QCD background.\\
+\\
+To avoid it, it is possible to exploit the semileptonic decay of top pairs and use the lepton to trigger the event and the hadronic \PW decay to measure the $\PW \to cb$ branching fraction.\\
+As lepton $\ell$, we will only consider muons and electrons, due to the lower reconstruction efficiency of $\tau$s, that decay hadronically in the $64.8\%$ of cases.
+\\
+\\
+The value of $|V_{cb}|$ can be extracted from the ratio of branching fractions in which the hadronic \PW decays into c and b quarks over the  \PW hadronic branching fraction
+\begin{equation}
+\begin{gathered}
+    R_{cb}=\frac{\Gamma\left(\ttbar \to b\ell \nu\; b cb\right)}{\Gamma\left(\ttbar \to b\ell \nu\; b q\bar{q}\right)}=\\ =\frac{|V_{cb}|^2}{|V_{ud}|^2+|V_{us}|^2+|V_{ub}|^2+|V_{cd}|^2+|V_{cs}|^2+|V_{cb}|^2}
+\end{gathered}
+\end{equation}
+and if we assume the unitarity of the CKM matrix
+\begin{equation}
+    R_{cb}=\frac{|V_{cb}|^2}{2}
+\end{equation}
+
+The determination of $|V_{cb}|$ through direct \PW decays allows us to provide a new determination of $|V_{cb}|$ at a new energy scale ($\sqrt{s}=m_{\PW}$), avoiding complications and theoretical uncertainties due to non-perturbative QCD.\\
+The statistic provided by the RunII does not allow to reach the current precision of $\sim2 \%$ on $|V_{cb}|$ that was obtained observing the semileptonic decays of $B$ mesons, but, despite that, it gives us an opportunity to tackle the $|V_{cb}|$ puzzle with a novel strategy.\\
+The main sources of systematic uncertainties are the b/c tagging uncertainties, but the ratio of branching fractions should allow some cancellations.
+
+\subsection{The Top quark}
+The top quark is the heaviest particle of the standard model, discovered at Fermilab in 1995 by the CDF and the D0 collaborations \cite{Abe1995ObservationFermilab,Abe1995ObservationFermilab}.
 Its lifetime, $\sim 10^{25}s$, is less than the hadronization timescale ($\sim 10^{-23}s$), making it the only quark that can decay freely \cite{Bigi1995TheHadrons}.
-
-\subsection{Top quark decay}
+\\
+\\
 The top quark decays through weak interactions through the channel $\PQt \to \PW q$ and, due to its mass of $m_{\PQt} \simeq 173 \GeV$, the top quark is also the only particle that can decay into an on-shell $\PW$ boson.\\
 Furthermore, the V-A structure of the weak interactions makes 
-the kinematics of the top decay strongly dependent on the polarization of the top quark.
-\\
+the kinematics of the top decay is strongly dependent on the polarization of the top quark.
 \\
 The final states that can be observed are:
 \begin{itemize}
@@ -369,10 +504,8 @@ The $q_i^d$ is a down-type quark and the branching fractions of the decay to the
 \begin{equation}
 \frac{\Gamma(\PQt \to \PW^+ q_i^d)}{\Gamma(\PQt \to \PW^+ q^d)} = |V_{\PQt i}|^2
 \end{equation}
-so the top quark decays to a \PW boson and a \PQb quark with a branching fraction closer to the 100\%.
-\paragraph*{Decay of top quark pairs}
-$\quad$
-\\
+so the top quark decays to a \PW boson and a \PQb quark with a branching fraction closer to 100\%.
+\paragraph*{Decay of top quark pairs}\hspace{0.1cm}\\
 \begin{minipage}{\linewidth}
     \vspace{0.5cm}
     \begin{minipage}{0.45\linewidth}
@@ -391,7 +524,7 @@ $\quad$
             \item 43.9\% \textbf{Semi leptonic} $\ttbar \to \bbbar q \bar{q} \ell \PGnl$
             \item 10.6\% \textbf{Di-leptonic} $\ttbar \to \bbbar \ell \PAGnl  \bar{\ell} \PGnl$
         \end{itemize}
-        The branching ratio of the flavours of the $q_i\bar{q_j}$ pairs generated by \PW decays are given by the respective CKM elements $|V_{ij}|^2/2$.
+        The branching ratio of the flavors of the $q_i\bar{q_j}$ pairs generated by \PW decays is given by the respective CKM elements $|V_{ij}|^2/2$.
     \end{minipage}
 
 \end{minipage}
@@ -406,12 +539,12 @@ In a hadron collider, top quarks are mainly produced in $\ttbar$ pairs via gluon
     \caption{Tree level Feynman diagrams of $\ttbar$ production via gluon-gluon fusion (middle, right) and quark-antiquark annihilation (left)}
     \label{fig:tt_prod}
 \end{figure}\\
-The protons that are collided in the LHC can be described by the parton model \cite{Feynman1969TheEnergies}.\\
-Each proton is composed by three valence quarks (uud) and a sea of quarks, anti-quarks and gluons generated by the QCD activity in the hadron.\\ 
+The protons that collide in the LHC can be described by the parton model \cite{Feynman1969TheEnergies}.\\
+Each proton is composed by three valence quarks (uud) and a sea of quarks, anti-quarks, and gluons generated by the QCD activity in the hadron.\\ 
 The elements that compose the proton are called “partons” and each parton carries a fraction $x_i$ of the proton momentum.\\
-The so-called Bjorken variable $x_i$ follows a statistical distribution, the parton distribution functions (PDFs) $f(x,Q^2)$, that depends on the type of parton and on the proton momentum.\\
+The so-called Bjorken variable $x_i$ follows a statistical distribution, the parton distribution functions (PDFs) $f(x,Q^2)$, that depends on the type of parton and the proton momentum.\\
 The equations that describe the evolution of the PDFs at the different energy scales are the Dokshitzer–Gribov–Lipatov–Altarelli–Parisi (DGLAP) equations \cite{Altarelli1977AsymptoticLanguage,Gribov1972DeepTheory,Dokshitzer1977CalculationChromodynamics.} but the PDFs can't be computed a priori, they have to be extracted from experimental data.
-At low energies, the PDFs are dominated by the presence of valence quarks, but the contribution of gluons and non valence quarks increases with the proton energy as shown in \Fig{fig:pdf}.
+At low energies, the PDFs are dominated by the presence of valence quarks, but the contribution of gluons and non-valence quarks increases with the proton energy as shown in \Fig{fig:pdf}.
 \\
 \begin{figure}[h!]
     \centering

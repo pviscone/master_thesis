@@ -1,12 +1,13 @@
 %!TEX root = ../thesis.tex
 
 \newchap{Event simulation and reconstruction}\label{sec:RECO}
+\vspace{-1cm}
 \minitoc
 
 \section{Event reconstruction}\label{sec:PF}
 The event reconstruction is the identification of all the particles and their kinematics from each pp collision, starting from the raw data that is just a collection of hits and energy clusters.\\
 CMS is a highly segmented detector, designed to give a different signature for each kind of particle.
-All the charged particles produce tracks, electrons and photons produce a shower in the ECAL, hadrons start showering in the ECAL and are absorbed in the HCAL, while muons, due to their mass, are minimum ionizing particles that penetrate all the detector, leaving tracks in the tracker and in the muon system (\Fig{fig:PF}).
+All the charged particles produce tracks, electrons, and photons produce a shower in the ECAL, hadrons start showering in the ECAL and are absorbed in the HCAL, while muons, due to their mass, are minimum ionizing particles that penetrate all the detector, leaving tracks in the tracker and the muon system (\Fig{fig:PF}).
 \begin{figure}[h!]
     \centering
     \includegraphics[width=\linewidth]{fig//chap04-reco/CMS_detector_PID_edit.pdf}
@@ -21,10 +22,10 @@ This approach is called Particle Flow (PF) \cite{Sirunyan2017Particle-flowDetect
 
 \subsection{Tracking}\label{sec:tracking}
 The algorithm used to reconstruct the trajectories of charged particles and their momentum is the Combinatorial Track Finder (CTF) \cite{Chatrchyan2014DescriptionTracker}, an adaptation of the Kalman Filtering (KF) \cite{Fruhwirth1987ApplicationFitting} algorithm.
-At the beginning, a few hits in consecutive layers of the tracker are used as seed of the KF algorithms and then a final fit is performed to estimate the position of the vertex, the direction and the momentum of each charged particle.\\
+At the beginning, a few hits in consecutive layers of the tracker are used as seed of the KF algorithms and then a final fit is performed to estimate the position of the vertex, the direction, and the momentum of each charged particle.\\
 
 \paragraph*{Seeding and iterations}
-This process is iterated in multiple steps, starting searching for tracks that are easier to find (\eg particle with large $p_T$ produced in the IP), removing the associated hits to reduce the combinatorial multiplicity and searching for other kinds of tracks using different seeding criteria (Table \ref{tab:track_seeding}).
+This process is iterated in multiple steps, starting with searching for tracks that are easier to find (\eg particle with large $p_T$ produced in the IP), removing the associated hits to reduce the combinatorial multiplicity, and searching for other kinds of tracks using different seeding criteria (Table \ref{tab:track_seeding}).
 
 \begin{table}[h!]
     \centering
@@ -85,7 +86,7 @@ The second method consists of finding ECAL clusters compatible with tracks extra
 Electrons, traversing the tracker, radiate energy by Bremsstrahlung. For this reason, the KF doesn't perform well, so, tracks that are identified as electrons are refitted with the Gaussian sum filter (GSF) algorithm \cite{Adam2003ReconstructionLHC} that approximates the energy loss of electrons, described by the Bethe-Heitler distribution \cite{Bethe1934OnElectrons}, as a Gaussian mixture.\\
 At each layer, a set of helical track segments is computed for a different value of the energy loss, and it's weighted with the corresponding probability of occurring. These informations are used to decrease the energy of the particle and update the trajectory uncertainties at each layer.
 \subsubsection*{Vertex reconstruction}
-Once all the tracks are reconstructed, those that comes from the same vertex are clustered together and a fit is performed to determine the vertex position.\\
+Once all the tracks are reconstructed, those that come from the same vertex are clustered together and a fit is performed to determine the vertex position.\\
 The fit is done using the simulated annealing algorithm \cite{Kirkpatrick1983OptimizationAnnealing} that estimates the vertex position by minimizing a free energy function and associates to each track the probability of belonging to the i-th vertex. \\
 
 \subsection{Calorimeter clustering}
@@ -111,7 +112,7 @@ The energy and the position of the seeds are used as initial values for the para
     Gaussian width (cm)&1.5&1.5&10.0&10.0&0.2\\
     \hline
     \end{tabular}
-    \caption{Seeding and clustering parameters for the ECAL, the HCAL, and the preshowers \cite{Sirunyan2017Particle-flowDetector}.}
+    \caption{Seeding and clustering parameters for the ECAL, the HCAL, and the pre-showers \cite{Sirunyan2017Particle-flowDetector}.}
     \label{tab:clustering}
 \end{table}
 
@@ -151,7 +152,7 @@ Muons originating from the semileptonic decay of hadrons require more stringent 
 \paragraph*{Electrons and photons}
 Because electrons emit Bremsstrahlung photons and photons convert to electron pairs, the reconstruction of electrons and photons is performed in the same step.\\
 For each supercluster, if it matches a GSF track, an electron candidate is built, if not, a photon candidate is built. \\
-All the ECAL clusters in the PF block linked to the supercluster, to the electron track or to tracks belonging to a photon conversion are associated with the candidate.\\
+All the ECAL clusters in the PF block linked to the supercluster, to the electron track, or tracks belonging to a photon conversion are associated with the candidate.\\
 Electron candidates must satisfy additional identification constraints on the amount of energy radiated, the distance between the track and the ECAL cluster in the $(\eta,\phi)$ plane, the ratio of the energy released in the ECAL and the HCAL, the number of hits and goodness of fit of the track reconstructed both with the KF and the GSF. The final identification of the electron is performed by a Boosted decision tree (BDT) that is trained on all these inputs.\\
 Photons must satisfy isolation criteria that just require the isolation from other tracks and clusters.
 
@@ -170,7 +171,7 @@ The missing transverse momentum is defined as the opposite vector to the vectori
 
 \paragraph*{Post-processing}
 The misidentification of high $p_T$ particles or the presence of cosmic rays can lead to a large reconstructed missing energy $p_T^{\text{miss}}$.
-The post-processing phase consists in selecting high $p_T$ particles, computing the correlation between the $p_T$ of the particle and the reconstructed missing energy, and changing the identification and the reconstruction of the particles if this at least halves the missing energy amplitude.\\
+The post-processing phase consists of selecting high $p_T$ particles, computing the correlation between the $p_T$ of the particle and the reconstructed missing energy, and changing the identification and the reconstruction of the particles if this at least halves the missing energy amplitude.\\
 
 \subsection{Jets}\label{sec:jets}
 To infer the kinematics of the parton produced in the hard-scattering, hadrons that originated from the hadronization of the parton have to be clustered together into jets.
@@ -185,7 +186,7 @@ The anti-kt introduces the custom distances $d_{ij}$ between hadronic PF candida
     d_{i j}=\operatorname*{min}\left(p_{\mathrm{T}i}^{-2},p_{\mathrm{T}j}^{-2}\right)\cdot\frac{\Delta R_{i j}^{2}}{R^2}\\
     d_{iB}=p_{Ti}^{-2}
 \end{gather}
-R is a parameter that regulates the dimension of the jet cone. In CMS, jets are constructed using R=0.4 (AK4 jets) but, to study boosted object that cause jets to merge, R=0.8 (AK8 jets a.k.a. fatjets) is another choice.\\
+R is a parameter that regulates the dimension of the jet cone. In CMS, jets are constructed using R=0.4 (AK4 jets) but, to study boosted objects that cause jets to merge, R=0.8 (AK8 jets a.k.a. fatjets) is another choice.\\
 \\
 The algorithm performs as follows
 \begin{algorithm}
@@ -206,9 +207,9 @@ The algorithm performs as follows
 This algorithm tends to cluster soft particles with hard ones instead of clustering soft particles with each other and tends to group all the components in cones.\\
 The energy scale and resolution of the jet, and consequently also the missing energy, is corrected afterward, analyzing the composition of the jets  \cite{Khachatryan2017JetTeV}.\\
 \\
-Jet can also contain contribution from pileup interaction that occurred in the current bunch crossing (in-time pileup) or in the previous bunch crossing (out-of-time pileup).\\
+Jet can also contain contributions from pileup interaction that occurred in the current bunch crossing (in-time pileup) or the previous bunch crossing (out-of-time pileup).\\
 In-time pileup contributions from charged hadrons, that are over 50\% of the in-time pileup contribution, can be avoided by subtracting the contribution of charged hadrons originating from pileup vertices while out-of-time pileup is determined by fitting the pulse shape of the calorimeters signals and subtracted to the jet energy afterward.\\
-The remaining contributions from pileup are parametrized as a function of $p_T, \eta$ and the jet area.
+The remaining contributions from pileup are parametrized as a function of $p_T, \eta$, and the jet area.
 
 \subsubsection*{Flavour tagging}
 To fully characterize the jet, we must understand which is the flavor of the parton that generated the jet.\\
@@ -242,7 +243,7 @@ The first stage of the simulation is the generation of the matrix elements, usua
 The next step, performed by \PYTHIA \cite{Sjostrand2006PYTHIAManual} in the CMS software, is the hadronization of colored particles, done exploiting the phenomenological Lund string model \cite{Andersson1983PartonDynamics}.\\
 \\
 The second step, performed by the \GEANTfour framework \cite{Agostinelli2003GEANT4--aToolkit}, is the simulation of the detector response and is the most computationally intensive step, to the point that other approaches to the simulation are being considered \cite{Sekmen2016RecentSimulation,Vaselli2023FlashSimFlow}.\\
-\GEANT emulates the propagation of particles through the CMS detector, simulating the particle-matter interactions and the readout of each subdetector. In these steps also the electronic noise, the digitization, the Landau fluctuations, and all the inefficiencies of the detectors like the non-uniformity of the materials are simulated.\\
+\GEANT emulates the propagation of particles through the CMS detector, simulating the particle-matter interactions and the readout of each subdetector. In these steps, the electronic noise, the digitization, the Landau fluctuations, and all the inefficiencies of the detectors like the non-uniformity of the materials are simulated.\\
 The events are then reconstructed exactly like the real data, with the same algorithms.\\
-Despite the complexity of the full simulation, the MC can't reproduce exactly the real data so, for each analysis, the user has to apply the so-called scale factors (SF) to the MC, a set of event weight that represents the ratios of efficiencies between MC and data $SF=\epsilon_{data}/\epsilon_{MC}$.
+Despite the complexity of the full simulation, the MC can't reproduce exactly the real data so, for each analysis, the user has to apply the so-called scale factors (SF) to the MC, a set of event weights that represents the ratios of efficiencies between MC and data $SF=\epsilon_{data}/\epsilon_{MC}$.
 
