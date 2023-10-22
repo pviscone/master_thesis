@@ -18,7 +18,7 @@ This final state can be mimicked by the following processes.
     \item W+jets $(\PW \to \ell \nu)$: This process is the one with the largest cross-section but the lack of three b jets and one c jets suppress it significantly.
     \item WW+jets: the semileptonic decay of \PW pairs produced directly by $pp$ collision, in association with two other b jets, has the same signal signature. Another difference with the signal is the mismatch of the invariant mass of 3 jets with the top mass, which, however, is difficult to exploit due to the combinatorial ambiguities and the low tri-jet mass resolution.  
     \item $t\PW+\text{jets}$: it is similar to the $\PW \PW + \text{jets}$ process, with the difference that only one additional b jet instead of two is required to match the signal signature.
-    \item $tq$ (t-channel): if the top quark decays into a lepton. There are two missing b jets and, if the quark is not a charm quark, also a c jet.
+    \item $tq$ (t-channel): if the top quark decays into a lepton. There are two missing b jets and, if the quark is not a charm quark, also a c jet. However, to produce a single top in a t channel, one incoming b quark is needed. Since the b quark production at LHC is mainly due to gluon splitting, the tq (t-channel) is often produced in association with an additional b jet.  
 \end{itemize}
 The production cross-sections of these processes  at $\sqrt{s}=13\TeV$ with $pp$ collisions are reported in Tab.\ref{tab:cross}
 
@@ -31,42 +31,21 @@ The production cross-sections of these processes  at $\sqrt{s}=13\TeV$ with $pp$
           \multicolumn{1}{c|}{$\mathbf{pp\to}$}&\multicolumn{4}{c|}{$ \mathbf{t\bar{t}}$}&  $ \mathbf{W}$& $ \mathbf{WW}$ & $ \mathbf{tW}$& $ \mathbf{tq}$\\
           &&  &  &  &  &   & & (t-channel)\\
           \midrule
-          \multicolumn{1}{c|}{$\mathbf{\sigma (pb)}$}&\multicolumn{4}{c|}{\multirow{2}{*}{$832$}}& \multirow{2}{*}{$59100$} & \multirow{2}{*}{$118$} &  \multirow{2}{*}{79}& \multirow{2}{*}{214} \\
+          \multicolumn{1}{c|}{$\mathbf{\sigma (pb)}$}&\multicolumn{4}{c|}{\multirow{2}{*}{$832$}}& \multirow{2}{*}{$190000$} & \multirow{2}{*}{$118$} &  \multirow{2}{*}{79}& \multirow{2}{*}{214} \\
           \multicolumn{1}{c|}{$(13\TeV)$}& &  & & &  &&&\\
           \midrule
           &signal&  semiLept&  diLept&  diHad& Lept &  semiLept & semiLept& Lept\\
           &$(b\ell \nu\: bcb)$&$(b\ell \nu\: b\bar{q}q)$&$(b\bar{\ell} \nu\: \bar{b}\ell \bar{\nu})$&$(\bar{b}\bar{q}q\: b\bar{q}q)$&$(\ell \nu)$&$(\ell \nu \: q\bar{q})$& $(b\ell\nu q \bar{q})$&$(b\ell\nu \: q)$\\
           \midrule
-          $\mathcal{BR}$& $3.7 \cdot 10^{-4}$   & 0.439 & 0.106 & 0.455 & 0.326 & 0.106 & 0.439 & 0.326\\
-          $ \mathcal{BR}\cdot\mathbf{\sigma} (pb)$& 0.307 & 365 & 88 & 379 & 19200 & 12.5 & 34.7& 69.8 \\
-          $\mathcal{BR}\cdot\mathcal{L}_I\mathbf{\sigma} $&$4.2 \cdot 10^4$& $5.0 \cdot 10^7$ &  $1.2 \cdot 10^7$&$5.2 \cdot 10^7$  &  $2.6 \cdot 10^9$ & $1.7 \cdot 10^6$  & $4.8 \cdot 10^6$& $9.6 \cdot 10^{6}$\\
+          $\mathcal{BR}$& $3.7 \cdot 10^{-4}$   & 0.439 & 0.106 & 0.455 & 0.326 & 0.439 & 0.439 & 0.326\\
+          $ \mathcal{BR}\cdot\mathbf{\sigma} (pb)$& 0.307 & 365 & 88 & 379 & 61000 & 51.8 & 34.7& 69.8 \\
+          $\mathcal{BR}\cdot\mathcal{L}_I\mathbf{\sigma} $&$4.2 \cdot 10^4$& $5.0 \cdot 10^7$ &  $1.2 \cdot 10^7$&$5.2 \cdot 10^7$  &  $8.5 \cdot 10^9$ & $7.1 \cdot 10^6$  & $4.8 \cdot 10^6$& $9.6 \cdot 10^{6}$\\
           \bottomrule
     \end{tabular}
     \vspace{0.2cm}
     \caption{Production cross-sections of signal and backgrounds at $\sqrt{s}=13\TeV$. In the first row, there are the production cross-sections from pp collisions at $13 \TeV$, in the following rows there are the respective branching fractions of the different final states, the cross-section of the respective final states, and the total number of events expected in all the Run2, with a total integrated luminosity of $\mathcal{L}_I=138 {fb}^{-1}$}
     \label{tab:cross}
 \end{table}
-
-\iffalse
-\begin{figure}[H]
-    \vspace{-0.5cm}
-     \centering
-     \begin{subfigure}{0.48\linewidth}
-         \centering
-         \includegraphics[width=\linewidth]{fig//chap07-selection/LHE_Nb.png}
-         \caption{b quark}
-
-     \end{subfigure}
-     \hfill
-     \begin{subfigure}{0.48\linewidth}
-         \centering
-        \includegraphics[width=\linewidth]{fig//chap07-selection/LHE_Nc.png}
-         \caption{c quark}
-     \end{subfigure}
-        \caption{Stacked histogram of the number of c and b quarks for each sample at the parton level.}
-        \label{fig:LHE_flav}
-\end{figure}
-\fi
 
 \paragraph*{Analysis strategy}
 In the following sections, the selection criteria for physics objects and events are described, defining different signal regions for $\ell=\mu,e$.
@@ -107,7 +86,7 @@ A comparison of all the used samples is reported in Table \ref{tab:samples}.
     \ttbar diHad&\multirow{2}{*}{\POWHEG (NLO)} &\multirow{2}{*}{1}&\multirow{2}{*}{0.87} &\multirow{2}{*}{TTdiHad}\\
     $(bq\bar{q}\: \bar{b}q\bar{q})$&& &\\
     \midrule
-    W+jets& \MADGRAPH (LO) &\multirow{2}{*}{4}&\multirow{2}{*}{0.02} &\multirow{2}{*}{WJets}\\
+    W+jets& \MADGRAPH (LO) &\multirow{2}{*}{4}&\multirow{2}{*}{0.01} &\multirow{2}{*}{WJets}\\
     $(W\to\ell\nu)$&+\MADSPIN &&\\
     \midrule
     WW+jets&aMC@NLO (NLO) & \multirow{2}{*}{1} & \multirow{2}{*}{0.56}& \multirow{2}{*}{WWJets}\\
@@ -141,7 +120,7 @@ where $w_{e}$ is the event weight obtained by the product of the weights produce
 As already said, the idea of the analysis is to focus on semileptonic (SL) decay to exploit the lepton as a probe, so we are interested in selecting one prompt lepton, along with four jets.
 The selection of physics objects is crucial to reject non-prompt leptons that can originate from the semileptonic decays of mesons and jets that can originate from prompt leptons or pile-up.\\
 \\
-The objects taken into consideration are Particle Flow candidates (see sec. \ref{sec:PF}) and the applied selection cuts are the working points (WP) recommended by the CMS Physics Object Groups (POG).\\
+The objects taken into consideration are Particle Flow candidates (see sec. \ref{sec:PF}) and the applied selection cuts are working points (WP) recommended by the CMS Physics Object Groups (POG).\\
 Since the signal cross-section is just $\sigma_{\text{signal}}\sim 0.3 pb$, the requirements will be minimal to preserve the statistics. 
 \subsection{Muons}
 \paragraph*{Identification}
@@ -164,7 +143,7 @@ The selected working point is the \emph{Loose PF Isolation}: $\text{Iso}_\mu<0.2
 
 \subsection{Electrons}
 The selection of electron candidates follows the same principles as the muon selections.
-They are required to be into the tracker coverage $|\eta|<2.4$ and its momentum has to be $p_T>30$.\\
+They are required to be into the tracker coverage $|\eta|<2.4$ and its momentum has to be $p_T>30 \GeV$.\\
 \\
 The identification and isolation of the electron are based on the \emph{medium} working point of \textit{Fall17IsoV2} \cite{2018ElectronConference}, a BDT model which assigns a score to the identification and isolation of the electron, taking as input informations about tracks, calo-clusters, shower shape, the amount of collinear radiation to the electron track, and the PF isolation.\\
 \\
@@ -243,7 +222,6 @@ The identification of jets from pile-up relies on three types of properties of t
 \begin{itemize}
     \item  In the tracker acceptance, the tracks associated with the jets can be used to match the jet with the primary interaction vertex.
     \item The shape of the calorimetric deposit is different in case of overlap of multiple interactions.
-    \newpage
     \item The objects' multiplicity.
 \end{itemize}
 
@@ -308,7 +286,7 @@ The identification of jets from pile-up relies on three types of properties of t
 \end{minipage}
 
 \begin{center}
-    \vspace{1.5cm}
+    \vspace{1cm}
     \fontsize{14}{14}\selectfont
     \textbf{Summary Jets}
 \end{center}
@@ -350,7 +328,6 @@ The identification of jets from pile-up relies on three types of properties of t
 \end{minipage}   
 \end{minipage}
 
-\newpage
 \begin{center}
     \vspace{1cm}
     \fontsize{14}{14}\selectfont
@@ -438,14 +415,49 @@ The identification of jets from pile-up relies on three types of properties of t
  
 \newpage
 \section{Event selections}
-As already discussed, the chosen event selection is minimal to avoid large losses in the signal acceptance efficiency.\\ 
-The signal events are targeted in two different final states, defined by the flavor of the lepton used as a probe, so, after the physics objects selection, two different channels are defined: a Muon channel that contains events with at least one selected muon, and an Electron channel that contains events with at least one selected electron.\\
+As already discussed, the chosen event selection is minimal to avoid large losses in signal acceptance efficiency.\\ 
+The signal events are targeted in two different final states, defined by the flavor of the lepton used as a probe, so after the physics objects selection and the requirement of the presence of at least 4 jets, two different channels are defined: a Muon channel that contains events with at least one selected muon, and an Electron channel that contains events with at least one selected electron.\\
+
+\vspace{1.25cm}
+\begin{figure}[H]
+     \centering
+     \begin{subfigure}{0.42\linewidth}
+         \includegraphics[width=\linewidth]{fig//chap07-selection/selection/Leading_Electron_pt.png}
+         \caption{Leading electron}
+     \end{subfigure}
+     \begin{subfigure}{0.42\linewidth}
+        \includegraphics[width=\linewidth]{fig//chap07-selection/selection/Leading_Muon_pt.png}
+         \caption{Leading muon}
+     \end{subfigure}
+     \begin{subfigure}{0.42\linewidth}
+        \includegraphics[width=\linewidth]{fig//chap07-selection/selection/Leading_Jet_pt.png}
+         \caption{Leading Jet}
+     \end{subfigure}
+    \begin{subfigure}{0.42\linewidth}
+        \includegraphics[width=\linewidth]{fig//chap07-selection/selection/Second_Leading_Jet_pt.png}
+         \caption{Second Leading Jet}
+     \end{subfigure}
+\end{figure}
+\vspace{-0.5cm}
+\begin{figure}[H]
+    \ContinuedFloat
+    \centering
+    \begin{subfigure}{0.42\linewidth}
+        \includegraphics[width=\linewidth]{fig//chap07-selection/selection/Third_Leading_Jet_pt.png}
+         \caption{Third Leading Jet}
+     \end{subfigure}
+    \begin{subfigure}{0.42\linewidth}
+        \includegraphics[width=\linewidth]{fig//chap07-selection/selection/Fourth_Leading_Jet_pt.png}
+         \caption{Fourth Leading Jet}
+     \end{subfigure}
+        \caption{$p_T$ distributions after the object selection and the 1 lepton + 4 jets requirements.}
+\end{figure}
+\vspace{-0.5cm}
 An additional selection on the most b-tagged jet is imposed using the medium working point suggested by the BTag\&Vertexing (BTV) POG.\\
-\\
 The cumulative efficiencies of each cut are described in Tab.\ref{tab:event_selection} and the final event counts normalized with the RunII luminosity and the respective cross-sections in \Fig{fig:event_selection}
 \begin{table}[H]
     \centering
-    \fontsize{11.5pt}{11.5pt}\selectfont
+    \fontsize{11.pt}{11.pt}\selectfont
     \begin{tabular}{l|ccc||ccc}
         \toprule
          &  \multicolumn{3}{c||}{\textbf{Muons}} &\multicolumn{3}{c}{\textbf{Electrons}} \\
@@ -460,11 +472,11 @@ The cumulative efficiencies of each cut are described in Tab.\ref{tab:event_sele
          \midrule
          \textbf{signalTau}& 4.86\% & 3.95\% & 3.80\% & 3.37\% & 2.79\% & 2.70\%\\
          \midrule
-         \textbf{TTsemiLeptMu}& 21.2\% & 18.0\% & 16.6\% & 0.05\% & 0.04\% & 0.03\% \\
+         \textbf{TTsemiLeptMu}& 63.6\% & 54.0\% & 49.8\% & 0.15\% & 0.12\% & 0.09\% \\
          \midrule
-         \textbf{TTsemiLeptEle}& 0.16\% & 0.13\% & 0.10\% & 17.3\% & 15.2\% & 13.9\% \\
+         \textbf{TTsemiLeptEle}& 0.48\% & 0.39\% & 0.30\% & 51.9\% & 45.6\% & 41.7\% \\
          \midrule
-         \textbf{TTsemiLeptTau}& 1.53\%  & 1.28\% & 1.16\% &1.08\% &0.94\% &0.86\%\\
+         \textbf{TTsemiLeptTau}&4.59\%  & 3.84\% & 3.48\% &3.24\% &2.82\% &2.58\%\\
          \midrule
          \textbf{TTdiLept}& 40.9\% & 27.4\% & 25.3\% & 33.8\% &22.7\% &20.9\% \\
          \midrule
@@ -482,31 +494,60 @@ The cumulative efficiencies of each cut are described in Tab.\ref{tab:event_sele
     \caption{Cumulative efficiencies of the selections in the Muons and Electrons channel after the physics objects selection}
     \label{tab:event_selection}
 \end{table}
-
-The main background contribution in each channel is from the \ttbar semileptonic decay, that is 3 order of magnitude greater than the signal.\\
-Another significant contribution is from the \ttbar dileptonic (DL) process. The contribution from the WW+Jets process is two order of magnitude smaller than \ttbar SL and \ttbar DL processes, while the remaining processes' contribution is one order of magnitude smaller than the leading backgrounds. 
+\vspace{-0.5cm}
+The main background contribution in each channel is from the \ttbar semileptonic decay, which is 3 orders of magnitude greater than the signal.
+Another significant contribution is from the \ttbar dileptonic (DL) process. The contribution from the WW+Jets process is two orders of magnitude smaller than \ttbar SL and \ttbar DL processes, while the remaining processes' contribution is one order of magnitude smaller than the leading backgrounds. 
 
 \begin{figure}[H]
      \centering
-     \begin{subfigure}{0.7\linewidth}
+     \begin{subfigure}{0.42\linewidth}
+         \includegraphics[width=\linewidth]{fig//chap07-selection/btag/Max_DeepJetB.png}
+         \caption{Max \DeepJet B}
+     \end{subfigure}
+    \begin{subfigure}{0.42\linewidth}
+         \includegraphics[width=\linewidth]{fig//chap07-selection/btag/Second_Max_DeepJetB.png}
+         \caption{Second Max \DeepJet B}
+     \end{subfigure}
+    \begin{subfigure}{0.42\linewidth}
+         \includegraphics[width=\linewidth]{fig//chap07-selection/btag/Third_Max_DeepJetB.png}
+         \caption{Third Max \DeepJet B}
+     \end{subfigure}
+    \begin{subfigure}{0.42\linewidth}
+         \includegraphics[width=\linewidth]{fig//chap07-selection/btag/Fourth_Max_DeepJetB.png}
+         \caption{Fourth Max \DeepJet B}
+     \end{subfigure}
+          \begin{subfigure}{0.42\linewidth}
+         \includegraphics[width=\linewidth]{fig//chap07-selection/btag/Max_DeepJetC.png}
+         \caption{Max \DeepJet C}
+     \end{subfigure}
+    \begin{subfigure}{0.42\linewidth}
+         \includegraphics[width=\linewidth]{fig//chap07-selection/btag/Second_Max_DeepJetC.png}
+         \caption{Second Max \DeepJet C}
+     \end{subfigure}
+     \caption{B-tag and c-tag score distributions after the object selection and the 1 lepton + 4 jets requirements.}
+
+\end{figure}
+
+
+\begin{figure}[H]
+     \centering
+     \begin{subfigure}[t]{\linewidth}
          \centering
          \includegraphics[width=\linewidth]{fig//chap07-selection/ele_selection.png}
-         \caption{Electrons channel}
+         \caption{\textbf{Electrons channel}}
 
      \end{subfigure}
      
-     \vspace{0.5cm}
-     \begin{subfigure}{0.7\linewidth}
+     \vspace{1cm}
+     \begin{subfigure}[b]{\linewidth}
          \centering
         \includegraphics[width=\linewidth]{fig//chap07-selection/mu_selection.png}
-         \caption{Muons channel}
+         \caption{\textbf{Muons channel}}
      \end{subfigure}
      \vspace{0.5cm}
         \caption{Event number for each process for each cut. In the legend the final number of events for each process after the preselection is shown. The processes are ordered in their final event number.}
         \label{fig:event_selection}
 \end{figure}
-\TODO{PLOT: prima di event selection ma post obj selection: nJet,nMu,nEle}
-\TODO{PLOT: Dopo event selection ma senza btag cut: Jet\_{pt,btag} up to 4 (linea taglio su btag leading), ctag up to 2, leading mu and ele pt}
 \newpage
 \section{Neutrino reconstruction}
 To fully reconstruct the kinematics of the event and to allow the reconstruction of the leptoninc decaying top quark, the longitudinal component of the neutrino was reconstructed exploiting the transverse momentum of the missing energy, its pseudorapidity, the lepton's four vector, and fixing the mass of the \PW boson to $m_W=80.385 \GeV$.
@@ -518,7 +559,7 @@ The equation to solve for $p_z^{\nu}$ is a second order equation
     p_z^\nu=\frac{p_z^\ell(m_W^2+2\vec{p}_T^{\:\ell} \cdot \vec{p}_T^{\:\nu})\pm\sqrt{(p_z^\ell)^2 (m_W^2+2\vec{p}_T^{\:\ell} \cdot \vec{p}_T^{\:\nu})^2-|p_T^\ell|^2[4(E_\ell p_T^\nu)^2-(m_W^2+2\vec{p}_T^{\:\ell} \cdot \vec{p}_T^{\:\ell})^2)]}}{2|p_T^\nu|^2}
 \end{equation*}
 
-Since the equation has multiple solutions, that can also be complex, multiple cases should be discussed. If the equation has a complex solution the real part is taken. If the equation allows two real solutions, we must choose one.\\
+Since the equation has multiple solutions, that can also be complex, multiple cases should be discussed. If the equation has a complex solution the real part is taken. If the equation allows two real solutions, we must choose one of them.\\
 In \Fig{fig:nu_comparison} it is shown a comparison between the solution with the smaller magnitude, the solution with the greater magnitude, and the truth value of $p_z^\nu$ at the LHE level.\\
 This study was performed using signal samples.
 
@@ -526,7 +567,7 @@ This study was performed using signal samples.
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\linewidth]{fig//chap07-selection/Pznu_LHE_comparison.png}
-    \caption{In the left panels there are the events that have two real solutions, while in the right panel the ones with the complex solutions of which only the real part is shown. In the top panel the distribution of the absolute value of the solutions and the LHE truth value are shown, while in the bottom panels, there are the distributions of the differences between the solutions and the LHE truth values. $\Delta$ in the legend is the discriminant of the second order equation. The distributions are in arbitrary units.}
+    \caption{In the left panels there are the events that have two real solutions, while in the right panels the ones with the complex solutions of which only the real part is shown. In the top panel the distribution of the absolute value of the solutions and the LHE truth value are shown, while in the bottom panels, there are the distributions of the differences between the solutions and the LHE truth values. $\Delta$ in the legend is the discriminant of the second-order equation. The distributions are in arbitrary units.}
     \label{fig:nu_comparison}
 \end{figure}
 
@@ -538,7 +579,7 @@ The distribution of the solutions with the smaller absolute value is in better a
     \begin{minipage}{0.42\linewidth}
 
 \begin{itemize}
-    \item The solution is complex: take the real part.
+    \item The solution are complex: take the real part.
     \item There are two real solutions: take the smallest in the absolute value.
 \end{itemize}
 
