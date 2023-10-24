@@ -2,11 +2,27 @@
 \newchap{Signal reconstruction and interpretation}\label{sec:kin}
 \vspace{-1cm}
 \minitoc
+\vspace{0.5cm}
+This chapter focuses on the kinematical reconstruction and interpretation of the signal events tackling the jet-parton assignment problem.
+\\
+\\
+The jet-parton assignment is first done with just one jet, the one b-jet associated with the decay of the top quark that decays into the W boson that decays leptonically. This simplified benchmark is used to perform a feature ranking exploiting the N+1, N-1 method and to select the best model that will be used in the full jet-paron assignment.
 
-\section{Unidimensional feature ranking}
-\section{Leptonic bJet-parton assignment benchmark}
-\subsection{Event level features}
-\subsection{{$N-1,N+1$} ranking}
-\subsection{Object level features}
-\section{Full Jet-parton assignment}
+\section{Jet-parton assignment}
+The Jet-Parton assignment task consists of associating at each of the four quark partons a Jet to fully reconstruct the topology and the kinematics of the event.\\
+\\
+This is a difficult task due to the combinatorial nature of the problem: If there are N jets in an event, the total number of combinations in which is possible to assign a jet to the 4 partons is $N!/(N-4)!$, so, for example, if an event has 10 jets, there are more than 5000 possible combinations.\\
+\\
+Usually, this task is accomplished through a kinematic fit that consists of finding the combination of jets for each event that minimizes the chi-square of all the invariant masses\footnote{The $\chi^2$ can also include terms related to the flavor tagging like $[(b_{j_1}-1)^2+(c_{j_2}-1)^2+(b_{j_3}-1)^2+(b_{j_4}-1)^2]/\sigma^2$ where $b_{j_i},c_{j_i}$ are the b and c tag score of the i-th jet and $\sigma$ a hyperparameter. NB: non è un vero iperparametro e in questo modo chi2 NON funziona, errore sugli score non gaussiani (neanche simmetrici).E' una cosa empirica pezzente}.
+\begin{equation}
+    \chi^2=\frac{(m_{j_1j_2}^{\text{inv.}}-m_W)^2}{\Gamma^2_W}+\frac{(m_{j_1j_2j_3}^{\text{inv.}}-m_t)^2}{\Gamma^2_t}+\frac{(m_{j_4\ell\nu}^{\text{inv.}}-m_t)^2}{\Gamma^2_t}
+\end{equation}
+This is an unsupervised approach but in this work another approach is used, exploiting supervised multivariate models like neural networks that allow us to exploit not only the kinematic variables of jets but also their flavor score and the correlations between all the observables.
+
+\subsection{Leptonic bJet benchmark}
+
+\subsubsection*{Event level features}
+\subsubsection*{{$N-1,N+1$} ranking}
+\subsubsection*{Object level features}
+\subsection{Full Jet-parton assignment}
 
