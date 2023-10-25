@@ -58,14 +58,30 @@ This work will be conducted only on MC simulations and the observed data will be
 
 
 \section{Monte Carlo samples}\label{sec:MC}
-The generators that were used to build the MC samples are \MADGRAPH 5 (at the leading order (LO)) and aMC@NLO and \POWHEG 2 (at the next-to-leading order (NLO), including virtual corrections). In all samples, the used PDF set is NNPDF3.1 NNLO and the mass of the top quark is set to 172.5\GeV. The hadronization is handled by \PYTHIA8 exploiting the Lung string model with the \texttt{TuneCP5} set of tuning parameters \cite{Sirunyan2020ExtractionMeasurements}: the $\alpha_S$ value used for the simulation of the multiparton interaction (MPI)\footnote{The MPI are additional soft or semi-hard parton–parton scatterings that occur within the same hadron-hadron collision.}, hard scattering, and FSR and ISR contributions is equal to 0.118 and it runs according to an NLO evolution.
-For each sample, a different number of additional partons is generated to include FSR and ISR contributions and virtual corrections at NLO.
-\\
-After the parton shower evolution, the final jet clusters are matched with the partons obtained from the matrix element calculations and if the match is found, the event is removed to avoid the double counting\footnote{This procedure is called "Jet matching"}.
-\\
-\\
+The simulation of a hadron-hadron collision relies on different steps and elements \cite{Bierlich2022A8.3}:
+\begin{enumerate}
+    \item \textbf{PDF set}: The first thing that has to be defined is the parton distribution function of the proton since it defines the initial partons involved in the hard scattering and their fraction of carrying momenta.\\
+    In all the simulated samples, the used PDF set is NNPDF3.1 NNLO \cite{TheNNPDFCollaboration2017PartonData}.
+    \item \textbf{Generator}: The kinematics of the outgoing particles are based on matrix-element calculated in perturbation theory, using Markov chain Monte Carlo integrators.\\
+    The generators that were used to build the MC samples are \MADGRAPH 5, aMC@NLO \cite{Alwall2011MadGraphBeyond}, and \POWHEG 2 \cite{Alioli2010ABOX}, setting $\alpha_s$ to a value of $0.118$ at the Z pole mass.\\
+    All the samples are generated with a different number of additional partons, and with different precision, \ie considering only the leading order (LO) calculations or going forward to the next-to-leading order (NLO) to include virtual corrections.
+
+        
+    \item \textbf{Matching}
+    The matrix element calculations provide an accurate description of events with well-separated particles in the final state, while the accurate reproduction of collinear and soft emissions is handled by the parton showers.\\
+    Matching methods have the scope of improving the accuracy of the description of multijet final states, combining both approaches.\\
+    The Monte Carlo samples used in this work are generated using the MLM matching method \cite{Mangano2006MatchingCollisions} if the matrix element calculations are performed at the LO, or using the FxFx method \cite{Frederix2012MergingMCNLO} if the matrix element calculations are performed at the NLO. 
+
+
+    \item \textbf{Parton Showering and Hadronization}
+    The initial state radiation (ISR), final state radiation (FSR), and the multiple parton interactions (MPI)\footnote{The MPI are additional soft or semi-hard parton–parton scatterings that occur within the same hadron-hadron collision.} contributions participate in the simulation of the parton showers.\\
+    In the end, the hadronization is simulated by exploiting the Lund string model \cite{Andersson1983PartonDynamics}.\\
+    Both the parton showering and the hadronization are handled by \PYTHIA \cite{Bierlich2022A8.3}, and all the samples were generated using the \texttt{TuneCP5} set of \PYTHIA tuning parameters \cite{Sirunyan2020ExtractionMeasurements}.
+\end{enumerate}
+
 The reconstruction and the calibration are performed with the \textit{Ultra Legacy 18} (UL18) setting, which reproduces the state of the detector in 2018.\\
 The used samples are NanoAOD files \cite{Liu2020TheCMS}, a lightweight data format that consists only of flat ROOT NTuple.
+\\
 \\
 A comparison of all the used samples is reported in Table \ref{tab:samples}.
 \begin{table}[H]
@@ -177,7 +193,7 @@ The selected working point is the \emph{Loose PF Isolation}: $\text{Iso}_\mu<0.2
 \end{minipage}
 
 
-
+\newpage
 \subsection{Electrons}
 The selection of electron candidates follows the same principles as the muon selections.
 They are required to be into the tracker coverage $|\eta|<2.4$ and its momentum has to be $p_T>30 \GeV$.\\
@@ -221,6 +237,8 @@ The medium working point has an overall signal efficiency of $\sim 90\%$ and a b
         \end{table}      
     \end{minipage}
 \end{minipage}
+
+
 \subsection{Jets}\label{sec:jet}
 The jets taken into consideration are the PF AK4 Jet candidates in the calorimeter coverage $|\eta|<4.8$ and with $p_T>20\GeV$.
 
@@ -328,7 +346,7 @@ The detector response to an impinging jet is convoluted, making it difficult to 
 To allow a proper mapping of the measured jet energy deposits to the true particles energy, a set of jet energy corrections is applied.\\
 \\
 In CMS, the jet energy scale corrections are separated into different steps applied sequentially and in a fixed order.\\
-Each correction takes care of a different effect and consists of a rescaling of the jet four-vector \cite{2021Jet13TeV}.\\
+Each correction takes care of a different effect and consists of a rescaling of the jet four-vector \cite{2021Jet13TeV}.
 
 \begin{figure}[H]
     \centering
@@ -340,8 +358,10 @@ Each correction takes care of a different effect and consists of a rescaling of 
     \item \textbf{L1 Pile-Up}: remove the energy coming from pileup events, removing any dependence on the luminosity.\\
     The pileup corrections are determined from simulated QCD dijet events with and without pileup overlay.
     \item \textbf{L2L3 MC-truth corrections}: this correction has the scope to improve the accordance between the reconstructed jet energy and the particle-level energy, and to make the response of the jet energy uniform in $p_T$ and $\eta$. The related scale factors are evaluated on QCD dijet samples.
+    \item \textbf{L5 flavor corrections (optional)}: these are additional optional corrections that adjust the jet energy scale of jets of different flavors separately. In this work, it is not applied.
 \end{enumerate}
-There are other corrections, some of which are optional, like the flavor correction that corrects the jet energy scale separately for jets of different flavors, while others are applied only to the data and not to the MC samples.\\
+The pile-up and MC-truth corrections are mandatory both on MC and data, while additional residual corrections are mandatory only on data: they are meant to correct differences of the order of 1\% within jet response in data and MC.
+
 A summary of the jet energy corrections chain is shown in \Fig{fig:jerc}.
 
 \paragraph*{Jet energy resolution corrections}
@@ -350,7 +370,7 @@ if a reconstructed jet and a jet at the generator level (GenJet) are matched thr
 \begin{equation}
     f=1+\textit{SF}\:\frac{p_T-p_T^{\text{Gen}}}{p_T}
 \end{equation}
-where $\sigma$ is the jet energy resolution measured with data, and SF is the scale factors that depend on the $\eta$ region in which the jet belongs.\\
+where $\sigma$ is the jet energy resolution measured with data, and SF is the scale factors that depend on the $\eta$ region in which the jet belongs.
 Otherwise, if there is not any match between the jet and the genjets, a random Gaussian smearing is applied.
 
 
@@ -374,7 +394,7 @@ The procedure to obtain SFs related to the c-tagging is similar, using W+c sampl
      \text{CvB} &= \frac{P(c)}{P(c) + P(b)} \cdot P(b) 
 \end{aligned}
 \end{equation}
-where $P(b), P(c),$ and $P(udsg)$ are respectively the b-tag, c-tag, and light flavor \DeepJet discriminators.
+where $P(b), P(c),$ and $P(udsg)$ are the b,c, and light flavor \DeepJet scores.
 
 
 
@@ -419,7 +439,7 @@ where $P(b), P(c),$ and $P(udsg)$ are respectively the b-tag, c-tag, and light f
 \newpage
 \section{Event selections}
 As already discussed, the chosen event selection is minimal to avoid large losses in signal acceptance efficiency.\\ 
-The signal events are targeted in two different final states, defined by the flavor of the lepton used as a probe, so after the physics objects selection and the requirement of the presence of at least 4 jets, two different channels are defined: a Muon channel that contains events with at least one selected muon, and an Electron channel that contains events with at least one selected electron.\\
+The signal events are targeted in two different final states, defined by the flavor of the lepton used as a probe, so after the physics objects selection and the requirement of the presence of at least 4 jets, two different channels are defined: a Muon channel that contains events with at least one selected muon, and an Electron channel that contains events with at least one selected electron.
 
 \vspace{1.25cm}
 \begin{figure}[H]

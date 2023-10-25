@@ -92,12 +92,11 @@ The training regime is the phase in which each weight of the network is tuned le
     \item Backpropagation: The gradients of the loss with respect to each weight are computed and the weights are updated.
     \item Iterate from point 3. T times.
 \end{enumerate}
-After that the NN is trained, it can be used in the evaluation mode, feeding the data to it, propagating the information in the network, and collecting the output to obtain the predictions.\\
-
-\begin{figure}[h!]
-    \vspace{-0.8cm}
+After that the NN is trained, it can be used in the evaluation mode, feeding the data to it and collecting the output to obtain the predictions.
+\begin{figure}[H]
+    %\vspace{-0.cm}
     \centering
-    \includegraphics[width=0.95\linewidth]{fig/chap05-stats/dnn.png}
+    \includegraphics[width=0.85\linewidth]{fig/chap05-stats/dnn.png}
     \caption{Sketch of the training process of a binary classifier NN with 2 input features.}
     \label{fig:dnn}
 \end{figure}
@@ -109,7 +108,7 @@ After that the NN is trained, it can be used in the evaluation mode, feeding the
 Under the hood, a neural network is just an optimizer that tries to find the optimal function that minimizes a specific metric.\\
 In other words, it is just a tool to perform a multidimensional fit, specifying the objective function in terms of sum and composition of activation function\footnote{This is called "induction bias" and is determined by the architecture of the NN}.\\
 The metric that the NN tries to minimize during the learning phase is the so-called "Loss function", a continuous function that compares the prediction of the NN with the labels and has its minimum, ideally, when all the data are predicted correctly.\\
-For example, in the case of a regression problem, one of the most used loss functions is the MSE $L=\sum(y_i-\hat{y_i})^2$, which is the same metric that is minimized when a least squares fit is performed.\\
+For example, in the case of a regression problem, one of the most used loss functions is the MSE $L=\sum(y_i-\hat{y_i})^2$\footnote{which is the same metric that is minimized when a least squares fit is performed}.\\
 \\
 In the context of classification problems, the most used loss function is the cross-entropy loss.\\
 Assuming that each class belongs to one output neuron, we can use the so-called one-hot encoding, which is a binary representation method where a categorical variable is transformed into a binary vector with a 1 indicating the presence of a particular category and zeros elsewhere\footnote{For example, if we have 3 classes, the 2nd class is represented with the vector [0,1,0]}.\\
@@ -185,14 +184,14 @@ As the SGD, all the other optimizers can work on minibatch, evaluating the gradi
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{fig//chap05-stats/radam_loss.png}
-    \caption{Evolution of the accuracy (top) and loss function (bottom) of RAdam, Adam, and SGD with different learning rates on the CIFAR10 problem \cite{Ho-Phuoc2018CIFAR10Humans} in the learning epochs \cite{Liu2019OnBeyond}.}
+    \caption{Evolution in the epochs of the accuracy (top) and loss (bottom) with RAdam, Adam, and SGD with different learning rates on the CIFAR10 problem \cite{Ho-Phuoc2018CIFAR10Humans,Liu2019OnBeyond}.}
     \label{fig:radam_loss}
 \end{figure}
 \vspace{-1cm}
 \subsection{Architecture and complexity}
 The architecture of a neural network, specifically the number of layers and neurons, plays a crucial role in determining how well the network can learn and generalize from data.\\
 A neural network can be shallow (few layers with many neurons) or deep (many layers with few neurons in each layer). \\
-Deep networks tend to capture more complex patterns but suffer the vanishing gradient problem (the  magnitude of the gradient decreases propagating back in the network).\\
+Deep networks tend to capture more complex patterns but suffer the vanishing gradient problem (the magnitude of the gradient decreases propagating back in the network).\\
 A high number of neurons improves the capacity to represent functions and makes the network more robust to the noise, embedding the data in a high-dimensional space.\\
 Complex NNs are more prone to the \textit{overfitting}.
 Overfitting is the behavior of an NN that occurs when the model performs well on the training dataset but doesn't perform in the same way on other data.\\
@@ -208,7 +207,7 @@ On the other hand, if the network is too simple, we will fall into the underfitt
     \caption{Representation of underfitting, of a good fit, and of overfitting. The right plot shows the behavior of the validation loss in case of overfitting}
     \label{fig:overfitting}
 \end{figure}
-There are several techniques that can be used to prevent the overfitting:
+Several techniques can be used to prevent the overfitting:
 \begin{itemize}
     \item Diminish the number of neurons and the complexity of the network
     \item Increase the size of the training dataset
