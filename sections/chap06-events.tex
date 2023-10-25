@@ -7,14 +7,14 @@
 \section{Event signatures}
 In this chapter, the $\ttbar \to b\ell\nu \: bcb$ process will be denoted with "signal" or "cb events", while other processes will be referred to as "background".\\
 \\
-The final state of a signal event consists of one muon or electron, three b jets, one c jet, and some missing energy due to the presence of the neutrino.\\
+The final state of a signal event consists of one muon or electron, three b jets, one c jet, and missing energy due to the neutrino from the leptonic \PW decay.\\
 The invariant mass of one b jet and the c jet should be consistent with the mass of the \PW boson, and, adding another b jet, the invariant mass of the three jets should be consistent with the mass of the top quark.\\
 The signal's final state can be mimicked by the following backgrounds.
 \begin{itemize}
     \item Semileptonic $\ttbar$ ($\ttbar\to b\ell\nu \: bq\bar{q}$): if one or more jets are mistagged or there are additional heavy flavor jets.\\
     Both the production of additional heavy-flavor jets and the flavor mistagging are suppressed but have to be evaluated.
     \item Dileptonic $\ttbar$ ($\ttbar \to b\bar{\ell}\nu \: \bar{b}\ell\bar{\nu}$): the presence of two leptons in the final states increase the trigger probability, while additional jets can be misidentified as c and b jets originating from the hadronic decay of the W boson.
-    \item Dihadronic $\ttbar$ ($\ttbar \to b\bar{q}q \: \bar{b}q\bar{q}$): the missing lepton can be originated by the semileptonic decay of a meson in the jet if it passes the isolation selections, and the missing b jet can be obtained by mistagging or by additional heavy flavor jets.
+    \item Dihadronic $\ttbar$ ($\ttbar \to b\bar{q}q \: \bar{b}q\bar{q}$): the lepton that would trigger the event can originate from the semileptonic decay of a meson in the jet if it passes the isolation selections, and the missing b jet can be obtained by mistagging or by additional heavy flavor jets.
     \item W+jets $(\PW \to \ell \nu)$: This process is the one with the largest cross-section but the requirement of three additional b jets and one additional c jet suppresses it significantly.
     \item WW+jets: the semileptonic decay of \PW\PW pairs produced directly by $pp$ collision have required to be produced in association with two additional b jets to present the same signal signatures. Another difference with the signal is the inconsistency of the invariant mass of three jets with the top mass, which, however, is difficult to exploit due to the combinatorial ambiguities and the low tri-jet mass resolution.  
     \item $t\PW+\text{jets}$: it is similar to the $\PW \PW + \text{jets}$ process, with the difference that only one additional b jet, instead of two, is required to match the signal signature.
@@ -63,20 +63,20 @@ The simulation of a hadron-hadron collision relies on different steps and elemen
     \item \textbf{PDF set}: The first thing that has to be defined is the parton distribution function of the proton since it defines the initial partons involved in the hard scattering and their fraction of carrying momenta.\\
     In all the simulated samples, the used PDF set is NNPDF3.1 NNLO \cite{TheNNPDFCollaboration2017PartonData}.
     \item \textbf{Generator}: The kinematics of the outgoing particles are based on matrix-element calculated in perturbation theory, using Markov chain Monte Carlo integrators.\\
-    The generators that were used to build the MC samples are \MADGRAPH 5, aMC@NLO \cite{Alwall2011MadGraphBeyond}, and \POWHEG 2 \cite{Alioli2010ABOX}, setting $\alpha_s$ to a value of $0.118$ at the Z pole mass.\\
+    The generators that were used to build the MC samples are \MADGRAPH 5, aMC@NLO \cite{Alwall2011MadGraphBeyond}, and \POWHEG 2 \cite{Alioli2010ABOX}, setting $\alpha_s$ to a value of $0.118$ at the Z pole mass.
     All the samples are generated with a different number of additional partons, and with different precision, \ie considering only the leading order (LO) calculations or going forward to the next-to-leading order (NLO) to include virtual corrections.
 
-        
+    \item \textbf{Parton Showers}
+    The soft and collinear emission is impossible to be handled at the matrix element level. These effects are reproduced by the parton showers.
+    The shower is constructed recursively, increasing the number of partons by one at each step until an energy cutoff at around the hadronization scale is met.\\
+    The software that handles the parton showers is \PYTHIA \cite{Bierlich2022A8.3}.
+
     \item \textbf{Matching}
     The matrix element calculations provide an accurate description of events with well-separated particles in the final state, while the accurate reproduction of collinear and soft emissions is handled by the parton showers.\\
     Matching methods have the scope of improving the accuracy of the description of multijet final states, combining both approaches.\\
     The Monte Carlo samples used in this work are generated using the MLM matching method \cite{Mangano2006MatchingCollisions} if the matrix element calculations are performed at the LO, or using the FxFx method \cite{Frederix2012MergingMCNLO} if the matrix element calculations are performed at the NLO. 
 
-
-    \item \textbf{Parton Showering and Hadronization}
-    The initial state radiation (ISR), final state radiation (FSR), and the multiple parton interactions (MPI)\footnote{The MPI are additional soft or semi-hard parton–parton scatterings that occur within the same hadron-hadron collision.} contributions participate in the simulation of the parton showers.\\
-    In the end, the hadronization is simulated by exploiting the Lund string model \cite{Andersson1983PartonDynamics}.\\
-    Both the parton showering and the hadronization are handled by \PYTHIA \cite{Bierlich2022A8.3}, and all the samples were generated using the \texttt{TuneCP5} set of \PYTHIA tuning parameters \cite{Sirunyan2020ExtractionMeasurements}.
+    \item \textbf{Hadronization} The last step is the hadronization that is simulated by exploiting the Lund string model \cite{Andersson1983PartonDynamics} and is handled by \PYTHIA using the \texttt{TuneCP5} set of tuning parameters \cite{Sirunyan2020ExtractionMeasurements}.\\
 \end{enumerate}
 
 The reconstruction and the calibration are performed with the \textit{Ultra Legacy 18} (UL18) setting, which reproduces the state of the detector in 2018.\\
@@ -133,7 +133,7 @@ their expected contributions using event weights
     w_{pe}=\frac{\mathcal{L}_I \cdot \sigma_p \cdot w_{e} }{\sum_j w_{j}}
 \end{equation}
 
-where $w_{e}$ is the event weight produced by the generator program. The events weights can also multiplied with other corrections needed to improve the according between MC and observed data (\eg flavor corrections, see sec. \ref{sec:jet}).
+where $w_{e}$ is the event weight produced by the generator program. The events weights can also multiplied with other corrections needed to improve the agreement between MC and data (\eg flavor corrections, see sec. \ref{sec:jet}).
 
 \section{Physics objects selections}
 As already said, the idea of the analysis is to focus on semileptonic (SL) decay to exploit the lepton as a probe, so we are interested in selecting one prompt lepton, along with four jets.
@@ -186,7 +186,7 @@ The selected working point is the \emph{Loose PF Isolation}: $\text{Iso}_\mu<0.2
       \begin{figure}[H]
             \centering
             \includegraphics[width=1\linewidth]{fig//chap07-selection/nMuons.png}
-            \caption{Distribution on the number of Muons per event after the object selection.}
+            \caption{Distribution on the number of Muons per event.}
             \label{fig:n_mu}
         \end{figure}
 \end{minipage}
@@ -208,7 +208,7 @@ The medium working point has an overall signal efficiency of $\sim 90\%$ and a b
         \begin{figure}[H]
             \centering
             \includegraphics[width=1\linewidth]{fig//chap07-selection/nElectrons.png}
-            \caption{Distribution on the number of Electrons per event after the object selection.}
+            \caption{Distribution on the number of Electrons per event.}
             \label{fig:n_ele}
         \end{figure}
     \end{minipage}
@@ -244,7 +244,7 @@ The jets taken into consideration are the PF AK4 Jet candidates in the calorimet
 
 
 \paragraph*{Identification}
-The jet identification is based on the \emph{Tight jetID} that imposes different requirements on the substructure of the jets in different $|\eta|$ regions.\\
+The jet identification is based on the \emph{Tight jetID} that imposes different requirements on the composition of the jets in different $|\eta|$ regions.\\
 The requirements are listed in Tab.\ref{tab:jet_id}
 
 \begin{table}[H]
@@ -284,66 +284,29 @@ The identification of jets from pile-up relies on three types of properties of t
 
 
 \begin{minipage}{\linewidth}
-    \begin{minipage}{0.4\linewidth}
-        The identification of jet from pile-up is done exploiting the \emph{Jet puId},
+    \begin{minipage}{0.35\linewidth}
+    
+        The identification of jets from pile-up is done exploiting the \emph{Jet puId},
         a BDT model score \cite{CMSCollaboration2020PileupData}. Its inputs are listed in Tab \ref{tab:puId_inputs}.\\
         \\
         This BDT is trained on DrellYan+Jets MC samples with jets of $p_T<50\GeV$, where there is the highest composition of PU jets.\\
-        \\
-        The chosen working point is the \emph{Loose puId}, which corresponds to 99\%  efficiency for prompt jets with $|\eta| < 2.5$ and 95\% efficiency for prompt jets with $|\eta| > 2.5$.
-    \end{minipage}
-    \hfill
-    \begin{minipage}{0.55\linewidth}
-        \vspace{-1.5cm}
-    
-        \begin{table}[H]
-        \centering
-        \fontsize{9.2pt}{9.2pt}\selectfont
-        \begin{tabular}{|l|p{6cm}|}
-        \hline
-        \textbf{Variable} & \textbf{Description} \\
-        \hline
-        \textbf{nvtx} & Number of primary vertices \\
-        \hline
-        \textbf{beta} & Fraction of jet tracks associated with the primary vertex \\
-        \hline
-        \textbf{dR2Mean} & $p^2$-weighted average square distance of jet constituents from the jet axis \\
-        \hline
-        \textbf{frac01} & Fraction of constituents' $p_T$ contained in the region $\Delta R < 0.1$ around the jet axis \\
-        \hline
-        \textbf{frac02} & Fraction of constituents' $p_T$ contained in the ring $0.1 < \Delta R < 0.2$ around the jet axis \\
-        \hline
-        \textbf{frac03} & Fraction of constituents' $p_T$ contained in the ring $0.2 < \Delta R < 0.3$ around the jet axis \\
-        \hline
-        \textbf{frac04} & Fraction of constituents' $p_T$ contained in the ring $0.3 < \Delta R < 0.4$ around the jet axis \\
-        \hline
-        \textbf{jetR} & Fraction of jet $p_T$ carried by the leading constituent \\
-        \hline
-        \textbf{jetRchg} & Fraction of jet $p_T$ carried by the leading charged constituent \\
-        \hline
-        \textbf{majW} & Major axis of the jet ellipsoid in the $\eta - \phi$ plane \\
-        \hline
-        \textbf{minW} & Minor axis of the jet ellipsoid in the $\eta - \phi$ plane \\
-        \hline
-        \textbf{nCharged} & Number of charged constituents \\
-        \hline
-        \textbf{nParticles} & Number of constituents \\
-        \hline
-        \textbf{ptD} & $p_T$-weighted average $p_T$ of constituents \\
-        \hline
-        \textbf{pull} & Magnitude of the pull vector \\
-        \hline
-        \end{tabular}
-        \caption{Inputs of the BDT puId model \cite{CMSCollaboration2020PileupData}.}
-        \label{tab:puId_inputs}
-        \end{table}
         
     \end{minipage}
-    
+    \hfill
+    \begin{minipage}{0.625\linewidth}
+    \vspace{-1.65cm}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=\linewidth]{fig//chap07-selection/puid_bdt.png}
+        \captionof{table}{PuID BDT input variables \cite{CMSCollaboration2020PileupData}.}
+        \label{tab:puId_inputs}
+    \end{figure}
+        \vspace{0.1cm}
+    \end{minipage}
 \end{minipage}
+The chosen working point is the \emph{Loose puId}, which corresponds to 99\%  efficiency for prompt jets with $|\eta| < 2.5$ and 95\% efficiency for prompt jets with $|\eta| > 2.5$.
 \paragraph*{Jet energy scale corrections}
-The detector response to an impinging jet is convoluted, making it difficult to unfold the true energy of all the particles from the measured energy deposits in the detector.\\
-To allow a proper mapping of the measured jet energy deposits to the true particles energy, a set of jet energy corrections is applied.\\
+To allow a proper mapping of the energy of the reconstructed jet to the truth particle-level jet energy, a set of jet energy corrections is applied.\\
 \\
 In CMS, the jet energy scale corrections are separated into different steps applied sequentially and in a fixed order.\\
 Each correction takes care of a different effect and consists of a rescaling of the jet four-vector \cite{2021Jet13TeV}.
@@ -358,9 +321,8 @@ Each correction takes care of a different effect and consists of a rescaling of 
     \item \textbf{L1 Pile-Up}: remove the energy coming from pileup events, removing any dependence on the luminosity.\\
     The pileup corrections are determined from simulated QCD dijet events with and without pileup overlay.
     \item \textbf{L2L3 MC-truth corrections}: this correction has the scope to improve the accordance between the reconstructed jet energy and the particle-level energy, and to make the response of the jet energy uniform in $p_T$ and $\eta$. The related scale factors are evaluated on QCD dijet samples.
-    \item \textbf{L5 flavor corrections (optional)}: these are additional optional corrections that adjust the jet energy scale of jets of different flavors separately. In this work, it is not applied.
 \end{enumerate}
-The pile-up and MC-truth corrections are mandatory both on MC and data, while additional residual corrections are mandatory only on data: they are meant to correct differences of the order of 1\% within jet response in data and MC.
+The pile-up and MC-truth corrections are applied both on MC and data, while additional residual corrections are applied only on data: they are meant to correct differences of the order of 1\% within jet response in data and MC.
 
 A summary of the jet energy corrections chain is shown in \Fig{fig:jerc}.
 
@@ -403,7 +365,7 @@ where $P(b), P(c),$ and $P(udsg)$ are the b,c, and light flavor \DeepJet scores.
       \begin{figure}[H]
             \centering
             \includegraphics[width=1\linewidth]{fig//chap07-selection/nJet.png}
-            \caption{Distribution on the number of Jets per event after the object selection.}
+            \caption{Distribution on the number of Jets per event.}
             \label{fig:n_jet}
         \end{figure}
 \end{minipage}

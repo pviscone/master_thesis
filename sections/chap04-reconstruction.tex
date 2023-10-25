@@ -239,7 +239,7 @@ The PF candidate features and the secondary vertices features are fed as input t
 \section{Event simulation}
 To optimize the analysis, estimate the efficiencies, evaluate the systematic uncertainties, and interpret the data, we need Monte Carlo simulations (MC): labeled data that reproduces the real data as faithfully as possible.\\
 \\
-The first stage of the simulation is the generation of the matrix elements, usually done with software like \MADGRAPH \cite{Alwall2011MadGraphBeyond} or \POWHEG \cite{Alioli2010ABOX}: after the user has defined all the Feynman diagrams to compute (including the initial and final state radiation) and the physics model, the four momenta of all the particles are computed at the parton level.
+The first stage of the simulation is the generation of the matrix elements, usually done with software like \MADGRAPH \cite{Alwall2011MadGraphBeyond} or \POWHEG \cite{Alioli2010ABOX}: after the user has defined all the Feynman diagrams to compute and the physics model, the four momenta of all the particles are computed at the parton level.
 The next step, performed by \PYTHIA \cite{Sjostrand2006PYTHIAManual} in the CMS software, is the hadronization of colored particles, done exploiting the phenomenological Lund string model \cite{Andersson1983PartonDynamics}.\\
 \\
 The second step, performed by the \GEANTfour framework \cite{Agostinelli2003GEANT4--aToolkit}, is the simulation of the detector response and is the most computationally intensive step, to the point that other approaches to the simulation are being considered \cite{Sekmen2016RecentSimulation,Vaselli2023FlashSimFlow}.\\
