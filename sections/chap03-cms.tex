@@ -168,39 +168,41 @@ Some modules are double-sided (DS) strip modules, \ie two single-sided (SS) stri
     \item \textbf{Tracker inner disk (TID)}: 2 layers of DS + 1 layers of SS strip modules 
     \item \textbf{Tracker outer barrel (TOB)}: 2 layers of DS + 4 layers of SS strip modules 
     \item \textbf{Tracker endcap (TEC)}: 3 layers of DS + 4 layers of SS strip modules 
-    \begin{table}[h!]
-        \centering
-        \begin{tabular}{l|c|c|c|c|c}
-            Layer&Radius[mm]&Type&Modules&Pitch[mm]&Strips\\
-            \hline
-            TIB1&250&DS&336&80&768\\
-            TIB2& 340& DS& 456& 80& 768\\
-            TIB3&430&SS&552&120&512\\
-            TIB4&520&SS&648&120&512\\
-            TOB5&610&DS&504&122/183&768/512\\
-            TOB6&696&DS&576&122/183&768/512\\
-            TOB7&782&SS&648&183&512\\
-            TOB8&868&SS&720&183&512\\
-            TOB9&965&SS&792&122&768\\
-            TOB10&1080&SS&888&122&768\\
-            TID1&277&DS&144&81-112&768\\
-            TID2&367&DS&144&113-143&768\\
-            TID3&447&SS&240&124-158&512\\
-            TEC1&277&DS&144&81-112&768\\
-            TEC2&367&DS&288&113-143&768\\
-            TEC3&447&SS&640&124-158&512\\
-            TEC4&562&SS&1008&113-139&512\\
-            TEC5&677&DS&720&126-156&768\\
-            TEC6&891&SS&1008&163-205&512\\
-            TEC7&991&SS&1440&140-172&512\\
-        \end{tabular}
-        \caption{Summary of average r, type, number of modules, pitch, and number of strips for the strip tracker \cite{Friedl2001TheReadout}.}
-        \label{tab:strip_tracker}
-    \end{table}
 \end{itemize}
+\begin{table}[h!]
+    \centering
+    \fontsize{11.5pt}{11.5pt}\selectfont
+    \begin{tabular}{l|c|c|c|c|c}
+        Layer&Radius[mm]&Type&Modules&Pitch[mm]&Strips\\
+        \hline
+        TIB1&250&DS&336&80&768\\
+        TIB2& 340& DS& 456& 80& 768\\
+        TIB3&430&SS&552&120&512\\
+        TIB4&520&SS&648&120&512\\
+        TOB5&610&DS&504&122/183&768/512\\
+        TOB6&696&DS&576&122/183&768/512\\
+        TOB7&782&SS&648&183&512\\
+        TOB8&868&SS&720&183&512\\
+        TOB9&965&SS&792&122&768\\
+        TOB10&1080&SS&888&122&768\\
+        TID1&277&DS&144&81-112&768\\
+        TID2&367&DS&144&113-143&768\\
+        TID3&447&SS&240&124-158&512\\
+        TEC1&277&DS&144&81-112&768\\
+        TEC2&367&DS&288&113-143&768\\
+        TEC3&447&SS&640&124-158&512\\
+        TEC4&562&SS&1008&113-139&512\\
+        TEC5&677&DS&720&126-156&768\\
+        TEC6&891&SS&1008&163-205&512\\
+        TEC7&991&SS&1440&140-172&512\\
+    \end{tabular}
+    \caption{Summary of average r, type, number of modules, pitch, and number of strips for the strip tracker \cite{Friedl2001TheReadout}.}
+    \label{tab:strip_tracker}
+\end{table}
 The design of the tracker has to consider the multiple scattering, bremsstrahlung and photon conversion that can occur in the tracker itself and that can alter the trajectory and the measurement of the energy deposited in the calorimeter. This implies that the tracker should minimize the material budget without sacrificing the tracking capabilities.
 
-\begin{figure}[h!]
+
+\begin{figure}[H]
 \centering
 \begin{minipage}{\linewidth}
     \centering
@@ -213,25 +215,29 @@ The design of the tracker has to consider the multiple scattering, bremsstrahlun
         \centering
         \includegraphics[width=\linewidth]{fig/chap03-cms/material_budget_X.png}
 \end{minipage}
-\caption[AAA]{Stacked histogram of the thickness of the subparts of the tracker traversed by a particle originated in the IP in function of $\eta$ ((left) in nuclear interaction length units\footnote{The radiation length $X_0$ of a given material is the length for which, for an electromagnetic particle that travels into the material, holds $E(z)=E_0 e^{-z/X_0}$ where $E(z)$ is the energy of the particle in function of the length traveled into the material and $E_0$ the initial energy.}, (right) in radiation length units)  \cite{TrackerMaterialBudgetplotsTWiki}.}
+\caption[AAA]{Stacked histogram of the thickness of the subparts of the tracker traversed by a particle originated in the IP in function of $\eta$ ((left) in nuclear interaction length units\footnotemark[2], (right) in radiation length units)  \cite{TrackerMaterialBudgetplotsTWiki}.}
 \end{minipage}
-
 \end{figure}
+
+%Footnote of the figure above
+\footnotetext[2]{The radiation length $X_0$ of a given material is the length for which, for an electromagnetic particle that travels into the material, holds $E(z)=E_0 e^{-z/X_0}$ where $E(z)$ is the energy of the particle that is a function of the length traveled into the material and $E_0$ the initial energy.}
 
 
 \subsection{Electromagnetic calorimeter}
 The CMS electromagnetic calorimeter (ECAL) \cite{HoferETHZurichHansHofer1997TheReport,Biino2015TheProjections} is the subdetector dedicated to the identification and measurement of the energy of particles that interact primarily via the electromagnetic interaction.\\
 One of the main goals of the CMS collaboration was the Higgs boson discovery and, to maximize the discovery sensitivity on the channel $H \to \gamma \gamma$, the ECAL should have met some requirements as high granularity and hermeticity, fast response ($\sim 25ns$), particle identification/isolation/energy at trigger level and linear response in a large energy range (5\GeV to 5\TeV).\\
+
+
 To comply with these requirements, the ECAL was built using PbWO4 crystals: a high-density material ($\delta=8.28g/cm^3$) with a short radiation length ($X_0=0.85cm$) and a small Moliere radius\footnote{The Moliere radius $R_M$ is the mean radius of the cylinder that contains 90\% of the shower, which tends to disperse due to multiple scattering} ($R_M=2.19cm$).\\
 The crystals emit optical light by scintillation in a short time (80\% of the light in 25ns, which is the time separation between two different bunch crossing) but, the light yields of only $\sim 100 \gamma/\MeV$ force the usage of an active photodetector and, due to the presence of the magnetic field, the silicon photomultipliers (SiPM) were the most logical choice.
 The ECAL is made of a barrel that covers the $|\eta|<1.479$ region and two endcaps that cover the region $1.479<|\eta|<3.0$.
+
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.7\linewidth]{fig/chap03-cms/ecal.png}
     \caption{Schematic view in the r-z plane of a quarter of the CMS ECAL \cite{Benaglia2014TheExamples}.}
     \label{fig:ecal}
 \end{figure}
-\\
 The ECAL endcaps are composed of 14648 crystals of size $3\times3\times22 cm^3 (\sim25X_0)$ and the ECAL barrel is composed of 61200 crystals of size $2.2\times2.2\times23 cm^3 (\sim26X_0)$. The crystals are not aligned to the IP to avoid cracks aligned with particle trajectories.\\
 Furthermore, a pre-shower silicon detector made of 4288 strip modules is placed in front of the endcaps to improve the $\gamma-\pi^0$ separation\footnote{The $\pi^0$ decay $\pi^0 \to \gamma \gamma$ can cause the misidentification of a pion into a photon.}.
 \\
