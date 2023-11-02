@@ -3,42 +3,14 @@
 \vspace{-1cm}
 \minitoc
 \vspace{0.5cm}
-This chapter is dedicated to the kinematical reconstruction and interpretation of the signal events.
-\\
-\\
-First, a straightforward unidimensional feature ranking is presented to show which are the observables that characterize the signal events and that distinguish them from the main source of background, and then the jet-parton assignment problem on signal events is tackled.
+This chapter is dedicated to the kinematical reconstruction and interpretation of the signal events, tackling the Jet-parton assignment problem.
 \\
 \\
 Initially, we tackle the jet-parton assignment in a simplified form by focusing on the selection of the jet associated with the b quark parton that arises in the decay of the top quark that decays into the leptonic W boson. This simplified benchmark is used to perform a feature ranking exploiting the $N+1,\: N-1$ method and to select the best model that will be employed in the complete jet-parton assignment task and that will be adapted to discriminate the signal from the background, as presented in the next chapter.
 \\
 \\
-All the investigations presented in this chapter are carried out within the Muon signal region, as defined in Table \ref{tab:event_selection}, after the kinematic reconstruction of the neutrino described in sec. \ADDREF.\\
-\begin{minipage}[H]{\linewidth}
-\begin{minipage}{0.35\linewidth}
-        \centering
-        \includegraphics[height=0.92\textheight]{fig//chap08-kin_reco/ranking1D.png}
-        \captionof{figure}{Unidimensional feature ranking using the metric $d$ between flattened signal observables and \ttbar semileptonic observables }
-        \label{fig:1Drank}
-\end{minipage}
-\hfill
-\begin{minipage}{0.62\linewidth}
-\section{Unidimensional feature ranking}
-The most straightforward approach for identifying discriminative features that separate the signal from the background is to examine the distributions of various observables and select those with the most distinct shapes.\\
-The "shape difference" between two histograms can be quantified by the following metric
-\begin{equation}
-    d=\frac{1}{2}\sum_b \bigg| y_b^{(1)}-y_b^{(2)} \bigg|
-\end{equation}
-where $y_b^{(i)}$ is the bin height of the b-th bin of the i-th histogram. The histograms are normalized such that their integral is 1.\\
-\\
-The metric $d$ is computed between the signal and the $\ttbar$ semileptonic process, which is the primary source of background.\\
-All observables are flattened, \ie all objects in the events are pooled together in the same histograms, neglecting the event's structure.\\
-\\
-The ranking is performed in the Muon channel, after the preselection.\\\\
-The outcome of the unidimensional ranking is shown in \Fig{fig:1Drank} and, without any surprise, the observables with the highest ranking are the ones related to the b-tagging with $d\sim 0.1$, while Other observables yield results that are an order of magnitude smaller, and the latest are due mostly to statistical fluctuations.\\
-\\
-However, this method is not satisfactory since it does not account for correlations between the observables. Therefore, more sophisticated multivariate methods, such as neural networks, will be employed.\\\\\\\\\\    
-\end{minipage}
-\end{minipage}
+All the investigations presented in this chapter are carried out within the Muon signal region, as defined in Table \ref{tab:event_selection}, after the kinematic reconstruction of the neutrino described in sec. \ref{sec:nu_reco}.\\
+
 \section{Jet-parton assignment}
 The Jet-Parton assignment (JPA) task consists of associating a jet to each of the four quark partons that belong to the signal final state to reconstruct the event's topology and kinematics.\\
 \\
@@ -172,12 +144,12 @@ T\_mass &  Jet$+\mu+\nu$ invariant mass\\
 \newpage
 The jet-wise models tested are four: 
 \begin{itemize}
-    \item \textbf{Fisher discriminant} The Fisher's linear discriminant \ADDREF is a model whose goal is to find a hyperplane that maximizes the separation between the classes.\\
+    \item \textbf{Fisher discriminant} The Fisher's linear discriminant \cite{FISHER1936THEPROBLEMS} is a model whose goal is to find a hyperplane that maximizes the separation between the classes.\\
     The fisher discriminant identifies two regions, separating the predicted leptonic b jets from the other jets. The absolute value of the score assigned to each jet is the distance between the jet represented in the jet's feature space and the separating hyperplane, while the score sign will be positive if the jet belongs to the predicted leptonic b jet region, and negative otherwise.
     \\
     This is a linear model and its complexity is not sufficient to tackle the JPA problem. Indeed, its accuracy on both training and validation datasets is just $45\%$.
     \item \textbf{k-NN}
-    k-Nearest Neighbors (k-NN) \ADDREF is a model that leverages the Euclidean distance within the jet feature space to classify the data.
+    k-Nearest Neighbors (k-NN) \cite{Cunningham2020K-NearestExamples} is a model that leverages the Euclidean distance within the jet feature space to classify the data.
     
     \begin{minipage}{\linewidth}
     \begin{minipage}{0.65\linewidth}
@@ -206,7 +178,7 @@ The jet-wise models tested are four:
         \end{table}
         \end{minipage}
         \end{minipage}
-    \item \textbf{BDT} A boosted decision tree (BDT) is an ensemble of multiple decision trees. \ADDREF. 
+    \item \textbf{BDT} A boosted decision tree (BDT) is an ensemble of multiple decision trees. \cite{Coadou2022BoostedTrees}. 
     that assigns a score to each jet through a weighted combination of the individual tree predictions, with more weight given to the trees that perform better.\\
     The BDT employed for the simplified JPA task is an ensemble of 200 decision trees with a maximum depth of five, and its accuracy was found to be 65\% on both the training and the validation datasets.
     \item \textbf{MLP} The highest-accuracy jet-wise model tested is a feed-forward neural network.\\
@@ -415,13 +387,13 @@ Based on the earlier discussion regarding the proximity of the leptonic b-jet to
    \begin{subfigure}{0.49\linewidth}
         \centering
         \includegraphics[width=1\linewidth]{fig//chap08-kin_reco/deta_W.png}
-        \caption{$\min|\Delta \eta|$ Jet-$\PW$}
+        \caption{$|\Delta \eta|$ Jet-$\PW$}
     \end{subfigure}
     \hfill
     \begin{subfigure}{0.4825\linewidth}  
         \centering
         \includegraphics[width=1\linewidth]{fig//chap08-kin_reco/min_deta_W.png}
-        \caption{$|\Delta \eta|$ Jet-$\PW$}
+        \caption{$\min|\Delta \eta|$ Jet-$\PW$}
     \end{subfigure}  
     \hfill
     \begin{subfigure}{0.49\linewidth}
@@ -476,16 +448,15 @@ The legend includes information on the mean and standard deviation.}
 Another category of models under examination falls into the event-wise models class. These models receive a matrix as input, where rows represent various events, and columns encompass diverse event and object characteristics. 
 Event-wise models retain the event structure, providing a more direct approach to addressing the JPA problem and eliminating the need to reconstruct the event after the network evaluation.\\
 \\
-However, constructing such a model is not trivial: An MLP, for instance, would have a distinct set of input units for each jet or lepton, each assigned to different features.\\
-On the other hand, MLP would have N outputs, where N is the maximum number of jets in the events, and the prediction would involve identifying the index of the predicted leptonic b Jet for each event.\\
+However, constructing such a model is not trivial: An MLP, for instance, would have a distinct set of input units for each jet or lepton, each assigned to different features, and N outputs, where N is the maximum number of jets in the events. The prediction would involve identifying the index of the predicted leptonic b Jet for each event.\\
 \\
 This approach has multiple criticalities:
 \begin{itemize}
-    \item Since the labels are the index of the jet in the event, the model is not permutation invariant, so we are forced to introduce an order between the jets in the event.
-    \item Although the network's output may appear as a straightforward index, it is a classification problem with N classes, leading to two complexities:
+    \item Since the labels correspond to the index of the jet within the event, the model lacks permutation invariance, which necessitates introducing an order among the jets in the event.
+    \item Although the network's output may appear as a straightforward index,  it constitutes a classification problem with N classes that leads to two complexities:
     \begin{itemize}
-        \item[\ding{111}] The high dimensionality of the output space requires a lot of data to be densely populated. This problem is commonly known as the curse of dimensionality.
-        \item[\ding{111}] To address the imbalance between the N classes, the cross-entropy loss must be reweighted, but, since the network is not permutation invariant, neither the reweighting is.
+        \item[\ding{111}] The high dimensionality of the output space demands a significant amount of data for effective population, a well-known challenge referred to as the "curse of dimensionality."
+        \item[\ding{111}] To address the imbalance between the N classes, the cross-entropy loss must be reweighted, but, since the network is not permutation invariant, neither is the reweighting.
     \end{itemize}
     \item N is the maximum number of jets considered in the event, but, when an event has less than M jets, dealing with the units related to the remaining N-M jets becomes a concern.\\
     We could discuss different methods to assign a value for the features of the absent jets, but no choice would be optimal.
@@ -494,17 +465,16 @@ To tackle these challenges, one potential solution involves leveraging an archit
 
 \subsection{JPANet}
 JPANet is an attention network adapted to the topology of the signal events.\\
-The network has two different inputs, one representing the leptonic W boson, and the other containing the features of all the jets.\\
-Both inputs are fed to different subnetworks called "heads", which then are combined through a cross-attention mechanism.\\
-
+The network takes in two different inputs: one representing the leptonic W boson, and the other containing the features of all the jets.\\
+These inputs are channeled into separate subnetworks referred to as "heads" and are subsequently merged through a cross-attention mechanism.\\
 
 
 
 \begin{minipage}{0.6\linewidth}
 \begin{itemize}
-    \item \textbf{W head}: The shape of the W head input tensor is $(N_{\text{events}},1,7)$, where 7 is the number of features related to the leading lepton and the reconstructed neutrino originating in the leptonic W decay listed in \Tab{tab:Whead}.\\
-    The inputs are normalized with a Batch norm layer and then are fed to a feed-forward network composed of two layers of 128 units each.
-    The output of the W head forms the "W embedding".
+    \item \textbf{W head}: The input tensor for the W head has a dimension of $(N_{\text{events}},1,7)$, with 7 representing the number of features related to the leading lepton and the reconstructed neutrino originating in the leptonic W decay listed in \Tab{tab:Whead}.\\
+    The inputs are normalized with a Batch norm layer before being passed through a feed-forward network consisting of two layers, each containing 80 units.
+    The resulting output from the W head constitutes the "W embedding."
 \end{itemize}
 \end{minipage}
     \hfill
@@ -535,8 +505,8 @@ Both inputs are fed to different subnetworks called "heads", which then are comb
 \begin{itemize}
 
 \begin{minipage}{0.6\linewidth}
-    \item \textbf{Jet head}: The shape of the Jet head input tensor is $(N_{\text{events}},7,5)$, where different jets are represented in the second dimension and different features in the third dimension.\\
-    The input features are the kinematic variables of each jet plus its CvB score and the invariant mass of the jet+lepton+neutrino system.\\
+    \item \textbf{Jet head}: The input tensor for the Jet head has dimensions of  $(N_{\text{events}},7,5)$, where the second dimension corresponds to the various jets and the third dimension pertains to distinct features.\\
+    These input features encompass the kinematic properties of each jet, alongside its CvB score and the invariant mass of the combined jet-lepton-neutrino system.\\
 \end{minipage}
 \hfill
 \begin{minipage}{0.35\linewidth}
@@ -555,27 +525,56 @@ Both inputs are fed to different subnetworks called "heads", which then are comb
         \end{tabular}
         \captionof{table}{Jet head features.}
 \end{minipage}
-    Since all the jets that match the four quark partons are in the top seven jets with the highest momentum in the $\sim 97\%$ of events, we decided to select only seven jets.\\
-    The inputs are fed to a batch norm layer\footnote{Since $m_{t_L}$ can have significant outliers, the variable is first transformed with the function $\log(1+m_{t_L})$} and then into a feed-forward neural network composed of two layers of 128 units each. The output of the first MLP is the input of a residual network composed of a self-attention layer and a layer normalization layer.\\
-    At the end, the output of the self-attention jet ResNet is fed to another MLP composed of three layers of 128 units each.
-    The output of the jet head forms the "Jet embedding".
+    Because in approximately 97\% of events, all the jets matching the four quark partons can be found among the top seven jets with the highest transverse momentum, we opted to limit our selection to just seven jets.\\
+    These selected inputs are first passed through a batch normalization layer\footnote{Since $m_{t_L}$ can have significant outliers, the variable is first transformed with the function $\log(1+m_{t_L})$} and then through a feed-forward neural network, which consists of two layers, each containing 80 units.
+    The output from the first MLP serves as the input for a residual network, comprising a self-attention layer and a layer normalization layer. Finally, the output from the self-attention jet ResNet is directed into another MLP, which consists of three layers, each having 80 units. The output of the jet head constitutes the "Jet embedding."
 \end{itemize}
 
 
-After creating the W and the Jet embedding, we exploit a cross-attention layer to combine all the information of the events to assign an attention score to each jet in the jet sequence. To do it the W embedding and the jet embedding sequences are concatenated and used as the Key and Value of the scaled dot product, while the Query is the jet embedding sequence.\\
-The output of the cross-attention is summed with the jet embedding residuals, normalized, and then thrown into the last MLP composed of three layers of 128 units each.\\
+After creating the W and the Jet embedding, we exploit a cross-attention layer to combine all the information of the events to assign an attention score to each jet in the jet sequence. This process involves concatenating the W embedding and jet embedding sequences and employing them as the Key and Value components in the scaled dot product, with the Query derived from the jet embedding sequence.\\
+
+\begin{minipage}{0.3\linewidth}
+\begin{figure}[H]
+    \raggedright
+    \includegraphics[height=0.5\textheight]{fig//chap08-kin_reco/JPANet_1.pdf}
+    \caption{Schematics of JPANet.}
+    \label{fig:JPANet1}
+\end{figure}
+\end{minipage}
+\hfill
+\begin{minipage}{0.65\linewidth}
+The output of the cross-attention layer is added to the jet embedding residuals, normalized, and subsequently passed into the final Multi-Layer Perceptron (MLP), which consists of three layers, each containing 80 units. The output layer is equipped with a softmax function, ensuring that the outputs represent scores for each element in the jet sequence that are normalized to sum up to 1.\\
 \\
-The output layer is equipped with a softmax function, so the outputs are the scores associated with each element of the jet sequence and are normalized to 1.\\
+The network employs the Swish activation function and includes a 1.2\% dropout probability to mitigate overfitting. Additionally, it utilizes a batch size of 20,000 and the RAdam optimizer, which minimizes the cross-entropy loss with a learning rate of $10^{-3}$.\\
+Since the networks took 3 hours to train on an Nvidia A100 (40GB) GPU shared within the entire CERN community, a comprehensive hyperparameter optimization strategy could not be implemented. As a result, the choices made are based on a small number of trial runs.\\
 \\
-The network employs the Swish activation function, and to counteract overfitting, a dropout probability of 1.2\% was set. Additionally, it utilizes a batch size of 20,000 and the RAdam optimizer that minimizes the cross-entropy loss with a learning rate of $10^{-3}$.\\
-Since the networks took 3 hours to train on a Nvidia A100 (40Gb) shared with all the CERN community, it was not possible to implement a proper hyperparameter optimization strategy, so these choices are the result of just a few trials. \\
-\\
-Thanks to its architecture, JPA solves all the problems that an event-wise MLP would have: the network is inherently invariant for permutation of the physics objects and the absent jets are handled just forcing the corresponding attention scores to zero
+Thanks to its architecture, JPA effectively addresses all the issues that an event-wise MLP would encounter. The network inherently maintains permutation invariance for physics objects and the absent jets are handled just by forcing their respective attention scores to zero.
+\end{minipage}
 
 
+\paragraph*{Performace} On both the training and validation datasets, JPANet successfully matched the correct jet to the leptonic b quark parton in 82\% of the events. This high accuracy represents a substantial enhancement compared to all the jet-wise models that were assessed, making JPANet the preferred choice for carrying out the complete JPA task.
 
 
 
 
 \subsection{Full Jet-parton assignment}
+To carry out the full JPA task using JPANet, a modification is needed primarily in the output layer. The chosen approach involves generating an output, denoted as $A_{jp}$,  for each event, with a shape of (7, 4), such that $\sum_j A_{jp}=1 \: \forall p$.
+In other words, to each quark parton are assigned 7 scores, one per jet, that sum up to one.\\
+\\
+The optimal combination of jets is determined by maximizing the product of scores across all possible combinations of assigning the jets to the four quark partons.\\
+\\
+Additionally, since now we are looking for jets of different flavors, the \DeepJet CvL score is introduced in the jet features.\\
+\\
+Despite a significant number of potential combinations ($7!/(7-4)!=840$ in total), JPANet demonstrated the ability to accurately identify the correct jet-parton assignments in 54\% of the events in both the training and validation datasets.
 
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l|c}
+    \toprule
+    \multicolumn{2}{c}{\textbf{JPANet accuracy}}\\
+    \midrule
+         \textbf{Lept. b JPA}& 82\%\\
+         \textbf{Full JPA}& 54\%\\
+    \end{tabular}
+\end{table}
