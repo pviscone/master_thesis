@@ -18,9 +18,9 @@ This task is challenging due to the combinatorial nature: if there are N jets in
 \\
 Typically, the assignment is accomplished through a kinematic fit that consists of finding the combination of jets for each event that minimizes the chi-square of all the invariant masses.
 \begin{equation}
-    \chi^2=\frac{(m_{j_1j_2}^{\text{inv.}}-m_W)^2}{\Gamma^2_W}+\frac{(m_{j_1j_2j_3}^{\text{inv.}}-m_t)^2}{\Gamma^2_t}+\frac{(m_{j_4\ell\nu}^{\text{inv.}}-m_t)^2}{\Gamma^2_t}
+    \chi^2=\frac{(m_{j_1j_2}^{\text{inv.}}-m_W)^2}{\sigma^2_W}+\frac{(m_{j_1j_2j_3}^{\text{inv.}}-m_t)^2}{\sigma^2_{t_H}}+\frac{(m_{j_4\ell\nu}^{\text{inv.}}-m_t)^2}{\sigma^2_{t_L}}
 \end{equation}
-where $\Gamma_\PW$ and $\Gamma_t$ are the experimental dijet and trijet invariant mass resolution widths of the W and top quark hadronic decays, respectively.\\
+where $\sigma_\PW$, $\sigma_{t_L}$, and $\sigma_{t_H}$ are the experimental dijet and trijet invariant mass resolution widths of the hadronic W and leptonic/hadronic top quark decays, respectively.\\
 This is an unsupervised approach but in this work, another approach is employed, leveraging supervised multivariate models like neural networks that allow us to exploit not only the kinematic variables of jets but also their flavor score and the correlations between all the observables.
 
 
@@ -59,7 +59,7 @@ This is an unsupervised approach but in this work, another approach is employed,
 \subsection{Leptonic bJet benchmark}
 In principle, the b quark parton in the signal final state originating by the leptonic top decay is the easiest to assign to a reconstructed jet for two reasons:
 \begin{itemize}
-    \item The top quarks are produced back-to-back in the transverse plane and the decay products of each top quark are boosted in the direction of the momentum of the respective top quark.\\
+    \item The top quarks are produced back-to-back in the transverse plane and the decay products of each top quark are in the direction of the momentum of the respective top quark.\\
     Given that, the b parton originating by the leptonic top decay is closer on average to the lepton in the $\phi-\eta$ plane than the other quark partons.
     \item Since it is a heavy flavor parton, we can exploit the b-tagging capabilities of the experiment. In an ideal situation, the b-tagging would simplify the problem by reducing the number of jet candidates to just three.
 \end{itemize}
@@ -95,14 +95,13 @@ Jet\_pt & Jet $p_T$ \\
 \midrule
 Jet\_eta & Jet $\eta$\\
 \midrule
+Jet\_mass & Jet invariant mass \\
+\midrule
 Jet\_btag & \DeepJet b-tag score \\
 \midrule
 Jet\_CvL. & \DeepJet CvL score\\
 \midrule
 Jet\_CvB &  \DeepJet CvB score\\
-\midrule
-\multirow{2}{*}{Jet\_mass} & Invariant mass of the\\
-&weighted sum of Jet's constituents. \\
 \midrule
 \multirow{2}{*}{max\_dEta\_Jets}& $\max(\Delta \eta)$ computed with\\
 &respect to other jets in the event. \\
@@ -137,15 +136,10 @@ T\_mass &  Jet$+\mu+\nu$ invariant mass\\
 
 
 
-
-
-
-
-\newpage
 The jet-wise models tested are four: 
 \begin{itemize}
     \item \textbf{Fisher discriminant} The Fisher's linear discriminant \cite{FISHER1936THEPROBLEMS} is a model whose goal is to find a hyperplane that maximizes the separation between the classes.\\
-    The fisher discriminant identifies two regions, separating the predicted leptonic b jets from the other jets. The absolute value of the score assigned to each jet is the distance between the jet represented in the jet's feature space and the separating hyperplane, while the score sign will be positive if the jet belongs to the predicted leptonic b jet region, and negative otherwise.
+    The Fisher discriminant identifies two regions, separating the predicted leptonic b jets from the other jets. The absolute value of the score assigned to each jet is the distance between the jet represented in the jet's feature space and the separating hyperplane, while the score sign will be positive if the jet belongs to the predicted leptonic b jet region, and negative otherwise.
     \\
     This is a linear model and its complexity is not sufficient to tackle the JPA problem. Indeed, its accuracy on both training and validation datasets is just $45\%$.
     \item \textbf{k-NN}
@@ -153,7 +147,7 @@ The jet-wise models tested are four:
     
     \begin{minipage}{\linewidth}
     \begin{minipage}{0.65\linewidth}
-        After choosing the hyperparameter k, the model classifies a jet as a leptonic b jet if the majority of the k nearest jets in the jet feature space are labeled as leptonic b jet and vice versa.\\
+        After choosing the parameter k, the model classifies a jet as a leptonic b jet if the majority of the k nearest jets in the jet feature space are labeled as leptonic b jet and vice versa.\\
         The score assigned to each jet is determined by the fraction of jets labeled as leptonic b jets within the k-neighborhood of the jet itself.\\
         The model was assessed for various values of k, and the corresponding accuracies are shown in \Tab{tab:knn}
     \end{minipage}
@@ -202,61 +196,72 @@ The jet-wise models tested are four:
     \caption{Jet-wise models accuracy summary.}
     \label{tab:jet_wise_summary}
 \end{table}
-\subsubsection*{Additive and subtractive ranking}
-As demonstrated in the previous section, the MLP model outperforms other jet-wise models in terms of accuracy.
-Our next goal is to employ the jet-wise MLP for ranking the jet's features.\\
+\subsubsection*{Feature ranking}
+The most straightforward approach for identifying discriminative features is to examine the distributions of various
+observables and select those with the most distinct
+shapes.
+The "shape difference" between two histograms can be
+quantified by the following metric
+\begin{equation}
+    d=\frac{1}{2}\sum_b \bigg| y_b^{(1)}-y_b^{(2)} \bigg|
+\end{equation}
+where $y_b^{(i)}$ is the bin height of the b-th bin of the i-th
+histogram. The histograms are normalized such that
+their integral is 1.\\
+However, this method is not satisfactory since it does not account for correlations between the observables, therefore, more sophisticated multivariate methods can be employed.\\
+As demonstrated in the previous section, the MLP model outperforms other jet-wise models in terms of accuracy, so we can use it to rank the jet's features.\\
 To accomplish this, we employ a method known as the "$N+1, N-1$" approach, which involves two distinct steps:
 \begin{enumerate}
     \item $\bm{N-1}$ \textbf{step}: In this step, the model is initially trained and evaluated using all input features. Then, it is retrained N times, each time removing a different feature. After these N training iterations, the feature that, when removed, has the least impact on accuracy is eliminated from the feature set. This process is repeated until only one feature remains.\\
     After the N training, the input feature that, if taken out, changes less the accuracy is removed from the feature set, and the method is iterated until all features but one are removed.
-    \item \textbf{$N+1$ step}: beginning with the feature that achieved the highest ranking in the $N-1$ Step, we gradually introduce the feature that most significantly enhances accuracy into the feature set iteratively.
+    \item \textbf{$N+1$ step}: beginning with the feature with the highest $d$ score, we gradually introduce the feature that most significantly enhances accuracy into the feature set iteratively.
 \end{enumerate}
-The $N+1,N-1$ method is based on the idea that important features have a significant impact on the model's performance, and by systematically adding or removing features, we can assess their importance.\\
+The $N+1,N-1$ method is based on the idea that important features have a significant impact on the model's performance, and by systematically adding or removing features, we can assess their importance.
 Since the complexity of the network is fixed, the model is more prone to overfitting when trained with a smaller set of input features, so, to prevent it, an early stopping strategy was employed.
 
 
 \begin{minipage}{\linewidth}
 \begin{minipage}{0.5\linewidth}
     The N+1 and N-1 rankings are shown in figure \Fig{fig:n_rank} and \Tab{tab:rank} lists the eight features that significantly impact the model's accuracy. Both the N+1 and N-1 steps converge to the same eight features, albeit in a slightly different order.\\
-    The most highly ranked feature is the CvB score, as we are seeking to detect a b-jet. However, upon repeating the procedure, the btag and the CvB score may interchange positions in the ranking. This highlights a correlation and redundancy between these two features.
+    The most highly ranked feature is the CvB score, as we are seeking to detect a b-jet. However, upon repeating the procedure, the btag and the CvB score may interchange positions in the ranking.
 
 \end{minipage}
 \hfill
-\begin{minipage}{0.45\linewidth}
+\begin{minipage}{0.48\linewidth}
 
         \centering
-         %\fontsize{12pt}{12pt}\selectfont
-        \begin{tabular}{c|c|c}
+         \fontsize{11pt}{11pt}\selectfont
+        \begin{tabular}{c|c|c|c}
         \toprule
-        \multirow{2}{*}{\textbf{Jet feature}} & \textbf{N-1} & \textbf{N+1}\\
+        \multirow{2}{*}{\textbf{Jet feature}} & \textbf{N-1} & \textbf{N+1} &  \multirow{2}{*}{$d$}\\
         & \textbf{rank} & \textbf{rank}\\
         \midrule
-        Jet\_CvB & 1 & 1\\
-        dPhi\_Jet\_mu & 2&2 \\
-        Jet\_pt & 3& 3\\
-        dEta\_Jet\_mu & 4& 4\\
-        dPhi\_Jet\_nu & 5&5 \\
-        min\_dEta\_jets & 6& 7\\
-        T\_mass &7 & 6 \\
-        dEta\_Jet\_nu & 8& 8\\
+        Jet\_CvB & 1 & 2 & 0.45\\
+        dPhi\_Jet\_mu & 2&1 & 0.63 \\
+        Jet\_pt & 3& 3 & 0.29\\
+        dEta\_Jet\_mu & 4& 4 & 0.42\\
+        dPhi\_Jet\_nu & 5&5 & 0.09\\
+        min\_dEta\_jets & 6& 7 & 0.24\\
+        T\_mass &7 & 6 & 0.35\\
+        dEta\_Jet\_nu & 8& 8 & 0.22\\
         \bottomrule
         \end{tabular}
         \captionof{table}{N+1, N-1 ranking of the eight features that have an impact on the accuracy.}
         \label{tab:rank}
+\end{minipage}   
 \end{minipage}
-    
-\end{minipage}
+This highlights a correlation and redundancy between these two features.\\
 Based on the earlier discussion regarding the proximity of the leptonic b-jet to the lepton, these eight features encompass all the aspects related to the separation between the jet, lepton, and neutrino. Additional relevant features include the invariant mass of the jet, lepton, and neutrino system, which must be compatible with the top quark mass, as well as the jet's transverse momentum since the $p_T$ of the jets originating from the top quark decay is slightly higher than that of the jets originating from the hadronic W decay.
 
 
 \begin{figure}[H]
     \centering
-    \begin{subfigure}{0.48\linewidth}
+    \begin{subfigure}{0.9\linewidth}
         \includegraphics[width=1\linewidth]{fig//chap08-kin_reco/n_minus1.png}
         \caption{N-1 step. Highest ranking on the top.}
     \end{subfigure}
     \hfill
-    \begin{subfigure}{0.48\linewidth}   
+    \begin{subfigure}{0.9\linewidth}   
         \includegraphics[width=1\linewidth]{fig//chap08-kin_reco/n_plus1.png}
         \caption{N+1 step. Highest ranking on the bottom.}
     \end{subfigure}  
@@ -270,28 +275,40 @@ Based on the earlier discussion regarding the proximity of the leptonic b-jet to
 \begin{figure}[H]
     \vspace{-0.5cm}
     \centering
-    \begin{subfigure}{0.47\linewidth}
+    \begin{subfigure}{0.513\linewidth}
         \centering
         \includegraphics[width=1\linewidth]{fig//chap08-kin_reco/Jet_pt.png}
         \caption{Jet $p_T$}
     \end{subfigure}
     \hfill
-    \begin{subfigure}{0.4306\linewidth}  
+    \begin{subfigure}{0.47\linewidth}  
         \centering
         \includegraphics[width=1\linewidth]{fig//chap08-kin_reco/max_Pt.png}
         \caption{max Jet $p_T$}
     \end{subfigure}  
     \hfill
-    \begin{subfigure}{0.47\linewidth}
+    \begin{subfigure}{0.513\linewidth}
         \centering
         \includegraphics[width=1\linewidth]{fig//chap08-kin_reco/cvb.png}
         \caption{Jet\_CvB}
     \end{subfigure}
     \hfill
-    \begin{subfigure}{0.4306\linewidth}  
+    \begin{subfigure}{0.47\linewidth}  
         \centering
         \includegraphics[width=1\linewidth]{fig//chap08-kin_reco/min_cvb.png}
         \caption{min Jet\_CvB}
+    \end{subfigure} 
+    \hfill
+    \begin{subfigure}{0.513\linewidth}
+        \centering
+        \includegraphics[width=1\linewidth]{fig//chap08-kin_reco/Tmass.png}
+        \caption{$m_t$}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.47\linewidth}  
+        \centering
+        \includegraphics[width=1\linewidth]{fig//chap08-kin_reco/min_Tmass.png}
+        \caption{$\min(|m_t-173|)$}
     \end{subfigure}  
 \end{figure}
 
@@ -303,17 +320,7 @@ Based on the earlier discussion regarding the proximity of the leptonic b-jet to
     \ContinuedFloat
     \vspace{-0.5cm}
     \centering
-        \begin{subfigure}{0.513\linewidth}
-        \centering
-        \includegraphics[width=1\linewidth]{fig//chap08-kin_reco/Tmass.png}
-        \caption{$m_t$}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}{0.47\linewidth}  
-        \centering
-        \includegraphics[width=1\linewidth]{fig//chap08-kin_reco/min_Tmass.png}
-        \caption{$\min(|m_t-173|)$}
-    \end{subfigure}  
+    
      \begin{subfigure}{0.49\linewidth}
         \centering
         \includegraphics[width=1\linewidth]{fig//chap08-kin_reco/dphi_mu.png}
@@ -336,14 +343,9 @@ Based on the earlier discussion regarding the proximity of the leptonic b-jet to
         \centering
         \includegraphics[width=1\linewidth]{fig//chap08-kin_reco/min_dphi_nu.png}
         \caption{$\min |\Delta \phi|$ Jet-$\nu$}
-    \end{subfigure}  
-\end{figure}
-\newpage
-\begin{figure}[H]
-    \ContinuedFloat
-    \vspace{-0.5cm}
-    \centering
-        \begin{subfigure}{0.49\linewidth}
+    \end{subfigure} 
+    \hfill
+    \begin{subfigure}{0.49\linewidth}
         \centering
         \includegraphics[width=1\linewidth]{fig//chap08-kin_reco/dphi_W.png}
         \caption{$|\Delta \phi|$ Jet-$\PW$}
@@ -354,7 +356,12 @@ Based on the earlier discussion regarding the proximity of the leptonic b-jet to
         \includegraphics[width=1\linewidth]{fig//chap08-kin_reco/min_dphi_W.png}
         \caption{$\min|\Delta \phi|$ Jet-$\PW$}
     \end{subfigure}  
-    \hfill
+\end{figure}
+\newpage
+\begin{figure}[H]
+    \ContinuedFloat
+    \vspace{-0.5cm}
+    \centering
      \begin{subfigure}{0.49\linewidth}
         \centering
         \includegraphics[width=1\linewidth]{fig//chap08-kin_reco/deta_mu.png}
@@ -378,13 +385,8 @@ Based on the earlier discussion regarding the proximity of the leptonic b-jet to
         \includegraphics[width=1\linewidth]{fig//chap08-kin_reco/min_deta_nu.png}
         \caption{$\min|\Delta \eta|$ Jet-$\nu$}
     \end{subfigure}  
-\end{figure}
-\newpage
-\begin{figure}[H]
-    \ContinuedFloat
-    \vspace{-0.5cm}
-    \centering
-   \begin{subfigure}{0.49\linewidth}
+    \hfill
+    \begin{subfigure}{0.49\linewidth}
         \centering
         \includegraphics[width=1\linewidth]{fig//chap08-kin_reco/deta_W.png}
         \caption{$|\Delta \eta|$ Jet-$\PW$}
@@ -395,7 +397,12 @@ Based on the earlier discussion regarding the proximity of the leptonic b-jet to
         \includegraphics[width=1\linewidth]{fig//chap08-kin_reco/min_deta_W.png}
         \caption{$\min|\Delta \eta|$ Jet-$\PW$}
     \end{subfigure}  
-    \hfill
+\end{figure}
+\newpage
+\begin{figure}[H]
+    \ContinuedFloat
+    \vspace{-0.5cm}
+    \centering
     \begin{subfigure}{0.49\linewidth}
         \centering
         \includegraphics[width=1\linewidth]{fig//chap08-kin_reco/dr_mu.png}
@@ -419,16 +426,8 @@ Based on the earlier discussion regarding the proximity of the leptonic b-jet to
         \includegraphics[width=1\linewidth]{fig//chap08-kin_reco/min_dr_nu.png}
         \caption{$\min \Delta R$ Jet-$\nu$}
     \end{subfigure}  
-\end{figure}
-
-\newpage
-\begin{figure}[H]
-    \ContinuedFloat
-    \vspace{-0.5cm}
-    \centering
-    
     \hfill
-        \begin{subfigure}{0.49\linewidth}
+    \begin{subfigure}{0.49\linewidth}
         \centering
         \includegraphics[width=1\linewidth]{fig//chap08-kin_reco/dr_W.png}
         \caption{$\Delta R$ Jet-$\PW$}
@@ -439,8 +438,15 @@ Based on the earlier discussion regarding the proximity of the leptonic b-jet to
         \includegraphics[width=1\linewidth]{fig//chap08-kin_reco/min_dr_W.png}
         \caption{$\min \Delta R$ Jet-$\PW$}
     \end{subfigure}  
+\end{figure}
+
+\newpage
+\begin{figure}[H]
+    \ContinuedFloat
+    \vspace{-0.5cm}
+    \centering
     \caption{Distibutions of the most relevant features. On the left side, there are the distributions of the observables of the leptonic b Jet and of the other jets, both normalized to 1.
-On the right side, there are the stacked histograms of the distributions of the minimum or the maximum of each observable.
+On the right side, there are the stacked histograms of the distributions of the minimum or the maximum of each observable for each event.
 The legend includes information on the mean and standard deviation.}
 \end{figure}
 
@@ -461,16 +467,17 @@ This approach has multiple criticalities:
     \item N is the maximum number of jets considered in the event, but, when an event has less than M jets, dealing with the units related to the remaining N-M jets becomes a concern.\\
     We could discuss different methods to assign a value for the features of the absent jets, but no choice would be optimal.
 \end{itemize}
-To tackle these challenges, one potential solution involves leveraging an architecture better suited to the problem, such as attention networks. In the following section, we introduce a neural network based on the attention mechanism to address the JPA problem, which we will henceforth refer to as "JPANet" (Jet-Parton Attention Net).
+To tackle these challenges, one potential solution involves leveraging an architecture better suited to the problem, such as attention networks. In the following section, we introduce a neural network based on the attention mechanism to address the JPA problem, which we will henceforth refer to as "JPANet" (Jet-Parton Attention Net) that afterward will be employed to tackle the full JPA problem.
 
-\subsection{JPANet}
+\subsection{Full Jet-parton assignment}
+\paragraph*{JPANet}
 JPANet is an attention network adapted to the topology of the signal events.\\
 The network takes in two different inputs: one representing the leptonic W boson, and the other containing the features of all the jets.\\
 These inputs are channeled into separate subnetworks referred to as "heads" and are subsequently merged through a cross-attention mechanism.\\
 
 
 
-\begin{minipage}{0.6\linewidth}
+\begin{minipage}{0.625\linewidth}
 \begin{itemize}
     \item \textbf{W head}: The input tensor for the W head has a dimension of $(N_{\text{events}},1,7)$, with 7 representing the number of features related to the leading lepton and the reconstructed neutrino originating in the leptonic W decay listed in \Tab{tab:Whead}.\\
     The inputs are normalized with a Batch norm layer before being passed through a feed-forward network consisting of two layers, each containing 80 units.
@@ -478,7 +485,7 @@ These inputs are channeled into separate subnetworks referred to as "heads" and 
 \end{itemize}
 \end{minipage}
     \hfill
-\begin{minipage}{0.35\linewidth}
+\begin{minipage}{0.33\linewidth}
         \centering
         \fontsize{11pt}{11pt}\selectfont
         \begin{tabular}{c|c}
@@ -525,51 +532,50 @@ These inputs are channeled into separate subnetworks referred to as "heads" and 
         \end{tabular}
         \captionof{table}{Jet head features.}
 \end{minipage}
-    Because in approximately 97\% of events, all the jets matching the four quark partons can be found among the top seven jets with the highest transverse momentum, we opted to limit our selection to just seven jets.\\
+    Because in approximately 97\% of events, all the jets matching the four quark partons can be found among the $p_T$ leading seven jets with the highest transverse momentum, we opted to limit our selection to just seven jets (\Fig{fig:jets_stack}).\\
     These selected inputs are first passed through a batch normalization layer\footnote{Since $m_{t_L}$ can have significant outliers, the variable is first transformed with the function $\log(1+m_{t_L})$} and then through a feed-forward neural network, which consists of two layers, each containing 80 units.
     The output from the first MLP serves as the input for a residual network, comprising a self-attention layer and a layer normalization layer. Finally, the output from the self-attention jet ResNet is directed into another MLP, which consists of three layers, each having 80 units. The output of the jet head constitutes the "Jet embedding."
 \end{itemize}
 
 
-After creating the W and the Jet embedding, we exploit a cross-attention layer to combine all the information of the events to assign an attention score to each jet in the jet sequence. This process involves concatenating the W embedding and jet embedding sequences and employing them as the Key and Value components in the scaled dot product, with the Query derived from the jet embedding sequence.\\
+After creating the W and the Jet embedding, we exploit a cross-attention layer to combine all the information of the events to assign an attention score to each jet in the jet sequence. This process involves concatenating the W embedding and jet embedding sequences and employing them as the Key and Value components in the scaled dot product, with the Query derived from the jet embedding sequence.
 
-\begin{minipage}{0.3\linewidth}
+\begin{minipage}{0.33\linewidth}
+\vspace{-1cm}
 \begin{figure}[H]
     \raggedright
-    \includegraphics[height=0.5\textheight]{fig//chap08-kin_reco/JPANet_1.pdf}
-    \caption{Schematics of JPANet.}
+    \includegraphics[width=\linewidth]{fig//chap08-kin_reco/JPANet_1.pdf}
+    \caption{JPANet.}
     \label{fig:JPANet1}
 \end{figure}
 \end{minipage}
 \hfill
-\begin{minipage}{0.65\linewidth}
+\begin{minipage}{0.62\linewidth}
+\vspace{-0.3cm}
 The output of the cross-attention layer is added to the jet embedding residuals, normalized, and subsequently passed into the final Multi-Layer Perceptron (MLP), which consists of three layers, each containing 80 units. The output layer is equipped with a softmax function, ensuring that the outputs represent scores for each element in the jet sequence that are normalized to sum up to 1.\\
 \\
 The network employs the Swish activation function and includes a 1.2\% dropout probability to mitigate overfitting. Additionally, it utilizes a batch size of 20,000 and the RAdam optimizer, which minimizes the cross-entropy loss with a learning rate of $10^{-3}$.\\
-Since the networks took 3 hours to train on an Nvidia A100 (40GB) GPU shared within the entire CERN community, a comprehensive hyperparameter optimization strategy could not be implemented. As a result, the choices made are based on a small number of trial runs.\\
-\\
+Since the networks took 3 hours to train on an Nvidia A100 (40GB) GPU shared with the entire CERN community, a comprehensive hyperparameter optimization strategy could not be implemented. As a result, the choices made are based on a small number of trial runs.\\
 Thanks to its architecture, JPA effectively addresses all the issues that an event-wise MLP would encounter. The network inherently maintains permutation invariance for physics objects and the absent jets are handled just by forcing their respective attention scores to zero.
 \end{minipage}
 
 
-\paragraph*{Performace} On both the training and validation datasets, JPANet successfully matched the correct jet to the leptonic b quark parton in 82\% of the events. This high accuracy represents a substantial enhancement compared to all the jet-wise models that were assessed, making JPANet the preferred choice for carrying out the complete JPA task.
+\paragraph*{Leptonic bJet Performace} On both the training and validation datasets, JPANet successfully matched the correct jet to the leptonic b quark parton in 82\% of the events. This high accuracy represents a substantial enhancement compared to all the assessed jet-wise models, making JPANet the preferred choice for carrying out the complete JPA task.
 
 
 
 
-\subsection{Full Jet-parton assignment}
+\paragraph*{Full Jet-parton assignment}
 To carry out the full JPA task using JPANet, a modification is needed primarily in the output layer. The chosen approach involves generating an output, denoted as $A_{jp}$,  for each event, with a shape of (7, 4), such that $\sum_j A_{jp}=1 \: \forall p$.
-In other words, to each quark parton are assigned 7 scores, one per jet, that sum up to one.\\
-\\
-The optimal combination of jets is determined by maximizing the product of scores across all possible combinations of assigning the jets to the four quark partons.\\
-\\
-Additionally, since now we are looking for jets of different flavors, the \DeepJet CvL score is introduced in the jet features.\\
-\\
+In other words, to each quark parton, are assigned one score per jet that sum up to one.
+Additionally, since now we are looking for jets of different flavors, the \DeepJet CvL score is introduced in the jet features.
+The optimal combination of jets is determined by maximizing the product of scores across all possible combinations of assigning the jets to the four quark partons.
 Despite a significant number of potential combinations ($7!/(7-4)!=840$ in total), JPANet demonstrated the ability to accurately identify the correct jet-parton assignments in 54\% of the events in both the training and validation datasets.
 
-
+\vspace{-0.2cm}
 \begin{table}[H]
     \centering
+    \fontsize{10.pt}{10.pt}\selectfont
     \begin{tabular}{l|c}
     \toprule
     \multicolumn{2}{c}{\textbf{JPANet accuracy}}\\
@@ -578,3 +584,49 @@ Despite a significant number of potential combinations ($7!/(7-4)!=840$ in total
          \textbf{Full JPA}& 54\%\\
     \end{tabular}
 \end{table}
+
+
+
+
+\begin{figure}[H]
+    \vspace{-0.5cm}
+    \centering
+     \begin{subfigure}{0.434\linewidth}
+        \centering
+        \includegraphics[width=1\linewidth]{fig//chap08-kin_reco/jets/pt_index.png}
+        \caption{Jets $p_T$ index}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.4227\linewidth}  
+        \centering
+        \includegraphics[width=1\linewidth]{fig//chap08-kin_reco/jets/jet_pt.png}
+        \caption{Jets $p_T$}
+    \end{subfigure}  
+    \hfill
+    
+    \begin{subfigure}{0.42\linewidth}
+        \hspace{0.15cm}
+        \includegraphics[width=1\linewidth]{fig//chap08-kin_reco/jets/jet_eta.png}
+        \caption{Jets $\eta$}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.435\linewidth}  
+        \centering
+        \includegraphics[width=1\linewidth]{fig//chap08-kin_reco/jets/jet_b.png}
+        \caption{\DeepJet B}
+    \end{subfigure} 
+    \hfill
+    \begin{subfigure}{0.435\linewidth}
+        \centering
+        \includegraphics[width=1\linewidth]{fig//chap08-kin_reco/jets/jet_cvb.png}
+        \caption{\DeepJet CvB}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.435\linewidth}  
+        \centering
+        \includegraphics[width=1\linewidth]{fig//chap08-kin_reco/jets/jet_cvl.png}
+        \caption{\DeepJet CvL}
+    \end{subfigure}  
+    \caption{Stacked plots of observables of jets that match the four quark partons.}
+    \label{fig:jets_stack}
+\end{figure}
