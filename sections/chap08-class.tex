@@ -32,36 +32,35 @@ Meanwhile, other observables produce results that are about an order of magnitud
         \captionof{figure}{Unidimensional feature ranking using the metric $d$ between flattened signal observables and \ttbar semileptonic observables }
 \end{minipage}
 \section{Event classification}
-\paragraph*{SBANet} Since we have already demonstrated the ability of JPANet to reconstruct and interpret the signal events, we can exploit the same model to tackle the signal-background discrimination task.\\
-To do it we have just to introduce some modifications into JPANet, creating another network which will be denoted as "Signal-Background Attention Network" (SBANet).\\
-This network will be trained and evaluated separately in the Muon and Electron channels.\\
+\subsubsection*{SBANet} Since we have already demonstrated the ability of JPANet to reconstruct and interpret the signal events, we can exploit the same model to tackle the signal-background discrimination task.\\
+To achieve this, we simply need to make some adjustments to JPANet, creating another network which will be denoted as "Signal-Background Attention Network" (SBANet).\\
+The training and evaluation of this network will be conducted independently for the Muon and Electron channels.
 \\
-The differences between SBANet and JPANet are:
+The differences between SBANet and JPANet are:\\
 \\
-\textbf{Jet Inputs}: In SBANet, all the three \DeepJet scores are added to the Jet head (b-tag,CvB,CvL).
-\\
-\\
-\textbf{Hyper-parameters}: Doing some trials it was proven that the network needed to be more complex, so the number of units of each feed-forward layer was increased to 128 and the dropout probability to 2\%.
+\textbf{Jet Inputs}: In SBANet, all three \DeepJet scores are added to the Jet head (b-tag,CvB,CvL).
 \\
 \\
-\textbf{Self-attention pooling}: The output of JPANet is a matrix $7 \times 4$ because we have to assign a score to each pair of jet-partons, but now we have to assign a single score to the event.\\
-To do it we have to reduce the jet embedding sequence to just one dimension. This was done using a self-attention pooling layer that weights each element of the sequence (\ie the physics objects) with the attention scores and performs a weighted average of the embedding sequence across the sequence.\\
-Subsequently, three feed-forward were added.  
+\textbf{Hyper-parameters}: After experimenting with various configurations, we found that the network required increased complexity. This entailed raising the number of units in each feed-forward layer to 128 and adjusting the dropout probability to 2\%.
 \\
 \\
-\textbf{Event self-attention}: We want the self-attention pooling to compute the attention scores over all the physics objects and not just on the jets, so the JPANet cross-attention was turned in a self-attention over the concatenated sequence of the jets and of the leptonic W.
+\textbf{Self-attention pooling}: The JPANet's output initially produces a 7x4 matrix, as it assigns scores to pairs of jet-partons. However, we need to derive a single score for the entire event. To accomplish this, we condensed the physics objects embedding sequence into a single dimension using a self-attention pooling layer. This layer assigns weights to each element of the sequence (i.e., the physics objects) based on attention scores and computes a weighted average across the sequence. Subsequently, we introduced three additional feed-forward layers.
 \\
 \\
-\textbf{Output layer} The output of SBANet is a 3-dimensional layer equipped with the softmax function. Three classes are defined: the signal, the $\ttbar$ semileptonic process, and the $\ttbar$ dileptonic process. In this way, we can train the network to better distinguish the signal from the two main populated sources of background, also if, in the end, we will consider just the signal score.
+\textbf{Event self-attention}: We aimed to have the self-attention pooling calculate attention scores over all physics objects, not just the jets. Consequently, we transformed JPANet's cross-attention into a self-attention mechanism covering the concatenated sequence of jets and the leptonic W.
+\\
+\\
+\textbf{Output layer} The output of SBANet is a 3-dimensional layer equipped with the softmax function. Three classes are defined: the signal, the $\ttbar$ semileptonic process, and the $\ttbar$ dileptonic process. This enables the network to better distinguish the signal from the two primary sources of background, even though, ultimately, we only consider the signal score.
 \\  
 \\
-\textbf{Secondary leptons head} Another minimal head was added to help SBANet to recognize di-leptonic events. This head, in the muon(electron) channel, is composed of a sequence of 3 elements: the second leading muon(electron), and the leading and the second leading electrons(muons).\\
-The lepton features are just the kinematic variables $(p_T,\eta,\phi)$ and the head is connected to a 2-layer feed-forward neural network.\\
-The secondary leptons embedding sequence is then concatenated to the full event sequence before the self-attention pooling layer.
+\textbf{Secondary leptons head} 
+To enhance SBANet's ability to identify di-leptonic events, we introduced an additional head. In the muon(electron) channel, this head comprises a sequence of three elements: the second leading muon(electron), the leading and the second leading electron(muon).
+The lepton features are limited to kinematic variables $(p_T,\eta,\phi)$, and the head is linked to a 2-layer feed-forward neural network.\\
+The sequence of secondary leptons' embeddings is then combined with the complete event sequence before the self-attention pooling layer.
 \\
 \\
-\textbf{Invariant mass heads and pair-wise attention biases} The two self-attention layers in the network were modified to include pair-wise physics object features, like invariant masses.\\
-Let's recall what the self-attention is:
+\textbf{Invariant mass heads and pair-wise attention biases} The two self-attention layers in the network were modified to include pair-wise physics object features, such as invariant masses.
+Let's recall what is the scaled dot product:
 \begin{equation}
     \text{Softmax}\left( \frac{QK}{d_k} \right)V
 \end{equation}
@@ -77,25 +76,106 @@ where $\hat{M}$ is a linear embedding of the matrix $M$ that contains all the in
     M_{ij}&=m_i & \text{if } i=j\\
 \end{aligned}
 \end{equation}
-The M matrix is symmetric and has $N(N+1)/2$ independent components. The strategy to implement this in SBANet is adding another head containing for each event a vector of length 36 with the square invariant masses of the couple of jets and the leptonic W.
+The M matrix is symmetric and has $N(N+1)/2$ independent components.\\
+The strategy to implement this in SBANet is adding another head containing for each event a vector of length 36 with the square invariant masses of the couple of jets and the leptonic W.
 \begin{equation*}
-    \text{Mass head inputs}=\Biggl[ \dboxed{m_W,m_{Wj_1},\dots,m_{Wj_7},\dboxed{m_{j_1},m_{j_1 j_2},\cdots,m_{j_2},m_{j_2 j_3},\cdots}}\: \Biggr]
+    \text{Mass head inputs}=\Biggl[ \dboxed{m_W,m_{Wj_1},\:\dots\:,m_{Wj_7},\dboxed{m_{j_1},m_{j_1 j_2},\:\dots\:,m_{j_6},m_{j_6 j_7},m_{j_7}}}\: \Biggr]
 \end{equation*}
 This vector contains all the independent components of the M matrix.\\
+Given the presence of significant outliers in the invariant masses, they are transformed with the function $\log(1+m)$ and then normalized with a batch norm layer.\\
+\\
 Since the first self-attention layer works only on the jet sequence and the other on the jet + leptonic W sequence, we have to build two different mass embeddings.\\
 \\
 For jet-self attention, only the mass inputs that are not related to the leptonic W boson are considered. They are 28 elements that are fed to a 4-layer feed-forward neural network of size [28,128,128,28]. This network that has the same number of neurons in the first and the last layer is called Autoencoder.\\
+\\
 The 28 output elements of the autoencoder are used to build the full $7\times 7$ M matrix that will be used as attention bias in the jet self-attention.\\
 \\
-The same thing is done with the event self-attention but considering all the mass head inputs and, in this case, the autoencoder size will be [36,128,128,36]
+The same thing is done with the event self-attention but considering all the mass head inputs and, in this case, the autoencoder size will be [36,128,128,36]\\
 
 
-%Scrivi i datasets, cross entropy reweighted
+\begin{minipage}{\linewidth}
+    \begin{minipage}{0.52\linewidth}
+        \paragraph*{Training and evaluation}
+        The network is trained and evaluated separately in the Muon and Electron channels. The dataset is divided into 85\% training and 15\% validation and is illustrated in \Tab{tab:SBANet_dataset}. \footnotemark\\
+        To take into account the imbalance between the three classes, the cross-entropy loss function of SBANet is reweighted.
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.45\linewidth}
+        \centering
+        \begin{tabular}{l|c|c}
+            \toprule
+             & \textbf{Training} & \textbf{Validation}\\
+            \midrule
+             signal& $9.1 \cdot 10^6$  & $1.6 \cdot 10^6$\\
+             TTSL & $1.0 \cdot 10^8$ & $1.8 \cdot 10^7$\\
+             TTDL & $2.0\cdot 10^7$ & $3.5 \cdot 10^6$\\
+        \end{tabular}
+        \captionof{table}{SBANet train and validation datasets before the Muon/Electron channel preselection.}
+        \label{tab:SBANet_dataset} 
+    \end{minipage}
+\end{minipage}
+\footnotetext{These events are not included in the effective MC luminosity shown in tab \ADDREF. These are additional events used only to train and validate the network}
+
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[height=0.805\textheight]{fig//chap09-sigback/SBANet.png}
+    %\caption{SBANet}
+    \label{fig:SBANet}
+\end{figure}
+
+\begin{minipage}{0.58\linewidth}
+\begin{table}[H]
+    \centering
+    \fontsize{11.8pt}{11.8pt}\selectfont
+    \begin{tabular}{l|l}
+    \toprule
+        \textbf{Head} & \textbf{Input features} \\
+    \midrule
+         Jets & $[p_T,\eta,\phi,\text{bTag},\text{CvB},\text{CvL}]$ \\
+         \midrule
+         LeptW & $[p_T^\ell,\eta^\ell,\phi^\ell,p_T^\nu,\eta^\nu,\phi^\nu]$\\
+         \midrule
+         Sec. Lept.& $[p_T,\eta,\phi]$ \\
+         \midrule
+         Masses & 36 Jets+LeptW inv. masses\\
+         \bottomrule
+    \end{tabular}
+    %\caption{Caption}
+    \label{tab:sbanet_inputs}
+\end{table}
+\end{minipage}
+\hfill
+\begin{minipage}{0.4\linewidth}
+    \begin{table}[H]
+    \centering
+    \begin{tabular}{l|l}
+    \toprule
+        Act. function & Swish\\
+        Loss& Cross-Entropy\\
+        Optimizer & RAdam \\
+        Learn. rate & 0.001\\
+        Batch size & 20000\\
+        Dropout  & 0.02\\  
+        \bottomrule
+    \end{tabular}
+\end{table}
+\end{minipage}
+\captionof{figure}{SBANet schematics, inputs, and hyper-parameters.}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[height=0.48\textheight]{fig//chap09-sigback/muon_loss.png}
+    \includegraphics[height=0.48\textheight]{fig//chap09-sigback/electron_loss.png}
+    \caption{SBANet training and validation loss for the muon and electron channel.}
+    \label{fig:SBANET_loss}
+\end{figure}
+
+
 
 
 %loss
-
-
 
 
 \section{Signal rate extraction}
