@@ -19,6 +19,7 @@
 \usepackage{amssymb}
 \usepackage{algorithm}
 \usepackage{algpseudocode}
+
 %\counterwithout*{footnote}{chapter}
 %\usepackage{tikz}
 %\usetikzlibrary{calc,positioning,shadows.blur,decorations.pathreplacing}
@@ -92,7 +93,7 @@
 
 % METADATA
 \definecolor{myblue}{RGB}{0,82,155}
-
+%\usepackage[dvipsnames]{xcolor}
 \usepackage[hyperfootnotes=true,linktoc=all]{hyperref} % for url hyperlinks; load last to prevent problems %,pagebackref=true
 \hypersetup{%
   pdfauthor={Piero Viscone},
@@ -101,7 +102,7 @@
   pdfkeywords={},
   %pdfborder={111}, % for hyperlinks in pdf
   colorlinks=true,
-  linkcolor={},
+  linkcolor=myblue,
   citecolor={red!80!black},
   %urlcolor={blue!80!black}
 }

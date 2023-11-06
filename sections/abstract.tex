@@ -1,19 +1,64 @@
 %!TEX root = ../thesis.tex
 % UZH MNF only requires an English abstract. No German abstract or summary is required!
 % See "fact sheet": https://www.mnf.uzh.ch/en/studium/phd/checkliste-fuer-doktorierende.html
-\ % force empty page (left-hand side) between abstract and acknowledgements
+ % force empty page (left-hand side) between abstract and acknowledgements
 \thispagestyle{empty} % no page number
 \newpage
 \phantomsection % to get the hyperlinks (and bookmarks in PDF) right for index, list of files, bibliography, etc.
 %\addcontentsline{toc}{chapter}{Abstract} % add to table of contents
-\begin{abstract}
-\section*{Abstract}
+%\begin{abstract}
+%\section*{Abstract}
 
-\lipsum[1-2]
+%\lipsum[1-2]
 
 %\addcontentsline{toc}{chapter}{Summary}
 %\section*{Summary}
-%Here is a longer summary for the thesis.
+%Here is a longer summary of the thesis.
+
+%\end{abstract}
+\addcontentsline{toc}{chapter}{Abstract} % add to table of contents
+\begin{abstract}
+\section*{Abstract}
+The precise determination of the $|V_{cb}|$ Cabibbo-Kobayashi-Maskawa (CKM) element is of great interest as it currently is the CKM element with the largest relative uncertainty,  playing a crucial role in present CKM unitarity tests. 
+
+Existing measurements of $|V_{cb}|$ rely on semileptonic decays of B hadrons, but these determinations are hampered by non-perturbative Quantum Chromodynamics (NP-QCD) theoretical uncertainties, rendering further refinements challenging.\\
+Most of all, there is a large ($\sim 3\sigma$) observed tension between inclusive and exclusive B hadrons determinations, often referred to as the $|V_{cb}|$ puzzle.
+\\
+
+A determination of $|V_{cb}|$ through W decays would allow us to tackle the $|V_{cb}|$ puzzle, providing a direct measurement at the natural energy scale of the W boson, with an approach that is free from  NP-QCD theoretical uncertainties.
+The $|V_{cb}|$ element can be accessed by measuring the ratio between the branching fraction of the W$\rightarrow cb$ decay over the total hadronic decay branching fraction 
+   $$ \frac{\Gamma(W\to cb)}{\Gamma(W\to qq)}=\frac{|V_{cb}|^2}{2}$$
+
+Conducting inclusive measurements of hadronic W decays at a Hadron collider like the Large Hadron Collider (LHC) is impossible due to the large QCD background.\\
+To address this problem,  semileptonic decays of W pairs can be employed, characterized by the presence of one lepton in the final state. This distinctive signature enables the clean and efficient triggering of events allowing us to measure the $W \to cb$ rate exploiting the hadronic decay of the second W boson. 
+The primary source of W pairs at the LHC arises from the decay of top-antitop quark pairs, hence the analysis will be focused on the selection of semileptonic decays of top pairs.\\
+
+At LHC, in all the RunII, there were produced almost 40 thousand $W\to cb$ decays originating from semileptonic $t \bar{t}$ decays, leading to a potential statistical uncertainty of $0.5\%$ on $|V_{cb}|$ in the ideal case of a perfect event selection. 
+Since the difference between inclusive and exclusive determinations through B mesons decays is 7\%, the direct measurement of $|V_{cb}|$ at LHC is a promising approach to solve the $|V_{cb}|$ puzzle.
+\\
+In this work, prospects for a direct measure of $|V_{cb}|$ at CMS with the RunII luminosity are provided.
+To enhance the precision of our determination, cutting-edge machine learning techniques,  such as attention networks, are integrated into the analysis, to efficiently identify and classify events, separating the $W \to cb$ signal from the backgrounds.\\
+In the end, a template fit on the Neural network score using the Asimov dataset will be presented to estimate the uncertainties of such a measure.
+
+This determination will be limited mainly by the b and c tagging systematic uncertainties, but the ratio of branching fractions should allow some cancellations.\\
+\\
+The thesis is structured as follows:\\
+\\
+\textbf{Chapter} \ref{sec:TH} provides an overview of the Standard model, with emphasis on the CKM matrix and the production of top pairs at LHC.\\
+\\
+\textbf{Chapter} \ref{chap:vcb} is dedicated to the presentation of the current determination of $|V_{cb}|$ with B hadrons and of the direct measure at LHC.\\
+\\
+\textbf{Chapters} \ref{sec:CMS} and \ref{sec:RECO} describe respectively the CMS detector and the algorithms employed to reconstruct the events.\\
+\\
+\textbf{Chapter} \ref{sec:STAT} delves into the statistical methods used in the analysis, in particular, the profile likelihood method and the neural networks.\\
+\\
+In \textbf{Chapter} \ref{sec:Events} the selection of physics objects and events is discussed, along with the signal signatures and the backgrounds, and the respective Monte Carlo samples employed in the analysis. \\
+\\
+In \textbf{Chapter} \ref{sec:kin}, the jet-parton assignment problem is tackled to provide an interpretation of the signal events.\\
+\\
+Finally, in \textbf{Chapter} \ref{sec:signal}, the multivariate model which had the higher accuracy on the jet-parton assignment problem is adapted to perform the signal-background discrimination.
+The profile likelihood method is employed to assess the statistical and systematic uncertainties on the $W \to cb$ rate and on $|V_{cb}|$.\\
+\TODO{TOgli Vcb see non passi al rapport}
+
 
 \end{abstract}
-\newpage
