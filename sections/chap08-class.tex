@@ -62,12 +62,12 @@ The sequence of secondary leptons' embeddings is then combined with the complete
 \textbf{Invariant mass heads and pair-wise attention biases} The two self-attention layers in the network were modified to include pair-wise physics object features, such as invariant masses.
 Let's recall what is the scaled dot product:
 \begin{equation}
-    \text{Softmax}\left( \frac{QK}{d_k} \right)V
+    \text{Softmax}\left( \frac{QK}{\sqrt{d_k}} \right)V
 \end{equation}
 The product $QK$ is a $N\times N$ matrix where N is the length of the sequence.\\
 Given that we can include the invariant masses of couples of physics objects by just adding a term in the softmax function
 \begin{equation}
-    \text{Softmax}\left( \frac{QK+\hat{M}}{d_k} \right)V
+    \text{Softmax}\left( \frac{QK+\hat{M}}{\sqrt{d_k}} \right)V
 \end{equation}
 where $\hat{M}$ is a linear embedding of the matrix $M$ that contains all the invariant masses
 \begin{equation}
@@ -114,7 +114,7 @@ The same thing is done with the event self-attention but considering all the mas
         \label{tab:SBANet_dataset} 
     \end{minipage}
 \end{minipage}
-\footnotetext{These events are not included in the effective MC luminosity shown in tab \ADDREF. These are additional events used only to train and validate the network}
+\footnotetext{These events are not included in the effective MC luminosity shown in \Tab{tab:samples}. These are additional events used only to train and validate the network}
 
 
 
@@ -166,19 +166,97 @@ The same thing is done with the event self-attention but considering all the mas
 
 \begin{figure}[H]
     \centering
-    \includegraphics[height=0.48\textheight]{fig//chap09-sigback/muon_loss.png}
-    \includegraphics[height=0.48\textheight]{fig//chap09-sigback/electron_loss.png}
+    \includegraphics[height=0.48\textheight]{fig//chap09-sigback/loss_Muon.png}
+    \includegraphics[height=0.48\textheight]{fig//chap09-sigback/loss_Electron.png}
     \caption{SBANet training and validation loss for the muon and electron channel.}
     \label{fig:SBANET_loss}
 \end{figure}
 
 
-
-
-%loss
-
+\begin{figure}[H]
+    \centering
+    \includegraphics[height=0.48\textheight]{fig//chap09-sigback/stack_score_muons.png}
+    \includegraphics[height=0.48\textheight]{fig//chap09-sigback/stack_score_electrons.png}
+    \caption{Stacked distribution of the SBANet scores for each process and significance plot in the muon (top) and electron (bottom) channel.}
+    \label{fig:SBANET_scores}
+\end{figure}
 
 \section{Signal rate extraction}
+To extract the $\PW \to cb$ rate, the SBANet score is employed to perform a template fit.
+
+\begin{minipage}{\linewidth}
+\begin{minipage}{0.43\linewidth}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l|cc}
+    \toprule
+        \textbf{Channel} & $\bm{Q}$ & $\dfrac{\bm{\sigma[R(W \to cb)]}}{\bm{R(W \to cb)}}$ \\
+        \midrule
+         Muon & 98.50 & 10.1\%\\
+         Electron & 68.65 &  11.3\%\\
+         Combined & 177.15 & 7.5\%\\
+         \bottomrule
+    \end{tabular}
+    \caption{Significance and estimate of the statistical uncertainties on the $\PW \to cb$ rate of each channel.}
+    \label{tab:stat_unc}
+\end{table}
+    
+\end{minipage}
+\hfill
+\begin{minipage}{0.52\linewidth}
+    To expand the region with the highest signal purity, the scores are transformed with the inverse hyperbolic tangent function and then binned in such a way as to maximize the significance, maintaining at least one event in each bin.
+    Even before executing the fit, the statistical uncertainties on the $\PW \to cb$ rate can be estimated through the significance.
+\end{minipage}
+
+    
+\end{minipage}
+
+
+
+
+\iffalse
+\begin{equation*}
+    \begin{aligned}
+        Q&=98.5 &\implies \frac{\sigma[R(\PW \to cb)]}{R(\PW \to cb)}&\sim 10.1\% & (\text{Muon channel})\\
+        Q&=44.1 &\implies \frac{\sigma[R(\PW \to cb)]}{R(\PW \to cb)}&\sim 15.0\% & (\text{Electron channel})\\
+        Q&=142.6 &\implies \frac{\sigma[R(\PW \to cb)]}{R(\PW \to cb)}&\sim 8.4\% & (\text{Combined})\\
+    \end{aligned}
+\end{equation*}
+\fi
+
+\paragraph*{Template fit}
+The statistical uncertainties on the $\PW \to cb$ rate are derived using the profile likelihood method using the Asimov dataset, as described in Sec. \ref{sec:profile} .
+
+\begin{minipage}{\linewidth}
+    \begin{minipage}{0.74\linewidth}
+        \begin{figure}[H]
+        \centering
+        \includegraphics[width=\linewidth]{fig//chap09-sigback/stat_like.png}
+        
+        \label{fig:enter-label}
+        \end{figure}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.25\linewidth}
+        
+        \begin{table}[H]
+            \centering
+            \begin{tabular}{l|c}
+                \toprule
+                \multicolumn{2}{c}{\textbf{Rate Stat. Unc.}} \\
+                \midrule
+                 Muon & 9.0\% \\
+                 Electron & 11.2\% \\
+                 Combined & 7.0\% \\
+                 \bottomrule
+            \end{tabular}
+            \label{tab:my_label}
+        \end{table}
+    \end{minipage}
+    \captionof{figure}{Profile likelihood on the SBANet score templates in the muon channel, electron channel, and combined.}
+\end{minipage}
+
+
 \subsection{Systematic uncertainties}
 \section{Ratio extraction}
 \subsection{Systematic uncertainties}
