@@ -24,7 +24,7 @@ The ranking process is carried out within the Muon channel following the initial
 The results of this one-dimensional ranking are depicted in \Fig{fig:1Drank}.\\
 \\
 Notably, the observables with the highest ranking are those associated with b-tagging, exhibiting $d$ values of approximately 0.1.\\
-Meanwhile, other observables produce results that are about an order of magnitude smaller, and the latests are due mostly to statistical fluctuations.
+Other observables produce results that are about an order of magnitude smaller, and the latests are due mostly to statistical fluctuations.
 
 \end{minipage}
         \label{fig:1Drank}  
@@ -82,11 +82,9 @@ The strategy to implement this in SBANet is adding another head containing for e
 \end{equation*}
 This vector contains all the independent components of the M matrix.\\
 Given the presence of significant outliers in the invariant masses, they are transformed with the function $\log(1+m)$ and then normalized with a batch norm layer.\\
-\\
 Since the first self-attention layer works only on the jet sequence and the other on the jet + leptonic W sequence, we have to build two different mass embeddings.\\
 \\
 For jet-self attention, only the mass inputs that are not related to the leptonic W boson are considered. They are 28 elements that are fed to a 4-layer feed-forward neural network of size [28,128,128,28]. This network that has the same number of neurons in the first and the last layer is called Autoencoder.\\
-\\
 The 28 output elements of the autoencoder are used to build the full $7\times 7$ M matrix that will be used as attention bias in the jet self-attention.\\
 \\
 The same thing is done with the event self-attention but considering all the mass head inputs and, in this case, the autoencoder size will be [36,128,128,36]\\
@@ -113,8 +111,8 @@ The same thing is done with the event self-attention but considering all the mas
         \label{tab:SBANet_dataset} 
     \end{minipage}
 \end{minipage}
-\footnotetext{These events are not included in the effective MC luminosity shown in \Tab{tab:samples}. These are additional events used only to train and validate the network}
-
+\footnotetext{These events are not included in the effective MC luminosity shown in \Tab{tab:samples}. These are additional events used only to train and validate the network}\\
+The loss functions of both the training and validation datasets are shown in \Fig{fig:SBANET_loss} and don't show any sign of overfitting.
 
 
 \begin{figure}[H]
@@ -176,7 +174,7 @@ The same thing is done with the event self-attention but considering all the mas
     \centering
     \includegraphics[height=0.48\textheight]{fig//chap09-sigback/stack_score_muons.png}
     \includegraphics[height=0.48\textheight]{fig//chap09-sigback/stack_score_electrons.png}
-    \caption{Stacked distribution of the SBANet scores for each process and significance plot in the muon (top) and electron (bottom) channel.}
+    \caption{Stacked distribution of the SBANet scores for each process and signal sensitivity ($\bm{Q}$) plot in the muon (top) and electron (bottom) channel.}
     \label{fig:SBANET_scores}
 \end{figure}
 
@@ -196,15 +194,15 @@ To extract the $\PW \to cb$ rate, the SBANet score is employed to perform a temp
          Combined & 177.15 & 7.5\%\\
          \bottomrule
     \end{tabular}
-    \caption{Significance and estimate of the statistical uncertainties on the $\PW \to cb$ rate of each channel.}
+    \caption{signal sensitivity and estimate of the statistical uncertainties on the $\PW \to cb$ rate of each channel.}
     \label{tab:stat_unc}
 \end{table}
     
 \end{minipage}
 \hfill
 \begin{minipage}{0.52\linewidth}
-    To expand the region with the highest signal purity, the scores are transformed with the inverse hyperbolic tangent function and then binned in such a way as to maximize the significance, maintaining at least one event in each bin.
-    Even before executing the fit, the statistical uncertainties on the $\PW \to cb$ rate can be estimated through the significance.
+    To expand the region with the highest signal purity, the scores are transformed with the inverse hyperbolic tangent function and then binned in such a way as to maximize the signal sensitivity, maintaining at least one event in each bin.
+    Even before executing the fit, the statistical uncertainties on the $\PW \to cb$ rate can be estimated through the signal sensitivity.
 \end{minipage}
 
     
@@ -302,6 +300,3 @@ The impact of the systematic uncertainties is evaluated using the profile likeli
     \label{tab:res}
 \end{table}
 
-
-\section{Ratio extraction}
-\subsection{Systematic uncertainties}
