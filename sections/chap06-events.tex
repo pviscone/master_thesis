@@ -326,7 +326,7 @@ The pile-up and MC-truth corrections are applied both on MC and data, while addi
 
 A summary of the jet energy corrections chain is shown in \Fig{fig:jerc}.
 
-\paragraph*{Jet energy resolution corrections}
+\paragraph*{Jet energy resolution corrections}\label{par:JERC}
 The jet momentum resolution is different in the data with respect to the simulation. To replicate the resolution observed in the data, the jets' four vectors are rescaled in a procedure called \emph{smearing} \cite{2021Jet13TeV}:\\
 if a reconstructed jet and a jet at the generator level (GenJet) are matched through the relation $\Delta R(\text{Jet,GenJet})<0.2$ and $|p_T-p_T^{\text{Gen}}|<3\sigma p_T$, the jet four-vector is scaled by a factor
 \begin{equation}
@@ -336,7 +336,7 @@ where $\sigma$ is the jet energy resolution measured with data, and SF is the sc
 Otherwise, if there is not any match between the jet and the genjets, a random Gaussian smearing is applied.
 
 
-\paragraph*{Flavor tagging corrections}
+\paragraph*{Flavor tagging corrections}\label{par:tag_corr}
 The distribution shapes of the \DeepJet discriminators are another element that shows discrepancies between data and simulated samples.\\
 To address this problem the events are reweighted:
 a weight is applied to each selected jet and an event weight is defined as the product of all the jet weights inside the event.\\

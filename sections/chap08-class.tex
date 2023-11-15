@@ -4,7 +4,6 @@
 \minitoc
 This chapter is focused on the signal-background discrimination. It will begin by demonstrating a basic one-dimensional feature ranking. Subsequently, JPANet will be adapted to tackle the signal-background discrimination challenge, and its score will be employed to execute a template fitting procedure on both the Muon and Electron channels, utilizing the Asimov dataset.
 Once the statistical uncertainties associated with the $\PW \to cb$ rate are determined, we will also introduce and assess the systematic uncertainties and their impact on the signal rate extraction.
-\TODO{Aggiungi roba quando fai il ratio}\\
 \begin{minipage}[H]{\linewidth}
 \begin{minipage}{0.35\linewidth}
         \centering
@@ -258,5 +257,51 @@ The statistical uncertainties on the $\PW \to cb$ rate are derived using the pro
 
 
 \subsection{Systematic uncertainties}
+
+In this analysis, the most relevant systematic uncertainties are the following:
+
+\begin{itemize}
+    \item \textbf{b/c-tagging uncertanties} 
+    The derivation of the b-tagging scale factors, described in Sec. \ref{par:tag_corr}, is subject to systematical uncertainties. The primary sources are the following:
+    \begin{itemize}
+        \item[\ding{111}] \textit{Sample purity}: The purity of the samples used to compute the light flavor SFs can be compromised by the contamination of heavy flavor jets associated with the Z boson, while for the heavy flavor SFs, the contamination of light jets in the $\ttbar$ sample can occur due to the production of additional partons.\\
+        To take into account the uncertainties on the contamination, the rate of $\ttbar$ events produced in association with two or more additional partons and the fraction of heavy flavor jets in the Z+Jets samples are varied of $\pm 20\%$
+        
+        \item[\ding{111}] \textit{Statistical uncertainties} This source accounts for the statistical fluctuations in different SFs bins that affect the more low-populated regions like the ones with high values of b-tag score
+
+        
+
+        \iffalse
+        \item[\ding{111}] \textit{Theoretical MC uncertainties} Uncertainties related to the parameter of the generator like the renormalization scale and the parton shower settings
+        \fi
+    \end{itemize}
+    \item \textbf{JES/JER} Uncertainties related to the jet energy scale and resolution corrections described in Sec. \ref{par:JERC}.
+
+    \item \textbf{Luminosity} Uncertainties on the RunII luminosity: 1.6\%
+    \item \textbf{Channel acceptance} Uncertainties on the acceptance of each signal region: 1\%(2\%) Muon(Electron) channel.
+    \item \textbf{$\ttbar$ cross-section} Uncertainties on the $\ttbar$ cross-section: 5\%
+\end{itemize}
+The impact of the systematic uncertainties is evaluated using the profile likelihood method with normal priors for each nuisance.
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l|c}
+    \toprule
+    \textbf{Uncertainties} & \textbf{Impact}\\
+    \midrule
+         Statistical   & 7\% \\
+         \midrule
+         b-tagging   & 7\% \\
+         c-tagging   & 4\% \\
+         JES/R   & 3\% \\
+         Lumi+XSec+Acceptances  & 2\% \\
+         \midrule
+         Total   & 11\%\\
+         \bottomrule
+    \end{tabular}
+    \caption{Impact of the systematic uncertainties and total uncertainties on the $\PW \to cb$ rate determination.}
+    \label{tab:res}
+\end{table}
+
+
 \section{Ratio extraction}
 \subsection{Systematic uncertainties}
