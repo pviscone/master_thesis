@@ -363,23 +363,22 @@ Attention is a mechanism that enables models to focus on specific parts or eleme
 Attention networks belong to the class of sequence-to-sequence (seq2seq) models. 
 One of the most common seq2seq tasks is the language translation in which the model takes as input one sentence (\ie a sequence) in a language and translates it into another language (\ie another sequence).
 This means that the inputs of the network are 3 dimensional: one is the batch dimension, one is the sequence dimension, and the last is the feature dimension.\\
-In particle physics, seq2seq models enable us to treat each event as a sequence composed of its particles and to maintain its structure.
+In particle physics, seq2seq models enable us to treat each event as a sequence composed of its particles and to maintain the event structure.
 
 \subsubsection*{Scaled dot product}
-One particular method to implement the attention is the scaled dot product \cite{Vaswani2017AttentionNeed}.\\
+One particular method to implement the attention is the "scaled dot product" \cite{Vaswani2017AttentionNeed}.\\
 \begin{equation}
     \textit{Attention}(Q,K,V)=\textit{Softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V
 \end{equation}
 \vspace{0.2cm}\\
-The scaled dot product has 3 inputs \cite{Vaswani2017AttentionNeed}: the Query (Q) of dimensions $(N, S_2, d_k)$ and Key (K) of dimension $(N, S_1, d_k)$, and the Value (V) of dimension $(N, S_2, d_k)$, where $N$ is the batch size, $S_1,S_2$ the length of the sequences and $d_k$ the number of neurons of the previous layer in the network.\\
+The scaled dot product has 3 inputs \cite{Vaswani2017AttentionNeed}: the "Query" (Q) of dimensions $(N, S_2, d_k)$ and "Key" (K) of dimension $(N, S_1, d_k)$, and the "Value" (V) of dimension $(N, S_2, d_k)$, where $N$ is the batch size, $S_1,S_2$ the length of the sequences and $d_k$ the number of neurons of the previous layer in the network.\\
 
 
 \begin{minipage}{\linewidth}
     \begin{minipage}{0.53\linewidth}
         $Q,K,V$ are linear embeddings of the layer inputs, so $Q,K,V=W_{Q,K,V} \cdot X_{Q,K,V}$ where $W$ are the weights learned during the training.\\
         \\
-        The dot product is used to compute a similarity score between the query and key vectors, weighting $V$ with it.\\
-        The $\textit{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)$ is the matrix of the "Attention-scores" and has dimension $(N,S_2,S_1)$, so it assigns a score to all the pairs in the two sequences.\\
+        The $\textit{Softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)$ is the matrix of the "Attention-scores" and has dimension $(N,S_2,S_1)$, so it exploits the dot product between the Query and Key tensors to compute and assign a score to all the pairs in the two sequences, performing a weighted average on the Value tensor.\\
     \end{minipage}
     \hfill
     \begin{minipage}{0.43\linewidth}
@@ -392,21 +391,21 @@ The scaled dot product has 3 inputs \cite{Vaswani2017AttentionNeed}: the Query (
     \end{minipage}
 \end{minipage}
 \vspace{0.1cm}\\
-The inputs of the scaled dot product are called Key, Query, and Value as an analogy to the search engine systems: a search engine will compare the user Query with the Key associated with the page available in the database and will return the Value, \ie the page, which keys best match the Query.  
+The inputs of the scaled dot product are called Key, Query, and Value as an analogy to the search engine systems: a search engine will compare the user Query with the Key associated with all the pages available in the database and will return the Value, \ie the page, which associated key best match the Query.  
 \\
 Attention networks are a rare example of explainability. By studying attention scores we can understand what the network is learning. Usually, instead, neural networks are black boxes that tend to learn representations that are difficult to understand by humans.
 \\
 \\
 In particle physics, this approach is particularly feasible for two reasons
 \begin{itemize}
-    \item There is a natural way to handle missing elements in the sequence: we can just fix the maximum length of the sequence and, for the missing particles, just impose the respective attention scores to zero.\\
+    \item There is a natural way to handle arrays of different lengths: we can just fix the maximum length of the sequence and, for the absent particles, just impose the respective attention scores to zero.\\
     This allows us to maintain the ragged structure of the event.
     \item Attention networks are invariant for permutation of the elements in the sequence, so we are not forced to introduce an ordering between the particles
 \end{itemize}
 
 
 \paragraph*{Multihead attention}
-One set of $W_Q,W_K,W_V$ matrices is called an \textit{attention head}, but we can stack multiple attention heads together, allowing the model to attend parts of the sequence differently.\\
+One set of $W_Q,W_K,W_V$ matrices is called an \textit{attention head}, but we can stack multiple attention heads together, allowing the model to learn different representations of the sequence separately.\\
 The different heads can be computed in parallel and their output, at the end, is concatenated.
 
 \begin{figure}[h!]
@@ -428,14 +427,14 @@ Cross-attention allows models to establish relationships between elements in dif
 \paragraph*{Self-attention pooling}
 
 
-Pooling is a technique used to downsample or reduce the dimensionality of feature maps or, in our case a sequence, retaining important information.\\
+Pooling is a technique used to downsample or reduce the dimensionality of feature maps, or in our case a sequence, retaining important information.\\
 As already discussed, we are interested in classifying an event as a signal or background, so we have to reduce the dimensionality of the sequences that contain all the particles in the events, to just one.\\
 Self-attention pooling \cite{Safari2020Self-attentionRecognition} is a pooling layer inspired by self-attention
 \begin{equation}
     \textit{Self-Att. Pool}=\textit{Softmax}(\bm{W} \bm{X}^T)\bm{X}
 \end{equation}
-where $\bm{X}$ is the input tensor of size $(N,S,F)$ and $\bm{W}$ is a set of trainable weight of size $S^{'},F$, where $S^{'}$ is the target size of the output sequence.\\
-Therefore, self-attention pooling is a weighted average of the sequence features where the weights correspond to the alignment learned by the self-attention mechanism.
+where $\bm{X}$ is the input tensor of size $(N,S,F)$ and $\bm{W}$ is a set of trainable weight of size $(S^{'},F)$, where $S^{'}$ is the target size of the output sequence.\\
+Therefore, self-attention pooling is a weighted average of the sequence features where the weights are the attention scores learned by the self-attention mechanism.
 
 
 

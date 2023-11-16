@@ -76,18 +76,18 @@ where $\hat{M}$ is a linear embedding of the matrix $M$ that contains all the in
 \end{aligned}
 \end{equation}
 The M matrix is symmetric and has $N(N+1)/2$ independent components.\\
-The strategy to implement this in SBANet is adding another head containing for each event a vector of length 36 with the square invariant masses of the couple of jets and the leptonic W.
+\\
+The strategy to implement this in SBANet is adding another input head containing for each event a vector of length 36 with the square invariant masses of the couple of jets and the leptonic W.
 \begin{equation*}
     \text{Mass head inputs}=\Biggl[ \dboxed{m_W,m_{Wj_1},\:\dots\:,m_{Wj_7},\dboxed{m_{j_1},m_{j_1 j_2},\:\dots\:,m_{j_6},m_{j_6 j_7},m_{j_7}}}\: \Biggr]
 \end{equation*}
 This vector contains all the independent components of the M matrix.\\
 Given the presence of significant outliers in the invariant masses, they are transformed with the function $\log(1+m)$ and then normalized with a batch norm layer.\\
-Since the first self-attention layer works only on the jet sequence and the other on the jet + leptonic W sequence, we have to build two different mass embeddings.\\
+There are two attention layers in SBANet: the first is a self-attention layer that works only on the jet sequence, while the second works on the jet + leptonic W sequence, so we have to build two different mass embeddings.\\
 \\
-For jet-self attention, only the mass inputs that are not related to the leptonic W boson are considered. They are 28 elements that are fed to a 4-layer feed-forward neural network of size [28,128,128,28]. This network that has the same number of neurons in the first and the last layer is called Autoencoder.\\
+For the first jet self-attention, only the mass inputs that are not related to the leptonic W boson are considered. They are 28 elements that are fed to a 4-layer feed-forward neural network of size [28,128,128,28]. This network that has the same number of neurons in the first and the last layer is called Autoencoder.\\
 The 28 output elements of the autoencoder are used to build the full $7\times 7$ M matrix that will be used as attention bias in the jet self-attention.\\
-\\
-The same thing is done with the event self-attention but considering all the mass head inputs and, in this case, the autoencoder size will be [36,128,128,36]\\
+The same thing is done with the second event self-attention but considering all the mass head inputs and, in this case, the autoencoder size will be [36,128,128,36]\\
 
 
 \begin{minipage}{\linewidth}
@@ -112,7 +112,7 @@ The same thing is done with the event self-attention but considering all the mas
     \end{minipage}
 \end{minipage}
 \footnotetext{These events are not included in the effective MC luminosity shown in \Tab{tab:samples}. These are additional events used only to train and validate the network}\\
-The loss functions of both the training and validation datasets are shown in \Fig{fig:SBANET_loss} and don't show any sign of overfitting.
+The loss functions are shown in \Fig{fig:SBANET_loss} and don't show any sign of overfitting.
 
 
 \begin{figure}[H]
@@ -178,8 +178,8 @@ The loss functions of both the training and validation datasets are shown in \Fi
     \label{fig:SBANET_scores}
 \end{figure}
 
-\section{Signal rate extraction}
-To extract the $\PW \to cb$ rate, the SBANet score is employed to perform a template fit.
+\section{$|V_{cb}|^2$ extraction}
+To extract the $|V_{cb}|^2$ rate, the SBANet score is employed to perform a template fit.
 
 \begin{minipage}{\linewidth}
 \begin{minipage}{0.43\linewidth}
@@ -194,7 +194,7 @@ To extract the $\PW \to cb$ rate, the SBANet score is employed to perform a temp
          Combined & 177.15 & 7.5\%\\
          \bottomrule
     \end{tabular}
-    \caption{signal sensitivity and estimate of the statistical uncertainties on the $\PW \to cb$ rate of each channel.}
+    \caption{signal sensitivity and estimate of the statistical uncertainties on $|V_{cb}|^2$ for each channel.}
     \label{tab:stat_unc}
 \end{table}
     
@@ -202,7 +202,7 @@ To extract the $\PW \to cb$ rate, the SBANet score is employed to perform a temp
 \hfill
 \begin{minipage}{0.52\linewidth}
     To expand the region with the highest signal purity, the scores are transformed with the inverse hyperbolic tangent function and then binned in such a way as to maximize the signal sensitivity, maintaining at least one event in each bin.
-    Even before executing the fit, the statistical uncertainties on the $\PW \to cb$ rate can be estimated through the signal sensitivity.
+    Even before executing the fit, the statistical uncertainties on $|V_{cb}|^2$ can be estimated through the signal sensitivity.
 \end{minipage}
 
     
@@ -222,36 +222,18 @@ To extract the $\PW \to cb$ rate, the SBANet score is employed to perform a temp
 \fi
 
 \paragraph*{Template fit}
-The statistical uncertainties on the $\PW \to cb$ rate are derived using the profile likelihood method using the Asimov dataset, as described in Sec. \ref{sec:profile} .
-
-\begin{minipage}{\linewidth}
-    \begin{minipage}{0.74\linewidth}
-        \begin{figure}[H]
-        \centering
-        \includegraphics[width=\linewidth]{fig//chap09-sigback/stat_like.png}
-        
-        \label{fig:enter-label}
-        \end{figure}
-    \end{minipage}
-    \hfill
-    \begin{minipage}{0.25\linewidth}
-        
-        \begin{table}[H]
-            \centering
-            \begin{tabular}{l|c}
-                \toprule
-                \multicolumn{2}{c}{\textbf{Rate Stat. Unc.}} \\
-                \midrule
-                 Muon & 9.0\% \\
-                 Electron & 11.2\% \\
-                 Combined & 7.0\% \\
-                 \bottomrule
-            \end{tabular}
-            \label{tab:my_label}
-        \end{table}
-    \end{minipage}
-    \captionof{figure}{Profile likelihood on the SBANet score templates in the muon channel, electron channel, and combined.}
-\end{minipage}
+The statistical uncertainties on $|V_{cb}|^2$ are derived using the profile likelihood method using the Asimov dataset, as described in Sec. \ref{sec:profile}.\\
+\\
+The signal events in the histogram are normalized with the RunII luminosity
+\begin{equation*}
+    N_s=\mathcal{L}_{\text{RunII}}^I \times \epsilon_{\text{channel}}\times \sigma(\ttbar)\times \mathcal{BR}(\PW \to \ell \nu)\times (1-\mathcal{BR}(\PW \to \ell \nu)) \times \frac{|V_{cb}|^2}{2}
+\end{equation*}
+where $|V_{cb}|^2$ is the parameter of interest to fit, so the expectation value of the Poisson distributions in the likelihood will be
+\begin{equation*}
+    \lambda^{(b)}(|V_{cb}|^2) = |V_{cb}|^2 \cdot \dfrac{N_s^{(b)}}{\widetilde{|V_{cb}|^2}}+\sum_p^{\text{bkgs}} N_p^{(b)}
+\end{equation*}
+where $\widetilde{|V_{cb}|^2}$ is the value used to normalize the histograms and $N_p^{(b)}$ are the number of events for the process $p$ in the b-th bin.
+The result of the fit is shown in \Fig{fig:stat_fit}
 
 
 \subsection{Systematic uncertainties}
@@ -260,7 +242,10 @@ In this analysis, the most relevant systematic uncertainties are the following:
 
 \begin{itemize}
     \item \textbf{b/c-tagging uncertanties} 
-    The derivation of the b-tagging scale factors, described in Sec. \ref{par:tag_corr}, is subject to systematical uncertainties. The primary sources are the following:
+    The derivation of the b/c-tagging scale factors, described in Sec. \ref{par:tag_corr}, is subject to different systematical uncertainties \cite{Sirunyan_2018}. 
+    
+    \iffalse
+    The primary sources are the following:
     \begin{itemize}
         \item[\ding{111}] \textit{Sample purity}: The purity of the samples used to compute the light flavor SFs can be compromised by the contamination of heavy flavor jets associated with the Z boson, while for the heavy flavor SFs, the contamination of light jets in the $\ttbar$ sample can occur due to the production of additional partons.\\
         To take into account the uncertainties on the contamination, the rate of $\ttbar$ events produced in association with two or more additional partons and the fraction of heavy flavor jets in the Z+Jets samples are varied of $\pm 20\%$
@@ -273,13 +258,48 @@ In this analysis, the most relevant systematic uncertainties are the following:
         \item[\ding{111}] \textit{Theoretical MC uncertainties} Uncertainties related to the parameter of the generator like the renormalization scale and the parton shower settings
         \fi
     \end{itemize}
+    \fi
     \item \textbf{JES/JER} Uncertainties related to the jet energy scale and resolution corrections described in Sec. \ref{par:JERC}.
 
     \item \textbf{Luminosity} Uncertainties on the RunII luminosity: 1.6\%
     \item \textbf{Channel acceptance} Uncertainties on the acceptance of each signal region: 1\%(2\%) Muon(Electron) channel.
     \item \textbf{$\ttbar$ cross-section} Uncertainties on the $\ttbar$ cross-section: 5\%
 \end{itemize}
-The impact of the systematic uncertainties is evaluated using the profile likelihood method with normal priors for each nuisance.
+The impact of the systematic uncertainties is evaluated using the profile likelihood method with normal priors for each nuisance and is shown in \Tab{tab:res}.
+
+
+\begin{minipage}{\linewidth}
+    \begin{minipage}{0.74\linewidth}
+        \begin{figure}[H]
+        \centering
+        \includegraphics[width=\linewidth]{fig//chap09-sigback/stat_like.png}
+        
+        
+        \end{figure}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.25\linewidth}
+        
+        \begin{table}[H]
+            \centering
+            \begin{tabular}{l|c}
+                \toprule
+                \multicolumn{2}{c}{\textbf{$|V_{cb}|^2$ Stat. Unc.}} \\
+                \midrule
+                 Muon & 9.0\% \\
+                 Electron & 11.2\% \\
+                 Combined & 7.0\% \\
+                 \bottomrule
+            \end{tabular}
+            \label{tab:my_label}
+        \end{table}
+    \end{minipage}
+    
+    \captionof{figure}{Profile likelihood without nuisances on the SBANet score templates in the muon channel, electron channel, and combined.}
+    \label{fig:stat_fit}
+\end{minipage}
+
+
 \begin{table}[H]
     \centering
     \begin{tabular}{l|c}
@@ -296,7 +316,14 @@ The impact of the systematic uncertainties is evaluated using the profile likeli
          Total   & 11\%\\
          \bottomrule
     \end{tabular}
-    \caption{Impact of the systematic uncertainties and total uncertainties on the $\PW \to cb$ rate determination.}
+    \caption{Impact of the systematic uncertainties and total uncertainties on the $|V_{cb}|^2$ determination.}
     \label{tab:res}
 \end{table}
+
+The uncertainties on $|V_{cb}|$ are half of those on $|V_{cb}|^2$, so the expected relative uncertainty on $|V_{cb}|$ is 5.5\% ($3.5\%$ Stat. + $4.4\%$ Syst.)
+\begin{equation*}
+    |V_{cb}|=0.041 \pm 0.002
+\end{equation*}
+
+ This relative uncertainty is already less than the 7\% tension shown by the $|V_{cb}|$ puzzle, but the systematical uncertainties can be further reduced by deriving $|V_{cb}|$ from the branching fractions ratio instead of from the signal rate, providing a great opportunity to address the $|V_{cb}|$ puzzle.\\
 
