@@ -58,7 +58,9 @@ The lepton features are limited to kinematic variables $(p_T,\eta,\phi)$, and th
 The sequence of secondary leptons' embeddings is then combined with the complete event sequence before the self-attention pooling layer.
 \\
 \\
-\textbf{Invariant mass heads and pair-wise attention biases} The two self-attention layers in the network were modified to include pair-wise physics object features, such as invariant masses.
+\textbf{Invariant mass heads and pair-wise attention biases} 
+
+The two self-attention layers in the network were modified to include pair-wise physics object features, such as invariant masses.
 Let's recall what is the scaled dot product:
 \begin{equation}
     \text{Softmax}\left( \frac{QK^T}{\sqrt{d_k}} \right)V
@@ -264,7 +266,7 @@ In this analysis, the most relevant systematic uncertainties are the following:
     \item \textbf{Channel acceptance} Uncertainties on the acceptance of each signal region: 1\%(2\%) Muon(Electron) channel.
     \item \textbf{$\ttbar$ cross-section} Uncertainties on the $\ttbar$ cross-section: 5\%
 \end{itemize}
-The impact of the systematic uncertainties is evaluated using the profile likelihood method with normal priors for each nuisance and is shown in \Tab{tab:res}.
+The impact of the systematic uncertainties is evaluated using the profile likelihood method with normal priors for each nuisance. The impacts for each channel and the combined impacts are shown in \Fig{fig:MuImpact},\Fig{fig:EleImpact}, \Fig{fig:CombImpact} and are summarized in \Tab{tab:res}.
 
 
 \begin{minipage}{\linewidth}
@@ -301,28 +303,87 @@ The impact of the systematic uncertainties is evaluated using the profile likeli
 
 \begin{table}[H]
     \centering
-    \begin{tabular}{l|c}
+    \begin{tabular}{l|ccc}
     \toprule
-    \textbf{Uncertainties} & \textbf{Impact}\\
+    \textbf{Uncertainties} & \textbf{Muon} & \textbf{Electron} & \textbf{Combined}\\
     \midrule
-         Statistical   & 7\% \\
+         Statistical  & X\% & X\% & 7\% \\
          \midrule
-         b-tagging   & 7\% \\
-         c-tagging   & 4\% \\
-         JES/R   & 3\% \\
-         Lumi+XSec+Acceptances  & 2\% \\
+         b-tagging   & X\% & X\%& X\% \\
+         c-tagging   & X\% & X\%& X\% \\
+         JES/R   & X\% & X\%& X\%\\
+         Lumi+XSec+Acceptances  & X\% & X\%& X\% \\
          \midrule
-         Total   & 11\%\\
+         Total   & X\% & X\%& 15\%\\
          \bottomrule
     \end{tabular}
-    \caption{Impact of the systematic uncertainties and total uncertainties on the $|V_{cb}|^2$ determination.}
+    \caption{Impact of the systematic uncertainties and total uncertainties on the $|V_{cb}|^2$ determination for each channel.}
     \label{tab:res}
 \end{table}
 
-The uncertainties on $|V_{cb}|$ are half of those on $|V_{cb}|^2$, so the expected relative uncertainty on $|V_{cb}|$ is 5.5\% ($3.5\%$ Stat. + $4.4\%$ Syst.)
+The uncertainties on $|V_{cb}|$ are half of those on $|V_{cb}|^2$, so the expected relative uncertainty on $|V_{cb}|$ is 7.5\% ($7\%$ Stat. + $X\%$ Syst.)
 \begin{equation*}
-    |V_{cb}|=0.041 \pm 0.002
+    |V_{cb}|=0.041 \pm 0.003
 \end{equation*}
+This relative uncertainty is comparable with the 7\% difference shown by the $|V_{cb}|$ puzzle.
+The systematical uncertainties can be further reduced by deriving $|V_{cb}|$ from the branching fractions ratio instead of from the signal rate.
+\begin{equation*}
+    |V_{cb}|^2=2\frac{\mathcal{BR}(\PW \to cb)}{\mathcal{BR}(\PW \to qq)}
+\end{equation*}
+Since different systematic variations are similar for all the semileptonic $\ttbar$ processes, regardless the flavor of the hadronic W decay, the ratio should allow some systematic uncertainties cancellations, improving the presented determination and providing a great opportunity to address the $|V_{cb}|$ puzzle.\\
 
- This relative uncertainty is already less than the 7\% tension shown by the $|V_{cb}|$ puzzle, but the systematical uncertainties can be further reduced by deriving $|V_{cb}|$ from the branching fractions ratio instead of from the signal rate, providing a great opportunity to address the $|V_{cb}|$ puzzle.\\
+
+
+\hspace{0pt}
+\vfill
+
+
+\begin{center}
+     {\Huge \textbf{Muons}}
+\end{center}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{fig/chap09-sigback/muons_impact.pdf}
+    \caption{$|V_{cb}|^2$ systematic uncertainties impacts on the Muon channel.}
+    \label{fig:MuImpact}
+\end{figure}
+
+
+\vfill
+\hspace{0pt}
+\pagebreak
+
+\hspace{0pt}
+\vfill
+\begin{center}
+     {\Huge \textbf{Electrons}}
+\end{center}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{fig/chap09-sigback/electron_impact.pdf}
+    \caption{$|V_{cb}|^2$ systematic uncertainties impacts on the Electron channel.}
+    \label{fig:EleImpact}
+\end{figure}
+\vfill
+\hspace{0pt}
+
+\pagebreak
+\hspace{0pt}
+\vfill
+\begin{center}
+     {\Huge \textbf{Combined}}
+\end{center}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{fig/chap09-sigback/combined_impact.pdf}
+    \caption{$|V_{cb}|^2$ systematic uncertainties impacts on both Electron and Muon channel combined.}
+    \label{fig:CombImpact}
+\end{figure}
+
+\vfill
+\hspace{0pt}
+\pagebreak
+
+
+
 
