@@ -61,12 +61,12 @@ The sequence of secondary leptons' embeddings is then combined with the complete
 \textbf{Invariant mass heads and pair-wise attention biases} The two self-attention layers in the network were modified to include pair-wise physics object features, such as invariant masses.
 Let's recall what is the scaled dot product:
 \begin{equation}
-    \text{Softmax}\left( \frac{QK}{\sqrt{d_k}} \right)V
+    \text{Softmax}\left( \frac{QK^T}{\sqrt{d_k}} \right)V
 \end{equation}
 The product $QK$ is a $N\times N$ matrix where N is the length of the sequence.\\
 Given that we can include the invariant masses of couples of physics objects by just adding a term in the softmax function
 \begin{equation}
-    \text{Softmax}\left( \frac{QK+\hat{M}}{\sqrt{d_k}} \right)V
+    \text{Softmax}\left( \frac{QK^T+\hat{M}}{\sqrt{d_k}} \right)V
 \end{equation}
 where $\hat{M}$ is a linear embedding of the matrix $M$ that contains all the invariant masses
 \begin{equation}
@@ -76,8 +76,7 @@ where $\hat{M}$ is a linear embedding of the matrix $M$ that contains all the in
 \end{aligned}
 \end{equation}
 The M matrix is symmetric and has $N(N+1)/2$ independent components.\\
-\\
-The strategy to implement this in SBANet is adding another input head containing for each event a vector of length 36 with the square invariant masses of the couple of jets and the leptonic W.
+The strategy to implement this in SBANet is adding another input head containing for each event a vector of length 36\footnote{Because the final sequence is composed of 7 jets + the leptonic W, so ($8*(8+1)/2=36$)} with the square invariant masses of the couple of jets and the leptonic W.
 \begin{equation*}
     \text{Mass head inputs}=\Biggl[ \dboxed{m_W,m_{Wj_1},\:\dots\:,m_{Wj_7},\dboxed{m_{j_1},m_{j_1 j_2},\:\dots\:,m_{j_6},m_{j_6 j_7},m_{j_7}}}\: \Biggr]
 \end{equation*}
@@ -87,9 +86,9 @@ There are two attention layers in SBANet: the first is a self-attention layer th
 \\
 For the first jet self-attention, only the mass inputs that are not related to the leptonic W boson are considered. They are 28 elements that are fed to a 4-layer feed-forward neural network of size [28,128,128,28]. This network that has the same number of neurons in the first and the last layer is called Autoencoder.\\
 The 28 output elements of the autoencoder are used to build the full $7\times 7$ M matrix that will be used as attention bias in the jet self-attention.\\
-The same thing is done with the second event self-attention but considering all the mass head inputs and, in this case, the autoencoder size will be [36,128,128,36]\\
+The same thing is done with the second event self-attention but considering all the mass head inputs and, in this case, the autoencoder size will be [36,128,128,36].\\
 
-
+\stepcounter{myfootnote}
 \begin{minipage}{\linewidth}
     \begin{minipage}{0.52\linewidth}
         \paragraph*{Training and evaluation}
