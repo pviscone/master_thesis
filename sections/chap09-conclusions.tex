@@ -1,2 +1,20 @@
 %!TEX root = ../thesis.tex
 \newchap{Conclusion}\label{sec:END}
+\vspace{-1cm}
+Currently, $|V_{cb}|$ is the CKM element measured with the highest relative uncertainties. Furthermore, the determination performed exploiting the semileptonic decays of B mesons showed a 7\% tension between the exclusive and the inclusive channel.\\
+\\
+This thesis introduces a method to perform a direct measurement of $|V_{cb}|$ at LHC through the hadronic decays of $\PW$ bosons, exploiting the semileptonic decay of $\PW$ pairs to avoid the QCD background that would make an inclusive determination an impossible task.
+\\
+\\
+The presented analysis focused on events where the \PW pairs are produced by di-top decays and where a \PW boson decays into a muon or electron and the other into a cb quark pair.
+The event selection requirements were chosen to be minimal in order to preserve the statistics.\\
+\\
+To discriminate the signal from the background, cutting-edge machine learning techniques were employed, particularly attention networks. 
+A first attention network was built to address the jet-parton assignment problem and then adapted to the signal-background discrimination task.\\
+The network was trained separately on the muon and electron signal regions and its scores were employed to extract $|V_{cb}|$ through a template fit.\\
+The fit was performed using the Asimov dataset and the profile likelihood method.
+The systematics uncertainties on the b/c tagging and the jet energy scale/resolution were also evaluated, obtaining a combined relative statistical precision on $|V_{cb}|$ of $5.5\%$ ($3.5\%$ Stat. + $4.4\%$ Syst.), which is less than the $7\%$ tension of the $|V_{cb}|$ puzzle.
+\\
+\\
+In the end, the presented method is a promising prospect to tackle the $|V_{cb}|$ puzzle with a novel strategy, providing a new determination at the natural energy scale of the \PW boson which is also independent of non-perturbative QCD theoretical uncertainties.
+On top of that, while in this work $|V_{cb}|$ was fitted directly as the parameter of interest, the determination could be further improved by deriving $|V_{cb}|$ from the ratio of branching fractions $|V_{cb}|^2=2\mathcal{BR}(\PW \to cb)/\mathcal{BR}(\PW \to qq)$, since it would allow cancellation in systematical uncertainties.

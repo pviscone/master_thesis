@@ -178,8 +178,8 @@ The loss functions are shown in \Fig{fig:SBANET_loss} and don't show any sign of
     \label{fig:SBANET_scores}
 \end{figure}
 
-\section{$|V_{cb}|^2$ extraction}
-To extract the $|V_{cb}|^2$ rate, the SBANet score is employed to perform a template fit.
+\section{$|V_{cb}|$ extraction}
+To extract $|V_{cb}|^2$, the SBANet score is employed to perform a template fit.
 
 \begin{minipage}{\linewidth}
 \begin{minipage}{0.43\linewidth}
@@ -187,14 +187,14 @@ To extract the $|V_{cb}|^2$ rate, the SBANet score is employed to perform a temp
     \centering
     \begin{tabular}{l|cc}
     \toprule
-        \textbf{Channel} & $\bm{Q}$ & $\dfrac{\bm{\sigma[R(W \to cb)]}}{\bm{R(W \to cb)}}$ \\
+        \textbf{Channel} & $\bm{Q}$ & $\dfrac{\bm{\sigma[|V_{cb}|^2]}}{\bm{|V_{cb}|^2}}$ \\
         \midrule
          Muon & 98.50 & 10.1\%\\
          Electron & 68.65 &  11.3\%\\
          Combined & 177.15 & 7.5\%\\
          \bottomrule
     \end{tabular}
-    \caption{signal sensitivity and estimate of the statistical uncertainties on $|V_{cb}|^2$ for each channel.}
+    \caption{Signal sensitivity and estimate of the statistical uncertainties on $|V_{cb}|^2$ for each channel.}
     \label{tab:stat_unc}
 \end{table}
     
@@ -228,7 +228,7 @@ The signal events in the histogram are normalized with the RunII luminosity
 \begin{equation*}
     N_s=\mathcal{L}_{\text{RunII}}^I \times \epsilon_{\text{channel}}\times \sigma(\ttbar)\times \mathcal{BR}(\PW \to \ell \nu)\times (1-\mathcal{BR}(\PW \to \ell \nu)) \times \frac{|V_{cb}|^2}{2}
 \end{equation*}
-where $|V_{cb}|^2$ is the parameter of interest to fit, so the expectation value of the Poisson distributions in the likelihood will be
+where $|V_{cb}|^2$ is the parameter of interest to fit, so the expectation value $\lambda$ of the Poisson distribution in the likelihood relative to the b-th bin will be
 \begin{equation*}
     \lambda^{(b)}(|V_{cb}|^2) = |V_{cb}|^2 \cdot \dfrac{N_s^{(b)}}{\widetilde{|V_{cb}|^2}}+\sum_p^{\text{bkgs}} N_p^{(b)}
 \end{equation*}
