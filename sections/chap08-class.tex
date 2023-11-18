@@ -31,14 +31,13 @@ Other observables produce results that are about an order of magnitude smaller, 
         \captionof{figure}{Unidimensional feature ranking using the metric $d$ between flattened signal observables and \ttbar semileptonic observables }
 \end{minipage}
 \section{Event classification}
-\subsubsection*{SBANet} Since we have already demonstrated the ability of JPANet to reconstruct and interpret the signal events, we can exploit the same model to tackle the signal-background discrimination task.\\
-To achieve this, we simply need to make some adjustments to JPANet, creating another network which will be denoted as "Signal-Background Attention Network" (SBANet).\\
-The training and evaluation of this network will be conducted independently for the Muon and Electron channels.
+\subsubsection*{SBANet} Since we have already demonstrated the ability of JPANet to reconstruct and interpret the signal events, we can exploit the same model to tackle the signal-background discrimination task.
+To achieve this, we simply need to make some adjustments to JPANet, creating another network that will be denoted as "Signal-Background Attention Network" (SBANet).
+The training and evaluation of this network will be conducted independently for the Muon and Electron channels.\\
+The observables used as inputs are the kinematic variables $(p_T,\eta,\phi)$ of jets, leptons, and the reconstructed neutrino, along with the bTag, CvB, and CvL scores of all jets.
+In addition, to provide an enriched representation of the events, all the invariant masses of physics object pairs were added as input to the network. The output is a score assigned to each event that is treated as the "probability" of the event to be a signal event.
 \\
-The differences between SBANet and JPANet are:\\
-\\
-\textbf{Jet Inputs}: In SBANet, all three \DeepJet scores are added to the Jet head (b-tag,CvB,CvL).
-\\
+The adjustments applied to JPANet to build SBANet are the following:\\
 \\
 \textbf{Hyper-parameters}: After experimenting with various configurations, we found that the network required increased complexity. This entailed raising the number of units in each feed-forward layer to 128 and adjusting the dropout probability to 2\%.
 \\
@@ -46,7 +45,7 @@ The differences between SBANet and JPANet are:\\
 \textbf{Self-attention pooling}: The JPANet's output initially produces a 7x4 matrix, as it assigns scores to pairs of jet-partons. However, we need to derive a single score for the entire event. To accomplish this, we condensed the physics objects embedding sequence into a single dimension using a self-attention pooling layer. This layer assigns weights to each element of the sequence (i.e., the physics objects) based on attention scores and computes a weighted average across the sequence. Subsequently, we introduced three additional feed-forward layers.
 \\
 \\
-\textbf{Event self-attention}: We aimed to have the self-attention pooling calculate attention scores over all physics objects, not just the jets. Consequently, we transformed JPANet's cross-attention into a self-attention mechanism covering the concatenated sequence of jets and the leptonic W.
+\textbf{Event self-attention}: We aimed to have the self-attention pooling compute attention scores over all physics objects, not just the jets. Consequently, we transformed JPANet's cross-attention into a self-attention mechanism covering the concatenated sequence of jets and the leptonic W.
 \\
 \\
 \textbf{Output layer} The output of SBANet is a 3-dimensional layer equipped with the softmax function. Three classes are defined: the signal, the $\ttbar$ semileptonic process, and the $\ttbar$ dileptonic process. This enables the network to better distinguish the signal from the two primary sources of background, even though, ultimately, we only consider the signal score.
@@ -65,8 +64,8 @@ Let's recall what is the scaled dot product:
 \begin{equation}
     \text{Softmax}\left( \frac{QK^T}{\sqrt{d_k}} \right)V
 \end{equation}
-The product $QK$ is a $N\times N$ matrix where N is the length of the sequence.\\
-Given that we can include the invariant masses of couples of physics objects by just adding a term in the softmax function
+The product $QK^T$ is a $N\times N$ matrix where N is the length of the sequence.\\
+Given that, we can include the invariant masses of couples of physics objects by just adding a term in the softmax function
 \begin{equation}
     \text{Softmax}\left( \frac{QK^T+\hat{M}}{\sqrt{d_k}} \right)V
 \end{equation}
@@ -78,7 +77,7 @@ where $\hat{M}$ is a linear embedding of the matrix $M$ that contains all the in
 \end{aligned}
 \end{equation}
 The M matrix is symmetric and has $N(N+1)/2$ independent components.\\
-The strategy to implement this in SBANet is adding another input head containing for each event a vector of length 36\footnote{Because the final sequence is composed of 7 jets + the leptonic W, so ($8*(8+1)/2=36$)} with the square invariant masses of the couple of jets and the leptonic W.
+The strategy to implement this in SBANet is adding another input head containing for each event a vector of length 36\footnote{Because the final sequence is composed of 7 jets + the leptonic W, so $8*(8+1)/2=36$} with the square invariant masses of the couple of jets and the leptonic W.
 \begin{equation*}
     \text{Mass head inputs}=\Biggl[ \dboxed{m_W,m_{Wj_1},\:\dots\:,m_{Wj_7},\dboxed{m_{j_1},m_{j_1 j_2},\:\dots\:,m_{j_6},m_{j_6 j_7},m_{j_7}}}\: \Biggr]
 \end{equation*}
@@ -118,10 +117,9 @@ The loss functions are shown in \Fig{fig:SBANET_loss} and don't show any sign of
 
 \begin{figure}[H]
     \centering
-    \includegraphics[height=0.805\textheight]{fig//chap09-sigback/SBANet.png}
+    \includegraphics[height=0.78\textheight]{fig//chap09-sigback/SBANet.png}
     %\caption{SBANet}
     \label{fig:SBANet}
-\end{figure}
 
 \begin{minipage}{0.58\linewidth}
 \begin{table}[H]
@@ -135,7 +133,7 @@ The loss functions are shown in \Fig{fig:SBANET_loss} and don't show any sign of
          \midrule
          LeptW & $[p_T^\ell,\eta^\ell,\phi^\ell,p_T^\nu,\eta^\nu,\phi^\nu]$\\
          \midrule
-         Sec. Lept.& $[p_T,\eta,\phi]$ \\
+         Additional Lept.& $[p_T,\eta,\phi]$ \\
          \midrule
          Masses & 36 Jets+LeptW inv. masses\\
          \bottomrule
@@ -161,6 +159,7 @@ The loss functions are shown in \Fig{fig:SBANET_loss} and don't show any sign of
 \end{table}
 \end{minipage}
 \captionof{figure}{SBANet schematics, inputs, and hyper-parameters.}
+\end{figure}
 
 \begin{figure}[H]
     \centering
@@ -307,23 +306,23 @@ The impact of the systematic uncertainties is evaluated using the profile likeli
     \toprule
     \textbf{Uncertainties} & \textbf{Muon} & \textbf{Electron} & \textbf{Combined}\\
     \midrule
-         Statistical  & X\% & X\% & 7\% \\
+         Statistical  & 9.0\% & 11.2\% & 7.0\% \\
          \midrule
-         b-tagging   & X\% & X\%& X\% \\
-         c-tagging   & X\% & X\%& X\% \\
-         JES/R   & X\% & X\%& X\%\\
-         Lumi+XSec+Acceptances  & X\% & X\%& X\% \\
+         b-tagging    & 9.3\% &   8.7\% & 8.8\% \\
+         c-tagging   & 5.7\% & 4.1\%& 7.6\% \\
+         JES/R   & 8.6\% & 11.5\%& 6.6\%\\
+         Lumi+XSec+Acceptances  & 6.0\% & 7.5\%& 4.1\% \\
          \midrule
-         Total   & X\% & X\%& 15\%\\
+         Total   & 18\% & 21\%& 15\%\\
          \bottomrule
     \end{tabular}
     \caption{Impact of the systematic uncertainties and total uncertainties on the $|V_{cb}|^2$ determination for each channel.}
     \label{tab:res}
 \end{table}
 
-The uncertainties on $|V_{cb}|$ are half of those on $|V_{cb}|^2$, so the expected relative uncertainty on $|V_{cb}|$ is 7.5\% ($7\%$ Stat. + $X\%$ Syst.)
+The uncertainties on $|V_{cb}|$ are half of those on $|V_{cb}|^2$, so the expected relative uncertainty on $|V_{cb}|$ is 7.8\% ($3.5\%$ Stat. + $7\%$ Syst.)
 \begin{equation*}
-    |V_{cb}|=0.041 \pm 0.003
+    |V_{cb}|=0.0410 \pm 0.0032
 \end{equation*}
 This relative uncertainty is comparable with the 7\% difference shown by the $|V_{cb}|$ puzzle.
 The systematical uncertainties can be further reduced by deriving $|V_{cb}|$ from the branching fractions ratio instead of from the signal rate.
