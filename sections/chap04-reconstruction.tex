@@ -60,11 +60,11 @@ The track finding is divided into four steps:
 \paragraph*{Track fitting}
 To determine the track parameters, after all hits of each track are assigned by the track finder, a new KF fit is initialized at the location of the innermost hit. The fit proceeds through all the hits, from inside outwards.\\
 This filter is followed by a smoothing stage that consists of a second KF initialized with the result of the first one and is run backward. The track parameters are obtained from a weighted average of the track parameters of these two filters.\\
-During the track fitting stage, the effects of interaction with materials and  inhomogeneous of the magnetic field are considered.
+During the track fitting stage, the effects of interaction with materials and inhomogeneous of the magnetic field are considered.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\linewidth]{fig//chap04-reco/KF.png}
+    \includegraphics[width=0.75\linewidth]{fig//chap04-reco/KF_upscayl_2x_realesrgan-x4plus-anime.png}
     \caption{Visualization of the forward filter and the backward smoother filter. The red points indicate the measurements and their uncertainties on each layer, while the green points indicate the predictions \cite{Ai2021AFitting}.}
     \label{fig:KF}
 \end{figure}
