@@ -202,5 +202,5 @@ ax3b.set_xticks(t,minor=True)
 ax3b.tick_params(axis="x",direction="in", pad=-25,labelsize=15,labelcolor="grey",which="minor",colors='white')
 ax3b.set_xlabel("a.u.",fontsize=15,labelpad=-15,color="white")
 
-
+plt.savefig('morph.pdf',bbox_inches='tight')
 # %%
