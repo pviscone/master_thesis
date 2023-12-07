@@ -1,6 +1,6 @@
 %!TEX root = ../thesis.tex
 \RequirePackage{fix-cm} % against warnings for \fontsize
-\documentclass[a4paper,12pt,numbers=noenddot,listof=entryprefix,open=right,headings=big,pairskip=half,usegeometry]{scrreprt}
+\documentclass[a4paper,12pt,numbers=noenddot,listof=entryprefix,open=right,headings=big,pairskip=half,usegeometry,twosides]{scrreprt}
 
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -149,18 +149,33 @@
 
 \usepackage[chapterstyle=bianchi,headings=big]{settings/komaChapStyle}
 \usepackage{bm}
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-\fancyhf{}
-
-\lhead{\nouppercase{\textbf{\rightmark}}}
-\rhead{\textbf{\thepage}}
-\fancyfoot{}
-
-
 %\usepackage{fancyhdr}
-%\pagestyle{fancy} 
+%\pagestyle{fancy}
 %\fancyhf{}
+
+%\lhead{\nouppercase{\textbf{\rightmark}}}
+%\rhead{\textbf{\thepage}}
+
+%%\fancyhead[LE]{\slshape \rightmark} %section
+%%\fancyhead[RE]{\thepage}
+%%\fancyhead[RO]{\slshape \leftmark} % chapter
+%%\fancyhead[LO]{\thepage}
+
+
+%\fancyfoot{}
+
+\usepackage[
+  automark,
+  autooneside=false,% <- if you want to use \leftmark and \rightmark in a one sided document
+  headsepline=true
+]{scrlayer-scrpage}
+\clearpairofpagestyles
+\pagestyle{scrheadings}
+
+
+
+\lohead{\Ifthispageodd{\textbf{\rightmark}}{\textbf{\thepage}}}
+\rohead{\Ifthispageodd{\textbf{\thepage}}{\textbf{\leftmark}}}
 %%%
 %%%% Lines after a header or before a footer
 %%%%\renewcommand{\footrulewidth}{0.4pt}
